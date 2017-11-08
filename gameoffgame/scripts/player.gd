@@ -26,8 +26,8 @@ var anim_cur = ""
 var anim_nxt = "run_right"
 
 func _ready():
-	get_node( "anim_body" ).play( "run_down" )
-	get_node( "anim_legs" ).play( "run_down" )
+	get_node( "anim_body" ).play( "run_right" )
+	get_node( "anim_legs" ).play( "run_right" )
 	set_fixed_process( true )
 
 

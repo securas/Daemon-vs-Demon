@@ -1,0 +1,168 @@
+[gd_scene load_steps=12 format=1]
+
+[ext_resource path="res://scenes/act_1/background.png" type="Texture" id=1]
+[ext_resource path="res://shaders/basic_water.tres" type="Shader" id=2]
+[ext_resource path="res://scenes/act_1/displacement.png" type="Texture" id=3]
+[ext_resource path="res://scenes/act_1/displacement2.png" type="Texture" id=4]
+[ext_resource path="res://scenes/act_1/platform.png" type="Texture" id=5]
+[ext_resource path="res://scenes/act_1/altar.png" type="Texture" id=6]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/act_1/platform_demon.png" type="Texture" id=8]
+
+[sub_resource type="CanvasItemMaterial" id=3]
+
+shader/shader = ExtResource( 2 )
+shader/shading_mode = 0
+shader_param/noise = ExtResource( 3 )
+shader_param/noise2 = ExtResource( 4 )
+
+[sub_resource type="ColorRamp" id=1]
+
+offsets = FloatArray( 0, 1 )
+colors = ColorArray( 0.172549, 0.156863, 0.156863, 1, 0.235294, 0.235294, 0.25098, 1 )
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "cycle"
+length = 1.8
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
+
+[node name="act_1" type="Node2D"]
+
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="background" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, -52 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="reflection" type="Sprite" parent="."]
+
+material/material = SubResource( 3 )
+transform/pos = Vector2( 32.3281, 146 )
+transform/scale = Vector2( 1.00937, 1 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( -35, -18 )
+
+[node name="platform" type="Sprite" parent="."]
+
+transform/pos = Vector2( 165, 109 )
+texture = ExtResource( 5 )
+offset = Vector2( 0, 24 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="particles_up" type="Particles2D" parent="platform"]
+
+transform/pos = Vector2( 1, 16 )
+config/amount = 16
+config/lifetime = 3.0
+config/preprocess = 3.0
+config/process_mode = 1
+config/half_extents = Vector2( 60, 16 )
+params/direction = 180.0
+params/spread = 10.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 180.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/direction = 1.0
+randomness/spread = 1.0
+color/color = Color( 0.148438, 0.148438, 0.148438, 1 )
+color/color_ramp = SubResource( 1 )
+
+[node name="particles_down" type="Particles2D" parent="platform"]
+
+visibility/behind_parent = true
+transform/pos = Vector2( -2, 46 )
+config/amount = 50
+config/lifetime = 5.0
+config/preprocess = 10.0
+config/process_mode = 1
+config/half_extents = Vector2( 60, 0 )
+params/direction = 0.0
+params/spread = 10.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 4.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 3.0
+params/final_size = 2.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/initial_size = 1.0
+color/color = Color( 0.172549, 0.156863, 0.156863, 1 )
+
+[node name="YSort" type="YSort" parent="."]
+
+transform/pos = Vector2( 6, 18 )
+sort/enabled = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="altar" type="Sprite" parent="YSort"]
+
+transform/pos = Vector2( 190, 110 )
+texture = ExtResource( 6 )
+offset = Vector2( 0, -4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="player" parent="YSort" instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 161, 100 )
+
+[node name="demon" type="Sprite" parent="YSort"]
+
+transform/pos = Vector2( 205, 107 )
+texture = ExtResource( 8 )
+offset = Vector2( 0, 12 )
+vframes = 3
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="YSort/demon"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/cycle = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "cycle"
+
+

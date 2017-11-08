@@ -1,0 +1,30 @@
+[gd_resource type="CanvasItemShader" format=1]
+
+[resource]
+
+_code = {
+"fragment": "uniform texture noise;
+uniform texture noise2;
+vec2 uv = UV;
+vec2 uv_n = uv;
+vec2 uv_n2 = uv;
+uv_n.x = fract( uv.x + TIME / 80 );
+uv_n2.x = fract( uv.x - TIME / 70 );
+float cn = ( tex( noise, uv_n ).g + tex( noise2, uv_n2 ).g ) / 2;
+//cn = 0.5;
+uv.y = 1 - uv.y + ( cn / 10 - 1/50 ); // invert
+uv.x = uv.x;// * ( 1 - UV.y * 3) + UV.y * 0.25 + ( cn / 50 - 1 / 500 );
+vec4 c = tex( TEXTURE, uv );
+
+
+
+COLOR = vec4( c.rgb / 2 * ( 1 - cn / 2 ), 1.0 );
+//COLOR = vec4( UV.y, 0, 0, 1 );
+",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "VAR1.xy = SRC_VERTEX;",
+"vertex_ofs": 0
+}
+
