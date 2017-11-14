@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://scripts/main.gd" type="Script" id=1]
+
+[node name="main" type="Node2D"]
+
+process/pause_mode = 1
+script/script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="act" type="Node2D" parent="."]
+
+__meta__ = {
+"_edit_lock_": true
+}
+
+

@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://assets/man_1.png" type="Texture" id=1]
+
+[node name="man" type="KinematicBody2D" groups=[
+"monster",
+]]
+
+input/pickable = false
+collision/layers = 2
+collision/mask = 2
+collision/margin = 0.08
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+
+polygon = Vector2Array( -27, -37, 33, -37, 37, 24, -35, 19 )
+uv = Vector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="rotate" type="Node2D" parent="."]
+
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="rotate"]
+
+texture = ExtResource( 1 )
+offset = Vector2( 0, -6 )
+vframes = 2
+hframes = 8
+
+
