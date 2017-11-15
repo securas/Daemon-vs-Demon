@@ -26,7 +26,7 @@ var btn_pick = input_states.new( "btn_pick" )
 #---------------------------------------
 # motion control
 #---------------------------------------
-const MAX_VEL = Vector2( 80, 50 )
+const MAX_VEL = Vector2( 80, 50 ) * 1.2
 const ACCEL = Vector2( 10, 8 )
 var vel = Vector2()
 
@@ -177,6 +177,10 @@ func _player_motion( delta ):
 				vel.y = 0
 		if is_idle_x and is_idle_y:
 			sprite_node.set_animation( sprite_node.ANIMS.IDLE )
+	else:
+		#print( "waiting for animation to finish" )
+		#print( "anim: ", sprite_node.cur_anim )
+		pass
 
 
 
@@ -222,7 +226,6 @@ func _player_pick( delta ):
 		var item = itemareas[0]
 		if item.is_in_group( "blood" ):
 			# transform
-			print( game.player_char, "? ", game.PLAYER_CHAR.MONSTER_1 )
 			if item.is_in_group( "monster_1" ) and \
 					game.player_char != game.PLAYER_CHAR.MONSTER_1:
 				get_node( "transformation_particles" ).set_emitting( true )

@@ -14,7 +14,7 @@ enum WEAPONS { NONE, SWORD, GUN }
 var player = null
 var player_spawnpos = Vector2()
 #var player_weapon = WEAPONS.NONE
-var player_char = PLAYER_CHAR.HUMAN
+var player_char = PLAYER_CHAR.HUMAN_SWORD
 
 #---------------------------
 # camera
@@ -36,9 +36,11 @@ var pause_timer
 #---------------------------
 # act specific
 #---------------------------
-var act_specific = [ \
-	{ "scene": 1 }, \
-	{ "scene": 1 } ]
+enum ACTS { HELL, GRAVEYARD }
+var act_specific = {
+	ACTS.HELL : { "scene": 1, "persistent": [] },
+	ACTS.GRAVEYARD : { "scene": 2, "persistent": [] } }
+
 
 
 
@@ -50,7 +52,14 @@ func _ready():
 	if main.get_name() != "main":
 		main = null
 	set_fixed_process( true )
-	
+
+
+func reset_settings():
+	player_char = PLAYER_CHAR.HUMAN
+	act_specific = [ \
+		{ "scene": 1, "persistent": [] }, \
+		{ "scene": 1, "persistent": [] } ]
+
 
 
 func _fixed_process( delta ):

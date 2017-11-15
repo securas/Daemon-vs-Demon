@@ -3,7 +3,7 @@ extends KinematicBody2D
 signal finished_kill
 
 var steering_control = preload( "res://scripts/steering.gd" ).new()
-var GRAB_PLAYER_TIME = 1
+var GRAB_PLAYER_TIME = 0.5
 var grab_player_timer = GRAB_PLAYER_TIME
 
 enum STATES { IDLE, ATTACK, GRABBING, KILL, DEAD }
@@ -27,7 +27,7 @@ var external_impulse_timer = 0
 
 
 func _ready():
-	steering_control.max_vel = 30
+	steering_control.max_vel = 50
 	steering_control.max_force = 500
 	var anim_pos = rand_range( 0, 3 )
 	get_node( "anim_body" ).seek( 0.8 * fmod( anim_pos, 1 ) )

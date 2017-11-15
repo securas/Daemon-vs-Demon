@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://scenes/act_2/act_2.gd" type="Script" id=1]
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=2]
@@ -31,7 +31,17 @@ func _fixed_process(delta):
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 30, 28 )
+extents = Vector2( 109, 112 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 130.068, 87.354 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 22.9034, 20.7341 )
 
 [node name="act_2" type="Node2D"]
 
@@ -44,7 +54,7 @@ __meta__ = {
 
 polygon = Vector2Array( 0, 0, 960, 0, 960, 540, 0, 540 )
 uv = Vector2Array(  )
-color = Color( 0.127853, 0.191406, 0.196353, 1 )
+color = Color( 0.378906, 0.336871, 0.273819, 1 )
 vertex_colors = ColorArray(  )
 offset = Vector2( 0, 0 )
 texture/texture = null
@@ -176,7 +186,7 @@ __meta__ = {
 
 [node name="player" parent="walls" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 167, 97 )
+transform/pos = Vector2( 168.366, 101.811 )
 
 [node name="rain" parent="walls" instance=ExtResource( 5 )]
 
@@ -217,6 +227,96 @@ transform/pos = Vector2( 565, 62 )
 ] instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 622, 154 )
+
+[node name="monster_11" parent="walls" groups=[
+"m2",
+] instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 366.317, 326.178 )
+
+[node name="monster_12" parent="walls" groups=[
+"m2",
+] instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 390.547, 313.07 )
+
+[node name="monster_13" parent="walls" groups=[
+"m2",
+] instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 410.01, 334.917 )
+
+[node name="monster_14" parent="walls" groups=[
+"m2",
+] instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 440.199, 313.864 )
+
+[node name="monster_15" parent="walls" groups=[
+"m2",
+] instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 472.77, 334.122 )
+
+[node name="monster_16" parent="walls" groups=[
+"m2",
+] instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 443.774, 355.572 )
+
+[node name="monster_17" parent="walls" groups=[
+"m2",
+] instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 411.599, 366.694 )
+
+[node name="monster_18" parent="walls" groups=[
+"m2",
+] instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 387.369, 344.847 )
+
+[node name="monster_19" parent="walls" groups=[
+"m2",
+] instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 364.728, 363.516 )
+
+[node name="monster_20" parent="walls" groups=[
+"m2",
+] instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 386.575, 386.952 )
+
+[node name="monster_21" parent="walls" groups=[
+"m2",
+] instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 434.24, 387.746 )
+
+[node name="monster_22" parent="walls" groups=[
+"m2",
+] instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 472.77, 379.802 )
+
+[node name="monster_23" parent="walls" groups=[
+"m2",
+] instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 407.627, 406.415 )
+
+[node name="monster_24" parent="walls" groups=[
+"m2",
+] instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 355.989, 400.854 )
+
+[node name="monster_25" parent="walls" groups=[
+"m2",
+] instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 461.251, 410.784 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
@@ -262,7 +362,7 @@ __meta__ = {
 
 [node name="first_monsters" type="Area2D" parent="areas"]
 
-transform/pos = Vector2( 503, 95 )
+transform/pos = Vector2( 588, 112 )
 input/pickable = true
 shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -284,6 +384,48 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="monsters_2" type="Area2D" parent="areas"]
+
+transform/pos = Vector2( 493.977, 335.169 )
+input/pickable = true
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areas/monsters_2"]
+
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="respawn_1" type="Area2D" parent="areas"]
+
+transform/pos = Vector2( 601.944, 222.474 )
+input/pickable = true
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areas/respawn_1"]
+
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="endtimer" type="Timer" parent="."]
 
 process_mode = 1
@@ -292,6 +434,10 @@ one_shot = true
 autostart = false
 
 [connection signal="body_enter" from="areas/first_monsters" to="." method="_on_first_monsters_body_enter"]
+
+[connection signal="body_enter" from="areas/monsters_2" to="." method="_on_monsters_2_body_enter"]
+
+[connection signal="body_enter" from="areas/respawn_1" to="." method="_on_respawn_1_body_enter"]
 
 [connection signal="timeout" from="endtimer" to="." method="_on_endtimer_timeout"]
 

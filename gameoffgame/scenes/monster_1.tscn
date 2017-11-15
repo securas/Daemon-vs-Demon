@@ -156,7 +156,6 @@ autoplay = "cycle"
 
 [node name="flocking_area" type="Area2D" parent="."]
 
-editor/display_folded = true
 visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 4 )
@@ -232,8 +231,8 @@ trigger = false
 _update_shape_index = 0
 
 [node name="itemarea" type="Area2D" parent="." groups=[
-"blood",
 "monster_1",
+"blood",
 ]]
 
 input/pickable = true
