@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player_human.tscn" type="PackedScene" id=2]
@@ -17,6 +17,11 @@ points = Vector2Array( 15, 1, 6, 2, -2, 2, 2, -10, 12, -18, 24, -12, 24, -3 )
 
 custom_solver_bias = 0.0
 points = Vector2Array( 2, -10, 1, -18, 12, -18 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 1, 1 )
 
 [sub_resource type="RectangleShape2D" id=4]
 
@@ -47,7 +52,6 @@ script/script = ExtResource( 1 )
 
 [node name="collision" type="CollisionShape2D" parent="."]
 
-visibility/visible = false
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
@@ -60,6 +64,7 @@ __meta__ = {
 
 [node name="sword_hitbox" type="Area2D" parent="rotate_hitbox"]
 
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -87,6 +92,29 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="falling_area" type="Area2D" parent="rotate_hitbox"]
+
+input/pickable = true
+shapes/0/shape = SubResource( 6 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -2, 1 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 524288
+collision/mask = 524288
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rotate_hitbox/falling_area"]
+
+transform/pos = Vector2( -2, 1 )
+shape = SubResource( 6 )
+trigger = false
+_update_shape_index = 0
+
 [node name="damagebox" type="Area2D" parent="."]
 
 visibility/visible = false
@@ -98,6 +126,9 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damagebox"]
 
@@ -105,9 +136,13 @@ transform/pos = Vector2( 0, -3 )
 shape = SubResource( 4 )
 trigger = false
 _update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="itembox" type="Area2D" parent="."]
 
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -3 )
@@ -118,6 +153,9 @@ linear_damp = 0.1
 angular_damp = 1.0
 collision/layers = 4
 collision/mask = 4
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="itembox"]
 
@@ -125,6 +163,9 @@ transform/pos = Vector2( 0, -3 )
 shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="transformation_particles" type="Particles2D" parent="."]
 
@@ -159,9 +200,14 @@ randomness/linear_velocity = 1.0
 randomness/initial_size = 1.0
 randomness/hue_variation = 0.05
 color/color = Color( 0.632812, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="area_enter" from="rotate_hitbox/sword_hitbox" to="." method="_on_sword_hitbox_area_enter"]
 
 [connection signal="area_exit" from="rotate_hitbox/sword_hitbox" to="." method="_on_sword_hitbox_area_exit"]
+
+[connection signal="area_enter" from="rotate_hitbox/falling_area" to="." method="_on_falling_area_area_enter"]
 
 

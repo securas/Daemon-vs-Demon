@@ -52,6 +52,10 @@ var player_char = -1
 var sword_neighbours = []
 var _is_dead_ = false
 
+#--------------------------
+# falling off cliffs
+#--------------------------
+
 
 #---------------------------------------
 # external functions
@@ -96,6 +100,7 @@ func die( source ):
 func _ready():
 	# register
 	game.player = weakref( self )
+	
 	# process
 	set_fixed_process( true )
 
@@ -118,8 +123,23 @@ func _fixed_process( delta ):
 
 
 
+
+
+
+
 func _cutscene_state( delta ):
-	# do nothing
+	if _is_falling:
+		# simulate falling
+		vel.y += 1000 * delta
+		vel.x = lerp( vel.x, 0, 3 * delta )
+		var newpos = get_pos() + vel * delta
+		set_pos( newpos )
+		if newpos.y > 500:
+			die( self )
+			set_fixed_process( false )
+			queue_free()
+			emit_signal( "is_dead" )
+			pass
 	pass
 	
 
@@ -208,7 +228,7 @@ func _player_attack( delta ):
 							# hit monster
 							n.get_ref().get_hit( self )
 					if shake_camera > 0:
-						game.camera.get_ref().shake( 0.5, 30, 2 )
+						game.camera.get_ref().shake( 0.5, 30, 2 * shake_camera )
 		elif btn_pick.check() == 1:
 			_player_pick( delta )
 					# transform
@@ -284,3 +304,11 @@ func _on_finished_kill_monster_1():
 
 
 
+
+var _is_falling = false
+func _on_falling_area_area_enter( area ):
+	if area.is_in_group( "fall_area" ):
+		game.camera_target = null
+		_is_falling = true
+		set_cutscene()
+		

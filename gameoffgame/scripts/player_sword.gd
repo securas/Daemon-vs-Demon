@@ -187,3 +187,4 @@ func _running_dust():
 		#print( get_parent().get_parent().get_parent().get_name() )
 		player.get_parent().add_child( dust )
 		player = null
+

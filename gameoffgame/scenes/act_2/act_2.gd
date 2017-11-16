@@ -3,9 +3,11 @@ extends Node2D
 
 var scene
 var text_scn = preload( "res://scenes/character_text.tscn" )
-var first_transformation = false
-var first_activation = false
-var startup_scene = false
+#var first_transformation = false
+#var first_activation = false
+#var startup_scene = false
+var initial_monsters = []
+var initial_monster_positions = []
 
 class EvtState:
 	var fnc
@@ -50,8 +52,13 @@ func _ready():
 	if game.player != null and game.player.get_ref() != null:
 		game.player_spawnpos = game.player.get_ref().get_global_pos()
 	
+	# initial monster positions
+	var monsters = get_tree().get_nodes_in_group( "monster" )
+	for m in monsters:
+		initial_monsters.append( m )
+		initial_monster_positions.append( m.get_pos() )
+	
 	# process
-	startup_scene = true
 	set_fixed_process( true )
 
 
@@ -68,6 +75,8 @@ func _reset_settings():
 	player.set_cutscene()
 	player.hide()
 	game.camera_target = weakref( player )
+	game.camera.get_ref().align()
+	game.camera.get_ref().reset_smoothing()
 	player = null
 	# remove player gore
 	var children = get_node( "walls" ).get_children()
@@ -243,18 +252,21 @@ func _on_first_monsters_body_enter( body ):
 	if game.player != null and body == game.player.get_ref():
 		if scene == 1:
 			events[EVENTS.MEET_MONSTERS].active = true
-		elif scene == 2:
+		else:
 			# start event to monitor monsters
 			#if game.act_specific[game.ACTS.GRAVEYARD]["persistent"].find( PERSISTENT.KILLED_MONSTERS_1 ) == -1:
 			#	events[EVENTS.KILLED_MONSTERS_1].active = true
 			var monsters = get_tree().get_nodes_in_group( "m1" )
 			for m in monsters:
-				m.state_nxt = m.STATES.ATTACK
-		else:
-			var monsters = get_tree().get_nodes_in_group( "m1" )
-			for m in monsters:
-				m.state_nxt = m.STATES.ATTACK
-
+				if not m.is_dead(): m.state_nxt = m.STATES.ATTACK
+			#game.camera_target = weakref( get_node( "areas/first_monsters" ) )
+		#else:
+		#	var monsters = get_tree().get_nodes_in_group( "m1" )
+		#	for m in monsters:
+		#		m.state_nxt = m.STATES.ATTACK
+func _on_first_monsters_body_exit( body ):
+	#game.camera_target = game.player
+	pass # replace with function body
 
 
 func _on_transformation():
@@ -279,13 +291,15 @@ func _on_player_dead():
 		get_node( "endtimer" ).start()
 	else:
 		# respawn player at the last respawn point
-		print( "respawning player" )
 		var p = preload( "res://scenes/player.tscn" ).instance()
 		p.set_global_pos( game.player_spawnpos )
 		get_node( "walls" ).add_child( p )
 		# reset settings
-		print( "resetting settings" )
 		_reset_settings()
+		# reset monsters
+		for idx in range( initial_monsters.size() ):
+			if not initial_monsters[idx].is_dead():
+				initial_monsters[idx].set_pos( initial_monster_positions[idx] )
 	
 
 func _on_endtimer_timeout():
@@ -338,10 +352,13 @@ func _on_monsters_2_body_enter( body ):
 	if game.player != null and body == game.player.get_ref():
 		var monsters = get_tree().get_nodes_in_group( "m2" )
 		for m in monsters:
-			m.state_nxt = m.STATES.ATTACK
+			if not m.is_dead(): m.state_nxt = m.STATES.ATTACK
 
 
 func _on_respawn_1_body_enter( body ):
 	if game.player != null and body == game.player.get_ref():
 		game.player_spawnpos = get_node( "areas/respawn_1" ).get_global_pos()
 	pass # replace with function body
+
+
+

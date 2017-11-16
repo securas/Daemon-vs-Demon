@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://scripts/monster_1.gd" type="Script" id=1]
 [ext_resource path="res://assets/monster_1.png" type="Texture" id=2]
@@ -93,6 +93,11 @@ extents = Vector2( 7, 6 )
 
 custom_solver_bias = 0.0
 extents = Vector2( 7, 6 )
+
+[sub_resource type="CircleShape2D" id=8]
+
+custom_solver_bias = 0.0
+radius = 56.211
 
 [node name="monster_1" type="KinematicBody2D" groups=[
 "monster",
@@ -235,6 +240,7 @@ _update_shape_index = 0
 "blood",
 ]]
 
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 7 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -4 )
@@ -259,6 +265,34 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="attack_area" type="Area2D" parent="."]
+
+visibility/visible = false
+input/pickable = true
+shapes/0/shape = SubResource( 8 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
+
+shape = SubResource( 8 )
+trigger = false
+_update_shape_index = 0
+
+[node name="killtimer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
 [connection signal="area_enter" from="flocking_area" to="." method="_on_flocking_area_area_enter"]
 
 [connection signal="area_exit" from="flocking_area" to="." method="_on_flocking_area_area_exit"]
@@ -266,5 +300,9 @@ __meta__ = {
 [connection signal="area_enter" from="hitbox" to="." method="_on_hitbox_area_enter"]
 
 [connection signal="area_exit" from="hitbox" to="." method="_on_hitbox_area_exit"]
+
+[connection signal="body_enter" from="attack_area" to="." method="_on_attack_area_body_enter"]
+
+[connection signal="timeout" from="killtimer" to="." method="_on_killtimer_timeout"]
 
 

@@ -27,12 +27,12 @@ points = Vector2Array( 1, 0, 4, -3, 4, 5, 1, 5 )
 custom_solver_bias = 0.0
 points = Vector2Array( 1, -4, 4, -4, 4, 5, 1, 5 )
 
-[sub_resource type="ConvexPolygonShape2D" id=7]
+[sub_resource type="ConvexPolygonShape2D" id=6]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 1, -3, 4, -3, 4, 5, 1, 5 )
 
-[sub_resource type="ConvexPolygonShape2D" id=6]
+[sub_resource type="ConvexPolygonShape2D" id=7]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 1, -4, 4, -4, 4, 0, 1, 0 )
@@ -245,6 +245,7 @@ __meta__ = {
 
 [node name="wall_1" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 104, 12 )
 texture = ExtResource( 1 )
 offset = Vector2( -4, 0 )
@@ -279,6 +280,7 @@ __meta__ = {
 
 [node name="wall_2" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 120, 12 )
 texture = ExtResource( 1 )
 offset = Vector2( -4, 0 )
@@ -313,6 +315,7 @@ __meta__ = {
 
 [node name="wall_3" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 136, 12 )
 texture = ExtResource( 1 )
 offset = Vector2( -4, 0 )
@@ -347,6 +350,7 @@ __meta__ = {
 
 [node name="wall_4" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 154, 8 )
 texture = ExtResource( 1 )
 offset = Vector2( -4, 4 )
@@ -384,6 +388,7 @@ __meta__ = {
 
 [node name="wall_5" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 104, 23 )
 texture = ExtResource( 1 )
 offset = Vector2( -4, 0 )
@@ -418,6 +423,7 @@ __meta__ = {
 
 [node name="wall_6" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 116, 23 )
 texture = ExtResource( 1 )
 region = true
@@ -451,6 +457,7 @@ __meta__ = {
 
 [node name="wall_7" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 136, 23 )
 texture = ExtResource( 1 )
 region = true
@@ -459,7 +466,7 @@ region_rect = Rect2( 184, 24, 8, 16 )
 [node name="StaticBody2D" type="StaticBody2D" parent="wall_7"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 7 )
+shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -484,6 +491,7 @@ __meta__ = {
 
 [node name="wall_8" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 103, 40 )
 texture = ExtResource( 1 )
 region = true
@@ -517,6 +525,7 @@ __meta__ = {
 
 [node name="wall_9" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 118, 40 )
 texture = ExtResource( 1 )
 region = true
@@ -550,6 +559,7 @@ __meta__ = {
 
 [node name="wall_10" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 132, 40 )
 texture = ExtResource( 1 )
 region = true
@@ -558,7 +568,7 @@ region_rect = Rect2( 184, 40, 8, 16 )
 [node name="StaticBody2D" type="StaticBody2D" parent="wall_10"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 6 )
+shapes/0/shape = SubResource( 7 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -583,6 +593,7 @@ __meta__ = {
 
 [node name="wall_11" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 147, 40 )
 texture = ExtResource( 1 )
 region = true
@@ -613,5 +624,93 @@ trigger = false
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="cliff_edge_1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 136, 97 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -16 )
+region = true
+region_rect = Rect2( 152, 64, 8, 40 )
+
+[node name="cliff_edge_2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 147, 97 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -16 )
+region = true
+region_rect = Rect2( 160, 64, 8, 40 )
+
+[node name="cliff_edge_3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 157, 97 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -16 )
+region = true
+region_rect = Rect2( 168, 64, 8, 40 )
+
+[node name="cliff_edge_4" type="Sprite" parent="."]
+
+transform/pos = Vector2( 168, 97 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -16 )
+region = true
+region_rect = Rect2( 176, 64, 8, 40 )
+
+[node name="blank_floor" type="Sprite" parent="."]
+
+transform/pos = Vector2( 176, 81 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 184, 64, 8, 8 )
+
+[node name="blank_floor1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 176, 89 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 184, 72, 8, 8 )
+
+[node name="cliff_side_1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 185, 63 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 136, 112, 32, 16 )
+
+[node name="cliff_side_2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 218, 63 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 168, 112, 32, 16 )
+
+[node name="cliff_side_3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 251, 63 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 200, 112, 32, 16 )
+
+[node name="cliff_side_4" type="Sprite" parent="."]
+
+transform/pos = Vector2( 284, 63 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 232, 112, 32, 16 )
+
+[node name="edge_1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 185, 81 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 184, 64, 1, 8 )
+
+[node name="edge_2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 185, 89 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 184, 72, 1, 8 )
 
 

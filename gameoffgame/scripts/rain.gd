@@ -11,6 +11,7 @@ class Drop:
 	var timer = 0
 	var has_parent = false
 	var update_rate = 0.05
+	var final_frame = 27
 	func update( delta ):
 		timer -= delta
 		var output = false
@@ -19,7 +20,7 @@ class Drop:
 				timer = update_rate
 			else:
 				timer = 0.15
-			frame = ( frame + 1 ) % 27
+			frame = ( frame + 1 ) % final_frame
 		if frame != instance.get_frame():
 			instance.set_frame( frame )
 			if frame == 0:
@@ -55,11 +56,25 @@ func _fixed_process( delta ):
 
 func _set_random_pos( d ):
 	var offset = Vector2( round( rand_range( -extent.x, extent.x ) ), round( rand_range( -extent.y, extent.y ) ) )
+	d.final_frame = 27
 	d.instance.set_global_pos( gpos + offset )
 	d.instance.set_modulate( Color( 1, 1, 1, rand_range( 0.05, 0.4 ) ) )
 	d.update_rate = rand_range( 0.02, 0.1 )
 	#print( offset )
 	#print( "updating position: ", d.instance.get_global_pos() )
+	
+	# check if rain drop is inside a fall area
+	var space_state = get_world_2d().get_direct_space_state()
+	var results = space_state.intersect_point( gpos + offset, 32, [], 524288, 16 )
+	if not results.empty():
+		#print( results[0].collider.is_in_group( "fall_area" ) )
+		if results[0].collider.is_in_group( "fall_area" ):
+			d.final_frame = 22
+		else:
+			d.final_frame = 27
+	
+		
+	#var results = space_state.intersect_ray( get_global_pos(), game.player.get_ref().get_global_pos(), [ self ] )
 
 
 

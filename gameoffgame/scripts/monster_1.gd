@@ -6,7 +6,7 @@ var steering_control = preload( "res://scripts/steering.gd" ).new()
 var GRAB_PLAYER_TIME = 0.5
 var grab_player_timer = GRAB_PLAYER_TIME
 
-enum STATES { IDLE, ATTACK, GRABBING, KILL, DEAD }
+enum STATES { IDLE, WANDER, ATTACK, GRABBING, KILL, DEAD }
 var state_cur = -1
 var state_nxt = STATES.IDLE
 
@@ -24,6 +24,8 @@ var neighbours = []
 # external impulses
 var external_impulse = Vector2()
 var external_impulse_timer = 0
+
+# wandering area
 
 
 func _ready():
@@ -230,9 +232,13 @@ func is_dead():
 
 func _on_finished_killing_player_scene():
 	show()
+	get_node( "killtimer" ).set_wait_time( 1)
+	get_node( "killtimer" ).start()
+	
+func _on_killtimer_timeout():
 	set_fixed_process( true )
 	emit_signal( "finished_kill" )
-
+	pass # replace with function body
 
 func _change_to_item():
 	# delete unecessary nodes
@@ -251,3 +257,12 @@ func _change_to_item():
 	# change mask of item box
 	get_node( "itemarea" ).set_layer_mask_bit( 2, true )
 	get_node( "itemarea" ).set_collision_mask_bit( 2, true )
+
+
+func _on_attack_area_body_enter( body ):
+	if game.player != null and body == game.player.get_ref() and not is_dead():
+		state_nxt = STATES.ATTACK
+	pass # replace with function body
+
+
+
