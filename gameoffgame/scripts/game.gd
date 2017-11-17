@@ -1,5 +1,8 @@
 extends Node
 
+# Global constants
+const GRAVITY = 1000
+const TERMINAL_VEL = 400
 
 #---------------------------
 # player info
@@ -90,3 +93,14 @@ func findweak( obj, arr ):
 		if aux != null and aux == obj:
 			return idx
 	return -1
+
+func check_fall_area( obj, pos ):
+	var space_state = obj.get_world_2d().get_direct_space_state()
+	var results = space_state.intersect_point( pos, 32, [], 524288, 16 )
+	if not results.empty():
+		for r in results:
+			if r.collider.is_in_group( "fall_area" ):
+				if r.collider.is_in_group( "up_fall" ):
+					return 1
+				return -1
+	return 0

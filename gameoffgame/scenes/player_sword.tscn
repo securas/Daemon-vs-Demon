@@ -6,7 +6,7 @@
 [sub_resource type="Animation" id=1]
 
 resource/name = "attack d"
-length = 0.2
+length = 0.15
 loop = false
 step = 0.05
 tracks/0/type = "value"
@@ -33,7 +33,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=2]
 
 resource/name = "attack u"
-length = 0.2
+length = 0.15
 loop = false
 step = 0.05
 tracks/0/type = "value"

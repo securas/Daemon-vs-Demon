@@ -1,0 +1,155 @@
+[gd_scene load_steps=9 format=1]
+
+[ext_resource path="res://shaders/bridge_appear.tres" type="Shader" id=1]
+[ext_resource path="res://assets/bridge_fog.png" type="Texture" id=2]
+[ext_resource path="res://assets/bridge.png" type="Texture" id=3]
+
+[sub_resource type="CanvasItemMaterial" id=2]
+
+shader/shader = ExtResource( 1 )
+shader/shading_mode = 0
+shader_param/threshold = 0.0
+shader_param/fog = ExtResource( 2 )
+
+[sub_resource type="GDScript" id=3]
+
+script/source = "extends Sprite
+
+
+func _ready():
+	# Called every time the node is added to the scene.
+	# Initialization here
+	pass
+
+func _on_switch():
+	get_node(\"anim\").play(\"show\")
+	
+func _off_switch():
+	get_node(\"anim\").play(\"hide\")"
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 47, 18 )
+
+[sub_resource type="Animation" id=4]
+
+resource/name = "hide"
+length = 2.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material/material:shader_param/threshold")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 2 ),
+"transitions": FloatArray( -4, 1 ),
+"update": 0,
+"values": [ 0.0, 2.2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("fall_area:collision/layers")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 2 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 524288 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("fall_area:collision/mask")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 2 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 524288 ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource/name = "show"
+length = 2.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material/material:shader_param/threshold")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 2 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 2.2, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("fall_area:collision/layers")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 2 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("fall_area:collision/mask")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 2 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[node name="bridge" type="Sprite"]
+
+material/material = SubResource( 2 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, -17 )
+region_rect = Rect2( 200, 64, 96, 40 )
+script/script = SubResource( 3 )
+
+[node name="fall_area" type="Area2D" parent="." groups=[
+"fall_area",
+"down_fall",
+]]
+
+transform/pos = Vector2( -1, -18 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 0
+collision/mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fall_area"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="anim" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/hide = SubResource( 4 )
+anims/show = SubResource( 5 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+

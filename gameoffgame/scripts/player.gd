@@ -121,7 +121,12 @@ func _fixed_process( delta ):
 	elif scene_state_cur == SCENE_STATES.NORMAL:
 		_normal_state( delta )
 
-
+	# check falling
+	if _is_falling:
+		#print( _falling_timer )
+		_falling_timer -= delta
+		if _falling_timer <= 0:
+			set_cutscene()
 
 
 
@@ -130,7 +135,7 @@ func _fixed_process( delta ):
 func _cutscene_state( delta ):
 	if _is_falling:
 		# simulate falling
-		vel.y += 1000 * delta
+		vel.y += game.GRAVITY * delta
 		vel.x = lerp( vel.x, 0, 3 * delta )
 		var newpos = get_pos() + vel * delta
 		set_pos( newpos )
@@ -223,7 +228,7 @@ func _player_attack( delta ):
 							shake_camera += 1
 							# apply force to monster during 0.2 seconds
 							n.get_ref().set_external_force( \
-									10000 * ( n.get_ref().get_global_pos() - get_global_pos() ).normalized(), \
+									7500 * ( n.get_ref().get_global_pos() - get_global_pos() ).normalized(), \
 									0.2 )
 							# hit monster
 							n.get_ref().get_hit( self )
@@ -306,9 +311,20 @@ func _on_finished_kill_monster_1():
 
 
 var _is_falling = false
+var _falling_timer = 0
 func _on_falling_area_area_enter( area ):
+	if _is_falling: return
 	if area.is_in_group( "fall_area" ):
 		game.camera_target = null
 		_is_falling = true
-		set_cutscene()
+		if area.is_in_group( "up_fall" ):
+			set_z( -1 )
+		_falling_timer = 0.25
+		#set_cutscene()
 		
+
+
+func _on_falling_area_area_exit( area ):
+	if _falling_timer > 0:
+		_is_falling = false
+		game.camera_target = game.player

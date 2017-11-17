@@ -173,6 +173,40 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="tree_4" type="Sprite" parent="."]
+
+transform/pos = Vector2( 50, 167 )
+texture = ExtResource( 1 )
+offset = Vector2( -22, -10 )
+region = true
+region_rect = Rect2( 0, 115, 66, 75 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="tree_4"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="tree_4/StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( -2, 0, 2, 0, 2, -1, -2, -1 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="tree_2" type="Sprite" parent="."]
 
 editor/display_folded = true
@@ -712,5 +746,33 @@ transform/pos = Vector2( 185, 89 )
 texture = ExtResource( 1 )
 region = true
 region_rect = Rect2( 184, 72, 1, 8 )
+
+[node name="cliff_top_1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 185, 109 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 136, 128, 32, 8 )
+
+[node name="cliff_top_2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 218, 109 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 168, 128, 32, 8 )
+
+[node name="cliff_top_3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 185, 119 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 200, 128, 32, 8 )
+
+[node name="cliff_top_4" type="Sprite" parent="."]
+
+transform/pos = Vector2( 218, 119 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 232, 128, 32, 8 )
 
 

@@ -18,17 +18,17 @@ points = Vector2Array( 15, 1, 6, 2, -2, 2, 2, -10, 12, -18, 24, -12, 24, -3 )
 custom_solver_bias = 0.0
 points = Vector2Array( 2, -10, 1, -18, 12, -18 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 1, 1 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 3, 4 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 4, 4 )
@@ -95,7 +95,7 @@ __meta__ = {
 [node name="falling_area" type="Area2D" parent="rotate_hitbox"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 6 )
+shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -2, 1 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -111,7 +111,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rotate_hitbox/falling_area"]
 
 transform/pos = Vector2( -2, 1 )
-shape = SubResource( 6 )
+shape = SubResource( 4 )
 trigger = false
 _update_shape_index = 0
 
@@ -119,7 +119,7 @@ _update_shape_index = 0
 
 visibility/visible = false
 input/pickable = true
-shapes/0/shape = SubResource( 4 )
+shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -3 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -133,7 +133,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damagebox"]
 
 transform/pos = Vector2( 0, -3 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -144,7 +144,7 @@ __meta__ = {
 
 visibility/visible = false
 input/pickable = true
-shapes/0/shape = SubResource( 5 )
+shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -3 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -160,7 +160,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="itembox"]
 
 transform/pos = Vector2( 0, -3 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -209,5 +209,7 @@ __meta__ = {
 [connection signal="area_exit" from="rotate_hitbox/sword_hitbox" to="." method="_on_sword_hitbox_area_exit"]
 
 [connection signal="area_enter" from="rotate_hitbox/falling_area" to="." method="_on_falling_area_area_enter"]
+
+[connection signal="area_exit" from="rotate_hitbox/falling_area" to="." method="_on_falling_area_area_exit"]
 
 

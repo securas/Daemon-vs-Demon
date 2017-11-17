@@ -65,7 +65,7 @@ func _set_random_pos( d ):
 	
 	# check if rain drop is inside a fall area
 	var space_state = get_world_2d().get_direct_space_state()
-	var results = space_state.intersect_point( gpos + offset, 32, [], 524288, 16 )
+	var results = space_state.intersect_point( gpos + offset + Vector2( 0, -3 ), 32, [], 524288, 16 )
 	if not results.empty():
 		#print( results[0].collider.is_in_group( "fall_area" ) )
 		if results[0].collider.is_in_group( "fall_area" ):

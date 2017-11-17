@@ -28,6 +28,9 @@ var external_impulse_timer = 0
 # wandering area
 
 
+# falling
+var _is_falling = false
+
 func _ready():
 	steering_control.max_vel = 50
 	steering_control.max_force = 500
@@ -64,18 +67,34 @@ func _fixed_process(delta):
 		# dampening
 		vel *= 0.98
 	elif state_cur == STATES.DEAD:
-		# dampening
-		vel *= 0.95
-		if vel.length_squared() < 4:
-			vel = Vector2()
+		
 		# set death animation
 		if get_node( "anim_head" ).get_current_animation() != "kill":
 			get_node( "anim_body" ).stop()
 			get_node( "anim_head" ).play( "kill" )
-		if vel.length_squared() == 0:
-			#print( "finished dying" )
-			set_fixed_process( false )
-			_change_to_item()
+		# check if falling
+		if not _is_falling:
+			var uplow = game.check_fall_area( self, get_global_pos() )
+			if uplow == 1:
+				_is_falling = true
+				set_z( -1 )
+			elif uplow == -1:
+				_is_falling = true
+			# dampening
+			vel *= 0.95
+			if vel.length_squared() < 4:
+				vel = Vector2()
+			if vel.length_squared() == 0:
+				#print( "finished dying" )
+				set_fixed_process( false )
+				_change_to_item()
+		else:
+			vel.x *= 0.95
+			vel.y = min( vel.y + delta * game.GRAVITY, game.TERMINAL_VEL )
+			if get_global_pos().y > 500:
+				set_fixed_process( false )
+				_change_to_item()
+		
 	elif state_cur == STATES.GRABBING:
 		# steer towards player without flocking
 		if game.player != null and game.player.get_ref() != null and \
@@ -116,7 +135,12 @@ func _fixed_process(delta):
 	var force = steering_force + flocking_force
 	force = steering_control.truncate( force, steering_control.max_force )
 	vel += force * delta
-	vel = steering_control.truncate( vel, steering_control.max_vel )
+	if not _is_falling:
+		vel = steering_control.truncate( vel, steering_control.max_vel )
+	else:
+		var oldvel = vel
+		vel = steering_control.truncate( vel, steering_control.max_vel )
+		vel.y = oldvel.y
 	
 	# external forces
 	vel += external_impulse * delta
