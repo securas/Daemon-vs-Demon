@@ -51,6 +51,8 @@ var player_char = -1
 #---------------------------------------
 var sword_neighbours = []
 var _is_dead_ = false
+const ATTACK_INTERVAL = 2
+var _attack_timer = 0
 
 #--------------------------
 # falling off cliffs
@@ -164,6 +166,9 @@ func _normal_state( delta ):
 	
 	# direction
 	_player_direction( delta )
+	
+	# timers
+	_attack_timer -= delta
 	pass
 
 
@@ -210,14 +215,21 @@ func _player_motion( delta ):
 
 
 
-#func _player_attack( delta ):
-#	if btn_fire.check() == 1:
-#		sprite_node.set_animation( sprite_node.ANIMS.ATTACK )
-
-
 func _player_attack( delta ):
-	if sprite_node.anim_finished():
-		if btn_fire.check() == 1:
+	if btn_fire.check() == 1:
+		var can_attack = true
+		if _attack_timer <= 0:
+			# no recent attacks, can pick, if there is something to pick
+			var itemareas = get_node( "itembox" ).get_overlapping_areas()
+			if itemareas.size() > 0:
+				# there is stuff to pick
+				can_attack = false
+				_player_pick( itemareas )
+		if not sprite_node.anim_finished():
+			can_attack = false
+		
+		if can_attack:
+			_attack_timer = ATTACK_INTERVAL
 			sprite_node.set_animation( sprite_node.ANIMS.ATTACK )
 			if player_char == game.PLAYER_CHAR.HUMAN_SWORD:
 				if sword_neighbours.size() > 0:
@@ -228,40 +240,35 @@ func _player_attack( delta ):
 							shake_camera += 1
 							# apply force to monster during 0.2 seconds
 							n.get_ref().set_external_force( \
-									7500 * ( n.get_ref().get_global_pos() - get_global_pos() ).normalized(), \
+									10000 * ( n.get_ref().get_global_pos() - get_global_pos() ).normalized(), \
 									0.2 )
 							# hit monster
 							n.get_ref().get_hit( self )
 					if shake_camera > 0:
 						game.camera.get_ref().shake( 0.5, 30, 2 * shake_camera )
-		elif btn_pick.check() == 1:
-			_player_pick( delta )
-					# transform
-					
 
 
 
-func _player_pick( delta ):
-	# check if there are items to pick
-	var itemareas = get_node( "itembox" ).get_overlapping_areas()
-	if itemareas.size() > 0:
-		vel = Vector2( 0, 0 )
-		sprite_node.set_animation( sprite_node.ANIMS.PICK )
-		# picking only the first item
-		var item = itemareas[0]
-		if item.is_in_group( "blood" ):
-			# transform
-			if item.is_in_group( "monster_1" ) and \
-					game.player_char != game.PLAYER_CHAR.MONSTER_1:
-				get_node( "transformation_particles" ).set_emitting( true )
-				game.player_char = game.PLAYER_CHAR.MONSTER_1
-				# remove layers
-				set_collision_mask_bit( 0, false )
-				set_layer_mask_bit( 0, false )
-				# emit signal
-				emit_signal( "on_transformation" )
-		item.get_parent().queue_free()
-		
+
+func _player_pick( itemareas ):
+	vel = Vector2( 0, 0 )
+	sprite_node.set_animation( sprite_node.ANIMS.PICK )
+	# picking only the first item
+	var item = itemareas[0]
+	if item.is_in_group( "blood" ):
+		# transform
+		if item.is_in_group( "monster_1" ):
+			transform( game.PLAYER_CHAR.MONSTER_1 )
+			# emit signal
+			emit_signal( "on_transformation" )
+			# start transformation timer
+			get_node( "transformation_timer" ).set_wait_time( 10 )
+			get_node( "transformation_timer" ).start()
+			
+	item.get_parent().queue_free()
+
+
+
 
 
 
@@ -306,6 +313,27 @@ func _on_finished_kill_monster_1():
 
 
 
+func transform( newchar ):
+	if newchar == game.player_char: return
+	game.player_char = newchar
+	#effects
+	get_node( "transformation_particles" ).set_emitting( true )
+	# rules for each character
+	if newchar == game.PLAYER_CHAR.MONSTER_1:
+		# remove layers
+		set_collision_mask_bit( 0, false )
+		set_layer_mask_bit( 0, false )
+		get_node( "rotate_hitbox/falling_area" ).set_collision_mask_bit( 19, false )
+		get_node( "rotate_hitbox/falling_area" ).set_layer_mask_bit( 19, false )
+	elif newchar == game.PLAYER_CHAR.HUMAN_SWORD:
+		# add layers
+		set_collision_mask_bit( 0, true )
+		set_layer_mask_bit( 0, true )
+		get_node( "rotate_hitbox/falling_area" ).set_collision_mask_bit( 19, true )
+		get_node( "rotate_hitbox/falling_area" ).set_layer_mask_bit( 19, true )
+	
+	pass
+
 
 
 
@@ -328,3 +356,12 @@ func _on_falling_area_area_exit( area ):
 	if _falling_timer > 0:
 		_is_falling = false
 		game.camera_target = game.player
+
+
+
+
+
+
+
+func _on_transformation_timer_timeout():
+	transform( game.PLAYER_CHAR.HUMAN_SWORD )

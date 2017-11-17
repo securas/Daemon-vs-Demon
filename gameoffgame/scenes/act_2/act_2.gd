@@ -79,10 +79,10 @@ func _reset_settings():
 	game.camera.get_ref().reset_smoothing()
 	player = null
 	# remove player gore
-	var children = get_node( "walls" ).get_children()
-	for c in children:
-		if c.is_in_group( "gore" ): c.queue_free()
-	# reset all monsters
+	#var children = get_node( "walls" ).get_children()
+	#for c in children:
+	#	if c.is_in_group( "gore" ): c.queue_free()
+	# reset all surviving monsters
 	var monsters = get_tree().get_nodes_in_group( "monster" )
 	for m in monsters:
 		if not m.is_dead(): m.state_nxt = m.STATES.IDLE
@@ -254,8 +254,8 @@ func _on_first_monsters_body_enter( body ):
 			events[EVENTS.MEET_MONSTERS].active = true
 		else:
 			# start event to monitor monsters
-			#if game.act_specific[game.ACTS.GRAVEYARD]["persistent"].find( PERSISTENT.KILLED_MONSTERS_1 ) == -1:
-			#	events[EVENTS.KILLED_MONSTERS_1].active = true
+			if game.act_specific[game.ACTS.GRAVEYARD]["persistent"].find( PERSISTENT.KILLED_MONSTERS_1 ) == -1:
+				events[EVENTS.KILLED_MONSTERS_1].active = true
 			var monsters = get_tree().get_nodes_in_group( "m1" )
 			for m in monsters:
 				if not m.is_dead(): m.state_nxt = m.STATES.ATTACK

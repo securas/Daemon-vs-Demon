@@ -204,6 +204,13 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="transformation_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 10.0
+one_shot = true
+autostart = false
+
 [connection signal="area_enter" from="rotate_hitbox/sword_hitbox" to="." method="_on_sword_hitbox_area_enter"]
 
 [connection signal="area_exit" from="rotate_hitbox/sword_hitbox" to="." method="_on_sword_hitbox_area_exit"]
@@ -211,5 +218,7 @@ __meta__ = {
 [connection signal="area_enter" from="rotate_hitbox/falling_area" to="." method="_on_falling_area_area_enter"]
 
 [connection signal="area_exit" from="rotate_hitbox/falling_area" to="." method="_on_falling_area_area_exit"]
+
+[connection signal="timeout" from="transformation_timer" to="." method="_on_transformation_timer_timeout"]
 
 

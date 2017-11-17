@@ -192,7 +192,9 @@ func _on_hitbox_area_enter( area ):
 	if is_dead(): return
 	if state_cur != STATES.GRABBING:
 		var obj = area.get_parent()
-		if obj.is_in_group( "player" ):
+		if obj.is_in_group( "player" ) and ( game.player_char == game.PLAYER_CHAR.HUMAN or \
+				game.player_char == game.PLAYER_CHAR.HUMAN_SWORD or \
+				game.player_char == game.PLAYER_CHAR.HUMAN_GUN ):
 			#print( get_name(), ": grabbing player " )
 			state_nxt = STATES.GRABBING
 			grab_player_timer = GRAB_PLAYER_TIME

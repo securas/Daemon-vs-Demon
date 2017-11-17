@@ -44,67 +44,67 @@ extents = Vector2( 130.068, 87.354 )
 custom_solver_bias = 0.0
 extents = Vector2( 22.9034, 20.7341 )
 
-[sub_resource type="ConvexPolygonShape2D" id=20]
+[sub_resource type="ConvexPolygonShape2D" id=5]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 917, 14, 914, 1, 1566, 2 )
 
-[sub_resource type="ConvexPolygonShape2D" id=21]
+[sub_resource type="ConvexPolygonShape2D" id=6]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 1566, 198, 914, 198, 917, 174, 1566, 2 )
 
-[sub_resource type="ConvexPolygonShape2D" id=22]
+[sub_resource type="ConvexPolygonShape2D" id=7]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 1566, 2, 917, 174, 914, 163, 914, 120, 915, 81, 917, 42 )
 
-[sub_resource type="ConvexPolygonShape2D" id=23]
+[sub_resource type="ConvexPolygonShape2D" id=8]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 917, 14, 1566, 2, 917, 42, 914, 23 )
 
-[sub_resource type="ConvexPolygonShape2D" id=24]
+[sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 1567, 235, 1568, 540, 914, 540, 1414, 235 )
 
-[sub_resource type="ConvexPolygonShape2D" id=25]
+[sub_resource type="ConvexPolygonShape2D" id=10]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 1321, 234, 1414, 235, 914, 540, 914, 464, 916, 442 )
 
-[sub_resource type="ConvexPolygonShape2D" id=26]
+[sub_resource type="ConvexPolygonShape2D" id=11]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 1321, 234, 916, 442, 914, 422, 917, 414 )
 
-[sub_resource type="ConvexPolygonShape2D" id=27]
+[sub_resource type="ConvexPolygonShape2D" id=12]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 1321, 234, 917, 414, 914, 403, 915, 361, 916, 330 )
 
-[sub_resource type="ConvexPolygonShape2D" id=28]
+[sub_resource type="ConvexPolygonShape2D" id=13]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 1321, 234, 916, 330, 914, 308, 918, 302, 1321, 232 )
 
-[sub_resource type="ConvexPolygonShape2D" id=29]
+[sub_resource type="ConvexPolygonShape2D" id=14]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 914, 289, 914, 232, 1321, 232, 918, 302 )
 
+[sub_resource type="RectangleShape2D" id=15]
+
+custom_solver_bias = 0.0
+extents = Vector2( 423.868, 10 )
+
+[sub_resource type="RectangleShape2D" id=16]
+
+custom_solver_bias = 0.0
+extents = Vector2( 423.868, 10 )
+
 [sub_resource type="RectangleShape2D" id=17]
-
-custom_solver_bias = 0.0
-extents = Vector2( 423.868, 10 )
-
-[sub_resource type="RectangleShape2D" id=18]
-
-custom_solver_bias = 0.0
-extents = Vector2( 423.868, 10 )
-
-[sub_resource type="RectangleShape2D" id=19]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10.1293, 223.554 )
@@ -296,7 +296,7 @@ __meta__ = {
 
 [node name="player" parent="walls" instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 857, 221 )
+transform/pos = Vector2( 169, 94 )
 
 [node name="rain" parent="walls" instance=ExtResource( 6 )]
 
@@ -558,16 +558,16 @@ __meta__ = {
 
 visibility/visible = false
 input/pickable = true
-shapes/0/shape = SubResource( 20 )
+shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 21 )
+shapes/1/shape = SubResource( 6 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
-shapes/2/shape = SubResource( 22 )
+shapes/2/shape = SubResource( 7 )
 shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/2/trigger = false
-shapes/3/shape = SubResource( 23 )
+shapes/3/shape = SubResource( 8 )
 shapes/3/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/3/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -597,22 +597,22 @@ __meta__ = {
 ]]
 
 input/pickable = true
-shapes/0/shape = SubResource( 24 )
+shapes/0/shape = SubResource( 9 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 25 )
+shapes/1/shape = SubResource( 10 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
-shapes/2/shape = SubResource( 26 )
+shapes/2/shape = SubResource( 11 )
 shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/2/trigger = false
-shapes/3/shape = SubResource( 27 )
+shapes/3/shape = SubResource( 12 )
 shapes/3/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/3/trigger = false
-shapes/4/shape = SubResource( 28 )
+shapes/4/shape = SubResource( 13 )
 shapes/4/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/4/trigger = false
-shapes/5/shape = SubResource( 29 )
+shapes/5/shape = SubResource( 14 )
 shapes/5/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/5/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -655,7 +655,7 @@ __meta__ = {
 transform/pos = Vector2( 1632, -7 )
 transform/scale = Vector2( 3.94978, 1 )
 input/pickable = false
-shapes/0/shape = SubResource( 17 )
+shapes/0/shape = SubResource( 15 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524288
@@ -670,7 +670,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/barrier_1"]
 
-shape = SubResource( 17 )
+shape = SubResource( 15 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -682,7 +682,7 @@ __meta__ = {
 transform/pos = Vector2( 1629, 430 )
 transform/scale = Vector2( 3.89063, 1 )
 input/pickable = false
-shapes/0/shape = SubResource( 18 )
+shapes/0/shape = SubResource( 16 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524288
@@ -697,7 +697,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/barrier_2"]
 
-shape = SubResource( 18 )
+shape = SubResource( 16 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -708,7 +708,7 @@ __meta__ = {
 
 transform/pos = Vector2( -5.49414, 213.929 )
 input/pickable = false
-shapes/0/shape = SubResource( 19 )
+shapes/0/shape = SubResource( 17 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524288
@@ -723,7 +723,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/barrier_3"]
 
-shape = SubResource( 19 )
+shape = SubResource( 17 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {

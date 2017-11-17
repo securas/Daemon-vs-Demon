@@ -16,8 +16,7 @@ const CHAR_SCENES = { \
 enum WEAPONS { NONE, SWORD, GUN }
 var player = null
 var player_spawnpos = Vector2()
-#var player_weapon = WEAPONS.NONE
-var player_char = PLAYER_CHAR.HUMAN_SWORD
+var player_char = PLAYER_CHAR.HUMAN
 
 #---------------------------
 # camera
@@ -42,7 +41,7 @@ var pause_timer
 enum ACTS { HELL, GRAVEYARD }
 var act_specific = {
 	ACTS.HELL : { "scene": 1, "persistent": [] },
-	ACTS.GRAVEYARD : { "scene": 2, "persistent": [] } }
+	ACTS.GRAVEYARD : { "scene": 1, "persistent": [] } }
 
 
 
