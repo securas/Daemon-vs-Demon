@@ -55,7 +55,7 @@ func _ready():
 	# initial monster positions
 	var monsters = get_tree().get_nodes_in_group( "monster" )
 	for m in monsters:
-		initial_monsters.append( m )
+		initial_monsters.append( weakref( m ) )
 		initial_monster_positions.append( m.get_pos() )
 	
 	# process
@@ -79,9 +79,9 @@ func _reset_settings():
 	game.camera.get_ref().reset_smoothing()
 	player = null
 	# remove player gore
-	#var children = get_node( "walls" ).get_children()
-	#for c in children:
-	#	if c.is_in_group( "gore" ): c.queue_free()
+	var children = get_node( "walls" ).get_children()
+	for c in children:
+		if c.is_in_group( "gore" ): c.queue_free()
 	# reset all surviving monsters
 	var monsters = get_tree().get_nodes_in_group( "monster" )
 	for m in monsters:
@@ -298,8 +298,8 @@ func _on_player_dead():
 		_reset_settings()
 		# reset monsters
 		for idx in range( initial_monsters.size() ):
-			if not initial_monsters[idx].is_dead():
-				initial_monsters[idx].set_pos( initial_monster_positions[idx] )
+			if initial_monsters[idx].get_ref() != null and not initial_monsters[idx].get_ref().is_dead():
+				initial_monsters[idx].get_ref().set_pos( initial_monster_positions[idx] )
 	
 
 func _on_endtimer_timeout():
@@ -356,7 +356,9 @@ func _on_monsters_2_body_enter( body ):
 
 
 func _on_respawn_1_body_enter( body ):
+	print( "body entered: ", body.get_name() )
 	if game.player != null and body == game.player.get_ref():
+		print( "it is the player" )
 		game.player_spawnpos = get_node( "areas/respawn_1" ).get_global_pos()
 	pass # replace with function body
 

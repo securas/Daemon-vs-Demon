@@ -229,10 +229,10 @@ func _player_attack( delta ):
 			can_attack = false
 		
 		if can_attack:
-			_attack_timer = ATTACK_INTERVAL
 			sprite_node.set_animation( sprite_node.ANIMS.ATTACK )
 			if player_char == game.PLAYER_CHAR.HUMAN_SWORD:
 				if sword_neighbours.size() > 0:
+					_attack_timer = ATTACK_INTERVAL
 					# kill neighbours
 					var shake_camera = 0
 					for n in sword_neighbours:
