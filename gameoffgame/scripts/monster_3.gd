@@ -37,7 +37,6 @@ func _ready():
 
 func _fixed_process( delta ):
 	state_cur = state_nxt
-	state_cur = STATES.ATTACK
 	
 	if state_cur == STATES.IDLE:
 		pass

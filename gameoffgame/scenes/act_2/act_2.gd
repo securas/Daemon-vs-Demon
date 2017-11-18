@@ -334,7 +334,7 @@ func _demon_text( msg, ttext, ttimer, nxt, evt ):
 	var voffset = -30
 	var t = text_scn.instance()
 	t.set_text( msg )
-	t.add_color_override("font_color", Color(0.7,0.1,0.1))
+	t.add_color_override("font_color", Color(0.7,0.8,0.1))
 	t.connect( "finished", self, "_on_text_finished" )
 	t.connect( "interrupted", self, "_on_text_interrupted" )
 	get_node( "walls/talking_monster" ).add_child( t )

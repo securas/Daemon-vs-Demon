@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=1]
+[gd_scene load_steps=40 format=1]
 
 [ext_resource path="res://scenes/act_2/act_2.gd" type="Script" id=1]
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=2]
@@ -8,8 +8,9 @@
 [ext_resource path="res://scenes/monster_1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/monster_2.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/small_entrance.tscn" type="PackedScene" id=8]
-[ext_resource path="res://fonts/godot_tinyfont.fnt" type="BitmapFont" id=9]
-[ext_resource path="res://scenes/camera.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/monster_3.tscn" type="PackedScene" id=9]
+[ext_resource path="res://fonts/godot_tinyfont.fnt" type="BitmapFont" id=10]
+[ext_resource path="res://scenes/camera.tscn" type="PackedScene" id=11]
 
 [sub_resource type="GDScript" id=1]
 
@@ -332,7 +333,6 @@ texture = ExtResource( 3 )
 
 [node name="walls" type="TileMap" parent="."]
 
-editor/display_folded = true
 mode = 0
 tile_set = ExtResource( 2 )
 cell/size = Vector2( 8, 8 )
@@ -354,7 +354,7 @@ __meta__ = {
 
 [node name="player" parent="walls" instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 1861, 208 )
+transform/pos = Vector2( 181.607, 98.8261 )
 
 [node name="rain" parent="walls" instance=ExtResource( 5 )]
 
@@ -791,6 +791,7 @@ __meta__ = {
 
 [node name="small_entrance1" parent="walls" instance=ExtResource( 8 )]
 
+visibility/visible = false
 transform/pos = Vector2( 1660, 57 )
 
 [node name="Position2D" type="Position2D" parent="walls/small_entrance1"]
@@ -799,6 +800,54 @@ transform/pos = Vector2( 0, 47 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="monster_3 2" parent="walls" groups=[
+"m5",
+] instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 63.9925, 449.975 )
+
+[node name="monster_33" parent="walls" groups=[
+"m5",
+] instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 40.61, 408.22 )
+
+[node name="monster_34" parent="walls" groups=[
+"m5",
+] instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 50.6311, 358.115 )
+
+[node name="monster_35" parent="walls" groups=[
+"m5",
+] instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 90.7155, 408.22 )
+
+[node name="monster_36" parent="walls" groups=[
+"m5",
+] instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 110.758, 470.017 )
+
+[node name="monster_37" parent="walls" groups=[
+"m5",
+] instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 42.2802, 493.4 )
+
+[node name="monster_38" parent="walls" groups=[
+"m5",
+] instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 23.9082, 446.634 )
+
+[node name="monster_39" parent="walls" groups=[
+"m5",
+] instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 43.9504, 304.669 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
@@ -810,7 +859,6 @@ __meta__ = {
 
 [node name="infolayer" type="CanvasLayer" parent="."]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -818,6 +866,7 @@ scale = Vector2( 1, 1 )
 
 [node name="fps" type="Label" parent="infolayer"]
 
+visibility/visible = false
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -826,7 +875,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 14.0
-custom_fonts/font = ExtResource( 9 )
+custom_fonts/font = ExtResource( 10 )
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -835,11 +884,10 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="camera" parent="." instance=ExtResource( 10 )]
+[node name="camera" parent="." instance=ExtResource( 11 )]
 
 [node name="areas" type="Node2D" parent="."]
 
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -934,6 +982,28 @@ linear_damp = 0.1
 angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/monsters_4"]
+
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="monsters_5" type="Area2D" parent="areas"]
+
+editor/display_folded = true
+transform/pos = Vector2( 133.495, 420.092 )
+input/pickable = true
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areas/monsters_5"]
 
 shape = SubResource( 4 )
 trigger = false
@@ -1201,6 +1271,8 @@ trigger = false
 [connection signal="body_enter" from="areas/monsters_3" to="." method="_on_monsters_3_body_enter"]
 
 [connection signal="body_enter" from="areas/monsters_4" to="." method="_on_monsters_body_enter" binds= [ "m4" ]]
+
+[connection signal="body_enter" from="areas/monsters_5" to="." method="_on_monsters_body_enter" binds= [ "m5" ]]
 
 [connection signal="body_enter" from="areas/respawn_1" to="." method="_on_respawn_1_body_enter"]
 

@@ -103,11 +103,11 @@ func _scene_1( delta ):
 		state = -1
 		state_nxt = 8
 	elif state == 8:
-		_demon_text( "What are you doing here?", 3, 3, 9 )
+		_demon_text( "What are you doing here? We're closed!", 3, 3, 9 )
 	elif state == 9:
 		_player_text( "Where am I?", 2, 2, 10 )
 	elif state == 10:
-		_demon_text( "In Hell, of course!", 3, 3, 11 )
+		_demon_text( "In Hell! How did you get here? Everyone left!", 3, 3, 12 )
 	elif state == 11:
 		_demon_text( "How did you get here?", 3, 3, 12 )
 	elif state == 12:
@@ -115,9 +115,9 @@ func _scene_1( delta ):
 	elif state == 13:
 		# demon looks at pad
 		get_node( "YSort/blood_pool/demon/anim_body" ).play( "game" )
-		timer = 2
+		timer = 1
 		state = -1
-		state_nxt = 14
+		state_nxt = 19#14
 	elif state == 14:
 		_demon_text( "That makes no sense...", 2, 2, 15 )
 	elif state == 15:
@@ -136,7 +136,8 @@ func _scene_1( delta ):
 	elif state == 19:
 		#print( state )
 		get_node( "YSort/blood_pool/demon/anim_body" ).play( "face" )
-		_demon_text( "Not my problem!...", 2, 2, 20 )
+		#_demon_text( "Not my problem!...", 2, 2, 20 )
+		_demon_text( "It says here that...", 2, 2, 20 )
 	elif state == 20:
 		#print( state )
 		# demon faces
@@ -163,28 +164,29 @@ func _scene_1( delta ):
 		_player_text( "Not much space here...", 2, 2, 24 )
 	elif state == 24:
 		#print( state )
-		_demon_text( "We've been having some problems...", 3, 3, 25 )
+		_demon_text( "We've been having some problems...", 2, 2, 25 )
 	elif state == 25:
 		#print( state )
-		_demon_text( "... since our lord, Satan, left.", 3, 4, 26 )
+		_demon_text( "... since Satan, left.", 2, 2, 26 )
 	elif state == 26:
 		#print( state )
-		_demon_text( "Would you be interested in a upworld job?", 3, 3, 27 )
+		#_demon_text( "Would you be interested in a upworld job?", 3, 3, 27 )
+		_demon_text( "And you can't stay here...", 2, 2, 27 )
 	elif state == 27:
 		#print( state )
-		_player_text( "Upworld?", 2, 2, 28 )
+		_player_text( "Where can I go?", 2, 2, 28 )
 	elif state == 28:
 		#print( state )
-		_demon_text( "Yeah! A job in the world of the living.", 3, 4, 29 )
+		_demon_text( "Go back to the world of the living.", 2, 2, 29 )
 	elif state == 29:
 		#print( state )
 		_player_text( "Sounds good! What do I need to do?", 2, 3, 30 )
 	elif state == 30:
 		#print( state )
-		_demon_text( "Well, we need to find our lord...", 3, 3, 31 )
+		_demon_text( "Well, slaughter as many demons as you can find", 3, 3, 31 )
 	elif state == 31:
 		#print( state )
-		_demon_text( "... so you need to go up and find him", 3, 4, 32 )
+		_demon_text( "That should bring them back home.", 3, 4, 39 )
 	elif state == 32:
 		#print( state )
 		_player_text( "You don't know where Satan is?", 3, 3, 33 )
@@ -208,7 +210,8 @@ func _scene_1( delta ):
 		_demon_text( "... restore previous characteristic)", 2, 2, 39 )
 	elif state == 39:
 		#print( state )
-		_player_text( "Heck... I'll take it", 2, 2, 40 )
+		#_player_text( "Heck... I'll take it", 2, 2, 40 )
+		_player_text( "Yes... A demon slayer I shall be!", 2, 2, 40 )
 	elif state == 40:
 		#print( state )
 		_demon_text( "Also...", 2, 2, 41 )
@@ -303,15 +306,15 @@ func _scene_2( delta ):
 		state = -1
 		state_nxt = 10
 	elif state == 10:
-		_player_text( "huh... this... is... good...", 2, 2, 11 )
+		_player_text( "huh... this... is... good...", 2, 2, 13 )
 	elif state == 11:
 		_player_text( "... I guess.", 2, 2, 12 )
 	elif state == 12:
 		_demon_text( "Also, I forgot to mention...", 2, 2, 13 )
 	elif state == 13:
-		_demon_text( "You're a vampire now.", 2, 2, 14 )
+		_demon_text( "You might need to transform into other demon forms.", 2, 2, 14 )
 	elif state == 14:
-		_player_text( "A VAMPIRE?!?!?!?", 2, 2, 15 )
+		_player_text( "How do I do that?", 2, 2, 19 )
 	elif state == 15:
 		_demon_text( "Yes... You can't go back as a human...", 3, 3, 16 )
 	elif state == 16:
@@ -321,13 +324,13 @@ func _scene_2( delta ):
 	elif state == 18:
 		_demon_text( "Don't forget...", 2, 2, 19 )
 	elif state == 19:
-		_demon_text( "... you need blood to restore strengh", 3, 3, 20 )
+		_demon_text( "Just take some blood from their bodies.", 3, 3, 20 )
 	elif state == 20:
-		_player_text( "really???...", 1, 1, 21 )
+		_player_text( "That's discusting!", 1, 1, 21 )
 	elif state == 21:
 		# demon faces
 		get_node( "YSort/blood_pool/demon/anim_body" ).play( "game" )
-		_demon_text( "Yes... Off you go!", 2, 2, 22 )
+		_demon_text( "Yes... Off you go!", 2, 2, 28 )
 	elif state == 22:
 		_player_text( "Wait!", 2, 2, 23 )
 		get_node( "YSort/blood_pool/demon/anim_body" ).play( "face" )
