@@ -91,6 +91,10 @@ func die( source ):
 		hide()
 		set_fixed_process( false )
 		source.connect( "finished_kill", self, "_on_finished_kill_monster_1" )
+	elif source extends preload( "res://scripts/monster_2.gd" ):
+		hide()
+		set_fixed_process( false )
+		source.connect( "finished_kill", self, "_on_finished_kill_monster_1" )
 	else:
 		#OTHER FORMS OF DEATH!
 		pass
@@ -264,6 +268,13 @@ func _player_pick( itemareas ):
 			# start transformation timer
 			get_node( "transformation_timer" ).set_wait_time( 10 )
 			get_node( "transformation_timer" ).start()
+		if item.is_in_group( "monster_2" ):
+			transform( game.PLAYER_CHAR.MONSTER_2 )
+			# emit signal
+			emit_signal( "on_transformation" )
+			# start transformation timer
+			get_node( "transformation_timer" ).set_wait_time( 10 )
+			get_node( "transformation_timer" ).start()
 			
 	item.get_parent().queue_free()
 
@@ -325,6 +336,9 @@ func transform( newchar ):
 		set_layer_mask_bit( 0, false )
 		get_node( "rotate_hitbox/falling_area" ).set_collision_mask_bit( 19, false )
 		get_node( "rotate_hitbox/falling_area" ).set_layer_mask_bit( 19, false )
+	if newchar == game.PLAYER_CHAR.MONSTER_2:
+		# remove layers
+		pass
 	elif newchar == game.PLAYER_CHAR.HUMAN_SWORD:
 		# add layers
 		set_collision_mask_bit( 0, true )
@@ -356,6 +370,7 @@ func _on_falling_area_area_exit( area ):
 	if _falling_timer > 0:
 		_is_falling = false
 		game.camera_target = game.player
+		set_z( 0 )
 
 
 

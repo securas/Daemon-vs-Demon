@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=17 format=1]
 
 [ext_resource path="res://assets/tileset.png" type="Texture" id=1]
 
@@ -36,6 +36,46 @@ points = Vector2Array( 1, -3, 4, -3, 4, 5, 1, 5 )
 
 custom_solver_bias = 0.0
 points = Vector2Array( 1, -4, 4, -4, 4, 0, 1, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=13]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -19, -44, 13, -44, 13, 3, -19, 3 )
+
+[sub_resource type="ConvexPolygonShape2D" id=19]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -26, -44, 4, -44, 4, 3, -26, 3 )
+
+[sub_resource type="ConvexPolygonShape2D" id=14]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -19, -44, 13, -44, 13, 3, -19, 3 )
+
+[sub_resource type="ConvexPolygonShape2D" id=17]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -12, -53, 5, -53, 5, 11, -12, 11 )
+
+[sub_resource type="ConvexPolygonShape2D" id=18]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -11, -53, 6, -53, 6, 11, -11, 11 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -8, -64, 8, -64, 8, -49, -8, -49 )
+
+[sub_resource type="ConvexPolygonShape2D" id=15]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -15, -58, -15, -105, 33, -105, 17, -58 )
+
+[sub_resource type="ConvexPolygonShape2D" id=16]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 17, -58, 33, -105, 33, -26, 17, -26 )
 
 [node name="tileset_edit" type="Node2D"]
 
@@ -175,6 +215,7 @@ __meta__ = {
 
 [node name="tree_4" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 50, 167 )
 texture = ExtResource( 1 )
 offset = Vector2( -22, -10 )
@@ -774,5 +815,253 @@ transform/pos = Vector2( 218, 119 )
 texture = ExtResource( 1 )
 region = true
 region_rect = Rect2( 232, 128, 32, 8 )
+
+[node name="large_wall_1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 3, 181 )
+texture = ExtResource( 1 )
+offset = Vector2( 6, 33 )
+region = true
+region_rect = Rect2( 124, 144, 52, 68 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="large_wall_1"]
+
+transform/pos = Vector2( 19, 44 )
+input/pickable = false
+shapes/0/shape = SubResource( 13 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="large_wall_1/StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( -19, 3, 13, 3, 13, -44, -19, -44 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="large_wall_7" type="Sprite" parent="."]
+
+transform/pos = Vector2( -41, 256 )
+texture = ExtResource( 1 )
+offset = Vector2( 15, 33 )
+region = true
+region_rect = Rect2( 88, 144, 34, 68 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="large_wall_7"]
+
+transform/pos = Vector2( 28, 44 )
+input/pickable = false
+shapes/0/shape = SubResource( 19 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="large_wall_7/StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( -26, 3, 4, 3, 4, -44, -26, -44 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="large_wall_2" type="Sprite" parent="."]
+
+transform/pos = Vector2( -29, 181 )
+texture = ExtResource( 1 )
+offset = Vector2( 6, 33 )
+region = true
+region_rect = Rect2( 180, 144, 52, 68 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="large_wall_2"]
+
+transform/pos = Vector2( 19, 44 )
+input/pickable = false
+shapes/0/shape = SubResource( 14 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="large_wall_2/StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( -19, 3, 13, 3, 13, -44, -19, -44 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="large_wall_3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 120, 196 )
+texture = ExtResource( 1 )
+offset = Vector2( -1, 41 )
+region = true
+region_rect = Rect2( 236, 168, 38, 84 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="large_wall_3"]
+
+transform/pos = Vector2( 12, 52 )
+input/pickable = false
+shapes/0/shape = SubResource( 17 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="large_wall_3/StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( -12, 11, 5, 11, 5, -53, -12, -53 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="large_wall_4" type="Sprite" parent="."]
+
+transform/pos = Vector2( 177, 195 )
+texture = ExtResource( 1 )
+offset = Vector2( -2, 41 )
+region = true
+region_rect = Rect2( 283, 168, 38, 84 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="large_wall_4"]
+
+transform/pos = Vector2( 11, 52 )
+input/pickable = false
+shapes/0/shape = SubResource( 18 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="large_wall_4/StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( -11, 11, 6, 11, 6, -53, -11, -53 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="large_wall_5" type="Sprite" parent="."]
+
+transform/pos = Vector2( 300, 197 )
+texture = ExtResource( 1 )
+offset = Vector2( 8, -57 )
+region = true
+region_rect = Rect2( 240, 144, 16, 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="large_wall_5"]
+
+transform/pos = Vector2( 8, 0 )
+input/pickable = false
+shapes/0/shape = SubResource( 10 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="large_wall_5/StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( -8, -49, 8, -49, 8, -64, -8, -64 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="large_wall_6" type="Sprite" parent="."]
+
+transform/pos = Vector2( 35, 181 )
+texture = ExtResource( 1 )
+offset = Vector2( 15, 48 )
+region = true
+region_rect = Rect2( 276, 39, 70, 100 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="large_wall_6"]
+
+transform/pos = Vector2( 15, 105 )
+input/pickable = false
+shapes/0/shape = SubResource( 15 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 16 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="large_wall_6/StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( -15, -105, 33, -105, 33, -26, 17, -26, 17, -58, -15, -58 )
+shape_range = Vector2( 0, 1 )
+trigger = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 

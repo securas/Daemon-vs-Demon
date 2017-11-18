@@ -364,3 +364,16 @@ func _on_respawn_1_body_enter( body ):
 
 
 
+
+
+func _on_monsters_3_body_enter( body ):
+	if game.player != null and body == game.player.get_ref():
+		var monsters = get_tree().get_nodes_in_group( "m3" )
+		for m in monsters:
+			if not m.is_dead(): m.state_nxt = m.STATES.ATTACK
+
+func _on_monsters_body_enter( body, group ):
+	if game.player != null and body == game.player.get_ref():
+		var monsters = get_tree().get_nodes_in_group( group )
+		for m in monsters:
+			if not m.is_dead(): m.state_nxt = m.STATES.ATTACK
