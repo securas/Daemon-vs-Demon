@@ -1,11 +1,15 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://scripts/monster_2.gd" type="Script" id=1]
 [ext_resource path="res://assets/monster_2.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="RectangleShape2D" id=1]
 
-resource/name = "idle"
+custom_solver_bias = 0.0
+extents = Vector2( 2, 1 )
+
+[sub_resource type="Animation" id=2]
+
 length = 0.6
 loop = true
 step = 0.15
@@ -20,7 +24,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=3]
 
 resource/name = "killed"
 length = 1.0
@@ -37,9 +41,8 @@ tracks/0/keys = {
 "values": [ 17 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=4]
 
-resource/name = "run"
 length = 0.56
 loop = true
 step = 0.07
@@ -66,27 +69,27 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=5]
 
 custom_solver_bias = 0.0
 radius = 7.0
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 3, 6 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 4, 6 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=8]
 
 custom_solver_bias = 0.0
-extents = Vector2( 4, 4 )
+extents = Vector2( 6, 4 )
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=9]
 
 custom_solver_bias = 0.0
 radius = 56.211
@@ -97,6 +100,9 @@ radius = 56.211
 
 transform/pos = Vector2( 1, 1 )
 input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -1 )
+shapes/0/trigger = false
 collision/layers = 2
 collision/mask = 2
 collision/margin = 0.08
@@ -115,7 +121,6 @@ texture = ExtResource( 2 )
 offset = Vector2( -0.947174, -9.4958 )
 vframes = 5
 hframes = 8
-frame = 10
 __meta__ = {
 "_edit_lock_": true
 }
@@ -125,9 +130,9 @@ __meta__ = {
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/idle = SubResource( 1 )
-anims/killed = SubResource( 8 )
-anims/run = SubResource( 2 )
+anims/idle = SubResource( 2 )
+anims/killed = SubResource( 3 )
+anims/run = SubResource( 4 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -137,7 +142,7 @@ autoplay = "cycle"
 
 visibility/visible = false
 input/pickable = true
-shapes/0/shape = SubResource( 3 )
+shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -1, -1 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -153,7 +158,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="flocking_area"]
 
 transform/pos = Vector2( -1, -1 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -162,8 +167,9 @@ __meta__ = {
 
 [node name="hitbox" type="Area2D" parent="."]
 
+visibility/visible = false
 input/pickable = true
-shapes/0/shape = SubResource( 4 )
+shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -6 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -177,7 +183,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 
 transform/pos = Vector2( 0, -6 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -190,7 +196,7 @@ __meta__ = {
 
 visibility/visible = false
 input/pickable = true
-shapes/0/shape = SubResource( 5 )
+shapes/0/shape = SubResource( 7 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -7 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -206,7 +212,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damagebox"]
 
 transform/pos = Vector2( 0, -7 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -214,13 +220,13 @@ __meta__ = {
 }
 
 [node name="itemarea" type="Area2D" parent="." groups=[
-"monster_2",
 "blood",
+"monster_2",
 ]]
 
 visibility/visible = false
 input/pickable = true
-shapes/0/shape = SubResource( 6 )
+shapes/0/shape = SubResource( 8 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -4 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -236,7 +242,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="itemarea"]
 
 transform/pos = Vector2( 0, -4 )
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -247,7 +253,7 @@ __meta__ = {
 
 visibility/visible = false
 input/pickable = true
-shapes/0/shape = SubResource( 7 )
+shapes/0/shape = SubResource( 9 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -261,7 +267,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
 
-shape = SubResource( 7 )
+shape = SubResource( 9 )
 trigger = false
 _update_shape_index = 0
 
@@ -271,6 +277,16 @@ process_mode = 1
 wait_time = 1.0
 one_shot = true
 autostart = false
+
+[node name="collision" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( 0, -1 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="area_enter" from="flocking_area" to="." method="_on_flocking_area_area_enter"]
 
