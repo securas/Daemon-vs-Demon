@@ -26,7 +26,8 @@ text = "- All the rewards
 - Paralax backgrounds
 - bridge colors with night pallete
 - rocks
-- adjust collision mask of thick walls"
+- adjust collision mask of thick walls
+- increase falling limit to respawn on player and monsters"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1

@@ -34,6 +34,7 @@ func _fixed_process(delta):
 			falling = true
 	else:
 		vel = min( game.TERMINAL_VEL, vel + game.GRAVITY * delta )
+		set_opacity( lerp( get_opacity(), 0, 10*delta ) )
 		var newpos = get_parent().get_pos()
 		newpos.y += vel * delta
 		get_parent().set_pos( newpos )

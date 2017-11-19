@@ -144,8 +144,9 @@ func _cutscene_state( delta ):
 		vel.y += game.GRAVITY * delta
 		vel.x = lerp( vel.x, 0, 3 * delta )
 		var newpos = get_pos() + vel * delta
+		sprite_node.set_opacity( lerp( sprite_node.get_opacity(), 0, 10*delta ) )
 		set_pos( newpos )
-		if newpos.y > 500:
+		if newpos.y > 750:
 			die( self )
 			set_fixed_process( false )
 			queue_free()
@@ -359,8 +360,9 @@ func _on_falling_area_area_enter( area ):
 	if area.is_in_group( "fall_area" ):
 		game.camera_target = null
 		_is_falling = true
-		if area.is_in_group( "up_fall" ):
-			set_z( -1 )
+		vel *= 0
+		#if area.is_in_group( "up_fall" ):
+		#	set_z( -1 )
 		_falling_timer = 0.25
 		#set_cutscene()
 		
@@ -370,6 +372,7 @@ func _on_falling_area_area_exit( area ):
 	if _falling_timer > 0:
 		_is_falling = false
 		game.camera_target = game.player
+		sprite_node.set_opacity(1)
 		set_z( 0 )
 
 
