@@ -1,6 +1,6 @@
 extends Camera2D
 
-var zoom = 1.0
+var zoom_nxt = 1.0
 var ZOOM_SPEED = 1
 
 
@@ -24,9 +24,12 @@ func _fixed_process( delta ):
 	if game.camera_target == null: return
 	var target = game.camera_target.get_ref()
 	if target == null: return
-	set_global_pos( target.get_global_pos() )
+	var newpos = target.get_global_pos()
+	newpos.x = round( newpos.x )
+	newpos.y = round( newpos.y )
+	set_global_pos( newpos )
 	
-	var zoom_nxt = lerp( zoom, game.camera_target_zoom, delta * ZOOM_SPEED )
+	zoom_nxt = lerp( zoom_nxt, game.camera_target_zoom, delta * ZOOM_SPEED )
 	if abs( zoom_nxt - game.camera_target_zoom ) < 0.01:
 		zoom_nxt = game.camera_target_zoom
 	if zoom_nxt != get_zoom().x:

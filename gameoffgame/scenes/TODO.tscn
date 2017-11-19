@@ -1,0 +1,37 @@
+[gd_scene format=1]
+
+[node name="TODO" type="Node2D"]
+
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 160.0
+margin/bottom = 133.0
+text = "- All the rewards
+- Destructible doors
+- Castle gates
+- Transforming animation
+- Monster 3 player
+- Boss animation
+- Gate switch
+- Paralax backgrounds
+- bridge colors with night pallete
+- rocks
+- adjust collision mask of thick walls"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+__meta__ = {
+"_edit_lock_": true
+}
+
+
