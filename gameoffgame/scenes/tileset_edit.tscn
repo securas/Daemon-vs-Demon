@@ -57,15 +57,15 @@ points = Vector2Array( -26, -44, 4, -44, 4, 3, -26, 3 )
 custom_solver_bias = 0.0
 points = Vector2Array( -19, -44, 13, -44, 13, 3, -19, 3 )
 
-[sub_resource type="ConvexPolygonShape2D" id=12]
+[sub_resource type="ConvexPolygonShape2D" id=18]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -12, -53, 5, -53, 5, 11, -12, 11 )
+points = Vector2Array( -12, -21, 5, -21, 5, 11, -12, 11 )
 
-[sub_resource type="ConvexPolygonShape2D" id=13]
+[sub_resource type="ConvexPolygonShape2D" id=19]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -11, -53, 6, -53, 6, 11, -11, 11 )
+points = Vector2Array( -11, -21, 6, -21, 6, 11, -11, 11 )
 
 [sub_resource type="ConvexPolygonShape2D" id=14]
 
@@ -853,15 +853,15 @@ region_rect = Rect2( 232, 128, 32, 8 )
 
 [node name="large_wall_1" type="Sprite" parent="."]
 
-transform/pos = Vector2( 3, 181 )
+transform/pos = Vector2( 3, 180 )
 texture = ExtResource( 1 )
-offset = Vector2( 6, 33 )
+offset = Vector2( 6, 34 )
 region = true
 region_rect = Rect2( 124, 144, 52, 68 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="large_wall_1"]
 
-transform/pos = Vector2( 19, 44 )
+transform/pos = Vector2( 19, 45 )
 input/pickable = false
 shapes/0/shape = SubResource( 9 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -888,15 +888,15 @@ __meta__ = {
 
 [node name="large_wall_7" type="Sprite" parent="."]
 
-transform/pos = Vector2( -41, 256 )
+transform/pos = Vector2( -41, 255 )
 texture = ExtResource( 1 )
-offset = Vector2( 15, 33 )
+offset = Vector2( 15, 34 )
 region = true
 region_rect = Rect2( 88, 144, 34, 68 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="large_wall_7"]
 
-transform/pos = Vector2( 28, 44 )
+transform/pos = Vector2( 28, 45 )
 input/pickable = false
 shapes/0/shape = SubResource( 10 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -923,15 +923,15 @@ __meta__ = {
 
 [node name="large_wall_2" type="Sprite" parent="."]
 
-transform/pos = Vector2( -29, 181 )
+transform/pos = Vector2( -29, 180 )
 texture = ExtResource( 1 )
-offset = Vector2( 6, 33 )
+offset = Vector2( 6, 34 )
 region = true
 region_rect = Rect2( 180, 144, 52, 68 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="large_wall_2"]
 
-transform/pos = Vector2( 19, 44 )
+transform/pos = Vector2( 19, 45 )
 input/pickable = false
 shapes/0/shape = SubResource( 11 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -958,17 +958,17 @@ __meta__ = {
 
 [node name="large_wall_3" type="Sprite" parent="."]
 
-transform/pos = Vector2( 120, 196 )
+transform/pos = Vector2( 120, 259 )
 texture = ExtResource( 1 )
-offset = Vector2( -1, 41 )
+offset = Vector2( -1, -22 )
 region = true
 region_rect = Rect2( 236, 168, 38, 84 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="large_wall_3"]
 
-transform/pos = Vector2( 12, 52 )
+transform/pos = Vector2( 12, -11 )
 input/pickable = false
-shapes/0/shape = SubResource( 12 )
+shapes/0/shape = SubResource( 18 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -984,7 +984,7 @@ __meta__ = {
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="large_wall_3/StaticBody2D"]
 
 build_mode = 0
-polygon = Vector2Array( -12, 11, 5, 11, 5, -53, -12, -53 )
+polygon = Vector2Array( -12, 11, 5, 11, 5, -21, -12, -21 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 __meta__ = {
@@ -993,17 +993,17 @@ __meta__ = {
 
 [node name="large_wall_4" type="Sprite" parent="."]
 
-transform/pos = Vector2( 177, 195 )
+transform/pos = Vector2( 177, 258 )
 texture = ExtResource( 1 )
-offset = Vector2( -2, 41 )
+offset = Vector2( -2, -22 )
 region = true
 region_rect = Rect2( 283, 168, 38, 84 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="large_wall_4"]
 
-transform/pos = Vector2( 11, 52 )
+transform/pos = Vector2( 11, -11 )
 input/pickable = false
-shapes/0/shape = SubResource( 13 )
+shapes/0/shape = SubResource( 19 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -1019,7 +1019,7 @@ __meta__ = {
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="large_wall_4/StaticBody2D"]
 
 build_mode = 0
-polygon = Vector2Array( -11, 11, 6, 11, 6, -53, -11, -53 )
+polygon = Vector2Array( -11, 11, 6, 11, 6, -21, -11, -21 )
 shape_range = Vector2( 0, 0 )
 trigger = false
 __meta__ = {
@@ -1063,15 +1063,15 @@ __meta__ = {
 
 [node name="large_wall_6" type="Sprite" parent="."]
 
-transform/pos = Vector2( 35, 181 )
+transform/pos = Vector2( 35, 180 )
 texture = ExtResource( 1 )
-offset = Vector2( 15, 48 )
+offset = Vector2( 15, 49 )
 region = true
 region_rect = Rect2( 276, 39, 70, 100 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="large_wall_6"]
 
-transform/pos = Vector2( 15, 105 )
+transform/pos = Vector2( 15, 106 )
 input/pickable = false
 shapes/0/shape = SubResource( 15 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )

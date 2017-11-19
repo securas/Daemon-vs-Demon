@@ -1,5 +1,9 @@
 extends KinematicBody2D
-#const SHOOTING_RANGE = 50
+export( NodePath ) var navigation_nodepath
+var navigation = null
+var navcontrol_script = preload( "res://scripts/timed_navigation.gd" )
+var navcontrol
+
 const RANGE_RECT = Rect2( Vector2( 0, -15 ), Vector2( 130, 30 ) )
 enum STATES { IDLE, WANDER, ATTACK, DEAD }
 var state_cur = -1
@@ -30,13 +34,17 @@ func is_dead():
 
 
 func _ready():
-	steering_control.max_vel = 50
-	steering_control.max_force = 500
+	if navigation_nodepath != null:
+		navigation = get_node( navigation_nodepath )
+	navcontrol = navcontrol_script.new( 1, navigation )
+	steering_control.max_vel = 100
+	steering_control.max_force = 1000
 	set_fixed_process( true )
 
 
 func _fixed_process( delta ):
 	state_cur = state_nxt
+	state_cur = STATES.ATTACK
 	
 	if state_cur == STATES.IDLE:
 		pass
@@ -83,12 +91,20 @@ func _attack_fsm( delta ):
 			if _player_in_shooting_range():
 				# start shooting
 				attack_state = ATTACK_STATES.SHOOT
-				print( "shooting" )
+				#print( "shooting" )
+				pass
 			else:
-				var target_path = _get_path_towards( game.player.get_ref().get_global_pos() )
-				if not target_path.empty():
+				#var target_path = _get_path_towards( game.player.get_ref().get_global_pos() )
+				#if not target_path.empty():
+				#	steering_force = steering_control.steering_and_arriving( \
+				#			get_global_pos(), target_path[0], 
+				#			vel, 10, delta )
+				var target_pos = navcontrol.get_path_towards( \
+						get_global_pos(), \
+						game.player.get_ref().get_global_pos(), delta )
+				if target_pos != null:
 					steering_force = steering_control.steering_and_arriving( \
-							get_global_pos(), target_path[0], 
+							get_global_pos(), target_pos, 
 							vel, 10, delta )
 		# dampening
 		vel *= 0.98
@@ -164,7 +180,14 @@ func _on_fire_bullet():
 
 
 func _get_path_towards( pos ):
-	return [pos]
+	return Vector2Array( [ pos ] )
+	if navigation == null:
+		return [pos]
+	var varr = navigation.get_simple_path( get_global_pos(), pos )
+	print( varr )
+	var path = []
+	for v in varr: path.append( v )
+	return path
 
 func _player_in_shooting_range():
 	# check distance to player

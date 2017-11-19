@@ -104,6 +104,7 @@ collision/layers = 2
 collision/mask = 2
 collision/margin = 0.08
 script/script = ExtResource( 1 )
+navigation_nodepath = null
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 
