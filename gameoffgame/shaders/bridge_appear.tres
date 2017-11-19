@@ -7,6 +7,11 @@ _code = {
 uniform texture fog;
 
 
+COLOR.rgb = tex(TEXTURE, UV).rgb;
+float rawA = tex(fog, UV).a;
+COLOR.a = smoothstep(threshold/2.0, threshold, rawA);
+
+/*
 float a = tex( fog, UV ).a;
 if( a >= threshold )
 {
@@ -24,7 +29,7 @@ else
 		COLOR = vec4( 0.0, 0.0, 0.0, 0.0 );
 	}
 }
-",
+*/",
 "fragment_ofs": 0,
 "light": "",
 "light_ofs": 0,

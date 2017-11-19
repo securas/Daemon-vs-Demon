@@ -28,6 +28,7 @@ class Drop:
 		return false
 
 func _ready():
+	return
 	randomize()
 	print( "rain parent: ", get_node( parent_node ).get_name() )
 	# create drop instances

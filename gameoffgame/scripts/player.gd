@@ -26,7 +26,7 @@ var btn_pick = input_states.new( "btn_pick" )
 #---------------------------------------
 # motion control
 #---------------------------------------
-const MAX_VEL = Vector2( 80, 50 ) * 1.2
+const MAX_VEL = Vector2( 80, 60 ) * 1.2
 const ACCEL = Vector2( 10, 8 )
 var vel = Vector2()
 
