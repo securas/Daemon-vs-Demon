@@ -123,7 +123,7 @@ func _attack_fsm( delta ):
 	# flocking forces
 	if attack_state != ATTACK_STATES.SHOOT:
 		flocking_force = steering_control.flocking( \
-				self, neighbours, 10000, 1, 1 )
+				self, neighbours, 0, 1, 1 )
 	
 	# force and velocity
 	#print( steering_force, " ", flocking_force )

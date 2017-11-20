@@ -22,9 +22,13 @@ func get_path_towards( startpos, endpos, delta ):
 			timer = interval
 			# update path
 			var aux = navigator.get_simple_path( startpos, endpos, optimize )
-			target_path = []
-			for a in aux: target_path.append( a )
-			target_path.pop_front()
+			#print( startpos, " -> ", endpos, "  ", aux )
+			# check if this is a valid path
+			if ( aux[-1] - endpos ).length_squared() < 10:
+				target_path = []
+				for a in aux: target_path.append( a )
+				target_path.pop_front()
+			else: return null
 		else:
 			# check if reached point
 			if not target_path.empty() and ( startpos - target_path[0] ).length_squared() < mindist:
