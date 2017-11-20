@@ -6,8 +6,8 @@ var text_scn = preload( "res://scenes/character_text.tscn" )
 #var first_transformation = false
 #var first_activation = false
 #var startup_scene = false
-var initial_monsters = []
-var initial_monster_positions = []
+#var initial_monsters = []
+#var initial_monster_positions = []
 
 class EvtState:
 	var fnc
@@ -53,10 +53,10 @@ func _ready():
 		game.player_spawnpos = game.player.get_ref().get_global_pos()
 	
 	# initial monster positions
-	var monsters = get_tree().get_nodes_in_group( "monster" )
-	for m in monsters:
-		initial_monsters.append( weakref( m ) )
-		initial_monster_positions.append( m.get_pos() )
+#	var monsters = get_tree().get_nodes_in_group( "monster" )
+#	for m in monsters:
+#		initial_monsters.append( weakref( m ) )
+#		initial_monster_positions.append( m.get_pos() )
 	
 	# process
 	set_fixed_process( true )
@@ -83,9 +83,9 @@ func _reset_settings():
 	for c in children:
 		if c.is_in_group( "gore" ): c.queue_free()
 	# reset all surviving monsters
-	var monsters = get_tree().get_nodes_in_group( "monster" )
-	for m in monsters:
-		if not m.is_dead(): m.state_nxt = m.STATES.IDLE
+#	var monsters = get_tree().get_nodes_in_group( "monster" )
+#	for m in monsters:
+#		if not m.is_dead(): m.state_nxt = m.STATES.IDLE
 
 
 func _fixed_process( delta ):
@@ -297,9 +297,9 @@ func _on_player_dead():
 		# reset settings
 		_reset_settings()
 		# reset monsters
-		for idx in range( initial_monsters.size() ):
-			if initial_monsters[idx].get_ref() != null and not initial_monsters[idx].get_ref().is_dead():
-				initial_monsters[idx].get_ref().set_pos( initial_monster_positions[idx] )
+#		for idx in range( initial_monsters.size() ):
+#			if initial_monsters[idx].get_ref() != null and not initial_monsters[idx].get_ref().is_dead():
+#				initial_monsters[idx].get_ref().set_pos( initial_monster_positions[idx] )
 	
 
 func _on_endtimer_timeout():

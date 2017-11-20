@@ -37,67 +37,52 @@ points = Vector2Array( 1, -3, 4, -3, 4, 5, 1, 5 )
 custom_solver_bias = 0.0
 points = Vector2Array( 1, -4, 4, -4, 4, 0, 1, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=34]
+[sub_resource type="ConvexPolygonShape2D" id=8]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 4, -36, 4, -4, -4, -4, -4, -36 )
 
-[sub_resource type="ConvexPolygonShape2D" id=35]
+[sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -4, -36, 4, -36, 4, -4, -4, -4 )
 
-[sub_resource type="ConvexPolygonShape2D" id=36]
+[sub_resource type="ConvexPolygonShape2D" id=10]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -4, -36, 4, -36, 4, -4, -4, -4 )
 
-[sub_resource type="ConvexPolygonShape2D" id=37]
+[sub_resource type="ConvexPolygonShape2D" id=11]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -4, -36, 4, -36, 4, -4, -4, -4 )
 
-[sub_resource type="ConvexPolygonShape2D" id=17]
+[sub_resource type="ConvexPolygonShape2D" id=12]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -4, -4, 4, -4, 4, 4, -4, 4 )
 
-[sub_resource type="ConvexPolygonShape2D" id=42]
+[sub_resource type="ConvexPolygonShape2D" id=13]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -16, -8, 16, -8, 16, 0, -16, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=43]
+[sub_resource type="ConvexPolygonShape2D" id=14]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -16, -8, 16, -8, 16, 0, -16, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=44]
+[sub_resource type="ConvexPolygonShape2D" id=15]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -16, -8, 16, -8, 16, 0, -16, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=45]
+[sub_resource type="ConvexPolygonShape2D" id=16]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -16, -8, 16, -8, 16, 0, -16, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=38]
-
-custom_solver_bias = 0.0
-points = Vector2Array( -16, -4, 16, -4, 16, 4, -16, 4 )
-
-[sub_resource type="ConvexPolygonShape2D" id=39]
-
-custom_solver_bias = 0.0
-points = Vector2Array( -16, -4, 16, -4, 16, 4, -16, 4 )
-
-[sub_resource type="ConvexPolygonShape2D" id=40]
-
-custom_solver_bias = 0.0
-points = Vector2Array( -16, -4, 16, -4, 16, 4, -16, 4 )
-
-[sub_resource type="ConvexPolygonShape2D" id=41]
+[sub_resource type="ConvexPolygonShape2D" id=17]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -16, -4, 16, -4, 16, 4, -16, 4 )
@@ -105,39 +90,54 @@ points = Vector2Array( -16, -4, 16, -4, 16, 4, -16, 4 )
 [sub_resource type="ConvexPolygonShape2D" id=18]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -19, -44, 13, -44, 13, 3, -19, 3 )
+points = Vector2Array( -16, -4, 16, -4, 16, 4, -16, 4 )
 
 [sub_resource type="ConvexPolygonShape2D" id=19]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -26, -44, 4, -44, 4, 3, -26, 3 )
+points = Vector2Array( -16, -4, 16, -4, 16, 4, -16, 4 )
 
 [sub_resource type="ConvexPolygonShape2D" id=20]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -19, -44, 13, -44, 13, 3, -19, 3 )
+points = Vector2Array( -16, -4, 16, -4, 16, 4, -16, 4 )
 
 [sub_resource type="ConvexPolygonShape2D" id=21]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -12, -21, 5, -21, 5, 11, -12, 11 )
+points = Vector2Array( -19, -44, 13, -44, 13, 3, -19, 3 )
 
 [sub_resource type="ConvexPolygonShape2D" id=22]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -11, -21, 6, -21, 6, 11, -11, 11 )
+points = Vector2Array( -26, -44, 4, -44, 4, 3, -26, 3 )
 
 [sub_resource type="ConvexPolygonShape2D" id=23]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -8, -64, 8, -64, 8, -49, -8, -49 )
+points = Vector2Array( -19, -44, 13, -44, 13, 3, -19, 3 )
 
 [sub_resource type="ConvexPolygonShape2D" id=24]
 
 custom_solver_bias = 0.0
-points = Vector2Array( -15, -58, -15, -105, 33, -105, 17, -58 )
+points = Vector2Array( -12, -21, 5, -21, 5, 11, -12, 11 )
 
 [sub_resource type="ConvexPolygonShape2D" id=25]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -11, -21, 6, -21, 6, 11, -11, 11 )
+
+[sub_resource type="ConvexPolygonShape2D" id=26]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -8, -64, 8, -64, 8, -49, -8, -49 )
+
+[sub_resource type="ConvexPolygonShape2D" id=27]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -15, -58, -15, -105, 33, -105, 17, -58 )
+
+[sub_resource type="ConvexPolygonShape2D" id=28]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 17, -58, 33, -105, 33, -26, 17, -26 )
@@ -776,7 +776,7 @@ region_rect = Rect2( 152, 64, 8, 40 )
 [node name="StaticBody2D" type="StaticBody2D" parent="cliff_edge_1"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 34 )
+shapes/0/shape = SubResource( 8 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -810,7 +810,7 @@ region_rect = Rect2( 160, 64, 8, 40 )
 [node name="StaticBody2D" type="StaticBody2D" parent="cliff_edge_2"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 35 )
+shapes/0/shape = SubResource( 9 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -844,7 +844,7 @@ region_rect = Rect2( 168, 64, 8, 40 )
 [node name="StaticBody2D" type="StaticBody2D" parent="cliff_edge_3"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 36 )
+shapes/0/shape = SubResource( 10 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -878,7 +878,7 @@ region_rect = Rect2( 176, 64, 8, 40 )
 [node name="StaticBody2D" type="StaticBody2D" parent="cliff_edge_4"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 37 )
+shapes/0/shape = SubResource( 11 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -918,7 +918,7 @@ region_rect = Rect2( 184, 64, 8, 8 )
 [node name="StaticBody2D" type="StaticBody2D" parent="blocking_ground"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 17 )
+shapes/0/shape = SubResource( 12 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -955,7 +955,7 @@ region_rect = Rect2( 136, 112, 32, 16 )
 [node name="StaticBody2D" type="StaticBody2D" parent="cliff_side_1"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 42 )
+shapes/0/shape = SubResource( 13 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -988,7 +988,7 @@ region_rect = Rect2( 168, 112, 32, 16 )
 [node name="StaticBody2D" type="StaticBody2D" parent="cliff_side_2"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 43 )
+shapes/0/shape = SubResource( 14 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -1021,7 +1021,7 @@ region_rect = Rect2( 200, 112, 32, 16 )
 [node name="StaticBody2D" type="StaticBody2D" parent="cliff_side_3"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 44 )
+shapes/0/shape = SubResource( 15 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -1054,7 +1054,7 @@ region_rect = Rect2( 232, 112, 32, 16 )
 [node name="StaticBody2D" type="StaticBody2D" parent="cliff_side_4"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 45 )
+shapes/0/shape = SubResource( 16 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -1101,7 +1101,7 @@ region_rect = Rect2( 136, 128, 32, 8 )
 [node name="StaticBody2D" type="StaticBody2D" parent="cliff_top_1"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 38 )
+shapes/0/shape = SubResource( 17 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -1134,7 +1134,7 @@ region_rect = Rect2( 168, 128, 32, 8 )
 [node name="StaticBody2D" type="StaticBody2D" parent="cliff_top_2"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 39 )
+shapes/0/shape = SubResource( 18 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -1167,7 +1167,7 @@ region_rect = Rect2( 200, 128, 32, 8 )
 [node name="StaticBody2D" type="StaticBody2D" parent="cliff_top_3"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 40 )
+shapes/0/shape = SubResource( 19 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -1200,7 +1200,7 @@ region_rect = Rect2( 232, 128, 32, 8 )
 [node name="StaticBody2D" type="StaticBody2D" parent="cliff_top_4"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 41 )
+shapes/0/shape = SubResource( 20 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -1235,7 +1235,7 @@ region_rect = Rect2( 124, 144, 52, 68 )
 
 transform/pos = Vector2( 19, 45 )
 input/pickable = false
-shapes/0/shape = SubResource( 18 )
+shapes/0/shape = SubResource( 21 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -1270,7 +1270,7 @@ region_rect = Rect2( 88, 144, 34, 68 )
 
 transform/pos = Vector2( 28, 45 )
 input/pickable = false
-shapes/0/shape = SubResource( 19 )
+shapes/0/shape = SubResource( 22 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -1305,7 +1305,7 @@ region_rect = Rect2( 180, 144, 52, 68 )
 
 transform/pos = Vector2( 19, 45 )
 input/pickable = false
-shapes/0/shape = SubResource( 20 )
+shapes/0/shape = SubResource( 23 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -1340,7 +1340,7 @@ region_rect = Rect2( 236, 168, 38, 84 )
 
 transform/pos = Vector2( 12, -11 )
 input/pickable = false
-shapes/0/shape = SubResource( 21 )
+shapes/0/shape = SubResource( 24 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -1375,7 +1375,7 @@ region_rect = Rect2( 283, 168, 38, 84 )
 
 transform/pos = Vector2( 11, -11 )
 input/pickable = false
-shapes/0/shape = SubResource( 22 )
+shapes/0/shape = SubResource( 25 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -1410,7 +1410,7 @@ region_rect = Rect2( 240, 144, 16, 16 )
 
 transform/pos = Vector2( 8, 0 )
 input/pickable = false
-shapes/0/shape = SubResource( 23 )
+shapes/0/shape = SubResource( 26 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -1445,10 +1445,10 @@ region_rect = Rect2( 276, 39, 70, 100 )
 
 transform/pos = Vector2( 15, 106 )
 input/pickable = false
-shapes/0/shape = SubResource( 24 )
+shapes/0/shape = SubResource( 27 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 25 )
+shapes/1/shape = SubResource( 28 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
 collision/layers = 1

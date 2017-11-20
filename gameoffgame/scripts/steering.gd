@@ -47,13 +47,13 @@ func wander( cur_vel, cdist, cradius ):
 
 func rect_bound( cur_pos, cur_vel, rect_bound, margin, offsetvel, delta ):
 	steering_force = Vector2()
-	if cur_pos.x > rect_bound.width - margin:
+	if cur_pos.x > rect_bound.pos.x + rect_bound.size.x - margin:
 		steering_force.x = -offsetvel / delta
-	elif cur_pos.x < margin:
+	elif cur_pos.x < rect_bound.pos.x + margin:
 		steering_force.x = offsetvel / delta
-	if cur_pos.y > rect_bound.height - margin:
+	if cur_pos.y > rect_bound.pos.y + rect_bound.size.y - margin:
 		steering_force.y = -offsetvel / delta
-	elif cur_pos.y < margin:
+	elif cur_pos.y < rect_bound.pos.y + margin:
 		steering_force.y = offsetvel / delta
 	return steering_force
 

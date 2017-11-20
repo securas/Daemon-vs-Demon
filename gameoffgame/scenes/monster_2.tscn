@@ -103,10 +103,11 @@ input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -1 )
 shapes/0/trigger = false
-collision/layers = 2
-collision/mask = 2
+collision/layers = 524290
+collision/mask = 524290
 collision/margin = 0.08
 script/script = ExtResource( 1 )
+patrol_area_path = null
 
 [node name="rotate" type="Node2D" parent="."]
 

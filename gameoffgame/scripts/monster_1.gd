@@ -2,6 +2,10 @@ extends KinematicBody2D
 
 signal finished_kill
 
+export( NodePath ) var patrol_area_path
+var patrol_area = null
+var patrol_shape = null
+
 var steering_control = preload( "res://scripts/steering.gd" ).new()
 var GRAB_PLAYER_TIME = 0.5
 var grab_player_timer = GRAB_PLAYER_TIME
@@ -18,7 +22,6 @@ var dir_timer = 0.2
 
 # motion
 var vel = Vector2()
-var target_path = []
 var neighbours = []
 
 # external impulses
@@ -34,6 +37,13 @@ var _is_falling = false
 func _ready():
 	steering_control.max_vel = 50
 	steering_control.max_force = 500
+	if patrol_area_path != null:
+		patrol_area = get_node( patrol_area_path )
+		var aux = patrol_area.get_children()[0].get_pos() + patrol_area.get_global_pos()
+		var extents = patrol_area.get_children()[0].get_shape().get_extents()
+		patrol_shape = Rect2( aux - extents, 2 * extents )
+		state_nxt = STATES.WANDER
+	
 	var anim_pos = rand_range( 0, 3 )
 	get_node( "anim_body" ).seek( 0.8 * fmod( anim_pos, 1 ) )
 	get_node( "anim_head" ).seek( 0.8 * anim_pos )
@@ -43,31 +53,40 @@ func _ready():
 
 
 func _fixed_process(delta):
+	state_nxt = STATES.ATTACK
 	var steering_force = Vector2()
 	var flocking_force = Vector2()
+	var bound_force = Vector2()
 	
 	state_cur = state_nxt
 	
 	if state_cur == STATES.IDLE:
 		# do nothing
 		pass
+	elif state_cur == STATES.WANDER:
+		steering_force = steering_control.wander( vel, 10, 5 )
+		# flocking behavior
+		flocking_force = steering_control.flocking( \
+				self, neighbours, 10000, 1, 1 ) # 10000
+		if _get_player() != null and _player_in_patrol_area():
+			state_nxt = STATES.ATTACK
+			# check if player is within the wander area
+			pass
 	if state_cur == STATES.ATTACK:
 		# steer towards player
-		if ( game.player_char == game.PLAYER_CHAR.HUMAN or \
-				game.player_char == game.PLAYER_CHAR.HUMAN_SWORD or \
-				game.player_char == game.PLAYER_CHAR.HUMAN_GUN ) and \
-				game.player != null and game.player.get_ref() != null and \
-				( not game.player.get_ref().is_dead() ):
+		if _get_player() != null:
 			steering_force = steering_control.steering_and_arriving( \
 					get_global_pos(), game.player.get_ref().get_global_pos(), 
 					vel, 10, delta )
+			if not _player_in_patrol_area():
+				if patrol_area != null: state_nxt = STATES.WANDER
+				else: state_nxt = STATES.IDLE
 		# flocking behavior
 		flocking_force = steering_control.flocking( \
 				self, neighbours, 10000, 1, 1 ) # 10000
 		# dampening
 		vel *= 0.98
 	elif state_cur == STATES.DEAD:
-		
 		# set death animation
 		if get_node( "anim_head" ).get_current_animation() != "kill":
 			get_node( "anim_body" ).stop()
@@ -130,9 +149,13 @@ func _fixed_process(delta):
 				state_nxt = STATES.IDLE
 		pass
 	
+	# bounded area
+	if patrol_area != null:
+		bound_force = steering_control.rect_bound( get_global_pos(), \
+				vel, patrol_shape, 5, 50, delta )
 	
 	# apply all forces
-	var force = steering_force + flocking_force
+	var force = steering_force + flocking_force + bound_force
 	force = steering_control.truncate( force, steering_control.max_force )
 	vel += force * delta
 	if not _is_falling:
@@ -164,6 +187,26 @@ func _fixed_process(delta):
 			dir_timer = 0.2
 			dir_cur = dir_nxt
 			rotate.set_scale( Vector2( dir_cur, 1 ) )
+
+
+func _get_player():
+	if ( game.player_char == game.PLAYER_CHAR.HUMAN or \
+				game.player_char == game.PLAYER_CHAR.HUMAN_SWORD or \
+				game.player_char == game.PLAYER_CHAR.HUMAN_GUN ) and \
+				game.player != null and game.player.get_ref() != null and \
+				( not game.player.get_ref().is_dead() ):
+		return game.player.get_ref()
+	return null
+
+
+func _player_in_patrol_area():
+	if patrol_area == null:
+		return true
+	var bodies = patrol_area.get_overlapping_bodies()
+	for b in bodies:
+		if b == game.player.get_ref():
+			return true
+	return false
 
 
 

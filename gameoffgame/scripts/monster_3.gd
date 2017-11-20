@@ -14,6 +14,7 @@ var neighbours = []
 var vel = Vector2( 0, 0 )
 var external_impulse = Vector2()
 var external_impulse_timer = 0
+onready var starting_pos = get_global_pos()
 
 onready var anim = get_node( "anim" )
 var anim_cur = ""
@@ -70,42 +71,48 @@ func _dead_fsm( delta ):
 	pass
 
 enum ATTACK_STATES { IDLE, SEEK, SHOOT }
-var attack_state = ATTACK_STATES.SEEK
+var attack_state = ATTACK_STATES.IDLE
 var attack_timer = 0
 var shooting_dir = Vector2()
 func _attack_fsm( delta ):
-	#print( "attack state: ", attack_state )
 	var steering_force = Vector2()
 	var flocking_force = Vector2()
 	var target_pos = null
+	if _get_player():
+		target_pos = navcontrol.get_path_towards( \
+					get_global_pos(), \
+					game.player.get_ref().get_global_pos(), delta )
 	
 	if attack_state == ATTACK_STATES.IDLE:
-		#print( "waiting" )
-		vel *= 0
-		attack_timer -= delta
-		if attack_timer <= 0:
+		if target_pos != null:
 			attack_state = ATTACK_STATES.SEEK
+		else:
+			# navigate towards starting position
+			steering_force = steering_control.steering_and_arriving( \
+					get_global_pos(), starting_pos, 
+					vel, 10, delta )
+			# direction
+			if vel.x > 0:
+				dir_nxt = 1
+			elif vel.x < 0:
+				dir_nxt = -1
+		
+		
 	elif attack_state == ATTACK_STATES.SEEK:
 		# move towards player
 		if _get_player():
 			if _player_in_shooting_range():
-				# start shooting
 				attack_state = ATTACK_STATES.SHOOT
 				#print( "shooting" )
-				pass
 			else:
-				#var target_path = _get_path_towards( game.player.get_ref().get_global_pos() )
-				#if not target_path.empty():
-				#	steering_force = steering_control.steering_and_arriving( \
-				#			get_global_pos(), target_path[0], 
-				#			vel, 10, delta )
-				var target_pos = navcontrol.get_path_towards( \
-						get_global_pos(), \
-						game.player.get_ref().get_global_pos(), delta )
 				if target_pos != null:
 					steering_force = steering_control.steering_and_arriving( \
 							get_global_pos(), target_pos, 
 							vel, 10, delta )
+				else:
+					attack_state = ATTACK_STATES.IDLE
+		else:
+			attack_state = ATTACK_STATES.IDLE
 		# dampening
 		vel *= 0.98
 		# direction
@@ -113,6 +120,8 @@ func _attack_fsm( delta ):
 			dir_nxt = 1
 		elif vel.x < 0:
 			dir_nxt = -1
+		
+		
 	elif attack_state == ATTACK_STATES.SHOOT:
 		anim_nxt = "fire"
 		# dampening
@@ -123,7 +132,7 @@ func _attack_fsm( delta ):
 	# flocking forces
 	if attack_state != ATTACK_STATES.SHOOT:
 		flocking_force = steering_control.flocking( \
-				self, neighbours, 0, 1, 1 )
+				self, neighbours, 5000, 1, 1 )
 	
 	# force and velocity
 	#print( steering_force, " ", flocking_force )
@@ -131,9 +140,6 @@ func _attack_fsm( delta ):
 	force = steering_control.truncate( force, steering_control.max_force )
 	vel += force * delta
 	vel = steering_control.truncate( vel, steering_control.max_vel )
-	
-
-	
 	
 	# external forces
 	vel += external_impulse * delta
