@@ -24,7 +24,7 @@ var player_char = PLAYER_CHAR.HUMAN_SWORD
 #---------------------------
 var camera
 var camera_target = null
-var camera_target_zoom = 4
+var camera_target_zoom = 1
 #---------------------------
 # main scene
 #---------------------------
