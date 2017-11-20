@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://scripts/explosion_1.gd" type="Script" id=1]
 [ext_resource path="res://assets/monster_bullet.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="CapsuleShape2D" id=1]
 
-resource/name = "explode"
+custom_solver_bias = 0.0
+radius = 13.0
+height = 10.0
+
+[sub_resource type="Animation" id=2]
+
 length = 0.4
 loop = false
 step = 0.05
@@ -23,19 +28,27 @@ tracks/0/keys = {
 [node name="explosion_1" type="Area2D"]
 
 input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision/layers = 524291
+collision/mask = 524291
 script/script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 
-z/z = 1
+z/z = 2
 z/relative = false
 texture = ExtResource( 2 )
-vframes = 4
-hframes = 5
+vframes = 5
+hframes = 4
 frame = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -43,10 +56,16 @@ frame = 6
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/explode = SubResource( 1 )
+anims/explode = SubResource( 2 )
 playback/active = true
 playback/speed = 0.5
 blend_times = [  ]
 autoplay = "explode"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
 
 

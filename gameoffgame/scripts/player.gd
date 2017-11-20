@@ -91,7 +91,13 @@ func die( source ):
 		hide()
 		set_fixed_process( false )
 		source.connect( "finished_kill", self, "_on_finished_kill_monster_1" )
+		
 	elif source extends preload( "res://scripts/monster_2.gd" ):
+		hide()
+		set_fixed_process( false )
+		source.connect( "finished_kill", self, "_on_finished_kill_monster_1" )
+		
+	elif source extends preload( "res://scripts/explosion_1.gd" ):
 		hide()
 		set_fixed_process( false )
 		source.connect( "finished_kill", self, "_on_finished_kill_monster_1" )

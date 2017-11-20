@@ -1,8 +1,45 @@
 extends Area2D
-
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+signal finished_kill
+var state = 0
 
 func _ready():
-	game.camera.get_ref().shake( 0.5, 30, 4 )
+	set_fixed_process( true )
+
+var frame_count = 0
+func _fixed_process(delta):
+	if state == 0:
+		game.camera.get_ref().shake( 0.5, 30, 4 )
+		# find stuff in area
+		var gpos = get_global_pos()
+		#print( get_name(), " ", frame_count, " overlapping areas: ", get_overlapping_areas() )
+		frame_count += 1
+		if frame_count < 2: return
+		for b in get_overlapping_areas():
+			if _get_player() and b.get_parent() == game.player.get_ref():
+				# kill player
+				game.player.get_ref().die( self )
+				# instance death scene
+				var death = preload( "res://scenes/explosion_kill_player.tscn" ).instance()
+				death.get_node( "Sprite" ).set_global_pos( get_global_pos() )
+				death.connect( "finished", self, "_on_finished_killing_player_scene" )
+				get_parent().add_child( death )
+		#print( get_name(), "terminating "  )
+		state = 1
+		#queue_free()
+
+		
+				
+				
+func _get_player():
+	if ( game.player_char == game.PLAYER_CHAR.HUMAN or \
+				game.player_char == game.PLAYER_CHAR.HUMAN_SWORD or \
+				game.player_char == game.PLAYER_CHAR.HUMAN_GUN ) and \
+				game.player != null and game.player.get_ref() != null and \
+				( not game.player.get_ref().is_dead() ):
+		return game.player.get_ref()
+	return null
+
+func _on_finished_killing_player_scene():
+	print( "emmiting finished kill signal" )
+	emit_signal( "finished_kill" )
+	queue_free()

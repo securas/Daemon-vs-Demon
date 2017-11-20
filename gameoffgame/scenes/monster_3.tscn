@@ -28,13 +28,13 @@ tracks/0/keys = {
 
 length = 1.9
 loop = false
-step = 0.1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("rotate/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
-"times": FloatArray( 0, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"times": FloatArray( 0, 0.3, 0.4, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8 ),
 "transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 15, 16, 17, 18, 19, 20, 21, 22, 23, 24 ]
@@ -44,7 +44,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/imported = false
 tracks/1/keys = {
-"times": FloatArray( 0.5, 1.2 ),
+"times": FloatArray( 0.5, 0.85 ),
 "transitions": FloatArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -101,7 +101,7 @@ shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524290
-collision/mask = 524290
+collision/mask = 2
 collision/margin = 0.08
 script/script = ExtResource( 1 )
 navigation_nodepath = null
@@ -133,7 +133,7 @@ texture = ExtResource( 2 )
 offset = Vector2( 0, -6 )
 vframes = 4
 hframes = 8
-frame = 15
+frame = 18
 
 [node name="anim" type="AnimationPlayer" parent="."]
 

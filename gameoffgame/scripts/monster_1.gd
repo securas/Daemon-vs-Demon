@@ -53,7 +53,6 @@ func _ready():
 
 
 func _fixed_process(delta):
-	state_nxt = STATES.ATTACK
 	var steering_force = Vector2()
 	var flocking_force = Vector2()
 	var bound_force = Vector2()

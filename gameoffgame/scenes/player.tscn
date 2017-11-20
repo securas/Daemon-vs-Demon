@@ -42,7 +42,7 @@ shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524293
-collision/mask = 524293
+collision/mask = 5
 collision/margin = 0.001
 script/script = ExtResource( 1 )
 

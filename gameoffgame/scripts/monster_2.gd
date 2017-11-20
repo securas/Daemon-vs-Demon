@@ -132,7 +132,7 @@ func _fixed_process(delta):
 		# kill player
 		if game.player != null and game.player.get_ref() != null:
 			if not game.player.get_ref().is_dead():
-				print( get_name(), ": killing player " )
+				#print( get_name(), ": killing player " )
 				game.player.get_ref().die( self )
 				# instance death scene
 				var death = preload( "res://scenes/monster_2_kill_player.tscn" ).instance()

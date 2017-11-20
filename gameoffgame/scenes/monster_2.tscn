@@ -104,7 +104,7 @@ shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -1 )
 shapes/0/trigger = false
 collision/layers = 524290
-collision/mask = 524290
+collision/mask = 2
 collision/margin = 0.08
 script/script = ExtResource( 1 )
 patrol_area_path = null
@@ -221,8 +221,8 @@ __meta__ = {
 }
 
 [node name="itemarea" type="Area2D" parent="." groups=[
-"blood",
 "monster_2",
+"blood",
 ]]
 
 visibility/visible = false
