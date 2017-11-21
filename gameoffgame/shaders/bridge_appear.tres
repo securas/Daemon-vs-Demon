@@ -9,8 +9,14 @@ uniform texture fog;
 
 COLOR.rgb = tex(TEXTURE, UV).rgb;
 float rawA = tex(fog, UV).a;
-COLOR.a = smoothstep(threshold/2.0, threshold, rawA);
-
+if( tex( TEXTURE, UV ).a > 0.0 )
+{
+	COLOR.a = smoothstep(threshold/2.0, threshold, rawA);
+}
+else
+{
+	COLOR.a =  0.0;
+}
 /*
 float a = tex( fog, UV ).a;
 if( a >= threshold )

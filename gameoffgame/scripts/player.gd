@@ -11,7 +11,7 @@ signal on_transformation
 enum SCENE_STATES { CUTSCENE, NORMAL }
 var scene_state_cur
 var scene_state_nxt = SCENE_STATES.NORMAL
-
+const TRANSFORMATION_DURATION = 10
 #---------------------------------------
 # input control
 #---------------------------------------
@@ -247,16 +247,26 @@ func _player_attack( delta ):
 					# kill neighbours
 					var shake_camera = 0
 					for n in sword_neighbours:
-						if n.get_ref() != null and not n.get_ref().is_dead():
-							shake_camera += 1
-							# apply force to monster during 0.2 seconds
-							n.get_ref().set_external_force( \
-									10000 * ( n.get_ref().get_global_pos() - get_global_pos() ).normalized(), \
-									0.2 )
-							# hit monster
-							n.get_ref().get_hit( self )
+						if n.get_ref() != null:
+							if n.get_ref().is_in_group( "monster" ):
+								if not n.get_ref().is_dead():
+									shake_camera += 1
+									# apply force to monster during 0.2 seconds
+									n.get_ref().set_external_force( \
+											10000 * ( n.get_ref().get_global_pos() - get_global_pos() ).normalized(), \
+											0.2 )
+									# hit monster
+									n.get_ref().get_hit( self )
+							else:
+								# this is a box, break it
+								#print( "found a box" )
+								var animnode = n.get_ref().get_node( "box/animate_box" )
+								if animnode.get_current_animation() != "explode":
+									animnode.play( "explode" )
+									shake_camera += 1
+								
 					if shake_camera > 0:
-						game.camera.get_ref().shake( 0.5, 30, 2 * shake_camera )
+						game.camera.get_ref().shake( 0.5, 30, min( 2 * shake_camera, 10 ) )
 
 
 
@@ -278,10 +288,14 @@ func _player_pick( itemareas ):
 		# emit signal
 		emit_signal( "on_transformation" )
 		# start transformation timer
-		get_node( "transformation_timer" ).set_wait_time( 200 )
+		get_node( "transformation_timer" ).set_wait_time( TRANSFORMATION_DURATION )
 		get_node( "transformation_timer" ).start()
+		item.get_parent().queue_free()
+	#elif item.is_in_group( "key" ):
+	#	item.get_parent().get_node( "animate_key" ).play( "pick" )
+	#	pass
 			
-	item.get_parent().queue_free()
+	
 
 
 
@@ -312,7 +326,7 @@ func _on_sword_hitbox_area_enter( area ):
 	if area.is_in_group( "damagebox" ):
 		var obj = area.get_parent()
 		if game.findweak( obj, sword_neighbours ) == -1:
-			#print( "adding ", obj.get_name(), " to sword neighbours" )
+			print( "adding ", obj.get_name(), " to sword neighbours" )
 			sword_neighbours.append( weakref( area.get_parent() ) )
 
 
@@ -321,7 +335,7 @@ func _on_sword_hitbox_area_exit( area ):
 		var obj = area.get_parent()
 		var pos = game.findweak( obj, sword_neighbours )
 		if pos != -1:
-			#print( "removing ", obj.get_name(), " from sword neighbours" )
+			print( "removing ", obj.get_name(), " from sword neighbours" )
 			sword_neighbours.remove( pos )
 
 
@@ -393,3 +407,16 @@ func _on_falling_area_area_exit( area ):
 
 func _on_transformation_timer_timeout():
 	transform( game.PLAYER_CHAR.HUMAN_SWORD )
+
+var particle_attractor_path = ""
+func _on_keybox_area_enter( area ):
+	if area.is_in_group( "key" ):
+		# play picking animation
+		area.get_parent().get_node( "key/animate_key" ).play( "pick" )
+		game.has_key = true
+	elif area.is_in_group( "coin" ):
+		# play picking animation
+		area.get_parent().get_node( "key/animate_key" ).play( "pick" )
+		# add to score
+		game.score += 100
+

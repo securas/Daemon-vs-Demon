@@ -24,7 +24,7 @@ tracks/0/keys = {
 "values": [ 15 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=3]
 
 resource/name = "dead"
 length = 1.0
@@ -53,7 +53,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=4]
 
 length = 1.9
 loop = false
@@ -84,7 +84,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=5]
 
 length = 0.8
 loop = true
@@ -100,7 +100,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=6]
 
 length = 0.8
 loop = true
@@ -172,18 +172,18 @@ hframes = 8
 frame = 18
 
 [node name="anim" type="AnimationPlayer" parent="." groups=[
-"monster_3",
 "blood",
+"monster_3",
 ]]
 
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
 anims/aim = SubResource( 2 )
-anims/dead = SubResource( 10 )
-anims/fire = SubResource( 11 )
-anims/idle = SubResource( 12 )
-anims/run = SubResource( 13 )
+anims/dead = SubResource( 3 )
+anims/fire = SubResource( 4 )
+anims/idle = SubResource( 5 )
+anims/run = SubResource( 6 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -239,8 +239,8 @@ trigger = false
 _update_shape_index = 0
 
 [node name="itemarea" type="Area2D" parent="." groups=[
-"monster_3",
 "blood",
+"monster_3",
 ]]
 
 input/pickable = true

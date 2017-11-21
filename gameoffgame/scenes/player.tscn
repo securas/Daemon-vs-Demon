@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player_human.tscn" type="PackedScene" id=2]
@@ -29,6 +29,11 @@ custom_solver_bias = 0.0
 extents = Vector2( 3, 4 )
 
 [sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 4, 4 )
+
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 4, 4 )
@@ -167,6 +172,33 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="keybox" type="Area2D" parent="."]
+
+visibility/visible = false
+input/pickable = true
+shapes/0/shape = SubResource( 7 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -3 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 8
+collision/mask = 8
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="keybox"]
+
+transform/pos = Vector2( 0, -3 )
+shape = SubResource( 7 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="transformation_particles" type="Particles2D" parent="."]
 
 transform/pos = Vector2( 0, -7 )
@@ -218,6 +250,8 @@ autostart = false
 [connection signal="area_enter" from="rotate_hitbox/falling_area" to="." method="_on_falling_area_area_enter"]
 
 [connection signal="area_exit" from="rotate_hitbox/falling_area" to="." method="_on_falling_area_area_exit"]
+
+[connection signal="area_enter" from="keybox" to="." method="_on_keybox_area_enter"]
 
 [connection signal="timeout" from="transformation_timer" to="." method="_on_transformation_timer_timeout"]
 

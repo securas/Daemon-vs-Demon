@@ -4,6 +4,11 @@ extends Node
 const GRAVITY = 1000
 const TERMINAL_VEL = 400
 
+
+var score = 0
+var has_key = true
+
+
 #---------------------------
 # player info
 #---------------------------

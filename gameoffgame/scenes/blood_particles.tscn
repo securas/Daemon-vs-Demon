@@ -101,7 +101,6 @@ script/script = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
-visibility/visible = false
 transform/pos = Vector2( 5, 49 )
 texture = ExtResource( 2 )
 vframes = 2

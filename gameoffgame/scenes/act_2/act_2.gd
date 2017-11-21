@@ -3,11 +3,7 @@ extends Node2D
 
 var scene
 var text_scn = preload( "res://scenes/character_text.tscn" )
-#var first_transformation = false
-#var first_activation = false
-#var startup_scene = false
-#var initial_monsters = []
-#var initial_monster_positions = []
+
 
 class EvtState:
 	var fnc
