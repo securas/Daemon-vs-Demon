@@ -15,17 +15,25 @@ shader_param/fog = ExtResource( 2 )
 
 script/source = "extends Sprite
 
-
+var current_form = 0
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	pass
 
-func _on_switch():
-	get_node(\"anim\").play(\"show\")
-	
-func _off_switch():
-	get_node(\"anim\").play(\"hide\")"
+#func _on_switch():
+#	get_node(\"anim\").play(\"show\")
+#	
+#func _off_switch():
+#	get_node(\"anim\").play(\"hide\")
+
+func invert_visibility():
+	if current_form == 1:
+		get_node( \"anim\" ).play( \"hide\" )
+		current_form = 0
+	else:
+		get_node( \"anim\" ).play( \"show\" )
+		current_form = 1"
 
 [sub_resource type="RectangleShape2D" id=3]
 
@@ -115,8 +123,8 @@ region_rect = Rect2( 200, 64, 96, 40 )
 script/script = SubResource( 2 )
 
 [node name="fall_area" type="Area2D" parent="." groups=[
-"down_fall",
 "fall_area",
+"down_fall",
 ]]
 
 visibility/visible = false
@@ -151,6 +159,6 @@ anims/show = SubResource( 5 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
-autoplay = ""
+autoplay = "hide"
 
 

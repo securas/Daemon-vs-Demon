@@ -291,10 +291,9 @@ func _player_pick( itemareas ):
 		get_node( "transformation_timer" ).set_wait_time( TRANSFORMATION_DURATION )
 		get_node( "transformation_timer" ).start()
 		item.get_parent().queue_free()
-	#elif item.is_in_group( "key" ):
-	#	item.get_parent().get_node( "animate_key" ).play( "pick" )
-	#	pass
-			
+	elif item.is_in_group( "switch" ):
+		# flip switch
+		item.get_parent().flip_switch()
 	
 
 

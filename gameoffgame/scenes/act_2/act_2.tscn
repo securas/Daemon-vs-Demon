@@ -1,4 +1,4 @@
-[gd_scene load_steps=200 format=1]
+[gd_scene load_steps=201 format=1]
 
 [ext_resource path="res://scenes/act_2/act_2.gd" type="Script" id=1]
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=2]
@@ -12,8 +12,9 @@
 [ext_resource path="res://scenes/box_key.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/box_coin.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/gate.tscn" type="PackedScene" id=12]
-[ext_resource path="res://fonts/godot_tinyfont.fnt" type="BitmapFont" id=13]
-[ext_resource path="res://scenes/camera.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/switch.tscn" type="PackedScene" id=13]
+[ext_resource path="res://fonts/godot_tinyfont.fnt" type="BitmapFont" id=14]
+[ext_resource path="res://scenes/camera.tscn" type="PackedScene" id=15]
 
 [sub_resource type="NavigationPolygon" id=1]
 
@@ -1140,6 +1141,7 @@ __meta__ = {
 
 [node name="stuff" type="Node2D" parent="ground"]
 
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1187,7 +1189,6 @@ transform/pos = Vector2( 2184, 530 )
 
 [node name="walls" type="TileMap" parent="."]
 
-editor/display_folded = true
 mode = 0
 tile_set = ExtResource( 2 )
 cell/size = Vector2( 8, 8 )
@@ -1259,6 +1260,14 @@ transform/pos = Vector2( 2656, 552 )
 
 transform/pos = Vector2( 2036, 485 )
 
+[node name="switch_left" parent="walls" instance=ExtResource( 13 )]
+
+transform/pos = Vector2( 2127, 493 )
+
+[node name="switch_right" parent="walls" instance=ExtResource( 13 )]
+
+transform/pos = Vector2( 2244, 493 )
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
 visibility/visible = false
@@ -1286,7 +1295,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 14.0
-custom_fonts/font = ExtResource( 13 )
+custom_fonts/font = ExtResource( 14 )
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -1295,7 +1304,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="camera" parent="." instance=ExtResource( 14 )]
+[node name="camera" parent="." instance=ExtResource( 15 )]
 
 limit/bottom = 650
 
@@ -1453,8 +1462,8 @@ __meta__ = {
 }
 
 [node name="falling_area_2" type="Area2D" parent="areas/falling" groups=[
-"down_fall",
 "fall_area",
+"down_fall",
 ]]
 
 editor/display_folded = true
@@ -1689,8 +1698,8 @@ shape_range = Vector2( 0, 19 )
 trigger = false
 
 [node name="falling_area_4" type="Area2D" parent="areas/falling" groups=[
-"down_fall",
 "fall_area",
+"down_fall",
 ]]
 
 editor/display_folded = true
@@ -1870,8 +1879,8 @@ __meta__ = {
 }
 
 [node name="falling_area_6" type="Area2D" parent="areas/falling" groups=[
-"down_fall",
 "fall_area",
+"down_fall",
 ]]
 
 input/pickable = true
@@ -1993,8 +2002,8 @@ shape_range = Vector2( 0, 32 )
 trigger = false
 
 [node name="falling_area_7" type="Area2D" parent="areas/falling" groups=[
-"down_fall",
 "fall_area",
+"down_fall",
 ]]
 
 input/pickable = true
@@ -2384,6 +2393,10 @@ _update_shape_index = 0
 __meta__ = {
 "_edit_lock_": true
 }
+
+[connection signal="switch_flipped" from="walls/switch_left" to="ground/stuff/bridge" method="invert_visibility"]
+
+[connection signal="switch_flipped" from="walls/switch_right" to="ground/stuff/bridge" method="invert_visibility"]
 
 [connection signal="body_enter" from="areas/first_monsters" to="." method="_on_first_monsters_body_enter"]
 
