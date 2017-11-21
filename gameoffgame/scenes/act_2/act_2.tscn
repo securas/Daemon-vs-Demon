@@ -891,15 +891,10 @@ points = Vector2Array( 3901, 66, 3773, 121, 3773, 78, 3900, 59 )
 custom_solver_bias = 0.0
 points = Vector2Array( 3902, 50, 3900, 59, 3773, 78, 3770, 60, 3775, 47, 3898, 16, 3902, 20 )
 
-[sub_resource type="RectangleShape2D" id=185]
-
-custom_solver_bias = 0.0
-extents = Vector2( 22, 19 )
-
 [sub_resource type="RectangleShape2D" id=174]
 
 custom_solver_bias = 0.0
-extents = Vector2( 423.868, 10 )
+extents = Vector2( 22, 19 )
 
 [sub_resource type="RectangleShape2D" id=175]
 
@@ -909,37 +904,37 @@ extents = Vector2( 423.868, 10 )
 [sub_resource type="RectangleShape2D" id=176]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10.1293, 223.554 )
+extents = Vector2( 423.868, 10 )
 
 [sub_resource type="RectangleShape2D" id=177]
 
 custom_solver_bias = 0.0
-extents = Vector2( 8, 264 )
+extents = Vector2( 10.1293, 223.554 )
 
 [sub_resource type="RectangleShape2D" id=178]
 
 custom_solver_bias = 0.0
-extents = Vector2( 8, 36 )
+extents = Vector2( 8, 264 )
 
 [sub_resource type="RectangleShape2D" id=179]
 
 custom_solver_bias = 0.0
-extents = Vector2( 8, 264 )
+extents = Vector2( 8, 36 )
 
 [sub_resource type="RectangleShape2D" id=180]
 
 custom_solver_bias = 0.0
-extents = Vector2( 111, 23 )
+extents = Vector2( 8, 264 )
 
 [sub_resource type="RectangleShape2D" id=181]
 
 custom_solver_bias = 0.0
-extents = Vector2( 104, 23 )
+extents = Vector2( 111, 23 )
 
 [sub_resource type="RectangleShape2D" id=182]
 
 custom_solver_bias = 0.0
-extents = Vector2( 8, 264 )
+extents = Vector2( 104, 23 )
 
 [sub_resource type="RectangleShape2D" id=183]
 
@@ -947,6 +942,11 @@ custom_solver_bias = 0.0
 extents = Vector2( 8, 264 )
 
 [sub_resource type="RectangleShape2D" id=184]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 264 )
+
+[sub_resource type="RectangleShape2D" id=185]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 370 )
@@ -1178,27 +1178,12 @@ transform/pos = Vector2( 550, 155 )
 
 [node name="monster_3" parent="walls" instance=ExtResource( 8 )]
 
-transform/pos = Vector2( 3530, 173 )
-navigation_nodepath = NodePath("../../navigation")
-
-[node name="monster_4" parent="walls" instance=ExtResource( 8 )]
-
-transform/pos = Vector2( 3510, 167 )
-navigation_nodepath = NodePath("../../navigation")
-
-[node name="monster_5" parent="walls" instance=ExtResource( 8 )]
-
-transform/pos = Vector2( 3500, 182 )
-navigation_nodepath = NodePath("../../navigation")
-
-[node name="monster_6" parent="walls" instance=ExtResource( 8 )]
-
-transform/pos = Vector2( 3525, 192 )
+transform/pos = Vector2( 3426, 241 )
 navigation_nodepath = NodePath("../../navigation")
 
 [node name="monster_1" parent="walls" instance=ExtResource( 7 )]
 
-transform/pos = Vector2( 3175, 297 )
+transform/pos = Vector2( 3219, 208 )
 patrol_area_path = NodePath("../../areas/test")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -1395,8 +1380,8 @@ __meta__ = {
 }
 
 [node name="falling_area_2" type="Area2D" parent="areas/falling" groups=[
-"fall_area",
 "down_fall",
+"fall_area",
 ]]
 
 editor/display_folded = true
@@ -1631,8 +1616,8 @@ shape_range = Vector2( 0, 19 )
 trigger = false
 
 [node name="falling_area_4" type="Area2D" parent="areas/falling" groups=[
-"fall_area",
 "down_fall",
+"fall_area",
 ]]
 
 editor/display_folded = true
@@ -1812,8 +1797,8 @@ __meta__ = {
 }
 
 [node name="falling_area_6" type="Area2D" parent="areas/falling" groups=[
-"fall_area",
 "down_fall",
+"fall_area",
 ]]
 
 input/pickable = true
@@ -1935,8 +1920,8 @@ shape_range = Vector2( 0, 32 )
 trigger = false
 
 [node name="falling_area_7" type="Area2D" parent="areas/falling" groups=[
-"fall_area",
 "down_fall",
+"fall_area",
 ]]
 
 input/pickable = true
@@ -2002,9 +1987,9 @@ trigger = false
 
 [node name="test" type="Area2D" parent="areas"]
 
-transform/pos = Vector2( 3175, 292 )
+transform/pos = Vector2( 3220, 197 )
 input/pickable = true
-shapes/0/shape = SubResource( 185 )
+shapes/0/shape = SubResource( 174 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -2014,7 +1999,7 @@ angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/test"]
 
-shape = SubResource( 185 )
+shape = SubResource( 174 )
 trigger = false
 _update_shape_index = 0
 
@@ -2038,7 +2023,7 @@ __meta__ = {
 transform/pos = Vector2( 2122, -7 )
 transform/scale = Vector2( 5.14676, 1 )
 input/pickable = false
-shapes/0/shape = SubResource( 174 )
+shapes/0/shape = SubResource( 175 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524288
@@ -2053,7 +2038,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/barrier_1"]
 
-shape = SubResource( 174 )
+shape = SubResource( 175 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2064,33 +2049,6 @@ __meta__ = {
 
 transform/pos = Vector2( 2086, 650 )
 transform/scale = Vector2( 5.22656, 1 )
-input/pickable = false
-shapes/0/shape = SubResource( 175 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-collision/layers = 524288
-collision/mask = 524288
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/barrier_2"]
-
-shape = SubResource( 175 )
-trigger = false
-_update_shape_index = 0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="barrier_3" type="StaticBody2D" parent="barriers"]
-
-transform/pos = Vector2( -7, 302 )
-transform/scale = Vector2( 1, 1.62611 )
 input/pickable = false
 shapes/0/shape = SubResource( 176 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -2105,9 +2063,36 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/barrier_3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/barrier_2"]
 
 shape = SubResource( 176 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="barrier_3" type="StaticBody2D" parent="barriers"]
+
+transform/pos = Vector2( -7, 302 )
+transform/scale = Vector2( 1, 1.62611 )
+input/pickable = false
+shapes/0/shape = SubResource( 177 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 524288
+collision/mask = 524288
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/barrier_3"]
+
+shape = SubResource( 177 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2126,7 +2111,7 @@ __meta__ = {
 
 transform/pos = Vector2( 2045, 219 )
 input/pickable = false
-shapes/0/shape = SubResource( 177 )
+shapes/0/shape = SubResource( 178 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524291
@@ -2141,7 +2126,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_1"]
 
-shape = SubResource( 177 )
+shape = SubResource( 178 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2151,32 +2136,6 @@ __meta__ = {
 [node name="wall_2" type="StaticBody2D" parent="barriers/wall_barriers"]
 
 transform/pos = Vector2( 2045, 579 )
-input/pickable = false
-shapes/0/shape = SubResource( 178 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-collision/layers = 524291
-collision/mask = 524291
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_2"]
-
-shape = SubResource( 178 )
-trigger = false
-_update_shape_index = 0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="wall_3" type="StaticBody2D" parent="barriers/wall_barriers"]
-
-transform/pos = Vector2( 3133, 476 )
 input/pickable = false
 shapes/0/shape = SubResource( 179 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -2191,7 +2150,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_2"]
 
 shape = SubResource( 179 )
 trigger = false
@@ -2200,9 +2159,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="wall_4" type="StaticBody2D" parent="barriers/wall_barriers"]
+[node name="wall_3" type="StaticBody2D" parent="barriers/wall_barriers"]
 
-transform/pos = Vector2( 2725, 235 )
+transform/pos = Vector2( 3133, 476 )
 input/pickable = false
 shapes/0/shape = SubResource( 180 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -2217,7 +2176,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_3"]
 
 shape = SubResource( 180 )
 trigger = false
@@ -2226,9 +2185,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="wall_5" type="StaticBody2D" parent="barriers/wall_barriers"]
+[node name="wall_4" type="StaticBody2D" parent="barriers/wall_barriers"]
 
-transform/pos = Vector2( 3036, 235 )
+transform/pos = Vector2( 2725, 235 )
 input/pickable = false
 shapes/0/shape = SubResource( 181 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -2243,7 +2202,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_4"]
 
 shape = SubResource( 181 )
 trigger = false
@@ -2252,9 +2211,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="wall_6" type="StaticBody2D" parent="barriers/wall_barriers"]
+[node name="wall_5" type="StaticBody2D" parent="barriers/wall_barriers"]
 
-transform/pos = Vector2( 3932, 586 )
+transform/pos = Vector2( 3036, 235 )
 input/pickable = false
 shapes/0/shape = SubResource( 182 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -2269,7 +2228,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_5"]
 
 shape = SubResource( 182 )
 trigger = false
@@ -2278,9 +2237,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="wall_7" type="StaticBody2D" parent="barriers/wall_barriers"]
+[node name="wall_6" type="StaticBody2D" parent="barriers/wall_barriers"]
 
-transform/pos = Vector2( 3932, -5 )
+transform/pos = Vector2( 3932, 586 )
 input/pickable = false
 shapes/0/shape = SubResource( 183 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -2295,9 +2254,35 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_6"]
 
 shape = SubResource( 183 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="wall_7" type="StaticBody2D" parent="barriers/wall_barriers"]
+
+transform/pos = Vector2( 3932, -5 )
+input/pickable = false
+shapes/0/shape = SubResource( 184 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 524291
+collision/mask = 524291
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_7"]
+
+shape = SubResource( 184 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2308,7 +2293,7 @@ __meta__ = {
 
 transform/pos = Vector2( 4213, 328 )
 input/pickable = false
-shapes/0/shape = SubResource( 184 )
+shapes/0/shape = SubResource( 185 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524291
@@ -2320,7 +2305,7 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_8"]
 
-shape = SubResource( 184 )
+shape = SubResource( 185 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {

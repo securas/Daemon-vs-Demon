@@ -7,7 +7,7 @@ var navcontrol
 const RANGE_RECT = Rect2( Vector2( 0, -15 ), Vector2( 130, 30 ) )
 enum STATES { IDLE, WANDER, ATTACK, DEAD }
 var state_cur = -1
-var state_nxt = STATES.IDLE
+var state_nxt = STATES.ATTACK
 
 var steering_control = preload( "res://scripts/steering.gd" ).new()
 var neighbours = []
@@ -15,6 +15,7 @@ var vel = Vector2( 0, 0 )
 var external_impulse = Vector2()
 var external_impulse_timer = 0
 onready var starting_pos = get_global_pos()
+var _is_falling = false
 
 onready var anim = get_node( "anim" )
 var anim_cur = ""
@@ -24,13 +25,35 @@ onready var rotate = get_node( "rotate" )
 var dir_nxt = 1
 var dir_cur = 1
 
-
+#---------------------------------------
+# function to check if dead
+#---------------------------------------
 func is_dead():
 	if state_cur == STATES.DEAD:
 		return true
 	return false
-
-
+#---------------------------------------
+# function called when the monster is hit by the hittin source
+#---------------------------------------
+func get_hit( source ):
+	if state_cur != STATES.DEAD and state_nxt != STATES.DEAD:
+		# monster dies immediately
+		state_nxt = STATES.DEAD
+		return true
+	return false
+#---------------------------------------
+# function called to apply external force
+#---------------------------------------
+func set_external_force( force, duration ):
+	if state_cur != STATES.DEAD and state_nxt != STATES.DEAD:
+		# create force
+		external_impulse_timer = duration
+		external_impulse = force
+		# create blood splatter
+		var blood = preload( "res://scenes/blood_particles.tscn" ).instance()
+		blood.set_pos( get_pos() )
+		blood.set_rot( external_impulse.angle() )
+		get_parent().add_child( blood )
 
 
 
@@ -38,14 +61,14 @@ func _ready():
 	if navigation_nodepath != null:
 		navigation = get_node( navigation_nodepath )
 	navcontrol = navcontrol_script.new( 1, navigation )
-	steering_control.max_vel = 100
-	steering_control.max_force = 1000
+	steering_control.max_vel = 70#100
+	steering_control.max_force = 700#1000
 	set_fixed_process( true )
 
 
 func _fixed_process( delta ):
 	state_cur = state_nxt
-	state_cur = STATES.ATTACK
+	#state_cur = STATES.IDLE
 	
 	if state_cur == STATES.IDLE:
 		pass
@@ -68,7 +91,40 @@ func _fixed_process( delta ):
 
 
 func _dead_fsm( delta ):
+	# set death animation
+	anim_nxt = "dead"
+	# check if falling
+	if not _is_falling:
+		#print( "not falling" )
+		var uplow = game.check_fall_area( self, get_global_pos() )
+		if uplow == 1:
+			_is_falling = true
+			#set_z( -1 )
+		elif uplow == -1:
+			_is_falling = true
+		# dampening
+		vel *= 0.5
+		if vel.length_squared() < 4:
+				vel *= 0.0
+	else:
+		vel.x *= 0.5
+		vel.y = min( vel.y + delta * game.GRAVITY, game.TERMINAL_VEL )
+		if get_global_pos().y > 700:
+			set_fixed_process( false )
+			_change_to_item()
+	# external forces
+	vel += external_impulse * delta
+	external_impulse_timer -= delta
+	if external_impulse_timer <= 0:
+		external_impulse = Vector2()
+	# motion
+	vel = move_and_slide( vel )
+	
 	pass
+
+
+
+
 
 enum ATTACK_STATES { IDLE, SEEK, SHOOT }
 var attack_state = ATTACK_STATES.IDLE
@@ -129,6 +185,7 @@ func _attack_fsm( delta ):
 	
 	
 	
+	
 	# flocking forces
 	if attack_state != ATTACK_STATES.SHOOT:
 		flocking_force = steering_control.flocking( \
@@ -176,7 +233,9 @@ func _on_fire_bullet():
 	get_parent().add_child( bullet )
 	
 
-
+func _on_finished_dying():
+	set_fixed_process( false )
+	_change_to_item()
 
 
 
@@ -242,3 +301,25 @@ func _on_flocking_area_exit( area ):
 		var pos = game.findweak( obj, neighbours )
 		if pos != -1:
 			neighbours.remove( pos )
+
+func _running_dust():
+	var dust = preload( "res://scenes/running_dust.tscn" ).instance()
+	dust.set_pos( get_pos() + dir_cur * Vector2( 5, 0 ) )
+	dust.set_scale( Vector2( dir_cur, 1 ) )
+	#print( get_parent().get_parent().get_parent().get_name() )
+	get_parent().add_child( dust )
+
+func _change_to_item():
+	#print( "changing to item" )
+	# delete unecessary nodes
+	get_node( "anim" ).queue_free()
+	get_node( "flocking/CollisionShape2D" ).queue_free()
+	get_node( "flocking" ).queue_free()
+	get_node( "damagebox/CollisionShape2D" ).queue_free()
+	get_node( "damagebox" ).queue_free()
+	# change mask of kinematic body
+	set_layer_mask_bit( 1, false )
+	set_collision_mask_bit( 1, false )
+	# change mask of item box
+	get_node( "itemarea" ).set_layer_mask_bit( 2, true )
+	get_node( "itemarea" ).set_collision_mask_bit( 2, true )

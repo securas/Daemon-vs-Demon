@@ -109,7 +109,7 @@ func _fixed_process(delta):
 		else:
 			vel.x *= 0.95
 			vel.y = min( vel.y + delta * game.GRAVITY, game.TERMINAL_VEL )
-			if get_global_pos().y > 500:
+			if get_global_pos().y > 700:
 				set_fixed_process( false )
 				_change_to_item()
 		

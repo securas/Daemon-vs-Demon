@@ -7,12 +7,13 @@ const TERMINAL_VEL = 400
 #---------------------------
 # player info
 #---------------------------
-enum PLAYER_CHAR { HUMAN, HUMAN_SWORD, HUMAN_GUN, MONSTER_1, MONSTER_2 }
+enum PLAYER_CHAR { HUMAN, HUMAN_SWORD, HUMAN_GUN, MONSTER_1, MONSTER_2, MONSTER_3 }
 const CHAR_SCENES = { \
 	PLAYER_CHAR.HUMAN: "res://scenes/player_human.tscn", \
 	PLAYER_CHAR.HUMAN_SWORD: "res://scenes/player_sword.tscn", \
 	PLAYER_CHAR.MONSTER_1: "res://scenes/player_monster_1.tscn", \
-	PLAYER_CHAR.MONSTER_2: "res://scenes/player_monster_2.tscn" }
+	PLAYER_CHAR.MONSTER_2: "res://scenes/player_monster_2.tscn", \
+	PLAYER_CHAR.MONSTER_3: "res://scenes/player_monster_3.tscn" }
 
 enum WEAPONS { NONE, SWORD, GUN }
 var player = null

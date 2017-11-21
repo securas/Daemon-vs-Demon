@@ -266,22 +266,20 @@ func _player_pick( itemareas ):
 	sprite_node.set_animation( sprite_node.ANIMS.PICK )
 	# picking only the first item
 	var item = itemareas[0]
+	#print( item.get_groups() )
 	if item.is_in_group( "blood" ):
 		# transform
 		if item.is_in_group( "monster_1" ):
 			transform( game.PLAYER_CHAR.MONSTER_1 )
-			# emit signal
-			emit_signal( "on_transformation" )
-			# start transformation timer
-			get_node( "transformation_timer" ).set_wait_time( 10 )
-			get_node( "transformation_timer" ).start()
-		if item.is_in_group( "monster_2" ):
+		elif item.is_in_group( "monster_2" ):
 			transform( game.PLAYER_CHAR.MONSTER_2 )
-			# emit signal
-			emit_signal( "on_transformation" )
-			# start transformation timer
-			get_node( "transformation_timer" ).set_wait_time( 10 )
-			get_node( "transformation_timer" ).start()
+		elif item.is_in_group( "monster_3" ):
+			transform( game.PLAYER_CHAR.MONSTER_3 )
+		# emit signal
+		emit_signal( "on_transformation" )
+		# start transformation timer
+		get_node( "transformation_timer" ).set_wait_time( 200 )
+		get_node( "transformation_timer" ).start()
 			
 	item.get_parent().queue_free()
 
@@ -314,6 +312,7 @@ func _on_sword_hitbox_area_enter( area ):
 	if area.is_in_group( "damagebox" ):
 		var obj = area.get_parent()
 		if game.findweak( obj, sword_neighbours ) == -1:
+			#print( "adding ", obj.get_name(), " to sword neighbours" )
 			sword_neighbours.append( weakref( area.get_parent() ) )
 
 
@@ -322,6 +321,7 @@ func _on_sword_hitbox_area_exit( area ):
 		var obj = area.get_parent()
 		var pos = game.findweak( obj, sword_neighbours )
 		if pos != -1:
+			#print( "removing ", obj.get_name(), " from sword neighbours" )
 			sword_neighbours.remove( pos )
 
 
@@ -333,6 +333,7 @@ func _on_finished_kill_monster_1():
 
 func transform( newchar ):
 	if newchar == game.player_char: return
+	#print( "transforming" )
 	game.player_char = newchar
 	#effects
 	get_node( "transformation_particles" ).set_emitting( true )
@@ -343,7 +344,10 @@ func transform( newchar ):
 		set_layer_mask_bit( 0, false )
 		get_node( "rotate_hitbox/falling_area" ).set_collision_mask_bit( 19, false )
 		get_node( "rotate_hitbox/falling_area" ).set_layer_mask_bit( 19, false )
-	if newchar == game.PLAYER_CHAR.MONSTER_2:
+	elif newchar == game.PLAYER_CHAR.MONSTER_2:
+		# remove layers
+		pass
+	elif newchar == game.PLAYER_CHAR.MONSTER_3:
 		# remove layers
 		pass
 	elif newchar == game.PLAYER_CHAR.HUMAN_SWORD:
