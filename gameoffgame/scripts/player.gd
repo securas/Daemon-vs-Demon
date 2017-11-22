@@ -11,7 +11,7 @@ signal on_transformation
 enum SCENE_STATES { CUTSCENE, NORMAL }
 var scene_state_cur
 var scene_state_nxt = SCENE_STATES.NORMAL
-const TRANSFORMATION_DURATION = 10
+const TRANSFORMATION_DURATION = 1000
 #---------------------------------------
 # input control
 #---------------------------------------
@@ -123,6 +123,7 @@ func _ready():
 # fixed process
 #---------------------------------------
 func _fixed_process( delta ):
+	
 	# check graphics
 	if player_char != game.player_char:
 		_update_character()

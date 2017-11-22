@@ -6,8 +6,16 @@ const TERMINAL_VEL = 400
 
 
 var score = 0
-var has_key = true
+var has_key = false
+var boss_fight = false
 
+#---------------------------
+# act specific
+#---------------------------
+enum ACTS { HELL, GRAVEYARD }
+var act_specific = {
+	ACTS.HELL : { "scene": 1, "persistent": [] },
+	ACTS.GRAVEYARD : { "scene": 2, "persistent": [] } }
 
 #---------------------------
 # player info
@@ -42,13 +50,7 @@ var main = null
 var pause_timer
 
 
-#---------------------------
-# act specific
-#---------------------------
-enum ACTS { HELL, GRAVEYARD }
-var act_specific = {
-	ACTS.HELL : { "scene": 1, "persistent": [] },
-	ACTS.GRAVEYARD : { "scene": 2, "persistent": [] } }
+
 
 
 

@@ -125,13 +125,13 @@ transform/pos = Vector2( 0, 63 )
 texture = ExtResource( 2 )
 offset = Vector2( -7, -36 )
 hframes = 10
-frame = 9
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
+visibility/visible = false
 transform/pos = Vector2( 5, 31 )
 shape = SubResource( 1 )
 trigger = false
@@ -154,6 +154,7 @@ autoplay = "none"
 
 [node name="openarea" type="Area2D" parent="."]
 
+visibility/visible = false
 transform/pos = Vector2( -5, 63 )
 input/pickable = true
 shapes/0/shape = SubResource( 4 )

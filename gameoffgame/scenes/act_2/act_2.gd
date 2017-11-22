@@ -24,13 +24,17 @@ enum EVENTS { \
 		STARTUP, \
 		MEET_MONSTERS, \
 		KILLED_MONSTERS_1, \
-		FIRST_TRANSFORMATION }
+		FIRST_TRANSFORMATION, \
+		BOSS_DYING, \
+		BOSS_DEAD }
 onready var events = \
 	{ \
 		EVENTS.STARTUP : EvtState.new( self, "_evt_startup" ), \
 		EVENTS.MEET_MONSTERS : EvtState.new( self, "_evt_meet_monsters" ), \
 		EVENTS.KILLED_MONSTERS_1 : EvtState.new( self, "_evt_kill_monsters_1" ), \
-		EVENTS.FIRST_TRANSFORMATION : EvtState.new( self, "_evt_first_transform" )
+		EVENTS.FIRST_TRANSFORMATION : EvtState.new( self, "_evt_first_transform" ), \
+		EVENTS.BOSS_DYING : EvtState.new( self, "_evt_boss_dying" ), \
+		EVENTS.BOSS_DEAD : EvtState.new( self, "_evt_boss_dead" )
 	}
 		
 	
@@ -53,6 +57,10 @@ func _ready():
 #	for m in monsters:
 #		initial_monsters.append( weakref( m ) )
 #		initial_monster_positions.append( m.get_pos() )
+	
+	# connect to boss
+	get_node( "walls/boss" ).connect( "boss_dying", self, "_on_boss_dying" )
+	get_node( "walls/boss" ).connect( "boss_dead", self, "_on_boss_dead" )
 	
 	# process
 	set_fixed_process( true )
@@ -236,7 +244,56 @@ func _evt_first_transform( delta, evt ):
 		# finish this event
 		evt.active = false
 		
-	
+
+func _evt_boss_dying( delta, evt ):
+	if evt.state == -1:
+		# waiting state
+		evt.timer -= delta
+		if evt.timer <= 0:
+			evt.state = evt.state_nxt
+	elif evt.state == 0:
+		# freeze player
+		game.player.get_ref().set_cutscene()
+		# wait a second
+		evt.timer = 1
+		evt.state = -1
+		evt.state_nxt = 1
+	elif evt.state == 1:
+		_boss_text( "I knew this day would come...", 2, 2, 2, evt )
+	elif evt.state == 2:
+		_player_text( "Getting your butt kicked?", 2, 2, 3, evt )
+	elif evt.state == 3:
+		_boss_text( "... to finally be free.", 2, 2, 4, evt )
+	elif evt.state == 4:
+		_player_text( "???", 2, 2, 5, evt )
+		get_node( "walls/boss" ).state_nxt = get_node( "walls/boss" ).STATES.DEAD
+		get_node( "walls/rain" ).stop()
+	elif evt.state == 5:
+		# finish this event
+		evt.active = false
+
+
+func _evt_boss_dead( delta, evt ):
+	if evt.state == -1:
+		# waiting state
+		evt.timer -= delta
+		if evt.timer <= 0:
+			evt.state = evt.state_nxt
+	elif evt.state == 0:
+		# freeze player
+		game.player.get_ref().set_cutscene()
+		# wait a second
+		evt.timer = 2
+		evt.state = -1
+		evt.state_nxt = 1
+	elif evt.state == 1:
+		_player_text( "I wonder...", 2, 2, 2, evt )
+	elif evt.state == 2:
+		_player_text( "... should I take his form?", 5, 5, 3, evt )
+	elif evt.state == 3:
+		if game.main != null:
+			game.main.act_nxt = "res://scenes/act_3/act_3.tscn"
+		evt.active = false
 
 
 
@@ -292,10 +349,6 @@ func _on_player_dead():
 		get_node( "walls" ).add_child( p )
 		# reset settings
 		_reset_settings()
-		# reset monsters
-#		for idx in range( initial_monsters.size() ):
-#			if initial_monsters[idx].get_ref() != null and not initial_monsters[idx].get_ref().is_dead():
-#				initial_monsters[idx].get_ref().set_pos( initial_monster_positions[idx] )
 	
 
 func _on_endtimer_timeout():
@@ -307,40 +360,46 @@ func _on_endtimer_timeout():
 
 
 
+func _on_boss_dying():
+	events[EVENTS.BOSS_DYING].active = true
+	pass
+
+
+func _on_boss_dead():
+	events[EVENTS.BOSS_DEAD].active = true
 
 
 
 
 func _player_text( msg, ttext, ttimer, nxt, evt ):
-	var voffset = -30
-	if game.player != null and game.player.get_ref() != null:
-		var t = text_scn.instance()
-		t.set_text( msg )
-		t.connect( "finished", self, "_on_text_finished" )
-		t.connect( "interrupted", self, "_on_text_interrupted" )
-		game.player.get_ref().add_child( t )
-		t.set_offsetpos( Vector2( 0, voffset ) )
-		t.set_timer( ttext )
-		t = null
-	evt.timer = ttimer
-	evt.state = -1
-	evt.state_nxt = nxt
+	_create_text( game.player, \
+			Color(1,1,1), \
+			msg, ttext, ttimer, nxt, evt )
 
 func _demon_text( msg, ttext, ttimer, nxt, evt ):
-	var voffset = -30
+	_create_text( weakref( get_node( "walls/talking_monster" ) ), \
+			Color(0.7,0.8,0.1), \
+			msg, ttext, ttimer, nxt, evt )
+
+func _boss_text( msg, ttext, ttimer, nxt, evt ):
+	_create_text( weakref( get_node( "walls/boss" ) ), \
+			Color( 1, 1, 0 ), \
+			msg, ttext, ttimer, nxt, evt, Vector2( 0, -35 ) )
+
+
+
+func _create_text( target, color, msg, ttext, ttimer, nxt, evt, offsetpos = Vector2( 0, -30 ) ):
 	var t = text_scn.instance()
 	t.set_text( msg )
-	t.add_color_override("font_color", Color(0.7,0.8,0.1))
-	t.connect( "finished", self, "_on_text_finished" )
-	t.connect( "interrupted", self, "_on_text_interrupted" )
-	get_node( "walls/talking_monster" ).add_child( t )
-	t.set_offsetpos( Vector2( 0, voffset ) )
+	t.add_color_override("font_color", color )
+	t.target_node = target
+	t.set_offsetpos( offsetpos )
+	get_node( "infolayer" ).add_child( t )
 	t.set_timer( ttext )
 	evt.timer = ttimer
 	evt.state = -1
 	evt.state_nxt = nxt
 	t = null
-
 
 
 

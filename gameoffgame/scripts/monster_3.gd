@@ -61,6 +61,8 @@ func _ready():
 	if navigation_nodepath != null:
 		navigation = get_node( navigation_nodepath )
 	navcontrol = navcontrol_script.new( 1, navigation )
+	navcontrol.interval = 1
+	
 	steering_control.max_vel = 70#100
 	steering_control.max_force = 700#1000
 	set_fixed_process( true )

@@ -12,6 +12,7 @@ class Drop:
 	var has_parent = false
 	var update_rate = 0.05
 	var final_frame = 27
+	var active = true
 	func update( delta ):
 		timer -= delta
 		var output = false
@@ -26,6 +27,12 @@ class Drop:
 			if frame == 0:
 				return true
 		return false
+
+var _stop_rain = false
+func stop():
+	if not _stop_rain:
+		_stop_rain = true
+	pass
 
 func _ready():
 	randomize()
@@ -44,12 +51,19 @@ func _fixed_process( delta ):
 	#print( gpos, " ", drops[0].instance.get_global_pos(), " ", drops[0].frame )
 	gpos = get_global_pos()
 	for d in drops:
+		if not d.active: continue
 		if not d.has_parent:
 			get_node( parent_node ).add_child( d.instance )
 			d.has_parent = true
 			_set_random_pos( d )
-		if d.update( delta ):
-			_set_random_pos( d )
+		if not _stop_rain:
+			if d.update( delta ):
+				_set_random_pos( d )
+		else:
+			if d.update( delta ):
+				d.active = false
+				d.instance.queue_free()
+	
 	# follow target
 	if game.player != null and game.player.get_ref() != null:
 		set_global_pos( game.player.get_ref().get_global_pos() + Vector2( 0, 50 ) )
