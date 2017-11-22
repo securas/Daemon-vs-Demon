@@ -1,7 +1,7 @@
 extends Area2D
 signal finished_kill
 var state = 0
-
+var killing_player = false
 func _ready():
 	set_fixed_process( true )
 
@@ -17,19 +17,17 @@ func _fixed_process(delta):
 		for b in get_overlapping_areas():
 			if _get_player() and b.get_parent() == game.player.get_ref():
 				# kill player
+				killing_player = true
 				game.player.get_ref().die( self )
 				# instance death scene
 				var death = preload( "res://scenes/explosion_kill_player.tscn" ).instance()
 				death.get_node( "Sprite" ).set_global_pos( get_global_pos() )
 				death.connect( "finished", self, "_on_finished_killing_player_scene" )
 				get_parent().add_child( death )
-		#print( get_name(), "terminating "  )
 		state = 1
 		#queue_free()
 
-		
-				
-				
+
 func _get_player():
 	if ( game.player_char == game.PLAYER_CHAR.HUMAN or \
 				game.player_char == game.PLAYER_CHAR.HUMAN_SWORD or \
@@ -40,6 +38,10 @@ func _get_player():
 	return null
 
 func _on_finished_killing_player_scene():
-	print( "emmiting finished kill signal" )
 	emit_signal( "finished_kill" )
 	queue_free()
+
+func _on_AnimationPlayer_finished():
+	if not killing_player:
+		queue_free()
+	pass # replace with function body

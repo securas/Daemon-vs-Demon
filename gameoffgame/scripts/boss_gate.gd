@@ -28,3 +28,11 @@ func _on_anim_finished():
 func _shake_screen( duration = 0.2 ):
 	game.camera.get_ref().shake( duration, 30, 4 )
 
+
+var _crossed = false
+func _on_cross_game_body_enter( body ):
+	if not _crossed and ( game.player != null and game.player.get_ref() != null and body == game.player.get_ref() ):
+		_crossed = true
+		set_layer_mask_bit( 0, true )
+		set_collision_mask_bit( 0, true )
+	pass # replace with function body

@@ -11,7 +11,7 @@ signal on_transformation
 enum SCENE_STATES { CUTSCENE, NORMAL }
 var scene_state_cur
 var scene_state_nxt = SCENE_STATES.NORMAL
-const TRANSFORMATION_DURATION = 1000
+const TRANSFORMATION_DURATION = 10
 #---------------------------------------
 # input control
 #---------------------------------------
@@ -87,16 +87,18 @@ func is_dead():
 func die( source ):
 	if _is_dead_: return false
 	_is_dead_ = true
+	hide()
+	set_fixed_process( false )
+	source.connect( "finished_kill", self, "_on_finished_kill_monster_1" )
+	"""
 	if source extends preload( "res://scripts/monster_1.gd" ):
 		hide()
 		set_fixed_process( false )
 		source.connect( "finished_kill", self, "_on_finished_kill_monster_1" )
-		
 	elif source extends preload( "res://scripts/monster_2.gd" ):
 		hide()
 		set_fixed_process( false )
 		source.connect( "finished_kill", self, "_on_finished_kill_monster_1" )
-		
 	elif source extends preload( "res://scripts/explosion_1.gd" ):
 		hide()
 		set_fixed_process( false )
@@ -104,6 +106,7 @@ func die( source ):
 	else:
 		#OTHER FORMS OF DEATH!
 		pass
+	"""
 	return true
 
 #---------------------------------------
@@ -295,6 +298,9 @@ func _player_pick( itemareas ):
 	elif item.is_in_group( "switch" ):
 		# flip switch
 		item.get_parent().flip_switch()
+	elif item.is_in_group( "tinydoor" ):
+		# cross door
+		item.cross_door()
 	
 
 

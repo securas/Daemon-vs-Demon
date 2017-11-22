@@ -103,7 +103,7 @@ func _fixed_process(delta):
 			if vel.length_squared() < 4:
 				vel = Vector2()
 			if vel.length_squared() == 0:
-				#print( "finished dying" )
+				print( "finished dying" )
 				set_fixed_process( false )
 				_change_to_item()
 		else:
@@ -149,7 +149,7 @@ func _fixed_process(delta):
 		pass
 	
 	# bounded area
-	if patrol_area != null:
+	if patrol_area != null and state_cur != STATES.DEAD:
 		bound_force = steering_control.rect_bound( get_global_pos(), \
 				vel, patrol_shape, 5, 50, delta )
 	

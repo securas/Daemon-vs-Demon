@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 signal boss_dying
 signal boss_dead
+signal finished_kill
 
 
 const BULLET_COUNT = 3
@@ -30,7 +31,7 @@ var anim_cur = ""
 
 onready var rotate = get_node( "rotate" )
 var dir_cur = 1
-var dir_nxt = 1
+var dir_nxt = -1
 
 func is_dead():
 	if state_cur == STATES.DEAD or state_cur == STATES.DYING:
@@ -61,19 +62,22 @@ func set_external_force( force, duration ):
 		blood.set_rot( external_impulse.angle() )
 		get_parent().add_child( blood )
 
+func reset_position():
+	set_pos( _initial_pos )
+	dir_nxt = -1
 
 
 
-
+var _initial_pos
 func _ready():
 	# navigation
-	if navigation_nodepath != null:
+	if navigation_nodepath != null and not navigation_nodepath.is_empty():
 		navigation = get_node( navigation_nodepath )
 	navcontrol = navcontrol_script.new( 1, navigation )
 	# steering
 	steering_control.max_vel = 100
 	steering_control.max_force = 1000
-	
+	_initial_pos = get_pos()
 	set_fixed_process( true )
 
 
@@ -136,7 +140,7 @@ func _state_attack_slash( delta ):
 	# steer towards player
 	var target_pos = navcontrol.get_path_towards( \
 			get_global_pos(), \
-			game.player.get_ref().get_global_pos() + game.player.get_ref().vel * delta, delta )
+			game.player.get_ref().get_global_pos() + game.player.get_ref().vel * delta + Vector2( -20, 0 ), delta )
 	if target_pos == null:
 		state_nxt = STATES.IDLE
 	else:
@@ -156,10 +160,16 @@ func _state_attack_slash( delta ):
 		# motion
 		_move_with_external( delta )
 		# slash
-		var dist = game.player.get_ref().get_global_pos() - get_global_pos()
+		var dist = target_pos - get_global_pos() #game.player.get_ref().get_global_pos() - get_global_pos()
 		if dist.length() < 10:
 			# slash
 			anim_nxt = "slash"
+			var ppos = game.player.get_ref().get_global_pos()
+			if ppos.x - get_global_pos().x > 0:
+				dir_nxt = 1
+			elif ppos.x - get_global_pos().x < 0:
+				dir_nxt = -1
+				
 			# wait until finish slashing
 			_wait_time = 1
 			_after_wait_state = STATES.ATTACK_BULLET
@@ -305,3 +315,28 @@ func _on_anim_finished():
 	if state_cur != STATES.DYING and state_cur != STATES.DEAD:
 		anim_nxt = "idle"
 	pass # replace with function body
+
+var _player_hit = false
+func _hit_player():
+	if _player_hit: return
+	if game.player == null or game.player.get_ref() == null: return
+	var areas = get_node("rotate/hitbox").get_overlapping_areas()
+	for a in areas:
+		if a.get_parent() == game.player.get_ref():
+			_player_hit = true
+			break
+	if _player_hit:
+		print( "SLASHING PLAYER" )
+		game.player.get_ref().die( self )
+		var death = preload( "res://scenes/explosion_kill_player.tscn" ).instance()
+		death.get_node( "Sprite" ).set_global_pos( get_global_pos() )
+		death.connect( "finished", self, "_on_finished_killing_player_scene" )
+		get_parent().add_child( death )
+
+
+func _camera_shake():
+	game.camera.get_ref().shake( 0.5, 30, 4 )
+
+
+func _on_finished_killing_player_scene():
+	emit_signal( "finished_kill" )

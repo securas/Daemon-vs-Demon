@@ -5,42 +5,43 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 3, 4 )
+extents = Vector2( 3, 25 )
 
 [sub_resource type="GDScript" id=2]
 
 script/source = "extends Area2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = \"textvar\"
+var ppos = 2
 
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	pass
 
-
-func _on_small_entrance_body_enter( body ):
+func cross_door():
 	if game.player != null and game.player.get_ref() != null and game.player_char == game.PLAYER_CHAR.MONSTER_2:
-		if body == game.player.get_ref():
-			var children = get_children()
-			for c in children:
-				if c.get_type() == \"Position2D\":
-					body.set_global_pos( c.get_global_pos() )
-					return
+		if ppos == 2:
+			ppos = 1
+			game.player.get_ref().set_global_pos( get_node( \"pos_1\" ).get_global_pos() )
+		elif ppos == 1:
+			ppos = 2
+			game.player.get_ref().set_global_pos( get_node( \"pos_2\" ).get_global_pos() )
 "
 
-[node name="small_entrance" type="Area2D"]
+[node name="small_entrance" type="Area2D" groups=[
+"tinydoor",
+]]
 
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -25 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision/layers = 4
+collision/mask = 4
 script/script = SubResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
@@ -73,7 +74,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-transform/pos = Vector2( 0, -3 )
+transform/pos = Vector2( 0, -25 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0

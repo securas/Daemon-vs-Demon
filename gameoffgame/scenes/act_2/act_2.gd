@@ -25,6 +25,7 @@ enum EVENTS { \
 		MEET_MONSTERS, \
 		KILLED_MONSTERS_1, \
 		FIRST_TRANSFORMATION, \
+		MEET_BOSS, \
 		BOSS_DYING, \
 		BOSS_DEAD }
 onready var events = \
@@ -33,6 +34,7 @@ onready var events = \
 		EVENTS.MEET_MONSTERS : EvtState.new( self, "_evt_meet_monsters" ), \
 		EVENTS.KILLED_MONSTERS_1 : EvtState.new( self, "_evt_kill_monsters_1" ), \
 		EVENTS.FIRST_TRANSFORMATION : EvtState.new( self, "_evt_first_transform" ), \
+		EVENTS.MEET_BOSS: EvtState.new( self, "_evt_meet_boss" ), \
 		EVENTS.BOSS_DYING : EvtState.new( self, "_evt_boss_dying" ), \
 		EVENTS.BOSS_DEAD : EvtState.new( self, "_evt_boss_dead" )
 	}
@@ -58,6 +60,13 @@ func _ready():
 #		initial_monsters.append( weakref( m ) )
 #		initial_monster_positions.append( m.get_pos() )
 	
+	# connect to respawn areas
+	var areas = get_node( "areas/respawn_areas" ).get_children()
+	for a in areas:
+		a.connect( "body_enter", self, "_on_respawn_body_enter", [ a ] )
+	
+	# connect to boss arena
+	get_node( "areas/boss_arena" ).connect( "entered_boss_arena", self, "_on_entered_boss_arena" )
 	# connect to boss
 	get_node( "walls/boss" ).connect( "boss_dying", self, "_on_boss_dying" )
 	get_node( "walls/boss" ).connect( "boss_dead", self, "_on_boss_dead" )
@@ -86,10 +95,11 @@ func _reset_settings():
 	var children = get_node( "walls" ).get_children()
 	for c in children:
 		if c.is_in_group( "gore" ): c.queue_free()
-	# reset all surviving monsters
-#	var monsters = get_tree().get_nodes_in_group( "monster" )
-#	for m in monsters:
-#		if not m.is_dead(): m.state_nxt = m.STATES.IDLE
+	# boss
+	game.boss_fight = false
+	get_node( "walls/boss" ).hits = 0
+	get_node( "walls/boss" ).reset_position()
+	get_node( "areas/boss_arena" ).reset()
 
 
 func _fixed_process( delta ):
@@ -243,7 +253,45 @@ func _evt_first_transform( delta, evt ):
 	elif evt.state == 3:
 		# finish this event
 		evt.active = false
-		
+
+
+
+func _evt_meet_boss( delta, evt ):
+	if evt.state == -1:
+		# waiting state
+		evt.timer -= delta
+		if evt.timer <= 0:
+			evt.state = evt.state_nxt
+	elif evt.state == 0:
+		# freeze player
+		game.player.get_ref().set_cutscene()
+		# wait a second
+		evt.timer = 1
+		evt.state = -1
+		evt.state_nxt = 1
+	elif evt.state == 1:
+		_boss_text( "You have arrived... Finally!", 2, 2, 2, evt )
+	elif evt.state == 2:
+		_player_text( "You're a big one...", 2, 2, 3, evt )
+	elif evt.state == 3:
+		_boss_text( "I am Satan... Lord of the Underworld!", 2, 2, 4, evt )
+	elif evt.state == 4:
+		_player_text( "... will you squeal like the others?.", 2, 2, 5, evt )
+	elif evt.state == 5:
+		_boss_text( "Ha! Ha! Ha! You are funny!", 2, 2, 6, evt )
+	elif evt.state == 6:
+		_boss_text( "I used to be like you...", 2, 2, 7, evt )
+	elif evt.state == 7:
+		_boss_text( "... before I defeated my predecessor.", 2, 2, 8, evt )
+	elif evt.state == 8:
+		_player_text( "Shut up and fight!", 2, 2, 9, evt )
+	elif evt.state == 9:
+		game.player.get_ref().set_cutscene( false )
+		game.boss_fight = true
+		evt.active = false
+
+
+
 
 func _evt_boss_dying( delta, evt ):
 	if evt.state == -1:
@@ -289,7 +337,7 @@ func _evt_boss_dead( delta, evt ):
 	elif evt.state == 1:
 		_player_text( "I wonder...", 2, 2, 2, evt )
 	elif evt.state == 2:
-		_player_text( "... should I take his form?", 5, 5, 3, evt )
+		_player_text( "... should I take his form?", 4, 4, 3, evt )
 	elif evt.state == 3:
 		if game.main != null:
 			game.main.act_nxt = "res://scenes/act_3/act_3.tscn"
@@ -360,9 +408,11 @@ func _on_endtimer_timeout():
 
 
 
+func _on_entered_boss_arena():
+	events[EVENTS.MEET_BOSS].active = true
+
 func _on_boss_dying():
 	events[EVENTS.BOSS_DYING].active = true
-	pass
 
 
 func _on_boss_dead():
@@ -391,6 +441,7 @@ func _boss_text( msg, ttext, ttimer, nxt, evt ):
 func _create_text( target, color, msg, ttext, ttimer, nxt, evt, offsetpos = Vector2( 0, -30 ) ):
 	var t = text_scn.instance()
 	t.set_text( msg )
+	t.connect( "interrupted", self, "_on_text_interrupted", [evt] )
 	t.add_color_override("font_color", color )
 	t.target_node = target
 	t.set_offsetpos( offsetpos )
@@ -401,31 +452,34 @@ func _create_text( target, color, msg, ttext, ttimer, nxt, evt, offsetpos = Vect
 	evt.state_nxt = nxt
 	t = null
 
+func _on_text_interrupted(evt):
+	evt.timer = 0
 
 
-func _on_monsters_2_body_enter( body ):
+#func _on_monsters_2_body_enter( body ):
+#	if game.player != null and body == game.player.get_ref():
+#		var monsters = get_tree().get_nodes_in_group( "m2" )
+#		for m in monsters:
+#			if not m.is_dead(): m.state_nxt = m.STATES.ATTACK
+
+
+#-----------------------------------------------------
+# function called to update respawn area
+#-----------------------------------------------------
+func _on_respawn_body_enter( body, area ):
 	if game.player != null and body == game.player.get_ref():
-		var monsters = get_tree().get_nodes_in_group( "m2" )
-		for m in monsters:
-			if not m.is_dead(): m.state_nxt = m.STATES.ATTACK
-
-
-func _on_respawn_1_body_enter( body ):
-	print( "body entered: ", body.get_name() )
-	if game.player != null and body == game.player.get_ref():
-		print( "it is the player" )
-		game.player_spawnpos = get_node( "areas/respawn_1" ).get_global_pos()
-	pass # replace with function body
+		game.player_spawnpos = area.get_global_pos()
 
 
 
 
 
-func _on_monsters_3_body_enter( body ):
-	if game.player != null and body == game.player.get_ref():
-		var monsters = get_tree().get_nodes_in_group( "m3" )
-		for m in monsters:
-			if not m.is_dead(): m.state_nxt = m.STATES.ATTACK
+#func _on_monsters_3_body_enter( body ):
+#	if game.player != null and body == game.player.get_ref():
+#		var monsters = get_tree().get_nodes_in_group( "m3" )
+#		for m in monsters:
+#			if not m.is_dead(): m.state_nxt = m.STATES.ATTACK
+
 
 func _on_monsters_body_enter( body, group ):
 	if game.player != null and body == game.player.get_ref():

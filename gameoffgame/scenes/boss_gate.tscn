@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=1]
+[gd_scene load_steps=16 format=1]
 
 [ext_resource path="res://scripts/boss_gate.gd" type="Script" id=1]
 [ext_resource path="res://assets/boss_gate.png" type="Texture" id=2]
@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 5, 32 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=14]
 
 resource/name = "hit_1"
 length = 0.3
@@ -37,7 +37,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 
 resource/name = "hit_2"
 length = 0.3
@@ -66,7 +66,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=15]
 
 resource/name = "hit_3"
 length = 0.3
@@ -95,7 +95,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=5]
 
 resource/name = "hit_4"
 length = 0.4
@@ -164,9 +164,8 @@ tracks/5/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=6]
 
-resource/name = "none"
 length = 1.0
 loop = false
 step = 0.1
@@ -221,35 +220,40 @@ tracks/4/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 7, 48 )
 
-[sub_resource type="ConvexPolygonShape2D" id=9]
+[sub_resource type="ConvexPolygonShape2D" id=8]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 20, 10, 20, -1, 52, -1, 53, 3, 53, 35, 41, 35 )
 
-[sub_resource type="ConvexPolygonShape2D" id=10]
+[sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 19, 36, 19, 12, 20, 10, 41, 35, 38, 36 )
 
-[sub_resource type="ConvexPolygonShape2D" id=11]
+[sub_resource type="ConvexPolygonShape2D" id=10]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 24, 57, 43, 48, 54, 51, 66, 66, 53, 75, 37, 72 )
 
-[sub_resource type="ConvexPolygonShape2D" id=12]
+[sub_resource type="ConvexPolygonShape2D" id=11]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 41, -19, 55, -28, 59, -22, 43, -15 )
 
-[sub_resource type="ConvexPolygonShape2D" id=13]
+[sub_resource type="ConvexPolygonShape2D" id=12]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 58, 2, 58, -1, 65, -7, 70, -7, 72, -3, 67, 1 )
+
+[sub_resource type="ConvexPolygonShape2D" id=13]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 79, -48, 96, 11, 78, 83, 8, 75, 9, -45 )
 
 [node name="boss_gate" type="StaticBody2D"]
 
@@ -289,11 +293,11 @@ __meta__ = {
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/hit_1 = SubResource( 5 )
-anims/hit_2 = SubResource( 6 )
-anims/hit_3 = SubResource( 7 )
-anims/hit_4 = SubResource( 8 )
-anims/none = SubResource( 2 )
+anims/hit_1 = SubResource( 14 )
+anims/hit_2 = SubResource( 3 )
+anims/hit_3 = SubResource( 15 )
+anims/hit_4 = SubResource( 5 )
+anims/none = SubResource( 6 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -301,9 +305,10 @@ autoplay = "none"
 
 [node name="hit" type="Area2D" parent="."]
 
+visibility/visible = false
 transform/pos = Vector2( -5, 63 )
 input/pickable = true
-shapes/0/shape = SubResource( 4 )
+shapes/0/shape = SubResource( 7 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 8, -48 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -317,7 +322,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hit"]
 
 transform/pos = Vector2( 8, -48 )
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -327,19 +332,19 @@ __meta__ = {
 [node name="rock_pieces" type="StaticBody2D" parent="."]
 
 input/pickable = false
-shapes/0/shape = SubResource( 9 )
+shapes/0/shape = SubResource( 8 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 10 )
+shapes/1/shape = SubResource( 9 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
-shapes/2/shape = SubResource( 11 )
+shapes/2/shape = SubResource( 10 )
 shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/2/trigger = false
-shapes/3/shape = SubResource( 12 )
+shapes/3/shape = SubResource( 11 )
 shapes/3/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/3/trigger = false
-shapes/4/shape = SubResource( 13 )
+shapes/4/shape = SubResource( 12 )
 shapes/4/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/4/trigger = false
 collision/layers = 3
@@ -380,8 +385,32 @@ polygon = Vector2Array( 58, 2, 58, -1, 65, -7, 70, -7, 72, -3, 67, 1 )
 shape_range = Vector2( 4, 4 )
 trigger = false
 
+[node name="cross_game" type="Area2D" parent="."]
+
+visibility/visible = false
+input/pickable = true
+shapes/0/shape = SubResource( 13 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="cross_game"]
+
+build_mode = 0
+polygon = Vector2Array( 9, -45, 8, 75, 78, 83, 96, 11, 79, -48 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
 [connection signal="finished" from="anim" to="." method="_on_anim_finished"]
 
 [connection signal="area_enter" from="hit" to="." method="_on_hit_area_enter"]
+
+[connection signal="body_enter" from="cross_game" to="." method="_on_cross_game_body_enter"]
 
 

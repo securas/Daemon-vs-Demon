@@ -31,7 +31,7 @@ const CHAR_SCENES = { \
 enum WEAPONS { NONE, SWORD, GUN }
 var player = null
 var player_spawnpos = Vector2()
-var player_char = PLAYER_CHAR.HUMAN_SWORD
+var player_char = PLAYER_CHAR.MONSTER_2 #HUMAN_SWORD
 
 #---------------------------
 # camera

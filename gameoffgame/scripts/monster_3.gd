@@ -58,7 +58,7 @@ func set_external_force( force, duration ):
 
 
 func _ready():
-	if navigation_nodepath != null:
+	if navigation_nodepath != null and not navigation_nodepath.is_empty():
 		navigation = get_node( navigation_nodepath )
 	navcontrol = navcontrol_script.new( 1, navigation )
 	navcontrol.interval = 1
