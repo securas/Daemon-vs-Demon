@@ -279,7 +279,6 @@ __meta__ = {
 [node name="attack_area" type="Area2D" parent="."]
 
 editor/display_folded = true
-visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 9 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )

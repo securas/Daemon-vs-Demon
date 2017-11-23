@@ -28,6 +28,9 @@ var neighbours = []
 var external_impulse = Vector2()
 var external_impulse_timer = 0
 
+
+onready var _initial_position = get_global_pos()
+
 # wandering area
 
 
@@ -60,7 +63,10 @@ func _fixed_process(delta):
 	state_cur = state_nxt
 	
 	if state_cur == STATES.IDLE:
-		# do nothing
+		vel *= 0.7
+		steering_force = steering_control.steering_and_arriving( \
+					get_global_pos(), _initial_position, 
+					vel, 10, delta )
 		pass
 	elif state_cur == STATES.WANDER:
 		steering_force = steering_control.wander( vel, 10, 5 )
@@ -77,9 +83,12 @@ func _fixed_process(delta):
 			steering_force = steering_control.steering_and_arriving( \
 					get_global_pos(), game.player.get_ref().get_global_pos(), 
 					vel, 10, delta )
-			if not _player_in_patrol_area():
-				if patrol_area != null: state_nxt = STATES.WANDER
-				else: state_nxt = STATES.IDLE
+			#if not _player_in_patrol_area():
+			#	if patrol_area != null: state_nxt = STATES.WANDER
+			#	else: state_nxt = STATES.IDLE
+		else:
+			if patrol_area != null: state_nxt = STATES.WANDER
+			else: state_nxt = STATES.IDLE
 		# flocking behavior
 		flocking_force = steering_control.flocking( \
 				self, neighbours, 10000, 1, 1 ) # 10000
@@ -146,10 +155,10 @@ func _fixed_process(delta):
 			else:
 				#print( get_name(), ": was too late " )
 				state_nxt = STATES.IDLE
-		pass
+		
 	
 	# bounded area
-	if patrol_area != null and state_cur != STATES.DEAD:
+	if patrol_area != null and state_cur != STATES.DEAD and state_cur != STATES.ATTACK:
 		bound_force = steering_control.rect_bound( get_global_pos(), \
 				vel, patrol_shape, 5, 50, delta )
 	
@@ -304,8 +313,13 @@ func _on_finished_killing_player_scene():
 	get_node( "killtimer" ).start()
 	
 func _on_killtimer_timeout():
+	if patrol_area != null:
+		state_nxt = STATES.WANDER
+	else:
+		state_nxt = STATES.IDLE
 	set_fixed_process( true )
 	emit_signal( "finished_kill" )
+	set_pos( _initial_position )
 	pass # replace with function body
 
 func _change_to_item():
@@ -328,6 +342,7 @@ func _change_to_item():
 
 
 func _on_attack_area_body_enter( body ):
+	#print( "monster_1: area attack" )
 	if game.player != null and body == game.player.get_ref() and not is_dead():
 		state_nxt = STATES.ATTACK
 	pass # replace with function body

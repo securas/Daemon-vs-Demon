@@ -31,7 +31,7 @@ const CHAR_SCENES = { \
 enum WEAPONS { NONE, SWORD, GUN }
 var player = null
 var player_spawnpos = Vector2()
-var player_char = PLAYER_CHAR.MONSTER_2 #HUMAN_SWORD
+var player_char = PLAYER_CHAR.HUMAN_SWORD
 
 #---------------------------
 # camera
@@ -50,8 +50,10 @@ var main = null
 var pause_timer
 
 
-
-
+#---------------------------
+# control floor
+#---------------------------
+var floor_tilemap = null
 
 
 
@@ -112,3 +114,10 @@ func check_fall_area( obj, pos ):
 					return 1
 				return -1
 	return 0
+
+
+func get_floor_at( gpos ):
+	if floor_tilemap != null and floor_tilemap.get_ref() != null:
+		var tile_coordinates = floor_tilemap.get_ref().world_to_map( gpos )
+		return floor_tilemap.get_ref().get_cell( tile_coordinates.x, tile_coordinates.y )
+	return -1

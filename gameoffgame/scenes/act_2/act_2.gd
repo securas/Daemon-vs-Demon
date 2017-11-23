@@ -54,6 +54,9 @@ func _ready():
 	if game.player != null and game.player.get_ref() != null:
 		game.player_spawnpos = game.player.get_ref().get_global_pos()
 	
+	# register floor tilemap
+	game.floor_tilemap = weakref( get_node( "base_ground" ) )
+	
 	# initial monster positions
 #	var monsters = get_tree().get_nodes_in_group( "monster" )
 #	for m in monsters:
@@ -469,6 +472,9 @@ func _on_text_interrupted(evt):
 func _on_respawn_body_enter( body, area ):
 	if game.player != null and body == game.player.get_ref():
 		game.player_spawnpos = area.get_global_pos()
+		if scene > 1:
+			game.player.get_ref().transform( game.PLAYER_CHAR.HUMAN_SWORD )
+			#game.player_char = game.PLAYER_CHAR.HUMAN_SWORD
 
 
 

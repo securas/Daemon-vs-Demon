@@ -39,6 +39,8 @@ var external_impulse_timer = 0
 # falling
 var _is_falling = false
 
+onready var _initial_position = get_global_pos()
+
 func _ready():
 	steering_control.max_vel = 80
 	steering_control.max_force = 500
@@ -62,10 +64,15 @@ func _fixed_process(delta):
 	
 	if state_cur == STATES.IDLE:
 		anim_nxt = "idle"
+		vel *= 0.7
+		steering_force = steering_control.steering_and_arriving( \
+					get_global_pos(), _initial_position, 
+					vel, 10, delta )
 		# do nothing
 		pass
 	elif state_cur == STATES.WANDER:
 		steering_force = steering_control.wander( vel, 10, 5 )
+		
 		# flocking behavior
 		flocking_force = steering_control.flocking( \
 				self, neighbours, 10000, 1, 1 ) # 10000
@@ -79,9 +86,12 @@ func _fixed_process(delta):
 			steering_force = steering_control.steering_and_arriving( \
 					get_global_pos(), game.player.get_ref().get_global_pos(), 
 					vel, 10, delta )
-			if not _player_in_patrol_area():
-				if patrol_area != null: state_nxt = STATES.WANDER
-				else: state_nxt = STATES.IDLE
+			#if not _player_in_patrol_area():
+			#	if patrol_area != null: state_nxt = STATES.WANDER
+			#	else: state_nxt = STATES.IDLE
+		else:
+			if patrol_area != null: state_nxt = STATES.WANDER
+			else: state_nxt = STATES.IDLE
 		# flocking behavior
 		flocking_force = steering_control.flocking( \
 				self, neighbours, 10000, 1, 1 ) # 10000
@@ -151,13 +161,14 @@ func _fixed_process(delta):
 				state_nxt = STATES.IDLE
 		pass
 	# bounded area
-	if patrol_area != null:
+	if state_cur != STATES.ATTACK and state_cur != STATES.DEAD and patrol_area != null:
 		bound_force = steering_control.rect_bound( get_global_pos(), \
 				vel, patrol_shape, 5, 50, delta )
 	
 	# apply all forces
 	var force = steering_force + flocking_force + bound_force
 	force = steering_control.truncate( force, steering_control.max_force )
+	
 	vel += force * delta
 	if not _is_falling:
 		vel = steering_control.truncate( vel, steering_control.max_vel )
@@ -243,6 +254,7 @@ func _on_finished_killing_player_scene():
 func _on_killtimer_timeout():
 	set_fixed_process( true )
 	emit_signal( "finished_kill" )
+	set_pos( _initial_position )
 	pass # replace with function body
 
 func _get_player():

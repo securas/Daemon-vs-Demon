@@ -305,6 +305,7 @@ tracks/3/keys = {
 
 [node name="player_human" type="Sprite"]
 
+visibility/light_mask = 2
 texture = ExtResource( 1 )
 offset = Vector2( 0, -6 )
 vframes = 12

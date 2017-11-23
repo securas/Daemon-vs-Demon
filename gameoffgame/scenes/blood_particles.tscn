@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/blood_particles.png" type="Texture" id=1]
 [ext_resource path="res://assets/blood_splatter.png" type="Texture" id=2]
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id=2]
 
 script/source = "extends Particles2D
 
@@ -12,10 +12,18 @@ func _ready():
 	get_node( \"Sprite\" ).set_frame( randi() % 4 )
 	get_node( \"Sprite\" ).set_global_rot( 0 )
 
-
+func _show_splatter():
+	# check if there is a floor beneath the point where the splatter should appear
+	var floor_tile = game.get_floor_at( get_pos() + Vector2( 5, 49 ) )
+	if floor_tile != -1:
+		var scn = preload( \"res://scenes/blood_splatter.tscn\" )
+		var splatter = scn.instance()
+		splatter.set_pos( get_pos() + Vector2( 5, 49 ).rotated( get_rot() ) )
+		splatter.set_frame( randi() % 4 )
+		get_parent().add_child( splatter )
 "
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=1]
 
 script/source = "extends Sprite
 
@@ -65,7 +73,19 @@ tracks/1/keys = {
 "times": FloatArray( 0, 0.2 ),
 "transitions": FloatArray( 1, 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ false, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0.2 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_show_splatter"
+} ]
 }
 
 [node name="blood_particles" type="Particles2D"]
@@ -97,15 +117,16 @@ params/hue_variation = 0.0
 params/anim_speed_scale = 0.0
 params/anim_initial_pos = 0.0
 randomness/anim_initial_pos = 1.0
-script/script = SubResource( 1 )
+script/script = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
+visibility/visible = false
 transform/pos = Vector2( 5, 49 )
 texture = ExtResource( 2 )
 vframes = 2
 hframes = 2
-script/script = SubResource( 2 )
+script/script = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
