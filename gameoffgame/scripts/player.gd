@@ -198,12 +198,15 @@ func _player_motion( delta ):
 		#print( "taking input" )
 		var is_idle_x = false
 		var is_idle_y = false
+		var hit_dir = Vector2()
 		if btn_left.check() == 2:
 			vel.x = lerp( vel.x, -MAX_VEL.x, ACCEL.x * delta )
 			sprite_node.set_animation( sprite_node.ANIMS.RUN )
+			hit_dir.x = -MAX_VEL.x
 		elif btn_right.check() == 2:
 			vel.x = lerp( vel.x, MAX_VEL.x, ACCEL.x * delta )
 			sprite_node.set_animation( sprite_node.ANIMS.RUN )
+			hit_dir.x = MAX_VEL.x
 		else:
 			vel.x = lerp( vel.x, 0, 5 * ACCEL.x * delta )
 			is_idle_x = true
@@ -212,9 +215,11 @@ func _player_motion( delta ):
 		if btn_up.check() == 2:
 			vel.y = lerp( vel.y, -MAX_VEL.y, ACCEL.y * delta )
 			sprite_node.set_animation( sprite_node.ANIMS.RUN )
+			hit_dir.y = -MAX_VEL.y
 		elif btn_down.check() == 2:
 			vel.y = lerp( vel.y, MAX_VEL.y, ACCEL.y * delta )
 			sprite_node.set_animation( sprite_node.ANIMS.RUN )
+			hit_dir.y = MAX_VEL.y
 		else:
 			vel.y = lerp( vel.y, 0, 5 * ACCEL.y * delta )
 			is_idle_y = true
@@ -222,11 +227,16 @@ func _player_motion( delta ):
 				vel.y = 0
 		if is_idle_x and is_idle_y:
 			sprite_node.set_animation( sprite_node.ANIMS.IDLE )
+			hit_dir = Vector2( 1, 0 )
+		if hit_dir.x < 0:
+			hit_dir = -hit_dir
+		get_node("rotate_hitbox").set_rot( hit_dir.angle() - PI/2 )
 	else:
 		#print( "waiting for animation to finish" )
 		#print( "anim: ", sprite_node.cur_anim )
 		pass
-
+	
+	#get_node("rotate_hitbox").rotate(vel.angle())
 
 
 

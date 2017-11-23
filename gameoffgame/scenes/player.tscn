@@ -9,15 +9,15 @@
 custom_solver_bias = 0.0
 extents = Vector2( 3, 1 )
 
-[sub_resource type="ConvexPolygonShape2D" id=2]
+[sub_resource type="ConvexPolygonShape2D" id=8]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 15, 1, 6, 2, -2, 2, 2, -10, 12, -18, 24, -12, 24, -3 )
+points = Vector2Array( -6.78683, -8.29393, -14.2097, -19.1963, 11.6785, -19.9476 )
 
-[sub_resource type="ConvexPolygonShape2D" id=3]
+[sub_resource type="ConvexPolygonShape2D" id=9]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 2, -10, 1, -18, 12, -18 )
+points = Vector2Array( 22.2087, 4.92804, -0.900005, 6.16772, -16.0951, 2.63032, -6.78683, -8.29393, 11.6785, -19.9476, 27.8919, -16.5287, 35.1987, -3.88661 )
 
 [sub_resource type="RectangleShape2D" id=4]
 
@@ -62,6 +62,9 @@ script/script = ExtResource( 1 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="rotate_hitbox" type="Node2D" parent="."]
 
@@ -71,12 +74,11 @@ __meta__ = {
 
 [node name="sword_hitbox" type="Area2D" parent="rotate_hitbox"]
 
-visibility/visible = false
 input/pickable = true
-shapes/0/shape = SubResource( 2 )
+shapes/0/shape = SubResource( 8 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 3 )
+shapes/1/shape = SubResource( 9 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -92,7 +94,7 @@ __meta__ = {
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="rotate_hitbox/sword_hitbox"]
 
 build_mode = 0
-polygon = Vector2Array( 1, -18, 12, -18, 24, -12, 24, -3, 15, 1, 6, 2, -2, 2, 2, -10 )
+polygon = Vector2Array( -14.2097, -19.1963, 11.6785, -19.9476, 27.8919, -16.5287, 35.1987, -3.88661, 22.2087, 4.92804, -0.900005, 6.16772, -16.0951, 2.63032, -6.78683, -8.29393 )
 shape_range = Vector2( 0, 1 )
 trigger = false
 __meta__ = {

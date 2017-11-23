@@ -1,6 +1,6 @@
 extends Node2D
 
-var num_drops = 1200
+var num_drops = 600#1200
 var extent = Vector2( 240, 135 )
 var parent_node = "../"
 var rain_drop_scn = preload( "res://scenes/rain_drop.tscn" )
@@ -35,6 +35,7 @@ func stop():
 	pass
 
 func _ready():
+	return
 	randomize()
 	print( "rain parent: ", get_node( parent_node ).get_name() )
 	# create drop instances

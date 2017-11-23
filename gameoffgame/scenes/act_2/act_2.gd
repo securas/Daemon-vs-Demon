@@ -546,6 +546,7 @@ func _on_text_interrupted(evt):
 # function called to update respawn area
 #-----------------------------------------------------
 func _on_respawn_body_enter( body, area ):
+	print( body.get_name(), "entered ", area.get_name() )
 	if game.player != null and body == game.player.get_ref():
 		game.player_spawnpos = area.get_global_pos()
 		if scene > 1:
