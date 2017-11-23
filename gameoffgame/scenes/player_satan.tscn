@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=1]
 
-[ext_resource path="res://scripts/player_monster_3.gd" type="Script" id=1]
+[ext_resource path="res://scripts/player_satan.gd" type="Script" id=1]
 [ext_resource path="res://assets/boss.png" type="Texture" id=2]
 [ext_resource path="res://assets/player.png" type="Texture" id=3]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 
 resource/name = "idle"
 length = 1.0
@@ -21,7 +21,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 
 resource/name = "arrive"
 length = 0.8
@@ -68,7 +68,7 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 
 resource/name = "leave"
 length = 0.8
@@ -155,19 +155,19 @@ __meta__ = {
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/idle = SubResource( 2 )
+anims/idle = SubResource( 1 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
-autoplay = ""
+autoplay = "idle"
 
 [node name="anim_fx" type="AnimationPlayer" parent="."]
 
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/arrive = SubResource( 4 )
-anims/leave = SubResource( 5 )
+anims/arrive = SubResource( 2 )
+anims/leave = SubResource( 3 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]

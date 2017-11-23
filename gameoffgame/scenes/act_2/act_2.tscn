@@ -606,7 +606,7 @@ __meta__ = {
 
 [node name="player" parent="walls" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 4000, 280 )
+transform/pos = Vector2( 4008, 296 )
 
 [node name="rain" parent="walls" instance=ExtResource( 7 )]
 
@@ -694,39 +694,32 @@ transform/pos = Vector2( 665, 96 )
 [node name="monster_3" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 3512, 24 )
-navigation_nodepath = NodePath("../../nav_maze_1")
 
 [node name="monster_31" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 3544, 40 )
-navigation_nodepath = NodePath("../../nav_maze_1")
 
 [node name="monster_41" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 3456, 416 )
-navigation_nodepath = NodePath("../../navigation")
 
 [node name="monster_42" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 3488, 432 )
-navigation_nodepath = NodePath("../../navigation")
 
 [node name="monster_43" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 3744, 536 )
-navigation_nodepath = NodePath("../../nav_maze_2")
 
 [node name="monster_44" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 3784, 568 )
-navigation_nodepath = NodePath("../../nav_maze_2")
 
 [node name="dead_monster_45" parent="walls" groups=[
 "dead_monster",
 ] instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 3784, 296 )
-navigation_nodepath = NodePath("../../nav_maze_2")
 
 [node name="monster_1_1" parent="walls" instance=ExtResource( 14 )]
 
@@ -1206,12 +1199,10 @@ transform/pos = Vector2( 1667, 539 )
 [node name="monster_3 2" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 2560, 344 )
-navigation_nodepath = NodePath("../../nav_bridge")
 
 [node name="monster_33" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 2568, 360 )
-navigation_nodepath = NodePath("../../nav_bridge")
 
 [node name="box_coin 3" parent="walls" instance=ExtResource( 16 )]
 
@@ -1347,32 +1338,26 @@ transform/pos = Vector2( 2912, 520 )
 [node name="monster_3 3" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 2664, 576 )
-navigation_nodepath = NodePath("../../nav_walls")
 
 [node name="monster_34" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 2651, 549 )
-navigation_nodepath = NodePath("../../nav_walls")
 
 [node name="monster_35" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 2648, 615 )
-navigation_nodepath = NodePath("../../nav_walls")
 
 [node name="monster_36" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 3067, 550 )
-navigation_nodepath = NodePath("../../nav_walls")
 
 [node name="monster_37" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 3087, 577 )
-navigation_nodepath = NodePath("../../nav_walls")
 
 [node name="monster_38" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 3059, 606 )
-navigation_nodepath = NodePath("../../nav_walls")
 
 [node name="monster_116" parent="walls" instance=ExtResource( 14 )]
 
@@ -1934,8 +1919,8 @@ __meta__ = {
 }
 
 [node name="falling_area_up" type="Area2D" parent="areas/falling" groups=[
-"up_fall",
 "fall_area",
+"up_fall",
 ]]
 
 editor/display_folded = true
@@ -2069,8 +2054,8 @@ __meta__ = {
 }
 
 [node name="falling_area_down" type="Area2D" parent="areas/falling" groups=[
-"down_fall",
 "fall_area",
+"down_fall",
 ]]
 
 editor/display_folded = true
@@ -2952,9 +2937,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[connection signal="switch_flipped" from="walls/switch_left" to="ground/stuff/bridge" method="invert_visibility"]
-
 [connection signal="switch_flipped" from="walls/switch_left" to="." method="_on_switch_left_switch_flipped"]
+
+[connection signal="switch_flipped" from="walls/switch_left" to="ground/stuff/bridge" method="invert_visibility"]
 
 [connection signal="switch_flipped" from="walls/switch_right" to="ground/stuff/bridge" method="invert_visibility"]
 

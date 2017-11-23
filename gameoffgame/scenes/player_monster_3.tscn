@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/monster_3_player.png" type="Texture" id=2]
 [ext_resource path="res://assets/player.png" type="Texture" id=3]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=1]
 
 resource/name = "fire"
 length = 0.9
@@ -33,9 +33,8 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=2]
 
-resource/name = "idle"
 length = 0.8
 loop = true
 step = 0.2
@@ -50,9 +49,8 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 
-resource/name = "run"
 length = 0.8
 loop = true
 step = 0.1
@@ -79,9 +77,8 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 
-resource/name = "arrive"
 length = 0.8
 loop = false
 step = 0.1
@@ -126,9 +123,8 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 
-resource/name = "leave"
 length = 0.8
 loop = false
 step = 0.1
@@ -214,9 +210,9 @@ __meta__ = {
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/fire = SubResource( 5 )
-anims/idle = SubResource( 1 )
-anims/run = SubResource( 2 )
+anims/fire = SubResource( 1 )
+anims/idle = SubResource( 2 )
+anims/run = SubResource( 3 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -227,8 +223,8 @@ autoplay = ""
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/arrive = SubResource( 3 )
-anims/leave = SubResource( 4 )
+anims/arrive = SubResource( 4 )
+anims/leave = SubResource( 5 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]

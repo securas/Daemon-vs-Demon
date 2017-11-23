@@ -2,6 +2,7 @@ extends Area2D
 signal finished_kill
 var state = 0
 var killing_player = false
+var _is_player = false
 func _ready():
 	set_fixed_process( true )
 
@@ -15,15 +16,28 @@ func _fixed_process(delta):
 		frame_count += 1
 		if frame_count < 2: return
 		for b in get_overlapping_areas():
-			if _get_player() and b.get_parent() == game.player.get_ref():
-				# kill player
-				killing_player = true
-				game.player.get_ref().die( self )
-				# instance death scene
-				var death = preload( "res://scenes/explosion_kill_player.tscn" ).instance()
-				death.get_node( "Sprite" ).set_global_pos( get_global_pos() )
-				death.connect( "finished", self, "_on_finished_killing_player_scene" )
-				get_parent().add_child( death )
+			if not _is_player:
+				if _get_player() and b.get_parent() == game.player.get_ref():
+					# kill player
+					killing_player = true
+					game.player.get_ref().die( self )
+					# instance death scene
+					var death = preload( "res://scenes/explosion_kill_player.tscn" ).instance()
+					death.get_node( "Sprite" ).set_global_pos( get_global_pos() )
+					death.connect( "finished", self, "_on_finished_killing_player_scene" )
+					get_parent().add_child( death )
+			else:
+				print( b.get_name() )
+				if b.is_in_group( "damagebox" ) and b.get_parent().is_in_group( "monster" ):
+					var monster = b.get_parent()
+					print( "explosion hit: ", monster.get_name() )
+					# apply force to monster during 0.2 seconds
+					monster.set_external_force( \
+							10000 * ( monster.get_global_pos() - get_global_pos() ).normalized(), \
+							0.2 )
+					# hit monster
+					monster.get_hit( self )
+				pass
 		state = 1
 		#queue_free()
 
