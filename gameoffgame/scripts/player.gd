@@ -227,9 +227,11 @@ func _player_motion( delta ):
 				vel.y = 0
 		if is_idle_x and is_idle_y:
 			sprite_node.set_animation( sprite_node.ANIMS.IDLE )
-			hit_dir = Vector2( 1, 0 )
+			hit_dir = Vector2( dir_cur, 0 )
 		if hit_dir.x < 0:
 			hit_dir = -hit_dir
+		elif hit_dir.x == 0 and dir_cur == -1:
+			hit_dir.y = -hit_dir.y
 		get_node("rotate_hitbox").set_rot( hit_dir.angle() - PI/2 )
 	else:
 		#print( "waiting for animation to finish" )

@@ -9,12 +9,12 @@
 custom_solver_bias = 0.0
 extents = Vector2( 3, 1 )
 
-[sub_resource type="ConvexPolygonShape2D" id=8]
+[sub_resource type="ConvexPolygonShape2D" id=2]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -6.78683, -8.29393, -14.2097, -19.1963, 11.6785, -19.9476 )
 
-[sub_resource type="ConvexPolygonShape2D" id=9]
+[sub_resource type="ConvexPolygonShape2D" id=3]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 22.2087, 4.92804, -0.900005, 6.16772, -16.0951, 2.63032, -6.78683, -8.29393, 11.6785, -19.9476, 27.8919, -16.5287, 35.1987, -3.88661 )
@@ -75,10 +75,10 @@ __meta__ = {
 [node name="sword_hitbox" type="Area2D" parent="rotate_hitbox"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 8 )
+shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 9 )
+shapes/1/shape = SubResource( 3 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/1/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -103,6 +103,7 @@ __meta__ = {
 
 [node name="falling_area" type="Area2D" parent="rotate_hitbox"]
 
+transform/pos = Vector2( 0, -1 )
 input/pickable = true
 shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -2, 1 )
@@ -113,9 +114,6 @@ linear_damp = 0.1
 angular_damp = 1.0
 collision/layers = 524288
 collision/mask = 524288
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rotate_hitbox/falling_area"]
 

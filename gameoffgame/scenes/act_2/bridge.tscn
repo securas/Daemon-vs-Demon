@@ -123,11 +123,10 @@ region_rect = Rect2( 200, 64, 96, 40 )
 script/script = SubResource( 2 )
 
 [node name="fall_area" type="Area2D" parent="." groups=[
-"fall_area",
 "down_fall",
+"fall_area",
 ]]
 
-visibility/visible = false
 transform/pos = Vector2( -1, -18 )
 input/pickable = true
 shapes/0/shape = SubResource( 3 )

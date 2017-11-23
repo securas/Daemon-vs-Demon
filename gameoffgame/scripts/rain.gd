@@ -1,8 +1,11 @@
 extends Node2D
+export( NodePath ) var RainParent = null
+export( NodePath ) var GroundNode = null
 
 var num_drops = 600#1200
 var extent = Vector2( 240, 135 )
-var parent_node = "../"
+var parent_node#= "../"
+var ground_node
 var rain_drop_scn = preload( "res://scenes/rain_drop.tscn" )
 var drops = []
 class Drop:
@@ -35,9 +38,11 @@ func stop():
 	pass
 
 func _ready():
-	return
+	#return
 	randomize()
-	print( "rain parent: ", get_node( parent_node ).get_name() )
+	parent_node = get_node( RainParent )
+	ground_node = get_node( GroundNode )
+	print( "rain parent: ", parent_node.get_name() )
 	# create drop instances
 	for n in range( num_drops ):
 		var d = Drop.new()
@@ -54,7 +59,7 @@ func _fixed_process( delta ):
 	for d in drops:
 		if not d.active: continue
 		if not d.has_parent:
-			get_node( parent_node ).add_child( d.instance )
+			parent_node.add_child( d.instance )
 			d.has_parent = true
 			_set_random_pos( d )
 		if not _stop_rain:
@@ -77,20 +82,20 @@ func _set_random_pos( d ):
 	d.update_rate = rand_range( 0.02, 0.1 )
 	#print( offset )
 	#print( "updating position: ", d.instance.get_global_pos() )
+	if _check_ground( gpos + offset + Vector2( 0, -3 ) ):
+		d.final_frame = 27
+	else:
+		d.final_frame = 22
+
 	
-	# check if rain drop is inside a fall area
-	var space_state = get_world_2d().get_direct_space_state()
-	var results = space_state.intersect_point( gpos + offset + Vector2( 0, -3 ), 32, [], 524288, 16 )
-	if not results.empty():
-		#print( results[0].collider.is_in_group( "fall_area" ) )
-		if results[0].collider.is_in_group( "fall_area" ):
-			d.final_frame = 22
-		else:
-			d.final_frame = 27
-	
+
 		
 	#var results = space_state.intersect_ray( get_global_pos(), game.player.get_ref().get_global_pos(), [ self ] )
-
+func _check_ground( gpos ):
+	var tilepos = ground_node.world_to_map( gpos )
+	if ground_node.get_cell( tilepos.x, tilepos.y ) == -1:
+		return false
+	return true
 
 
 
