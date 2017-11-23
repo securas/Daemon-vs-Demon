@@ -222,10 +222,11 @@ __meta__ = {
 }
 
 [node name="itemarea" type="Area2D" parent="." groups=[
-"monster_2",
 "blood",
+"monster_2",
 ]]
 
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 8 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -4 )
@@ -281,6 +282,7 @@ autostart = false
 
 [node name="collision" type="CollisionShape2D" parent="."]
 
+visibility/visible = false
 transform/pos = Vector2( 0, -1 )
 shape = SubResource( 1 )
 trigger = false

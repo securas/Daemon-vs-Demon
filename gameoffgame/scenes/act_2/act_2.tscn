@@ -1,4 +1,4 @@
-[gd_scene load_steps=216 format=1]
+[gd_scene load_steps=229 format=1]
 
 [ext_resource path="res://scenes/act_2/act_2.gd" type="Script" id=1]
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=2]
@@ -17,15 +17,41 @@
 [ext_resource path="res://scenes/monster_3.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/box_coin.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/monster_2.tscn" type="PackedScene" id=17]
-[ext_resource path="res://fonts/godot_tinyfont.fnt" type="BitmapFont" id=18]
-[ext_resource path="res://scenes/camera.tscn" type="PackedScene" id=19]
-[ext_resource path="res://scenes/boss_arena.gd" type="Script" id=20]
+[ext_resource path="res://scenes/blood_splatter.tscn" type="PackedScene" id=18]
+[ext_resource path="res://fonts/godot_tinyfont.fnt" type="BitmapFont" id=19]
+[ext_resource path="res://scenes/camera.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scripts/patrol_and_spawn.gd" type="Script" id=21]
+[ext_resource path="res://scenes/boss_arena.gd" type="Script" id=22]
+
+[sub_resource type="NavigationPolygon" id=198]
+
+vertices = Vector2Array( 2616, 328, 2616, 368, 2448, 368, 2408, 328, 2408, 488, 2448, 528, 2312, 528, 2312, 488 )
+polygons = [ IntArray( 0, 1, 2, 3 ), IntArray( 4, 3, 2, 5 ), IntArray( 4, 5, 6, 7 ) ]
+outlines = [ Vector2Array( 2616, 328, 2408, 328, 2408, 488, 2312, 488, 2312, 528, 2448, 528, 2448, 368, 2616, 368 ) ]
+
+[sub_resource type="NavigationPolygon" id=200]
+
+vertices = Vector2Array( 2856, 552, 2856, 536, 3072, 512, 3096, 512, 2984, 584, 2960, 584, 2904, 568, 2984, 608, 3120, 632, 2624, 632, 2960, 608, 2904, 608, 2864, 608, 3096, 496, 3120, 448, 2944, 448, 3072, 496, 2944, 496, 2832, 536, 2688, 504, 2824, 496, 2688, 496, 2624, 448, 2824, 448, 2664, 496, 2664, 504, 2864, 568, 2832, 552 )
+polygons = [ IntArray( 0, 1, 2, 3, 4, 5, 6 ), IntArray( 7, 8, 9, 10 ), IntArray( 11, 10, 9 ), IntArray( 12, 11, 9 ), IntArray( 3, 13, 14, 8 ), IntArray( 15, 14, 13, 16 ), IntArray( 3, 8, 7, 4 ), IntArray( 17, 15, 16 ), IntArray( 16, 2, 1, 18, 19, 17 ), IntArray( 20, 17, 19 ), IntArray( 20, 19, 21 ), IntArray( 22, 23, 20, 21 ), IntArray( 22, 21, 24 ), IntArray( 9, 22, 24, 25 ), IntArray( 26, 12, 9, 25, 19, 27 ), IntArray( 5, 10, 11, 6 ), IntArray( 0, 6, 26, 27 ), IntArray( 19, 18, 27 ) ]
+outlines = [ Vector2Array( 2624, 448, 2824, 448, 2824, 496, 2944, 496, 2944, 448, 3120, 448, 3120, 632, 2624, 632 ), Vector2Array( 2864, 568, 2904, 568, 2904, 608, 2864, 608 ), Vector2Array( 2664, 496, 2664, 504, 2688, 504, 2688, 496 ), Vector2Array( 2832, 536, 2832, 552, 2856, 552, 2856, 536 ), Vector2Array( 3072, 496, 3072, 512, 3096, 512, 3096, 496 ), Vector2Array( 2960, 584, 2960, 608, 2984, 608, 2984, 584 ) ]
 
 [sub_resource type="NavigationPolygon" id=1]
 
-vertices = Vector2Array( 3689, 270, 3689, 242, 3699, 187, 3699, 443, 3764, -3, 3764, 187, 3709, 124, 3772, 516, 3772, 261, 3826, 261, 3826, 569, 3603, 569, 3445, 517, 3603, 639, 3550, 639, 3550, 570, 3390, 570, 3445, 443, 3390, 406, 3409, 406, 3409, 393, 3645, 393, 3646, 313, 3655, 270, 3533, 313, 3533, 301, 3574, 260, 3644, 260, 3517, 301, 3517, 188, 3574, 129, 3442, 188, 3442, 315, 3358, 315, 3389, 261, 3358, 261, 3389, 140, 3404, 140, 3404, 129, 3655, 242, 3644, 124, 3709, 49, 3462, -3, 3462, 49 )
-polygons = [ IntArray( 0, 1, 2, 3 ), IntArray( 4, 5, 2, 6 ), IntArray( 7, 8, 9, 10 ), IntArray( 7, 10, 11, 12 ), IntArray( 11, 13, 14, 15 ), IntArray( 12, 11, 15, 16 ), IntArray( 17, 12, 16, 18, 19 ), IntArray( 17, 19, 20, 21, 3 ), IntArray( 0, 3, 21, 22, 23 ), IntArray( 22, 24, 25, 26, 27, 23 ), IntArray( 26, 25, 28, 29, 30 ), IntArray( 31, 32, 33, 34 ), IntArray( 33, 35, 34 ), IntArray( 31, 34, 36, 37 ), IntArray( 31, 37, 38, 30, 29 ), IntArray( 39, 23, 27, 40 ), IntArray( 1, 39, 40, 6, 2 ), IntArray( 4, 6, 41 ), IntArray( 42, 4, 41, 43 ) ]
-outlines = [ Vector2Array( 3462, -3, 3462, 49, 3709, 49, 3709, 124, 3644, 124, 3644, 260, 3574, 260, 3574, 129, 3404, 129, 3404, 140, 3389, 140, 3389, 261, 3358, 261, 3358, 315, 3442, 315, 3442, 188, 3517, 188, 3517, 301, 3533, 301, 3533, 313, 3646, 313, 3645, 393, 3409, 393, 3409, 406, 3390, 406, 3390, 570, 3550, 570, 3550, 639, 3603, 639, 3603, 569, 3826, 569, 3826, 261, 3772, 261, 3772, 516, 3445, 517, 3445, 443, 3699, 443, 3699, 187, 3764, 187, 3764, -3 ), Vector2Array( 3655, 242, 3689, 242, 3689, 270, 3655, 270 ) ]
+vertices = Vector2Array( 3689, 270, 3689, 242, 3696, 176, 3696, 448, 3712, 88, 3760, 88, 3760, 176, 3712, 136, 3640, 136, 3640, 256, 3655, 242, 3408, 448, 3408, 392, 3648, 392, 3648, 312, 3655, 270, 3536, 312, 3536, 296, 3576, 256, 3520, 296, 3520, 184, 3576, 128, 3440, 184, 3440, 312, 3352, 312, 3384, 256, 3352, 256, 3384, 144, 3400, 144, 3400, 128 )
+polygons = [ IntArray( 0, 1, 2, 3 ), IntArray( 4, 5, 6, 7 ), IntArray( 7, 6, 2, 8 ), IntArray( 9, 8, 2, 10 ), IntArray( 3, 11, 12, 13 ), IntArray( 0, 3, 13, 14, 15 ), IntArray( 14, 16, 17, 18, 9, 15 ), IntArray( 18, 17, 19, 20, 21 ), IntArray( 22, 23, 24, 25 ), IntArray( 24, 26, 25 ), IntArray( 22, 25, 27, 28 ), IntArray( 22, 28, 29, 21, 20 ), IntArray( 10, 15, 9 ), IntArray( 10, 2, 1 ) ]
+outlines = [ Vector2Array( 3712, 88, 3712, 136, 3640, 136, 3640, 256, 3576, 256, 3576, 128, 3400, 128, 3400, 144, 3384, 144, 3384, 256, 3352, 256, 3352, 312, 3440, 312, 3440, 184, 3520, 184, 3520, 296, 3536, 296, 3536, 312, 3648, 312, 3648, 392, 3408, 392, 3408, 448, 3696, 448, 3696, 176, 3760, 176, 3760, 88 ), Vector2Array( 3655, 242, 3689, 242, 3689, 270, 3655, 270 ) ]
+
+[sub_resource type="NavigationPolygon" id=204]
+
+vertices = Vector2Array( 3624, 24, 3624, 16, 3760, 0, 3712, 48, 3464, 0, 3600, 16, 3464, 48, 3600, 24, 3760, 88, 3712, 88 )
+polygons = [ IntArray( 0, 1, 2, 3 ), IntArray( 4, 2, 1, 5 ), IntArray( 6, 4, 5, 7 ), IntArray( 3, 6, 7, 0 ), IntArray( 3, 2, 8, 9 ) ]
+outlines = [ Vector2Array( 3464, 0, 3760, 0, 3760, 88, 3712, 88, 3712, 48, 3464, 48 ), Vector2Array( 3600, 16, 3600, 24, 3624, 24, 3624, 16 ) ]
+
+[sub_resource type="NavigationPolygon" id=205]
+
+vertices = Vector2Array( 3456, 576, 3456, 520, 3808, 520, 3808, 576 )
+polygons = [ IntArray( 0, 1, 2, 3 ) ]
+outlines = [ Vector2Array( 3808, 576, 3808, 520, 3456, 520, 3456, 576 ) ]
 
 [sub_resource type="GDScript" id=2]
 
@@ -51,6 +77,11 @@ func _fixed_process(delta):
 custom_solver_bias = 0.0
 extents = Vector2( 109, 88.9111 )
 
+[sub_resource type="RectangleShape2D" id=206]
+
+custom_solver_bias = 0.0
+extents = Vector2( 56, 37 )
+
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
@@ -69,12 +100,12 @@ extents = Vector2( 22.9034, 33 )
 [sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
-extents = Vector2( 22.9034, 37 )
+extents = Vector2( 102, 37 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=207]
 
 custom_solver_bias = 0.0
-extents = Vector2( 22.9034, 37 )
+extents = Vector2( 48, 37 )
 
 [sub_resource type="RectangleShape2D" id=9]
 
@@ -926,75 +957,90 @@ points = Vector2Array( 3901, 66, 3773, 121, 3773, 78, 3900, 59 )
 custom_solver_bias = 0.0
 points = Vector2Array( 3902, 50, 3900, 59, 3773, 78, 3770, 60, 3775, 47, 3898, 16, 3902, 20 )
 
-[sub_resource type="RectangleShape2D" id=193]
+[sub_resource type="RectangleShape2D" id=179]
 
 custom_solver_bias = 0.0
 extents = Vector2( 144, 76 )
 
-[sub_resource type="RectangleShape2D" id=194]
+[sub_resource type="RectangleShape2D" id=180]
 
 custom_solver_bias = 0.0
 extents = Vector2( 112, 80 )
 
-[sub_resource type="RectangleShape2D" id=195]
+[sub_resource type="RectangleShape2D" id=181]
 
 custom_solver_bias = 0.0
 extents = Vector2( 112, 104 )
 
-[sub_resource type="RectangleShape2D" id=196]
+[sub_resource type="RectangleShape2D" id=182]
 
 custom_solver_bias = 0.0
 extents = Vector2( 80, 80 )
 
-[sub_resource type="RectangleShape2D" id=180]
+[sub_resource type="RectangleShape2D" id=196]
 
 custom_solver_bias = 0.0
-extents = Vector2( 160, 85 )
+extents = Vector2( 209, 112 )
 
-[sub_resource type="RectangleShape2D" id=181]
-
-custom_solver_bias = 0.0
-extents = Vector2( 24, 10 )
-
-[sub_resource type="RectangleShape2D" id=182]
+[sub_resource type="RectangleShape2D" id=197]
 
 custom_solver_bias = 0.0
-extents = Vector2( 423.868, 10 )
+extents = Vector2( 160, 32 )
+
+[sub_resource type="RectangleShape2D" id=199]
+
+custom_solver_bias = 0.0
+extents = Vector2( 33, 67 )
+
+[sub_resource type="RectangleShape2D" id=201]
+
+custom_solver_bias = 0.0
+extents = Vector2( 126, 73 )
+
+[sub_resource type="RectangleShape2D" id=202]
+
+custom_solver_bias = 0.0
+extents = Vector2( 229, 90 )
+
+[sub_resource type="RectangleShape2D" id=203]
+
+custom_solver_bias = 0.0
+extents = Vector2( 336, 98 )
 
 [sub_resource type="RectangleShape2D" id=183]
 
 custom_solver_bias = 0.0
-extents = Vector2( 423.868, 10 )
+extents = Vector2( 160, 85 )
 
 [sub_resource type="RectangleShape2D" id=184]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10.1293, 223.554 )
+extents = Vector2( 24, 10 )
 
 [sub_resource type="RectangleShape2D" id=185]
 
 custom_solver_bias = 0.0
-extents = Vector2( 8, 264 )
+extents = Vector2( 423.868, 10 )
 
 [sub_resource type="RectangleShape2D" id=186]
 
 custom_solver_bias = 0.0
-extents = Vector2( 8, 36 )
+extents = Vector2( 423.868, 10 )
 
 [sub_resource type="RectangleShape2D" id=187]
 
 custom_solver_bias = 0.0
-extents = Vector2( 8, 264 )
+extents = Vector2( 10.1293, 223.554 )
 
 [sub_resource type="RectangleShape2D" id=188]
 
 custom_solver_bias = 0.0
-extents = Vector2( 111, 23 )
+extents = Vector2( 8, 264 )
 
 [sub_resource type="RectangleShape2D" id=189]
 
 custom_solver_bias = 0.0
-extents = Vector2( 104, 23 )
+extents = Vector2( 8, 36 )
 
 [sub_resource type="RectangleShape2D" id=190]
 
@@ -1004,9 +1050,24 @@ extents = Vector2( 8, 264 )
 [sub_resource type="RectangleShape2D" id=191]
 
 custom_solver_bias = 0.0
-extents = Vector2( 8, 264 )
+extents = Vector2( 111, 23 )
 
 [sub_resource type="RectangleShape2D" id=192]
+
+custom_solver_bias = 0.0
+extents = Vector2( 104, 23 )
+
+[sub_resource type="RectangleShape2D" id=193]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 264 )
+
+[sub_resource type="RectangleShape2D" id=194]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 264 )
+
+[sub_resource type="RectangleShape2D" id=195]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 370 )
@@ -1254,7 +1315,7 @@ __meta__ = {
 
 [node name="player" parent="walls" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 1448, 224 )
+transform/pos = Vector2( 168, 96 )
 
 [node name="rain" parent="walls" instance=ExtResource( 7 )]
 
@@ -1262,7 +1323,7 @@ transform/pos = Vector2( 164, 124 )
 
 [node name="box_key" parent="walls" instance=ExtResource( 8 )]
 
-transform/pos = Vector2( 1728, 32 )
+transform/pos = Vector2( 1631, 550 )
 
 [node name="gate" parent="walls" instance=ExtResource( 9 )]
 
@@ -1296,20 +1357,6 @@ transform/pos = Vector2( 0, 4 )
 
 transform/pos = Vector2( 4472, 104 )
 navigation_nodepath = NodePath("")
-
-[node name="boss_navigation" type="Navigation2D" parent="walls"]
-
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="boss fight" type="NavigationPolygonInstance" parent="walls/boss_navigation"]
-
-navpoly = null
-enabled = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="boss_gate" parent="walls" instance=ExtResource( 13 )]
 
@@ -1353,8 +1400,40 @@ transform/pos = Vector2( 665, 96 )
 
 [node name="monster_3" parent="walls" instance=ExtResource( 15 )]
 
-transform/pos = Vector2( 3806, 402 )
+transform/pos = Vector2( 3512, 24 )
+navigation_nodepath = NodePath("../../nav_maze_1")
+
+[node name="monster_31" parent="walls" instance=ExtResource( 15 )]
+
+transform/pos = Vector2( 3544, 40 )
+navigation_nodepath = NodePath("../../nav_maze_1")
+
+[node name="monster_41" parent="walls" instance=ExtResource( 15 )]
+
+transform/pos = Vector2( 3456, 416 )
 navigation_nodepath = NodePath("../../navigation")
+
+[node name="monster_42" parent="walls" instance=ExtResource( 15 )]
+
+transform/pos = Vector2( 3488, 432 )
+navigation_nodepath = NodePath("../../navigation")
+
+[node name="monster_43" parent="walls" instance=ExtResource( 15 )]
+
+transform/pos = Vector2( 3744, 536 )
+navigation_nodepath = NodePath("../../nav_maze_2")
+
+[node name="monster_44" parent="walls" instance=ExtResource( 15 )]
+
+transform/pos = Vector2( 3784, 568 )
+navigation_nodepath = NodePath("../../nav_maze_2")
+
+[node name="dead_monster_45" parent="walls" groups=[
+"dead_monster",
+] instance=ExtResource( 15 )]
+
+transform/pos = Vector2( 3784, 296 )
+navigation_nodepath = NodePath("../../nav_maze_2")
 
 [node name="monster_1_1" parent="walls" instance=ExtResource( 14 )]
 
@@ -1523,6 +1602,724 @@ patrol_area_path = NodePath("../../areas/patrol_areas/patrol_4")
 transform/pos = Vector2( 1800, 232 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_4")
 
+[node name="tiny_1" parent="walls" groups=[
+"gate_monster",
+] instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 1675, 407 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
+
+[node name="tiny_2" parent="walls" groups=[
+"gate_monster",
+] instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 1704, 392 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
+
+[node name="tiny_3" parent="walls" groups=[
+"gate_monster",
+] instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 1720, 424 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
+
+[node name="tiny_4" parent="walls" groups=[
+"gate_monster",
+] instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 1744, 400 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
+
+[node name="tiny_5" parent="walls" groups=[
+"gate_monster",
+] instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 1744, 464 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
+
+[node name="tiny_6" parent="walls" groups=[
+"gate_monster",
+] instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 1688, 448 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
+
+[node name="tiny_7" parent="walls" groups=[
+"gate_monster",
+] instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 1704, 504 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
+
+[node name="tiny_8" parent="walls" groups=[
+"gate_monster",
+] instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 1712, 480 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
+
+[node name="tiny_9" parent="walls" groups=[
+"gate_monster",
+] instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 1744, 432 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
+
+[node name="tiny_10" parent="walls" groups=[
+"gate_monster",
+] instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 1696, 424 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
+
+[node name="tiny_11" parent="walls" groups=[
+"gate_monster",
+] instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 1648, 456 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
+
+[node name="tiny_12" parent="walls" groups=[
+"gate_monster",
+] instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 1632, 416 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
+
+[node name="tiny_13" parent="walls" groups=[
+"gate_monster",
+] instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 1760, 376 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
+
+[node name="tiny_14" parent="walls" groups=[
+"gate_monster",
+] instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 1776, 408 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
+
+[node name="tiny_15" parent="walls" groups=[
+"gate_monster",
+] instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 1768, 440 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
+
+[node name="tiny_16" parent="walls" groups=[
+"gate_monster",
+] instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 1776, 464 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
+
+[node name="tiny_17" parent="walls" groups=[
+"gate_monster",
+] instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 1752, 496 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
+
+[node name="tiny_18" parent="walls" groups=[
+"gate_monster",
+] instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 1736, 520 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
+
+[node name="tiny_19" parent="walls" groups=[
+"gate_monster",
+] instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 1760, 536 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
+
+[node name="tiny_20" parent="walls" groups=[
+"gate_monster",
+] instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 1784, 496 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
+
+[node name="box_coin 2" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 1720, 56 )
+
+[node name="box_coin12" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 1744, 56 )
+
+[node name="box_coin13" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 1744, 80 )
+
+[node name="box_coin14" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 1720, 80 )
+
+[node name="box_coin15" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 1904, 56 )
+
+[node name="box_coin16" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 1928, 56 )
+
+[node name="box_coin17" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 1928, 80 )
+
+[node name="box_coin18" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 1904, 80 )
+
+[node name="box_coin21" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 2008, 176 )
+
+[node name="box_coin22" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 2008, 200 )
+
+[node name="box_coin23" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 2008, 224 )
+
+[node name="box_coin24" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 2008, 248 )
+
+[node name="box_coin25" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 2008, 272 )
+
+[node name="box_coin26" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 1808, 176 )
+
+[node name="box_coin27" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 1832, 176 )
+
+[node name="box_coin28" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 1856, 176 )
+
+[node name="box_coin29" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 1856, 200 )
+
+[node name="box_coin30" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 1856, 224 )
+
+[node name="box_coin31" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 1856, 248 )
+
+[node name="box_coin32" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 1832, 248 )
+
+[node name="box_coin33" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 1832, 224 )
+
+[node name="box_coin34" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 1832, 200 )
+
+[node name="box_coin35" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 1808, 200 )
+
+[node name="box_coin36" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 1808, 224 )
+
+[node name="box_coin37" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 1808, 248 )
+
+[node name="box_coin19" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 1808, 40 )
+
+[node name="monster_1" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 1734, 44 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_6")
+
+[node name="monster_26" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 1764, 60 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_6")
+
+[node name="monster_27" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 1799, 43 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_6")
+
+[node name="monster_28" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 1838, 59 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_6")
+
+[node name="monster_29" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 1886, 39 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_6")
+
+[node name="monster_30" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 1932, 57 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_6")
+
+[node name="dead_monster" parent="walls" groups=[
+"dead_monster",
+] instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 1595, 549 )
+
+[node name="blood_splatter" parent="walls" instance=ExtResource( 18 )]
+
+transform/pos = Vector2( 1606, 524 )
+frame = 1
+
+[node name="dead_monster1" parent="walls" groups=[
+"dead_monster",
+] instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 1594, 578 )
+
+[node name="blood_splatter 2" parent="walls" instance=ExtResource( 18 )]
+
+transform/pos = Vector2( 1645, 567 )
+frame = 2
+
+[node name="dead_monster2" parent="walls" groups=[
+"dead_monster",
+] instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 1666, 578 )
+
+[node name="dead_monster3" parent="walls" groups=[
+"dead_monster",
+] instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 1667, 539 )
+
+[node name="monster_3 2" parent="walls" instance=ExtResource( 15 )]
+
+transform/pos = Vector2( 2560, 344 )
+navigation_nodepath = NodePath("../../nav_bridge")
+
+[node name="monster_33" parent="walls" instance=ExtResource( 15 )]
+
+transform/pos = Vector2( 2568, 360 )
+navigation_nodepath = NodePath("../../nav_bridge")
+
+[node name="box_coin 3" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3096, 304 )
+
+[node name="box_coin20" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3096, 328 )
+
+[node name="box_coin38" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3096, 352 )
+
+[node name="box_coin39" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3096, 376 )
+
+[node name="box_coin40" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3096, 400 )
+
+[node name="monster_1 2" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 2674, 311 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_7")
+
+[node name="monster_110" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 2737, 322 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_7")
+
+[node name="monster_111" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 2797, 310 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_7")
+
+[node name="monster_112" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 2842, 347 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_7")
+
+[node name="monster_113" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 2789, 372 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_7")
+
+[node name="monster_114" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 2703, 367 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_7")
+
+[node name="monster_115" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 2742, 397 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_7")
+
+[node name="box_coin 4" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 2904, 568 )
+
+[node name="box_coin41" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 2840, 592 )
+
+[node name="box_coin42" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3024, 520 )
+
+[node name="box_coin43" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3040, 544 )
+
+[node name="box_coin44" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3056, 520 )
+
+[node name="box_coin45" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3056, 568 )
+
+[node name="box_coin46" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3024, 568 )
+
+[node name="box_coin47" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 2720, 528 )
+
+[node name="box_coin48" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 2752, 528 )
+
+[node name="box_coin49" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 2736, 552 )
+
+[node name="box_coin50" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 2720, 576 )
+
+[node name="box_coin51" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 2752, 576 )
+
+[node name="box_coin52" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 2816, 592 )
+
+[node name="box_coin53" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 2792, 592 )
+
+[node name="box_coin54" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 2800, 624 )
+
+[node name="box_coin55" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 2824, 624 )
+
+[node name="box_coin56" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3008, 624 )
+
+[node name="box_coin57" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3032, 624 )
+
+[node name="box_coin58" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 2912, 520 )
+
+[node name="monster_3 3" parent="walls" instance=ExtResource( 15 )]
+
+transform/pos = Vector2( 2664, 576 )
+navigation_nodepath = NodePath("../../nav_walls")
+
+[node name="monster_34" parent="walls" instance=ExtResource( 15 )]
+
+transform/pos = Vector2( 2651, 549 )
+navigation_nodepath = NodePath("../../nav_walls")
+
+[node name="monster_35" parent="walls" instance=ExtResource( 15 )]
+
+transform/pos = Vector2( 2648, 615 )
+navigation_nodepath = NodePath("../../nav_walls")
+
+[node name="monster_36" parent="walls" instance=ExtResource( 15 )]
+
+transform/pos = Vector2( 3067, 550 )
+navigation_nodepath = NodePath("../../nav_walls")
+
+[node name="monster_37" parent="walls" instance=ExtResource( 15 )]
+
+transform/pos = Vector2( 3087, 577 )
+navigation_nodepath = NodePath("../../nav_walls")
+
+[node name="monster_38" parent="walls" instance=ExtResource( 15 )]
+
+transform/pos = Vector2( 3059, 606 )
+navigation_nodepath = NodePath("../../nav_walls")
+
+[node name="monster_116" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 2775, 505 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_8")
+
+[node name="monster_117" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 3053, 495 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_8")
+
+[node name="monster_118" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 3058, 588 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_8")
+
+[node name="monster_119" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 2722, 606 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_8")
+
+[node name="monster_120" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 2824, 566 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_8")
+
+[node name="monster_121" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 2938, 558 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_8")
+
+[node name="monster_2 2" parent="walls" instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 2693, 135 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
+
+[node name="monster_210" parent="walls" instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 2712, 120 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
+
+[node name="monster_211" parent="walls" instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 2723, 157 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
+
+[node name="monster_212" parent="walls" instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 2761, 129 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
+
+[node name="monster_213" parent="walls" instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 2784, 161 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
+
+[node name="monster_214" parent="walls" instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 2810, 123 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
+
+[node name="monster_215" parent="walls" instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 2854, 152 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
+
+[node name="monster_216" parent="walls" instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 2888, 115 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
+
+[node name="monster_217" parent="walls" instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 2919, 141 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
+
+[node name="monster_218" parent="walls" instance=ExtResource( 17 )]
+
+transform/pos = Vector2( 2970, 119 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
+
+[node name="box_coin59" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 2648, 32 )
+
+[node name="box_coin60" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 2680, 32 )
+
+[node name="box_coin61" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 2680, 64 )
+
+[node name="box_coin62" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 2648, 64 )
+
+[node name="box_coin63" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3200, 488 )
+
+[node name="box_coin64" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3224, 488 )
+
+[node name="box_coin65" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3248, 488 )
+
+[node name="box_coin66" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3248, 512 )
+
+[node name="box_coin67" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3224, 512 )
+
+[node name="box_coin68" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3200, 512 )
+
+[node name="box_coin69" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3200, 464 )
+
+[node name="box_coin70" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3224, 464 )
+
+[node name="box_coin71" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3248, 464 )
+
+[node name="box_coin72" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3248, 464 )
+
+[node name="box_coin73" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3464, 48 )
+
+[node name="box_coin74" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3464, 24 )
+
+[node name="box_coin75" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3488, 24 )
+
+[node name="box_coin76" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3488, 48 )
+
+[node name="box_coin77" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3512, 48 )
+
+[node name="box_coin78" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3512, 48 )
+
+[node name="box_coin79" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3560, 616 )
+
+[node name="box_coin80" parent="walls" instance=ExtResource( 16 )]
+
+transform/pos = Vector2( 3592, 616 )
+
+[node name="monster_1 3" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 2688, 152 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
+
+[node name="monster_2 3" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 2760, 72 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
+
+[node name="monster_3 4" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 2928, 56 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
+
+[node name="monster_4 2" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 3072, 120 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
+
+[node name="monster_5 2" parent="walls" instance=ExtResource( 14 )]
+
+transform/pos = Vector2( 3168, 64 )
+patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
+
+[node name="boss_navigation" type="Navigation2D" parent="."]
+
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="boss fight" type="NavigationPolygonInstance" parent="boss_navigation"]
+
+navpoly = null
+enabled = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="nav_bridge" type="Navigation2D" parent="."]
+
+editor/display_folded = true
+visibility/visible = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="maze" type="NavigationPolygonInstance" parent="nav_bridge"]
+
+navpoly = SubResource( 198 )
+enabled = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="nav_walls" type="Navigation2D" parent="."]
+
+editor/display_folded = true
+visibility/visible = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="maze" type="NavigationPolygonInstance" parent="nav_walls"]
+
+navpoly = SubResource( 200 )
+enabled = true
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="navigation" type="Navigation2D" parent="."]
 
 visibility/visible = false
@@ -1533,6 +2330,34 @@ __meta__ = {
 [node name="maze" type="NavigationPolygonInstance" parent="navigation"]
 
 navpoly = SubResource( 1 )
+enabled = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="nav_maze_1" type="Navigation2D" parent="."]
+
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="maze" type="NavigationPolygonInstance" parent="nav_maze_1"]
+
+navpoly = SubResource( 204 )
+enabled = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="nav_maze_2" type="Navigation2D" parent="."]
+
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="maze" type="NavigationPolygonInstance" parent="nav_maze_2"]
+
+navpoly = SubResource( 205 )
 enabled = true
 __meta__ = {
 "_edit_lock_": true
@@ -1563,7 +2388,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 14.0
-custom_fonts/font = ExtResource( 18 )
+custom_fonts/font = ExtResource( 19 )
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -1572,7 +2397,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="camera" parent="." instance=ExtResource( 19 )]
+[node name="camera" parent="." instance=ExtResource( 20 )]
 
 limit/bottom = 650
 
@@ -1608,6 +2433,30 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="boss_gate_warning" type="Area2D" parent="areas"]
+
+transform/pos = Vector2( 3808, 296 )
+input/pickable = true
+shapes/0/shape = SubResource( 206 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areas/boss_gate_warning"]
+
+shape = SubResource( 206 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="respawn_areas" type="Node2D" parent="areas"]
 
 __meta__ = {
@@ -1626,8 +2475,6 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision/layers = 4
-collision/mask = 4
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1653,8 +2500,6 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision/layers = 4
-collision/mask = 4
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1680,8 +2525,6 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision/layers = 4
-collision/mask = 4
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1698,7 +2541,7 @@ __meta__ = {
 [node name="respawn_4" type="Area2D" parent="areas/respawn_areas"]
 
 editor/display_folded = true
-transform/pos = Vector2( 3321, 289 )
+transform/pos = Vector2( 3242, 289 )
 input/pickable = true
 shapes/0/shape = SubResource( 7 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -1707,8 +2550,6 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision/layers = 4
-collision/mask = 4
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1724,25 +2565,22 @@ __meta__ = {
 
 [node name="respawn_5" type="Area2D" parent="areas/respawn_areas"]
 
-editor/display_folded = true
-transform/pos = Vector2( 3867, 288 )
+transform/pos = Vector2( 3416, 528 )
 input/pickable = true
-shapes/0/shape = SubResource( 8 )
+shapes/0/shape = SubResource( 207 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision/layers = 4
-collision/mask = 4
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/respawn_areas/respawn_5"]
 
-shape = SubResource( 8 )
+shape = SubResource( 207 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -1761,8 +2599,6 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision/layers = 4
-collision/mask = 4
 __meta__ = {
 "_edit_lock_": true
 }
@@ -2483,9 +3319,10 @@ __meta__ = {
 
 [node name="patrol_1" type="Area2D" parent="areas/patrol_areas"]
 
+editor/display_folded = true
 transform/pos = Vector2( 400, 304 )
 input/pickable = true
-shapes/0/shape = SubResource( 193 )
+shapes/0/shape = SubResource( 179 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -2498,7 +3335,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/patrol_areas/patrol_1"]
 
-shape = SubResource( 193 )
+shape = SubResource( 179 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2507,19 +3344,23 @@ __meta__ = {
 
 [node name="patrol_2" type="Area2D" parent="areas/patrol_areas"]
 
+editor/display_folded = true
 transform/pos = Vector2( 792, 296 )
 input/pickable = true
-shapes/0/shape = SubResource( 194 )
+shapes/0/shape = SubResource( 180 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/patrol_areas/patrol_2"]
 
-shape = SubResource( 194 )
+shape = SubResource( 180 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2528,19 +3369,23 @@ __meta__ = {
 
 [node name="patrol_3" type="Area2D" parent="areas/patrol_areas"]
 
+editor/display_folded = true
 transform/pos = Vector2( 856, 112 )
 input/pickable = true
-shapes/0/shape = SubResource( 195 )
+shapes/0/shape = SubResource( 181 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/patrol_areas/patrol_3"]
 
-shape = SubResource( 195 )
+shape = SubResource( 181 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2549,7 +3394,33 @@ __meta__ = {
 
 [node name="patrol_4" type="Area2D" parent="areas/patrol_areas"]
 
+editor/display_folded = true
 transform/pos = Vector2( 1832, 208 )
+input/pickable = true
+shapes/0/shape = SubResource( 182 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areas/patrol_areas/patrol_4"]
+
+shape = SubResource( 182 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="patrol_5" type="Area2D" parent="areas/patrol_areas"]
+
+editor/display_folded = true
+transform/pos = Vector2( 1810, 469 )
 input/pickable = true
 shapes/0/shape = SubResource( 196 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -2558,10 +3429,146 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="areas/patrol_areas/patrol_4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areas/patrol_areas/patrol_5"]
 
 shape = SubResource( 196 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="patrol_6" type="Area2D" parent="areas/patrol_areas"]
+
+editor/display_folded = true
+transform/pos = Vector2( 1824, 48 )
+input/pickable = true
+shapes/0/shape = SubResource( 197 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areas/patrol_areas/patrol_6"]
+
+shape = SubResource( 197 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="patrol_and_spawn" type="Area2D" parent="areas/patrol_areas"]
+
+editor/display_folded = true
+transform/pos = Vector2( 3088, 342 )
+input/pickable = true
+shapes/0/shape = SubResource( 199 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 21 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areas/patrol_areas/patrol_and_spawn"]
+
+shape = SubResource( 199 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="spawn_pos" type="Position2D" parent="areas/patrol_areas/patrol_and_spawn"]
+
+transform/pos = Vector2( -28, -80 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="patrol_7" type="Area2D" parent="areas/patrol_areas"]
+
+editor/display_folded = true
+transform/pos = Vector2( 2743, 349 )
+input/pickable = true
+shapes/0/shape = SubResource( 201 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areas/patrol_areas/patrol_7"]
+
+shape = SubResource( 201 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="patrol_8" type="Area2D" parent="areas/patrol_areas"]
+
+editor/display_folded = true
+transform/pos = Vector2( 2884, 539 )
+input/pickable = true
+shapes/0/shape = SubResource( 202 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areas/patrol_areas/patrol_8"]
+
+shape = SubResource( 202 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="patrol_9" type="Area2D" parent="areas/patrol_areas"]
+
+editor/display_folded = true
+transform/pos = Vector2( 2968, 107 )
+input/pickable = true
+shapes/0/shape = SubResource( 203 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areas/patrol_areas/patrol_9"]
+
+shape = SubResource( 203 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2573,21 +3580,21 @@ __meta__ = {
 editor/display_folded = true
 transform/pos = Vector2( 4352, 96 )
 input/pickable = true
-shapes/0/shape = SubResource( 180 )
+shapes/0/shape = SubResource( 183 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-script/script = ExtResource( 20 )
+script/script = ExtResource( 22 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/boss_arena"]
 
-shape = SubResource( 180 )
+shape = SubResource( 183 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2597,7 +3604,7 @@ __meta__ = {
 [node name="block_gate" type="StaticBody2D" parent="areas/boss_arena"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 181 )
+shapes/0/shape = SubResource( 184 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -110, 95 )
 shapes/0/trigger = false
 collision/layers = 0
@@ -2613,7 +3620,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/boss_arena/block_gate"]
 
 transform/pos = Vector2( -110, 95 )
-shape = SubResource( 181 )
+shape = SubResource( 184 )
 trigger = false
 _update_shape_index = 0
 
@@ -2634,7 +3641,6 @@ autostart = false
 [node name="barriers" type="Node2D" parent="."]
 
 editor/display_folded = true
-visibility/visible = false
 __meta__ = {
 "_edit_lock_": true
 }
@@ -2644,7 +3650,7 @@ __meta__ = {
 transform/pos = Vector2( 2122, -7 )
 transform/scale = Vector2( 5.14676, 1 )
 input/pickable = false
-shapes/0/shape = SubResource( 182 )
+shapes/0/shape = SubResource( 185 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524288
@@ -2659,7 +3665,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/barrier_1"]
 
-shape = SubResource( 182 )
+shape = SubResource( 185 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2671,7 +3677,7 @@ __meta__ = {
 transform/pos = Vector2( 2086, 650 )
 transform/scale = Vector2( 5.22656, 1 )
 input/pickable = false
-shapes/0/shape = SubResource( 183 )
+shapes/0/shape = SubResource( 186 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524288
@@ -2686,7 +3692,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/barrier_2"]
 
-shape = SubResource( 183 )
+shape = SubResource( 186 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2698,7 +3704,7 @@ __meta__ = {
 transform/pos = Vector2( -7, 302 )
 transform/scale = Vector2( 1, 1.62611 )
 input/pickable = false
-shapes/0/shape = SubResource( 184 )
+shapes/0/shape = SubResource( 187 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524288
@@ -2713,7 +3719,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/barrier_3"]
 
-shape = SubResource( 184 )
+shape = SubResource( 187 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2732,7 +3738,7 @@ __meta__ = {
 
 transform/pos = Vector2( 2045, 219 )
 input/pickable = false
-shapes/0/shape = SubResource( 185 )
+shapes/0/shape = SubResource( 188 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524291
@@ -2747,7 +3753,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_1"]
 
-shape = SubResource( 185 )
+shape = SubResource( 188 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2757,84 +3763,6 @@ __meta__ = {
 [node name="wall_2" type="StaticBody2D" parent="barriers/wall_barriers"]
 
 transform/pos = Vector2( 2045, 579 )
-input/pickable = false
-shapes/0/shape = SubResource( 186 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-collision/layers = 524291
-collision/mask = 524291
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_2"]
-
-shape = SubResource( 186 )
-trigger = false
-_update_shape_index = 0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="wall_3" type="StaticBody2D" parent="barriers/wall_barriers"]
-
-transform/pos = Vector2( 3133, 476 )
-input/pickable = false
-shapes/0/shape = SubResource( 187 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-collision/layers = 524291
-collision/mask = 524291
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_3"]
-
-shape = SubResource( 187 )
-trigger = false
-_update_shape_index = 0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="wall_4" type="StaticBody2D" parent="barriers/wall_barriers"]
-
-transform/pos = Vector2( 2725, 235 )
-input/pickable = false
-shapes/0/shape = SubResource( 188 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-shapes/0/trigger = false
-collision/layers = 524291
-collision/mask = 524291
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_4"]
-
-shape = SubResource( 188 )
-trigger = false
-_update_shape_index = 0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="wall_5" type="StaticBody2D" parent="barriers/wall_barriers"]
-
-transform/pos = Vector2( 3036, 235 )
 input/pickable = false
 shapes/0/shape = SubResource( 189 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -2849,7 +3777,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_2"]
 
 shape = SubResource( 189 )
 trigger = false
@@ -2858,9 +3786,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="wall_6" type="StaticBody2D" parent="barriers/wall_barriers"]
+[node name="wall_3" type="StaticBody2D" parent="barriers/wall_barriers"]
 
-transform/pos = Vector2( 3932, 586 )
+transform/pos = Vector2( 3133, 476 )
 input/pickable = false
 shapes/0/shape = SubResource( 190 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -2875,7 +3803,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_3"]
 
 shape = SubResource( 190 )
 trigger = false
@@ -2884,9 +3812,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="wall_7" type="StaticBody2D" parent="barriers/wall_barriers"]
+[node name="wall_4" type="StaticBody2D" parent="barriers/wall_barriers"]
 
-transform/pos = Vector2( 3932, -5 )
+transform/pos = Vector2( 2725, 235 )
 input/pickable = false
 shapes/0/shape = SubResource( 191 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -2901,9 +3829,87 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_4"]
 
 shape = SubResource( 191 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="wall_5" type="StaticBody2D" parent="barriers/wall_barriers"]
+
+transform/pos = Vector2( 3036, 235 )
+input/pickable = false
+shapes/0/shape = SubResource( 192 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 524291
+collision/mask = 524291
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_5"]
+
+shape = SubResource( 192 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="wall_6" type="StaticBody2D" parent="barriers/wall_barriers"]
+
+transform/pos = Vector2( 3932, 586 )
+input/pickable = false
+shapes/0/shape = SubResource( 193 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 524291
+collision/mask = 524291
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_6"]
+
+shape = SubResource( 193 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="wall_7" type="StaticBody2D" parent="barriers/wall_barriers"]
+
+transform/pos = Vector2( 3932, -5 )
+input/pickable = false
+shapes/0/shape = SubResource( 194 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 524291
+collision/mask = 524291
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_7"]
+
+shape = SubResource( 194 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2914,7 +3920,7 @@ __meta__ = {
 
 transform/pos = Vector2( 4528, 328 )
 input/pickable = false
-shapes/0/shape = SubResource( 192 )
+shapes/0/shape = SubResource( 195 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524291
@@ -2926,12 +3932,14 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_8"]
 
-shape = SubResource( 192 )
+shape = SubResource( 195 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
 "_edit_lock_": true
 }
+
+[connection signal="switch_flipped" from="walls/switch_left" to="." method="_on_switch_left_switch_flipped"]
 
 [connection signal="switch_flipped" from="walls/switch_left" to="ground/stuff/bridge" method="invert_visibility"]
 
@@ -2940,6 +3948,10 @@ __meta__ = {
 [connection signal="body_enter" from="areas/first_monsters" to="." method="_on_first_monsters_body_enter"]
 
 [connection signal="body_exit" from="areas/first_monsters" to="." method="_on_first_monsters_body_exit"]
+
+[connection signal="body_enter" from="areas/boss_gate_warning" to="." method="_on_boss_gate_warning_body_enter"]
+
+[connection signal="body_enter" from="areas/patrol_areas/patrol_and_spawn" to="areas/patrol_areas/patrol_and_spawn" method="_on_patrol_and_spawn_body_enter"]
 
 [connection signal="body_enter" from="areas/boss_arena" to="areas/boss_arena" method="_on_boss_arena_body_enter"]
 

@@ -63,11 +63,11 @@ func _fixed_process(delta):
 	state_cur = state_nxt
 	
 	if state_cur == STATES.IDLE:
+		
 		vel *= 0.7
 		steering_force = steering_control.steering_and_arriving( \
 					get_global_pos(), _initial_position, 
 					vel, 10, delta )
-		pass
 	elif state_cur == STATES.WANDER:
 		steering_force = steering_control.wander( vel, 10, 5 )
 		# flocking behavior
@@ -75,8 +75,6 @@ func _fixed_process(delta):
 				self, neighbours, 10000, 1, 1 ) # 10000
 		if _get_player() != null and _player_in_patrol_area():
 			state_nxt = STATES.ATTACK
-			# check if player is within the wander area
-			pass
 	if state_cur == STATES.ATTACK:
 		# steer towards player
 		if _get_player() != null:
@@ -94,11 +92,15 @@ func _fixed_process(delta):
 				self, neighbours, 10000, 1, 1 ) # 10000
 		# dampening
 		vel *= 0.98
+		
+		
+		
 	elif state_cur == STATES.DEAD:
 		# set death animation
 		if get_node( "anim_head" ).get_current_animation() != "kill":
 			get_node( "anim_body" ).stop()
 			get_node( "anim_head" ).play( "kill" )
+			print( "player kill animation" )
 		# check if falling
 		if not _is_falling:
 			var uplow = game.check_fall_area( self, get_global_pos() )
@@ -110,9 +112,9 @@ func _fixed_process(delta):
 			# dampening
 			vel *= 0.95
 			if vel.length_squared() < 4:
-				vel = Vector2()
+				vel *= 0
 			if vel.length_squared() == 0:
-				print( "finished dying" )
+				#print( "finished dying" )
 				set_fixed_process( false )
 				_change_to_item()
 		else:
@@ -325,7 +327,7 @@ func _on_killtimer_timeout():
 func _change_to_item():
 	# delete unecessary nodes
 	get_node( "anim_body" ).queue_free()
-	get_node( "anim_head" ).queue_free()
+	#get_node( "anim_head" ).queue_free()
 	get_node( "body" ).queue_free()
 	get_node( "flocking_area/CollisionShape2D" ).queue_free()
 	get_node( "flocking_area" ).queue_free()

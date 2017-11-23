@@ -15,7 +15,7 @@ func _on_openarea_body_enter( body ):
 	if game.player.get_ref() != body: return
 	if game.has_key:
 		# open gate
-		print( "opening gate" )
+		#print( "opening gate" )
 		_is_open = true
 		get_node( "anim" ).play( "open" )
 	pass # replace with function body

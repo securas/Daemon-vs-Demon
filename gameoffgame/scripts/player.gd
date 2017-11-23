@@ -253,7 +253,7 @@ func _player_attack( delta ):
 					for n in sword_neighbours:
 						if n.get_ref() != null:
 							if n.get_ref().is_in_group( "monster" ):
-								if not n.get_ref().is_dead():
+								if not n.get_ref().is_dead() and _is_in_line_of_sight( n.get_ref() ):
 									shake_camera += 1
 									# apply force to monster during 0.2 seconds
 									n.get_ref().set_external_force( \
@@ -294,7 +294,7 @@ func _player_pick( itemareas ):
 		# start transformation timer
 		get_node( "transformation_timer" ).set_wait_time( TRANSFORMATION_DURATION )
 		get_node( "transformation_timer" ).start()
-		item.get_parent().queue_free()
+		#item.get_parent().queue_free()
 	elif item.is_in_group( "switch" ):
 		# flip switch
 		item.get_parent().flip_switch()
@@ -426,3 +426,14 @@ func _on_keybox_area_enter( area ):
 		# add to score
 		game.score += 100
 
+
+
+func _is_in_line_of_sight( obj ):
+	var space_state = get_world_2d().get_direct_space_state()
+	var results = space_state.intersect_ray( get_global_pos(), obj.get_global_pos(), [ self ], 2147483647, 1 )
+	if results.empty(): return true
+#	if not results.empty() and results["collider"] == obj:
+#		# we can see the player, not check
+#		return true
+	print( "not in line of sight" )
+	return false

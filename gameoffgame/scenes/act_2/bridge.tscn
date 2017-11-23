@@ -157,7 +157,7 @@ root/root = NodePath("..")
 anims/hide = SubResource( 4 )
 anims/show = SubResource( 5 )
 playback/active = true
-playback/speed = 1.0
+playback/speed = 4.0
 blend_times = [  ]
 autoplay = "hide"
 

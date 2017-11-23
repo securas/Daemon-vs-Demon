@@ -18,13 +18,16 @@ class EvtState:
 # enumerate stuff that is persistent when restarting level
 enum PERSISTENT { \
 		KILLED_MONSTERS_1, \
-		FIRST_TRANSFORMATION }
+		FIRST_TRANSFORMATION, \
+		WARNED_GATE }
 # enumerate events
 enum EVENTS { \
 		STARTUP, \
 		MEET_MONSTERS, \
 		KILLED_MONSTERS_1, \
 		FIRST_TRANSFORMATION, \
+		GATE_OPEN, \
+		WARN_BOSS_GATE, \
 		MEET_BOSS, \
 		BOSS_DYING, \
 		BOSS_DEAD }
@@ -34,6 +37,8 @@ onready var events = \
 		EVENTS.MEET_MONSTERS : EvtState.new( self, "_evt_meet_monsters" ), \
 		EVENTS.KILLED_MONSTERS_1 : EvtState.new( self, "_evt_kill_monsters_1" ), \
 		EVENTS.FIRST_TRANSFORMATION : EvtState.new( self, "_evt_first_transform" ), \
+		EVENTS.GATE_OPEN : EvtState.new( self, "_evt_gate_open" ), \
+		EVENTS.WARN_BOSS_GATE : EvtState.new( self, "_evt_warn_boss_gate" ), \
 		EVENTS.MEET_BOSS: EvtState.new( self, "_evt_meet_boss" ), \
 		EVENTS.BOSS_DYING : EvtState.new( self, "_evt_boss_dying" ), \
 		EVENTS.BOSS_DEAD : EvtState.new( self, "_evt_boss_dead" )
@@ -73,6 +78,11 @@ func _ready():
 	# connect to boss
 	get_node( "walls/boss" ).connect( "boss_dying", self, "_on_boss_dying" )
 	get_node( "walls/boss" ).connect( "boss_dead", self, "_on_boss_dead" )
+	
+	# special monsters
+	var dead_monsters = get_tree().get_nodes_in_group( "dead_monster" )
+	for m in dead_monsters:
+		m.state_nxt = m.STATES.DEAD
 	
 	# process
 	set_fixed_process( true )
@@ -350,6 +360,70 @@ func _evt_boss_dead( delta, evt ):
 
 
 
+func _evt_gate_open( delta, evt ):
+	if evt.state == -1:
+		# waiting state
+		evt.timer -= delta
+		if evt.timer <= 0:
+			evt.state = evt.state_nxt
+	elif evt.state == 0:
+		# freeze player
+		game.player.get_ref().set_cutscene()
+		# focus camera on area
+		game.camera_target = weakref( get_node( "walls/reference_tiny" ) )
+		evt.timer = 0.5
+		evt.state = -1
+		evt.state_nxt = 1
+	elif evt.state == 1:
+		# clear walls on tilemap
+#		get_node( "walls" ).set_cell( 209, 64, -1 )
+#		get_node( "walls" ).set_cell( 209, 65, -1 )
+#		get_node( "walls" ).set_cell( 209, 66, -1 )
+#		get_node( "walls" ).set_cell( 209, 67, -1 )
+#		get_node( "walls" ).set_cell( 209, 68, -1 )
+#		get_node( "walls" ).set_cell( 209, 69, -1 )
+#		get_node( "walls" ).set_cell( 209, 70, -1 )
+#		get_node( "walls" ).set_cell( 209, 71, -1 )
+		evt.timer = 0.5
+		evt.state = -1
+		evt.state_nxt = 2
+	elif evt.state == 2:
+		# have all monsters attack
+		var monsters = get_tree().get_nodes_in_group( "gate_monster" )
+		for m in monsters:
+			m.state_nxt = m.STATES.ATTACK
+		evt.timer = 0.5
+		evt.state = -1
+		evt.state_nxt = 3
+	elif evt.state == 3:
+		# focus back on player
+		game.camera_target = game.player
+		game.player.get_ref().set_cutscene( false )
+		evt.state = 4
+	elif evt.state == 4:
+		evt.active = false
+
+
+func _evt_warn_boss_gate( delta, evt ):
+	if evt.state == -1:
+		# waiting state
+		evt.timer -= delta
+		if evt.timer <= 0:
+			evt.state = evt.state_nxt
+	elif evt.state == 0:
+		_player_text( "I have no key for this gate", 2, 2, 1, evt )
+	elif evt.state == 1:
+		_player_text( "I need to destroy it", 2, 2, 2, evt )
+	elif evt.state == 2:
+		# set persistent notice
+		game.act_specific[game.ACTS.GRAVEYARD]["persistent"].append( PERSISTENT.WARNED_GATE )
+		evt.active = false
+
+
+
+
+
+
 
 
 func _on_first_monsters_body_enter( body ):
@@ -421,6 +495,8 @@ func _on_boss_dying():
 func _on_boss_dead():
 	events[EVENTS.BOSS_DEAD].active = true
 
+func _on_gate_gate_open():
+	events[EVENTS.GATE_OPEN].active = true
 
 
 
@@ -492,3 +568,25 @@ func _on_monsters_body_enter( body, group ):
 		var monsters = get_tree().get_nodes_in_group( group )
 		for m in monsters:
 			if not m.is_dead(): m.state_nxt = m.STATES.ATTACK
+
+
+
+
+
+func _on_switch_left_switch_flipped():
+	# spawn a bunch of monsters
+	var monsters = get_tree().get_nodes_in_group( "gate_monster" )
+	var mscn = preload( "res://scenes/monster_2.tscn" )
+	for m in monsters:
+		var newmonster = mscn.instance()
+		newmonster.state_nxt = m.STATES.ATTACK
+		newmonster.set_pos( m.get_pos() )
+		m.get_parent().add_child( newmonster )
+		#m.state_nxt = m.STATES.ATTACK
+
+
+func _on_boss_gate_warning_body_enter( body ):
+	if game.player != null and game.player.get_ref() != null and game.player.get_ref() == body:
+		if game.act_specific[game.ACTS.GRAVEYARD]["persistent"].find( PERSISTENT.WARNED_GATE ) == -1:
+			events[EVENTS.WARN_BOSS_GATE].active = true
+	pass # replace with function body

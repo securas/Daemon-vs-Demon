@@ -61,7 +61,6 @@ func _ready():
 	if navigation_nodepath != null and not navigation_nodepath.is_empty():
 		navigation = get_node( navigation_nodepath )
 	navcontrol = navcontrol_script.new( 1, navigation )
-	navcontrol.interval = 1
 	
 	steering_control.max_vel = 70#100
 	steering_control.max_force = 700#1000
@@ -142,7 +141,11 @@ func _attack_fsm( delta ):
 					game.player.get_ref().get_global_pos(), delta )
 	
 	if attack_state == ATTACK_STATES.IDLE:
+		if game.player != null and game.player.get_ref() != null:
+			if game.player.get_ref().is_dead():
+				navcontrol = navcontrol_script.new( 1, navigation )
 		if target_pos != null:
+			#print( "found player... seeking" )
 			attack_state = ATTACK_STATES.SEEK
 		else:
 			# navigate towards starting position
@@ -168,8 +171,12 @@ func _attack_fsm( delta ):
 							get_global_pos(), target_pos, 
 							vel, 10, delta )
 				else:
+					#navcontrol = navcontrol_script.new( 1, navigation )
+					#print( "cannot find player" )
 					attack_state = ATTACK_STATES.IDLE
 		else:
+			#navcontrol = navcontrol_script.new( 1, navigation )
+			#print( "cannot get player" )
 			attack_state = ATTACK_STATES.IDLE
 		# dampening
 		vel *= 0.98

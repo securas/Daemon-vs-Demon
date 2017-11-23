@@ -127,7 +127,6 @@ __meta__ = {
 
 [node name="rotate" type="Node2D" parent="."]
 
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -245,8 +244,8 @@ trigger = false
 _update_shape_index = 0
 
 [node name="itemarea" type="Area2D" parent="." groups=[
-"monster_1",
 "blood",
+"monster_1",
 ]]
 
 editor/display_folded = true
@@ -279,6 +278,7 @@ __meta__ = {
 [node name="attack_area" type="Area2D" parent="."]
 
 editor/display_folded = true
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 9 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )

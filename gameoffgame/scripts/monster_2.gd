@@ -68,18 +68,15 @@ func _fixed_process(delta):
 		steering_force = steering_control.steering_and_arriving( \
 					get_global_pos(), _initial_position, 
 					vel, 10, delta )
-		# do nothing
-		pass
 	elif state_cur == STATES.WANDER:
+		# animation
+		anim_nxt = "run"
 		steering_force = steering_control.wander( vel, 10, 5 )
-		
 		# flocking behavior
 		flocking_force = steering_control.flocking( \
 				self, neighbours, 10000, 1, 1 ) # 10000
 		if _get_player() != null and _player_in_patrol_area():
 			state_nxt = STATES.ATTACK
-			# check if player is within the wander area
-			pass
 	if state_cur == STATES.ATTACK:
 		# steer towards player
 		if _get_player() != null:
@@ -100,9 +97,13 @@ func _fixed_process(delta):
 		# animation
 		anim_nxt = "run"
 		
+		
+		
 	elif state_cur == STATES.DEAD:
 		# set death animation
 		anim_nxt = "killed"
+		
+		
 		# check if falling
 		if not _is_falling:
 			var uplow = game.check_fall_area( self, get_global_pos() )
@@ -114,7 +115,7 @@ func _fixed_process(delta):
 			# dampening
 			vel *= 0.95
 			if vel.length_squared() < 4:
-				vel *= 0.0
+				vel *= 0
 			if vel.length_squared() == 0:
 				#print( "finished dying" )
 				set_fixed_process( false )
@@ -159,16 +160,16 @@ func _fixed_process(delta):
 			else:
 				#print( get_name(), ": was too late " )
 				state_nxt = STATES.IDLE
-		pass
+	
+	
 	# bounded area
-	if state_cur != STATES.ATTACK and state_cur != STATES.DEAD and patrol_area != null:
+	if patrol_area != null and state_cur != STATES.DEAD and state_cur != STATES.ATTACK:
 		bound_force = steering_control.rect_bound( get_global_pos(), \
 				vel, patrol_shape, 5, 50, delta )
 	
 	# apply all forces
 	var force = steering_force + flocking_force + bound_force
 	force = steering_control.truncate( force, steering_control.max_force )
-	
 	vel += force * delta
 	if not _is_falling:
 		vel = steering_control.truncate( vel, steering_control.max_vel )
@@ -183,9 +184,25 @@ func _fixed_process(delta):
 	if external_impulse_timer <= 0:
 		external_impulse = Vector2()
 	
-	if vel.length_squared() < 4:
-		vel *= 0.0
 	
+	# check if is falling
+	if not _is_falling:
+		var uplow = game.check_fall_area( self, get_global_pos() )
+		if uplow != 0:
+			_is_falling = true
+			set_layer_mask_bit( 1, false )
+			set_layer_mask_bit( 19, false )
+			set_collision_mask_bit( 1, false )
+			set_collision_mask_bit( 19, false )
+	else:
+		vel.x *= 0.95
+		vel.y = min( vel.y + delta * game.GRAVITY, game.TERMINAL_VEL )
+		if get_global_pos().y > 700:
+			set_fixed_process( false )
+			queue_free()
+	
+	#if vel.length_squared() < 4:
+	#	vel *= 0.0
 	# move
 	vel = move_and_slide( vel )
 	
@@ -194,7 +211,7 @@ func _fixed_process(delta):
 		anim_cur = anim_nxt
 		anim.play( anim_cur )
 		if anim_cur != "killed":
-			anim.seek( rand_range( 0, 0.3 ) )
+			anim.seek( rand_range( 0, 0.5 ) )
 	
 	# direction
 	if vel.x > 0:
@@ -237,7 +254,7 @@ func _on_hitbox_area_exit( area ):
 	if state_cur == STATES.GRABBING:
 		var obj = area.get_parent()
 		if obj.is_in_group( "player" ):
-			#print( get_name(), ": releasing player " )
+			print( get_name(), ": releasing player " )
 			state_nxt = STATES.ATTACK
 			grab_player_timer = GRAB_PLAYER_TIME
 
