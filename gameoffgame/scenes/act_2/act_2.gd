@@ -30,7 +30,8 @@ enum EVENTS { \
 		WARN_BOSS_GATE, \
 		MEET_BOSS, \
 		BOSS_DYING, \
-		BOSS_DEAD }
+		BOSS_DEAD, \
+		BECOME_SATAN }
 onready var events = \
 	{ \
 		EVENTS.STARTUP : EvtState.new( self, "_evt_startup" ), \
@@ -41,7 +42,8 @@ onready var events = \
 		EVENTS.WARN_BOSS_GATE : EvtState.new( self, "_evt_warn_boss_gate" ), \
 		EVENTS.MEET_BOSS: EvtState.new( self, "_evt_meet_boss" ), \
 		EVENTS.BOSS_DYING : EvtState.new( self, "_evt_boss_dying" ), \
-		EVENTS.BOSS_DEAD : EvtState.new( self, "_evt_boss_dead" )
+		EVENTS.BOSS_DEAD : EvtState.new( self, "_evt_boss_dead" ), \
+		EVENTS.BECOME_SATAN : EvtState.new( self, "_evt_become_satan" ) \
 	}
 		
 	
@@ -98,6 +100,7 @@ func _reset_settings():
 	events[EVENTS.STARTUP].active = true
 	player.connect( "is_dead", self, "_on_player_dead" )
 	player.connect( "on_transformation", self, "_on_transformation" )
+	player.connect( "became_satan", self, "_on_player_satan" )
 	player.set_cutscene()
 	player.hide()
 	game.camera_target = weakref( player )
@@ -350,14 +353,33 @@ func _evt_boss_dead( delta, evt ):
 	elif evt.state == 1:
 		_player_text( "I wonder...", 2, 2, 2, evt )
 	elif evt.state == 2:
-		_player_text( "... should I take his form?", 4, 4, 3, evt )
+		_player_text( "... should I take his form?", 2, 2, 3, evt )
 	elif evt.state == 3:
-		if game.main != null:
-			game.main.act_nxt = "res://scenes/act_3/act_3.tscn"
+		game.player.get_ref().set_cutscene( false )
+		#if game.main != null:
+		#	game.main.act_nxt = "res://scenes/act_3/act_3.tscn"
 		evt.active = false
 
 
-
+func _evt_become_satan( delta, evt ):
+	if evt.state == -1:
+		# waiting state
+		evt.timer -= delta
+		if evt.timer <= 0:
+			evt.state = evt.state_nxt
+	elif evt.state == 0:
+		# freeze player
+		game.player.get_ref().set_cutscene()
+		# wait a second
+		evt.timer = 2
+		evt.state = -1
+		evt.state_nxt = 1
+	elif evt.state == 1:
+		_player_text( "HA! HA! HA! HA!", 4, 4, 2, evt, -55 )
+	elif evt.state == 2:
+		if game.main != null:
+			game.main.act_nxt = "res://scenes/act_3/act_3.tscn"
+		evt.active = false
 
 
 func _evt_gate_open( delta, evt ):
@@ -498,12 +520,15 @@ func _on_boss_dead():
 func _on_gate_gate_open():
 	events[EVENTS.GATE_OPEN].active = true
 
+func _on_player_satan():
+	events[EVENTS.BECOME_SATAN].active = true
+	pass
 
 
-func _player_text( msg, ttext, ttimer, nxt, evt ):
+func _player_text( msg, ttext, ttimer, nxt, evt, offset = -30 ):
 	_create_text( game.player, \
 			Color(1,1,1), \
-			msg, ttext, ttimer, nxt, evt )
+			msg, ttext, ttimer, nxt, evt, Vector2( 0, offset ) )
 
 func _demon_text( msg, ttext, ttimer, nxt, evt ):
 	_create_text( weakref( get_node( "walls/talking_monster" ) ), \
@@ -591,3 +616,5 @@ func _on_boss_gate_warning_body_enter( body ):
 		if game.act_specific[game.ACTS.GRAVEYARD]["persistent"].find( PERSISTENT.WARNED_GATE ) == -1:
 			events[EVENTS.WARN_BOSS_GATE].active = true
 	pass # replace with function body
+
+

@@ -52,7 +52,6 @@ func anim_finished():
 	elif cur_anim == ANIMS.RUN:
 		return true
 	elif cur_anim == ANIMS.ATTACK:
-		if running_body: return false
 		return true
 	elif cur_anim == ANIMS.PICK:
 		return true
@@ -86,18 +85,14 @@ func _set_idle():
 
 func _set_run():
 	# body
-	if anim_body.get_current_animation() != "run":
-		anim_body.play( "run" )
+	if anim_body.get_current_animation() != "idle":
+		anim_body.play( "idle" )
 	running_body = true
 
 func _set_attack():
-	if game.player != null and game.player.get_ref() != null and not game.player.get_ref().is_dead():
-		game.player.get_ref().vel *= 0
-	
-	if anim_body.get_current_animation() != "fire":
-		anim_body.play( "fire" )
+	if anim_body.get_current_animation() != "idle":
+		anim_body.play( "idle" )
 	running_body = true
-	return
 
 func _set_pick():
 	return
@@ -128,44 +123,8 @@ func _on_anim_fx_finished():
 	running_fx = false
 
 
-func _on_fire_bullet():
-	if game.player == null or game.player.get_ref() == null or game.player.get_ref().is_dead():
-		return
-	# stop plyaer
-	game.player.get_ref().vel *= 0
-	# shooting direction
-	var shooting_dir = Vector2( game.player.get_ref().dir_cur, 0 )
-	# external impulse
-	#external_impulse = -shooting_dir * 10000
-	#external_impulse_timer = 0.05
-	
-	# instance bullet
-	var bullet = preload( "res://scenes/monster_bullet.tscn" ).instance()
-	bullet.set_pos( game.player.get_ref().get_pos() + 15 * shooting_dir )
-	bullet.dir = shooting_dir.normalized()
-	# change bullet masks to kill monsters
-	bullet.set_layer_mask_bit( 1, false )
-	bullet.set_collision_mask_bit( 1, false )
-	bullet.set_layer_mask_bit( 0, true )
-	bullet.set_collision_mask_bit( 0, true )
-	game.player.get_ref().get_parent().add_child( bullet )
 
 
-
-func _running_dust():
-	if game.player!= null and game.player.get_ref() != null:
-		var player = game.player.get_ref()
-		if player.vel.x == 0:
-			player = null
-			return
-		var dir_cur = get_parent().get_scale().x
-		#print( "dir cur ", dir_cur )
-		var dust = preload( "res://scenes/running_dust.tscn" ).instance()
-		dust.set_pos( player.get_pos() + dir_cur * Vector2( 5, 0 ) )
-		dust.set_scale( Vector2( dir_cur, 1 ) )
-		#print( get_parent().get_parent().get_parent().get_name() )
-		player.get_parent().add_child( dust )
-		player = null
 
 
 

@@ -117,247 +117,247 @@ extents = Vector2( 22.9034, 20.7341 )
 custom_solver_bias = 0.0
 extents = Vector2( 328, 104 )
 
-[sub_resource type="RectangleShape2D" id=208]
+[sub_resource type="RectangleShape2D" id=16]
 
 custom_solver_bias = 0.0
 extents = Vector2( 48, 24 )
 
-[sub_resource type="RectangleShape2D" id=212]
+[sub_resource type="RectangleShape2D" id=17]
 
 custom_solver_bias = 0.0
 extents = Vector2( 280, 158 )
 
-[sub_resource type="RectangleShape2D" id=213]
+[sub_resource type="RectangleShape2D" id=18]
 
 custom_solver_bias = 0.0
 extents = Vector2( 168, 88 )
 
-[sub_resource type="RectangleShape2D" id=214]
+[sub_resource type="RectangleShape2D" id=19]
 
 custom_solver_bias = 0.0
 extents = Vector2( 47, 8 )
 
-[sub_resource type="RectangleShape2D" id=215]
+[sub_resource type="RectangleShape2D" id=20]
 
 custom_solver_bias = 0.0
 extents = Vector2( 68, 64 )
 
-[sub_resource type="RectangleShape2D" id=216]
+[sub_resource type="RectangleShape2D" id=21]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 72 )
 
-[sub_resource type="RectangleShape2D" id=217]
+[sub_resource type="RectangleShape2D" id=22]
 
 custom_solver_bias = 0.0
 extents = Vector2( 128, 32 )
 
-[sub_resource type="RectangleShape2D" id=218]
+[sub_resource type="RectangleShape2D" id=23]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 72 )
 
-[sub_resource type="RectangleShape2D" id=209]
+[sub_resource type="RectangleShape2D" id=24]
 
 custom_solver_bias = 0.0
 extents = Vector2( 328, 192 )
 
-[sub_resource type="RectangleShape2D" id=210]
+[sub_resource type="RectangleShape2D" id=25]
 
 custom_solver_bias = 0.0
 extents = Vector2( 464, 136 )
 
-[sub_resource type="RectangleShape2D" id=211]
+[sub_resource type="RectangleShape2D" id=26]
 
 custom_solver_bias = 0.0
 extents = Vector2( 576, 16 )
 
-[sub_resource type="RectangleShape2D" id=219]
+[sub_resource type="RectangleShape2D" id=27]
 
 custom_solver_bias = 0.0
 extents = Vector2( 47, 8 )
 
-[sub_resource type="RectangleShape2D" id=220]
+[sub_resource type="RectangleShape2D" id=28]
 
 custom_solver_bias = 0.0
 extents = Vector2( 280, 72 )
 
-[sub_resource type="RectangleShape2D" id=221]
+[sub_resource type="RectangleShape2D" id=29]
 
 custom_solver_bias = 0.0
 extents = Vector2( 80, 88 )
 
-[sub_resource type="RectangleShape2D" id=222]
+[sub_resource type="RectangleShape2D" id=30]
 
 custom_solver_bias = 0.0
 extents = Vector2( 360, 24 )
 
-[sub_resource type="RectangleShape2D" id=223]
+[sub_resource type="RectangleShape2D" id=31]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 72 )
 
-[sub_resource type="RectangleShape2D" id=224]
+[sub_resource type="RectangleShape2D" id=32]
 
 custom_solver_bias = 0.0
 extents = Vector2( 160, 32 )
 
-[sub_resource type="RectangleShape2D" id=225]
+[sub_resource type="RectangleShape2D" id=33]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 104 )
 
-[sub_resource type="RectangleShape2D" id=226]
+[sub_resource type="RectangleShape2D" id=34]
 
 custom_solver_bias = 0.0
 extents = Vector2( 112, 56 )
 
-[sub_resource type="RectangleShape2D" id=227]
+[sub_resource type="RectangleShape2D" id=35]
 
 custom_solver_bias = 0.0
 extents = Vector2( 40, 24 )
 
-[sub_resource type="RectangleShape2D" id=228]
+[sub_resource type="RectangleShape2D" id=36]
 
 custom_solver_bias = 0.0
 extents = Vector2( 148, 56 )
 
-[sub_resource type="RectangleShape2D" id=229]
+[sub_resource type="RectangleShape2D" id=37]
 
 custom_solver_bias = 0.0
 extents = Vector2( 36, 134 )
 
-[sub_resource type="RectangleShape2D" id=230]
+[sub_resource type="RectangleShape2D" id=38]
 
 custom_solver_bias = 0.0
 extents = Vector2( 160, 32 )
 
-[sub_resource type="RectangleShape2D" id=231]
+[sub_resource type="RectangleShape2D" id=39]
 
 custom_solver_bias = 0.0
 extents = Vector2( 32, 104 )
 
-[sub_resource type="RectangleShape2D" id=232]
+[sub_resource type="RectangleShape2D" id=40]
 
 custom_solver_bias = 0.0
 extents = Vector2( 100, 32 )
 
-[sub_resource type="RectangleShape2D" id=233]
+[sub_resource type="RectangleShape2D" id=41]
 
 custom_solver_bias = 0.0
 extents = Vector2( 68, 104 )
 
-[sub_resource type="RectangleShape2D" id=185]
+[sub_resource type="RectangleShape2D" id=42]
 
 custom_solver_bias = 0.0
 extents = Vector2( 144, 76 )
 
-[sub_resource type="RectangleShape2D" id=186]
+[sub_resource type="RectangleShape2D" id=43]
 
 custom_solver_bias = 0.0
 extents = Vector2( 112, 80 )
 
-[sub_resource type="RectangleShape2D" id=187]
+[sub_resource type="RectangleShape2D" id=44]
 
 custom_solver_bias = 0.0
 extents = Vector2( 112, 104 )
 
-[sub_resource type="RectangleShape2D" id=188]
+[sub_resource type="RectangleShape2D" id=45]
 
 custom_solver_bias = 0.0
 extents = Vector2( 80, 80 )
 
-[sub_resource type="RectangleShape2D" id=189]
+[sub_resource type="RectangleShape2D" id=46]
 
 custom_solver_bias = 0.0
 extents = Vector2( 209, 112 )
 
-[sub_resource type="RectangleShape2D" id=190]
+[sub_resource type="RectangleShape2D" id=47]
 
 custom_solver_bias = 0.0
 extents = Vector2( 160, 32 )
 
-[sub_resource type="RectangleShape2D" id=191]
+[sub_resource type="RectangleShape2D" id=48]
 
 custom_solver_bias = 0.0
 extents = Vector2( 33, 67 )
 
-[sub_resource type="RectangleShape2D" id=192]
+[sub_resource type="RectangleShape2D" id=49]
 
 custom_solver_bias = 0.0
 extents = Vector2( 126, 73 )
 
-[sub_resource type="RectangleShape2D" id=193]
+[sub_resource type="RectangleShape2D" id=50]
 
 custom_solver_bias = 0.0
 extents = Vector2( 229, 90 )
 
-[sub_resource type="RectangleShape2D" id=194]
+[sub_resource type="RectangleShape2D" id=51]
 
 custom_solver_bias = 0.0
 extents = Vector2( 336, 98 )
 
-[sub_resource type="RectangleShape2D" id=195]
+[sub_resource type="RectangleShape2D" id=52]
 
 custom_solver_bias = 0.0
 extents = Vector2( 160, 85 )
 
-[sub_resource type="RectangleShape2D" id=196]
+[sub_resource type="RectangleShape2D" id=53]
 
 custom_solver_bias = 0.0
 extents = Vector2( 24, 10 )
 
-[sub_resource type="RectangleShape2D" id=197]
+[sub_resource type="RectangleShape2D" id=54]
 
 custom_solver_bias = 0.0
 extents = Vector2( 423.868, 10 )
 
-[sub_resource type="RectangleShape2D" id=198]
+[sub_resource type="RectangleShape2D" id=55]
 
 custom_solver_bias = 0.0
 extents = Vector2( 423.868, 10 )
 
-[sub_resource type="RectangleShape2D" id=199]
+[sub_resource type="RectangleShape2D" id=56]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10.1293, 223.554 )
 
-[sub_resource type="RectangleShape2D" id=200]
+[sub_resource type="RectangleShape2D" id=57]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 264 )
 
-[sub_resource type="RectangleShape2D" id=201]
+[sub_resource type="RectangleShape2D" id=58]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 36 )
 
-[sub_resource type="RectangleShape2D" id=202]
+[sub_resource type="RectangleShape2D" id=59]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 264 )
 
-[sub_resource type="RectangleShape2D" id=203]
+[sub_resource type="RectangleShape2D" id=60]
 
 custom_solver_bias = 0.0
 extents = Vector2( 111, 23 )
 
-[sub_resource type="RectangleShape2D" id=204]
+[sub_resource type="RectangleShape2D" id=61]
 
 custom_solver_bias = 0.0
 extents = Vector2( 104, 23 )
 
-[sub_resource type="RectangleShape2D" id=205]
+[sub_resource type="RectangleShape2D" id=62]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 264 )
 
-[sub_resource type="RectangleShape2D" id=206]
+[sub_resource type="RectangleShape2D" id=63]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 264 )
 
-[sub_resource type="RectangleShape2D" id=207]
+[sub_resource type="RectangleShape2D" id=64]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 370 )
@@ -606,7 +606,7 @@ __meta__ = {
 
 [node name="player" parent="walls" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 124, 124 )
+transform/pos = Vector2( 4000, 280 )
 
 [node name="rain" parent="walls" instance=ExtResource( 7 )]
 
@@ -1699,6 +1699,7 @@ limit/bottom = 650
 
 [node name="areas" type="Node2D" parent="."]
 
+visibility/visible = false
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1706,6 +1707,7 @@ __meta__ = {
 [node name="first_monsters" type="Area2D" parent="areas"]
 
 editor/display_folded = true
+visibility/visible = false
 transform/pos = Vector2( 597.683, 100.997 )
 input/pickable = true
 shapes/0/shape = SubResource( 7 )
@@ -1732,6 +1734,7 @@ __meta__ = {
 [node name="boss_gate_warning" type="Area2D" parent="areas"]
 
 editor/display_folded = true
+visibility/visible = false
 transform/pos = Vector2( 3808, 296 )
 input/pickable = true
 shapes/0/shape = SubResource( 8 )
@@ -1924,14 +1927,15 @@ __meta__ = {
 
 [node name="falling" type="Node2D" parent="areas"]
 
+editor/display_folded = true
 visibility/visible = false
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="falling_area_up" type="Area2D" parent="areas/falling" groups=[
-"fall_area",
 "up_fall",
+"fall_area",
 ]]
 
 editor/display_folded = true
@@ -1939,28 +1943,28 @@ input/pickable = true
 shapes/0/shape = SubResource( 15 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 1240, 96 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 208 )
+shapes/1/shape = SubResource( 16 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 1368, 216 )
 shapes/1/trigger = false
-shapes/2/shape = SubResource( 212 )
+shapes/2/shape = SubResource( 17 )
 shapes/2/transform = Matrix32( 1, 0, 0, 1, 2336, 160 )
 shapes/2/trigger = false
-shapes/3/shape = SubResource( 213 )
+shapes/3/shape = SubResource( 18 )
 shapes/3/transform = Matrix32( 1, 0, 0, 1, 2224, 392 )
 shapes/3/trigger = false
-shapes/4/shape = SubResource( 214 )
+shapes/4/shape = SubResource( 19 )
 shapes/4/transform = Matrix32( 1, 0, 0, 1, 2183, 486 )
 shapes/4/trigger = false
-shapes/5/shape = SubResource( 215 )
+shapes/5/shape = SubResource( 20 )
 shapes/5/transform = Matrix32( 1, 0, 0, 1, 3388, 56 )
 shapes/5/trigger = false
-shapes/6/shape = SubResource( 216 )
+shapes/6/shape = SubResource( 21 )
 shapes/6/transform = Matrix32( 1, 0, 0, 1, 3352, 184 )
 shapes/6/trigger = false
-shapes/7/shape = SubResource( 217 )
+shapes/7/shape = SubResource( 22 )
 shapes/7/transform = Matrix32( 1, 0, 0, 1, 3576, 88 )
 shapes/7/trigger = false
-shapes/8/shape = SubResource( 218 )
+shapes/8/shape = SubResource( 23 )
 shapes/8/transform = Matrix32( 1, 0, 0, 1, 3608, 184 )
 shapes/8/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -1987,7 +1991,7 @@ __meta__ = {
 [node name="collision_2" type="CollisionShape2D" parent="areas/falling/falling_area_up"]
 
 transform/pos = Vector2( 1368, 216 )
-shape = SubResource( 208 )
+shape = SubResource( 16 )
 trigger = false
 _update_shape_index = 1
 __meta__ = {
@@ -1997,7 +2001,7 @@ __meta__ = {
 [node name="collision_4" type="CollisionShape2D" parent="areas/falling/falling_area_up"]
 
 transform/pos = Vector2( 2336, 160 )
-shape = SubResource( 212 )
+shape = SubResource( 17 )
 trigger = false
 _update_shape_index = 2
 __meta__ = {
@@ -2007,7 +2011,7 @@ __meta__ = {
 [node name="collision_5" type="CollisionShape2D" parent="areas/falling/falling_area_up"]
 
 transform/pos = Vector2( 2224, 392 )
-shape = SubResource( 213 )
+shape = SubResource( 18 )
 trigger = false
 _update_shape_index = 3
 __meta__ = {
@@ -2017,7 +2021,7 @@ __meta__ = {
 [node name="collision_6" type="CollisionShape2D" parent="areas/falling/falling_area_up"]
 
 transform/pos = Vector2( 2183, 486 )
-shape = SubResource( 214 )
+shape = SubResource( 19 )
 trigger = false
 _update_shape_index = 4
 __meta__ = {
@@ -2027,7 +2031,7 @@ __meta__ = {
 [node name="collision_7" type="CollisionShape2D" parent="areas/falling/falling_area_up"]
 
 transform/pos = Vector2( 3388, 56 )
-shape = SubResource( 215 )
+shape = SubResource( 20 )
 trigger = false
 _update_shape_index = 5
 __meta__ = {
@@ -2037,7 +2041,7 @@ __meta__ = {
 [node name="collision_8" type="CollisionShape2D" parent="areas/falling/falling_area_up"]
 
 transform/pos = Vector2( 3352, 184 )
-shape = SubResource( 216 )
+shape = SubResource( 21 )
 trigger = false
 _update_shape_index = 6
 __meta__ = {
@@ -2047,7 +2051,7 @@ __meta__ = {
 [node name="collision_9" type="CollisionShape2D" parent="areas/falling/falling_area_up"]
 
 transform/pos = Vector2( 3576, 88 )
-shape = SubResource( 217 )
+shape = SubResource( 22 )
 trigger = false
 _update_shape_index = 7
 __meta__ = {
@@ -2057,7 +2061,7 @@ __meta__ = {
 [node name="collision_10" type="CollisionShape2D" parent="areas/falling/falling_area_up"]
 
 transform/pos = Vector2( 3608, 184 )
-shape = SubResource( 218 )
+shape = SubResource( 23 )
 trigger = false
 _update_shape_index = 8
 __meta__ = {
@@ -2071,58 +2075,58 @@ __meta__ = {
 
 editor/display_folded = true
 input/pickable = true
-shapes/0/shape = SubResource( 209 )
+shapes/0/shape = SubResource( 24 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 1240, 424 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 210 )
+shapes/1/shape = SubResource( 25 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 456, 504 )
 shapes/1/trigger = false
-shapes/2/shape = SubResource( 211 )
+shapes/2/shape = SubResource( 26 )
 shapes/2/transform = Matrix32( 1, 0, 0, 1, 1488, 624 )
 shapes/2/trigger = false
-shapes/3/shape = SubResource( 219 )
+shapes/3/shape = SubResource( 27 )
 shapes/3/transform = Matrix32( 1, 0, 0, 1, 2183, 538 )
 shapes/3/trigger = false
-shapes/4/shape = SubResource( 220 )
+shapes/4/shape = SubResource( 28 )
 shapes/4/transform = Matrix32( 1, 0, 0, 1, 2336, 616 )
 shapes/4/trigger = false
-shapes/5/shape = SubResource( 221 )
+shapes/5/shape = SubResource( 29 )
 shapes/5/transform = Matrix32( 1, 0, 0, 1, 2536, 472 )
 shapes/5/trigger = false
-shapes/6/shape = SubResource( 222 )
+shapes/6/shape = SubResource( 30 )
 shapes/6/transform = Matrix32( 1, 0, 0, 1, 2968, 664 )
 shapes/6/trigger = false
-shapes/7/shape = SubResource( 223 )
+shapes/7/shape = SubResource( 31 )
 shapes/7/transform = Matrix32( 1, 0, 0, 1, 3480, 264 )
 shapes/7/trigger = false
-shapes/8/shape = SubResource( 224 )
+shapes/8/shape = SubResource( 32 )
 shapes/8/transform = Matrix32( 1, 0, 0, 1, 3480, 352 )
 shapes/8/trigger = false
-shapes/9/shape = SubResource( 225 )
+shapes/9/shape = SubResource( 33 )
 shapes/9/transform = Matrix32( 1, 0, 0, 1, 3352, 480 )
 shapes/9/trigger = false
-shapes/10/shape = SubResource( 226 )
+shapes/10/shape = SubResource( 34 )
 shapes/10/transform = Matrix32( 1, 0, 0, 1, 3432, 632 )
 shapes/10/trigger = false
-shapes/11/shape = SubResource( 227 )
+shapes/11/shape = SubResource( 35 )
 shapes/11/transform = Matrix32( 1, 0, 0, 1, 3576, 664 )
 shapes/11/trigger = false
-shapes/12/shape = SubResource( 228 )
+shapes/12/shape = SubResource( 36 )
 shapes/12/transform = Matrix32( 1, 0, 0, 1, 3756, 632 )
 shapes/12/trigger = false
-shapes/13/shape = SubResource( 229 )
+shapes/13/shape = SubResource( 37 )
 shapes/13/transform = Matrix32( 1, 0, 0, 1, 3868, 454 )
 shapes/13/trigger = false
-shapes/14/shape = SubResource( 230 )
+shapes/14/shape = SubResource( 38 )
 shapes/14/transform = Matrix32( 1, 0, 0, 1, 3608, 480 )
 shapes/14/trigger = false
-shapes/15/shape = SubResource( 231 )
+shapes/15/shape = SubResource( 39 )
 shapes/15/transform = Matrix32( 1, 0, 0, 1, 3736, 352 )
 shapes/15/trigger = false
-shapes/16/shape = SubResource( 232 )
+shapes/16/shape = SubResource( 40 )
 shapes/16/transform = Matrix32( 1, 0, 0, 1, 3804, 224 )
 shapes/16/trigger = false
-shapes/17/shape = SubResource( 233 )
+shapes/17/shape = SubResource( 41 )
 shapes/17/transform = Matrix32( 1, 0, 0, 1, 3836, 96 )
 shapes/17/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -2139,7 +2143,7 @@ __meta__ = {
 [node name="collision_1" type="CollisionShape2D" parent="areas/falling/falling_area_down"]
 
 transform/pos = Vector2( 1240, 424 )
-shape = SubResource( 209 )
+shape = SubResource( 24 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2149,7 +2153,7 @@ __meta__ = {
 [node name="collision_2" type="CollisionShape2D" parent="areas/falling/falling_area_down"]
 
 transform/pos = Vector2( 456, 504 )
-shape = SubResource( 210 )
+shape = SubResource( 25 )
 trigger = false
 _update_shape_index = 1
 __meta__ = {
@@ -2159,7 +2163,7 @@ __meta__ = {
 [node name="collision_3" type="CollisionShape2D" parent="areas/falling/falling_area_down"]
 
 transform/pos = Vector2( 1488, 624 )
-shape = SubResource( 211 )
+shape = SubResource( 26 )
 trigger = false
 _update_shape_index = 2
 __meta__ = {
@@ -2169,7 +2173,7 @@ __meta__ = {
 [node name="collision_7" type="CollisionShape2D" parent="areas/falling/falling_area_down"]
 
 transform/pos = Vector2( 2183, 538 )
-shape = SubResource( 219 )
+shape = SubResource( 27 )
 trigger = false
 _update_shape_index = 3
 __meta__ = {
@@ -2179,7 +2183,7 @@ __meta__ = {
 [node name="collision_8" type="CollisionShape2D" parent="areas/falling/falling_area_down"]
 
 transform/pos = Vector2( 2336, 616 )
-shape = SubResource( 220 )
+shape = SubResource( 28 )
 trigger = false
 _update_shape_index = 4
 __meta__ = {
@@ -2189,7 +2193,7 @@ __meta__ = {
 [node name="collision_9" type="CollisionShape2D" parent="areas/falling/falling_area_down"]
 
 transform/pos = Vector2( 2536, 472 )
-shape = SubResource( 221 )
+shape = SubResource( 29 )
 trigger = false
 _update_shape_index = 5
 __meta__ = {
@@ -2199,7 +2203,7 @@ __meta__ = {
 [node name="collision_10" type="CollisionShape2D" parent="areas/falling/falling_area_down"]
 
 transform/pos = Vector2( 2968, 664 )
-shape = SubResource( 222 )
+shape = SubResource( 30 )
 trigger = false
 _update_shape_index = 6
 __meta__ = {
@@ -2209,7 +2213,7 @@ __meta__ = {
 [node name="collision_11" type="CollisionShape2D" parent="areas/falling/falling_area_down"]
 
 transform/pos = Vector2( 3480, 264 )
-shape = SubResource( 223 )
+shape = SubResource( 31 )
 trigger = false
 _update_shape_index = 7
 __meta__ = {
@@ -2219,7 +2223,7 @@ __meta__ = {
 [node name="collision_12" type="CollisionShape2D" parent="areas/falling/falling_area_down"]
 
 transform/pos = Vector2( 3480, 352 )
-shape = SubResource( 224 )
+shape = SubResource( 32 )
 trigger = false
 _update_shape_index = 8
 __meta__ = {
@@ -2229,7 +2233,7 @@ __meta__ = {
 [node name="collision_13" type="CollisionShape2D" parent="areas/falling/falling_area_down"]
 
 transform/pos = Vector2( 3352, 480 )
-shape = SubResource( 225 )
+shape = SubResource( 33 )
 trigger = false
 _update_shape_index = 9
 __meta__ = {
@@ -2239,7 +2243,7 @@ __meta__ = {
 [node name="collision_14" type="CollisionShape2D" parent="areas/falling/falling_area_down"]
 
 transform/pos = Vector2( 3432, 632 )
-shape = SubResource( 226 )
+shape = SubResource( 34 )
 trigger = false
 _update_shape_index = 10
 __meta__ = {
@@ -2249,7 +2253,7 @@ __meta__ = {
 [node name="collision_15" type="CollisionShape2D" parent="areas/falling/falling_area_down"]
 
 transform/pos = Vector2( 3576, 664 )
-shape = SubResource( 227 )
+shape = SubResource( 35 )
 trigger = false
 _update_shape_index = 11
 __meta__ = {
@@ -2259,7 +2263,7 @@ __meta__ = {
 [node name="collision_16" type="CollisionShape2D" parent="areas/falling/falling_area_down"]
 
 transform/pos = Vector2( 3756, 632 )
-shape = SubResource( 228 )
+shape = SubResource( 36 )
 trigger = false
 _update_shape_index = 12
 __meta__ = {
@@ -2269,7 +2273,7 @@ __meta__ = {
 [node name="collision_17" type="CollisionShape2D" parent="areas/falling/falling_area_down"]
 
 transform/pos = Vector2( 3868, 454 )
-shape = SubResource( 229 )
+shape = SubResource( 37 )
 trigger = false
 _update_shape_index = 13
 __meta__ = {
@@ -2279,7 +2283,7 @@ __meta__ = {
 [node name="collision_18" type="CollisionShape2D" parent="areas/falling/falling_area_down"]
 
 transform/pos = Vector2( 3608, 480 )
-shape = SubResource( 230 )
+shape = SubResource( 38 )
 trigger = false
 _update_shape_index = 14
 __meta__ = {
@@ -2289,7 +2293,7 @@ __meta__ = {
 [node name="collision_19" type="CollisionShape2D" parent="areas/falling/falling_area_down"]
 
 transform/pos = Vector2( 3736, 352 )
-shape = SubResource( 231 )
+shape = SubResource( 39 )
 trigger = false
 _update_shape_index = 15
 __meta__ = {
@@ -2299,7 +2303,7 @@ __meta__ = {
 [node name="collision_20" type="CollisionShape2D" parent="areas/falling/falling_area_down"]
 
 transform/pos = Vector2( 3804, 224 )
-shape = SubResource( 232 )
+shape = SubResource( 40 )
 trigger = false
 _update_shape_index = 16
 __meta__ = {
@@ -2309,7 +2313,7 @@ __meta__ = {
 [node name="collision_21" type="CollisionShape2D" parent="areas/falling/falling_area_down"]
 
 transform/pos = Vector2( 3836, 96 )
-shape = SubResource( 233 )
+shape = SubResource( 41 )
 trigger = false
 _update_shape_index = 17
 __meta__ = {
@@ -2329,7 +2333,7 @@ __meta__ = {
 editor/display_folded = true
 transform/pos = Vector2( 400, 304 )
 input/pickable = true
-shapes/0/shape = SubResource( 185 )
+shapes/0/shape = SubResource( 42 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -2342,7 +2346,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/patrol_areas/patrol_1"]
 
-shape = SubResource( 185 )
+shape = SubResource( 42 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2354,7 +2358,7 @@ __meta__ = {
 editor/display_folded = true
 transform/pos = Vector2( 792, 296 )
 input/pickable = true
-shapes/0/shape = SubResource( 186 )
+shapes/0/shape = SubResource( 43 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -2367,7 +2371,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/patrol_areas/patrol_2"]
 
-shape = SubResource( 186 )
+shape = SubResource( 43 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2379,7 +2383,7 @@ __meta__ = {
 editor/display_folded = true
 transform/pos = Vector2( 856, 112 )
 input/pickable = true
-shapes/0/shape = SubResource( 187 )
+shapes/0/shape = SubResource( 44 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -2392,7 +2396,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/patrol_areas/patrol_3"]
 
-shape = SubResource( 187 )
+shape = SubResource( 44 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2404,7 +2408,7 @@ __meta__ = {
 editor/display_folded = true
 transform/pos = Vector2( 1832, 208 )
 input/pickable = true
-shapes/0/shape = SubResource( 188 )
+shapes/0/shape = SubResource( 45 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -2417,7 +2421,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/patrol_areas/patrol_4"]
 
-shape = SubResource( 188 )
+shape = SubResource( 45 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2429,7 +2433,7 @@ __meta__ = {
 editor/display_folded = true
 transform/pos = Vector2( 1810, 469 )
 input/pickable = true
-shapes/0/shape = SubResource( 189 )
+shapes/0/shape = SubResource( 46 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -2442,7 +2446,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/patrol_areas/patrol_5"]
 
-shape = SubResource( 189 )
+shape = SubResource( 46 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2454,7 +2458,7 @@ __meta__ = {
 editor/display_folded = true
 transform/pos = Vector2( 1824, 48 )
 input/pickable = true
-shapes/0/shape = SubResource( 190 )
+shapes/0/shape = SubResource( 47 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -2467,7 +2471,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/patrol_areas/patrol_6"]
 
-shape = SubResource( 190 )
+shape = SubResource( 47 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2479,7 +2483,7 @@ __meta__ = {
 editor/display_folded = true
 transform/pos = Vector2( 3088, 342 )
 input/pickable = true
-shapes/0/shape = SubResource( 191 )
+shapes/0/shape = SubResource( 48 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -2493,7 +2497,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/patrol_areas/patrol_and_spawn"]
 
-shape = SubResource( 191 )
+shape = SubResource( 48 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2512,7 +2516,7 @@ __meta__ = {
 editor/display_folded = true
 transform/pos = Vector2( 2743, 349 )
 input/pickable = true
-shapes/0/shape = SubResource( 192 )
+shapes/0/shape = SubResource( 49 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -2525,7 +2529,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/patrol_areas/patrol_7"]
 
-shape = SubResource( 192 )
+shape = SubResource( 49 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2537,7 +2541,7 @@ __meta__ = {
 editor/display_folded = true
 transform/pos = Vector2( 2884, 539 )
 input/pickable = true
-shapes/0/shape = SubResource( 193 )
+shapes/0/shape = SubResource( 50 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -2550,7 +2554,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/patrol_areas/patrol_8"]
 
-shape = SubResource( 193 )
+shape = SubResource( 50 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2562,7 +2566,7 @@ __meta__ = {
 editor/display_folded = true
 transform/pos = Vector2( 2968, 107 )
 input/pickable = true
-shapes/0/shape = SubResource( 194 )
+shapes/0/shape = SubResource( 51 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -2575,7 +2579,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/patrol_areas/patrol_9"]
 
-shape = SubResource( 194 )
+shape = SubResource( 51 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2585,9 +2589,10 @@ __meta__ = {
 [node name="boss_arena" type="Area2D" parent="areas"]
 
 editor/display_folded = true
+visibility/visible = false
 transform/pos = Vector2( 4352, 96 )
 input/pickable = true
-shapes/0/shape = SubResource( 195 )
+shapes/0/shape = SubResource( 52 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -2601,7 +2606,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/boss_arena"]
 
-shape = SubResource( 195 )
+shape = SubResource( 52 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2611,7 +2616,7 @@ __meta__ = {
 [node name="block_gate" type="StaticBody2D" parent="areas/boss_arena"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 196 )
+shapes/0/shape = SubResource( 53 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -110, 95 )
 shapes/0/trigger = false
 collision/layers = 0
@@ -2627,7 +2632,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areas/boss_arena/block_gate"]
 
 transform/pos = Vector2( -110, 95 )
-shape = SubResource( 196 )
+shape = SubResource( 53 )
 trigger = false
 _update_shape_index = 0
 
@@ -2658,7 +2663,7 @@ __meta__ = {
 transform/pos = Vector2( 2122, -7 )
 transform/scale = Vector2( 5.14676, 1 )
 input/pickable = false
-shapes/0/shape = SubResource( 197 )
+shapes/0/shape = SubResource( 54 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524288
@@ -2673,7 +2678,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/barrier_1"]
 
-shape = SubResource( 197 )
+shape = SubResource( 54 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2685,7 +2690,7 @@ __meta__ = {
 transform/pos = Vector2( 2086, 650 )
 transform/scale = Vector2( 5.22656, 1 )
 input/pickable = false
-shapes/0/shape = SubResource( 198 )
+shapes/0/shape = SubResource( 55 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524288
@@ -2700,7 +2705,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/barrier_2"]
 
-shape = SubResource( 198 )
+shape = SubResource( 55 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2712,7 +2717,7 @@ __meta__ = {
 transform/pos = Vector2( -7, 302 )
 transform/scale = Vector2( 1, 1.62611 )
 input/pickable = false
-shapes/0/shape = SubResource( 199 )
+shapes/0/shape = SubResource( 56 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524288
@@ -2727,7 +2732,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/barrier_3"]
 
-shape = SubResource( 199 )
+shape = SubResource( 56 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2746,7 +2751,7 @@ __meta__ = {
 
 transform/pos = Vector2( 2045, 219 )
 input/pickable = false
-shapes/0/shape = SubResource( 200 )
+shapes/0/shape = SubResource( 57 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524291
@@ -2761,7 +2766,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_1"]
 
-shape = SubResource( 200 )
+shape = SubResource( 57 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2772,7 +2777,7 @@ __meta__ = {
 
 transform/pos = Vector2( 2045, 579 )
 input/pickable = false
-shapes/0/shape = SubResource( 201 )
+shapes/0/shape = SubResource( 58 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524291
@@ -2787,7 +2792,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_2"]
 
-shape = SubResource( 201 )
+shape = SubResource( 58 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2798,7 +2803,7 @@ __meta__ = {
 
 transform/pos = Vector2( 3133, 476 )
 input/pickable = false
-shapes/0/shape = SubResource( 202 )
+shapes/0/shape = SubResource( 59 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524291
@@ -2813,7 +2818,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_3"]
 
-shape = SubResource( 202 )
+shape = SubResource( 59 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2824,7 +2829,7 @@ __meta__ = {
 
 transform/pos = Vector2( 2725, 235 )
 input/pickable = false
-shapes/0/shape = SubResource( 203 )
+shapes/0/shape = SubResource( 60 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524291
@@ -2839,7 +2844,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_4"]
 
-shape = SubResource( 203 )
+shape = SubResource( 60 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2850,7 +2855,7 @@ __meta__ = {
 
 transform/pos = Vector2( 3036, 235 )
 input/pickable = false
-shapes/0/shape = SubResource( 204 )
+shapes/0/shape = SubResource( 61 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524291
@@ -2865,7 +2870,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_5"]
 
-shape = SubResource( 204 )
+shape = SubResource( 61 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2876,7 +2881,7 @@ __meta__ = {
 
 transform/pos = Vector2( 3932, 586 )
 input/pickable = false
-shapes/0/shape = SubResource( 205 )
+shapes/0/shape = SubResource( 62 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524291
@@ -2891,7 +2896,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_6"]
 
-shape = SubResource( 205 )
+shape = SubResource( 62 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2902,7 +2907,7 @@ __meta__ = {
 
 transform/pos = Vector2( 3932, -5 )
 input/pickable = false
-shapes/0/shape = SubResource( 206 )
+shapes/0/shape = SubResource( 63 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524291
@@ -2917,7 +2922,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_7"]
 
-shape = SubResource( 206 )
+shape = SubResource( 63 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -2928,7 +2933,7 @@ __meta__ = {
 
 transform/pos = Vector2( 4528, 328 )
 input/pickable = false
-shapes/0/shape = SubResource( 207 )
+shapes/0/shape = SubResource( 64 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 524291
@@ -2940,7 +2945,7 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="barriers/wall_barriers/wall_8"]
 
-shape = SubResource( 207 )
+shape = SubResource( 64 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {

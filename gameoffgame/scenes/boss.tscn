@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://scripts/boss.gd" type="Script" id=1]
 [ext_resource path="res://assets/boss.png" type="Texture" id=2]
@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 3, 1 )
 
-[sub_resource type="ConvexPolygonShape2D" id=10]
+[sub_resource type="ConvexPolygonShape2D" id=2]
 
 custom_solver_bias = 0.0
 points = Vector2Array( 21, -47, 36, -43, 44, -35, 46, 0, 0, 0 )
@@ -168,6 +168,11 @@ tracks/2/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 5, 10 )
 
+[sub_resource type="RectangleShape2D" id=10]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 4 )
+
 [node name="boss" type="KinematicBody2D" groups=[
 "monster",
 ]]
@@ -209,12 +214,11 @@ texture = ExtResource( 2 )
 offset = Vector2( 5, -26 )
 vframes = 5
 hframes = 10
-frame = 20
 
 [node name="hitbox" type="Area2D" parent="rotate"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 10 )
+shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -230,8 +234,8 @@ shape_range = Vector2( 0, 0 )
 trigger = false
 
 [node name="anim" type="AnimationPlayer" parent="." groups=[
-"monster_3",
 "blood",
+"monster_3",
 ]]
 
 playback/process_mode = 1
@@ -274,6 +278,29 @@ collision/mask = 2
 
 transform/pos = Vector2( 0, -9 )
 shape = SubResource( 9 )
+trigger = false
+_update_shape_index = 0
+
+[node name="itemarea" type="Area2D" parent="." groups=[
+"blood",
+"satan",
+]]
+
+input/pickable = true
+shapes/0/shape = SubResource( 10 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -4 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision/layers = 0
+collision/mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="itemarea"]
+
+transform/pos = Vector2( 0, -4 )
+shape = SubResource( 10 )
 trigger = false
 _update_shape_index = 0
 

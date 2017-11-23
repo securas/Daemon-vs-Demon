@@ -244,6 +244,7 @@ func _state_dead( delta ):
 		_dead_wait = true
 		print( "boss dead" )
 		emit_signal( "boss_dead" )
+		_change_to_item()
 	pass
 
 
@@ -340,3 +341,18 @@ func _camera_shake():
 
 func _on_finished_killing_player_scene():
 	emit_signal( "finished_kill" )
+
+
+
+func _change_to_item():
+	#print( "changing to item" )
+	# delete unecessary nodes
+	#get_node( "anim" ).queue_free()
+	# change mask of kinematic body
+	set_layer_mask_bit( 1, false )
+	set_collision_mask_bit( 1, false )
+	get_node( "damagebox/CollisionShape2D" ).queue_free()
+	get_node( "damagebox" ).queue_free()
+	# change mask of item box
+	get_node( "itemarea" ).set_layer_mask_bit( 2, true )
+	get_node( "itemarea" ).set_collision_mask_bit( 2, true )

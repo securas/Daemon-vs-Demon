@@ -4,6 +4,7 @@ extends KinematicBody2D
 #--------------------------
 signal is_dead
 signal on_transformation
+signal became_satan
 
 #--------------------------
 # scene state
@@ -183,7 +184,7 @@ func _normal_state( delta ):
 	_player_direction( delta )
 	
 	# timers
-	_attack_timer -= delta
+	#_attack_timer -= delta
 	pass
 
 
@@ -241,25 +242,26 @@ func _player_motion( delta ):
 	#get_node("rotate_hitbox").rotate(vel.angle())
 
 
-
+var _holding_timer = 0
+var _can_hold = true
 func _player_attack( delta ):
 	if btn_fire.check() == 1:
 		var can_attack = true
-		if _attack_timer <= 0:
-			# no recent attacks, can pick, if there is something to pick
-			var itemareas = get_node( "itembox" ).get_overlapping_areas()
-			if itemareas.size() > 0:
-				# there is stuff to pick
-				can_attack = false
-				_player_pick( itemareas )
+#		if _attack_timer <= 0:
+#			# no recent attacks, can pick, if there is something to pick
+#			var itemareas = get_node( "itembox" ).get_overlapping_areas()
+#			if itemareas.size() > 0:
+#				# there is stuff to pick
+#				can_attack = false
+#				_player_pick( itemareas )
 		if not sprite_node.anim_finished():
 			can_attack = false
 		
-		if can_attack:
+		if sprite_node.anim_finished():#can_attack:
 			sprite_node.set_animation( sprite_node.ANIMS.ATTACK )
 			if player_char == game.PLAYER_CHAR.HUMAN_SWORD:
 				if sword_neighbours.size() > 0:
-					_attack_timer = ATTACK_INTERVAL
+					#_attack_timer = ATTACK_INTERVAL
 					# kill neighbours
 					var shake_camera = 0
 					for n in sword_neighbours:
@@ -283,6 +285,22 @@ func _player_attack( delta ):
 								
 					if shake_camera > 0:
 						game.camera.get_ref().shake( 0.5, 30, min( 2 * shake_camera, 10 ) )
+	elif btn_fire.check() == 2 and _can_hold:
+		_holding_timer += delta
+		if _holding_timer >= 1:
+			_can_hold = false
+			_holding_timer = 0
+			# do stuff
+			var itemareas = get_node( "itembox" ).get_overlapping_areas()
+			if itemareas.size() > 0:
+				# there is stuff to pick
+				#can_attack = false
+				_player_pick( itemareas )
+	if not _can_hold:
+		_holding_timer += delta
+		if _holding_timer >= 1:
+			_holding_timer = 0
+			_can_hold = true
 
 
 
@@ -297,15 +315,22 @@ func _player_pick( itemareas ):
 		# transform
 		if item.is_in_group( "monster_1" ):
 			transform( game.PLAYER_CHAR.MONSTER_1 )
+			emit_signal( "on_transformation" )
 		elif item.is_in_group( "monster_2" ):
 			transform( game.PLAYER_CHAR.MONSTER_2 )
+			emit_signal( "on_transformation" )
 		elif item.is_in_group( "monster_3" ):
 			transform( game.PLAYER_CHAR.MONSTER_3 )
+			emit_signal( "on_transformation" )
+		elif item.is_in_group( "satan" ):
+			transform( game.PLAYER_CHAR.SATAN )
+			emit_signal( "became_satan" )
 		# emit signal
-		emit_signal( "on_transformation" )
+		#emit_signal( "on_transformation" )
 		# start transformation timer
-		get_node( "transformation_timer" ).set_wait_time( TRANSFORMATION_DURATION )
-		get_node( "transformation_timer" ).start()
+		if not item.is_in_group( "satan" ):
+			get_node( "transformation_timer" ).set_wait_time( TRANSFORMATION_DURATION )
+			get_node( "transformation_timer" ).start()
 		#item.get_parent().queue_free()
 	elif item.is_in_group( "switch" ):
 		# flip switch
@@ -365,7 +390,7 @@ func _on_finished_kill_monster_1():
 
 func transform( newchar ):
 	if newchar == game.player_char: return
-	#print( "transforming" )
+	print( "transforming" )
 	game.player_char = newchar
 	#effects
 	get_node( "transformation_particles" ).set_emitting( true )
