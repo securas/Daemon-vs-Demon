@@ -571,7 +571,7 @@ func _on_text_interrupted(evt):
 # function called to update respawn area
 #-----------------------------------------------------
 func _on_respawn_body_enter( body, area ):
-	print( body.get_name(), "entered ", area.get_name() )
+	#print( body.get_name(), "entered ", area.get_name() )
 	if game.player != null and body == game.player.get_ref():
 		game.player_spawnpos = area.get_global_pos()
 		if scene > 1:
@@ -600,13 +600,15 @@ func _on_monsters_body_enter( body, group ):
 
 
 func _on_switch_left_switch_flipped():
+	return
 	# spawn a bunch of monsters
 	var monsters = get_tree().get_nodes_in_group( "gate_monster" )
 	var mscn = preload( "res://scenes/monster_2.tscn" )
 	for m in monsters:
 		var newmonster = mscn.instance()
 		newmonster.state_nxt = m.STATES.ATTACK
-		newmonster.set_pos( m.get_pos() )
+		#newmonster.set_pos( m.get_pos() )
+		newmonster.set_pos( get_node( "walls/gate_monster_position" ).get_pos() )
 		m.get_parent().add_child( newmonster )
 		#m.state_nxt = m.STATES.ATTACK
 

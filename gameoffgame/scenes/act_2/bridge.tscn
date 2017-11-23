@@ -123,8 +123,8 @@ region_rect = Rect2( 200, 64, 96, 40 )
 script/script = SubResource( 2 )
 
 [node name="fall_area" type="Area2D" parent="." groups=[
-"down_fall",
 "fall_area",
+"down_fall",
 ]]
 
 transform/pos = Vector2( -1, -18 )
@@ -156,7 +156,7 @@ root/root = NodePath("..")
 anims/hide = SubResource( 4 )
 anims/show = SubResource( 5 )
 playback/active = true
-playback/speed = 4.0
+playback/speed = 1.0
 blend_times = [  ]
 autoplay = "hide"
 

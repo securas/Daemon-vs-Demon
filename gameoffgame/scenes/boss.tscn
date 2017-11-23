@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://scripts/boss.gd" type="Script" id=1]
-[ext_resource path="res://assets/boss.png" type="Texture" id=2]
+[ext_resource path="res://assets/boss_particles.png" type="Texture" id=2]
+[ext_resource path="res://assets/boss.png" type="Texture" id=3]
+[ext_resource path="res://assets/player_light_mask.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -208,15 +210,47 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Particles2D" type="Particles2D" parent="rotate"]
+
+transform/pos = Vector2( -1, -30 )
+config/amount = 32
+config/lifetime = 2.0
+config/process_mode = 1
+config/half_extents = Vector2( 4, 0 )
+config/texture = ExtResource( 2 )
+config/h_frames = 6
+params/direction = 180.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 180.0
+params/gravity_strength = 20.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/anim_initial_pos = 1.0
+color/color = Color( 0, 0, 0, 1 )
+
 [node name="Sprite" type="Sprite" parent="rotate"]
 
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 offset = Vector2( 5, -26 )
 vframes = 5
 hframes = 10
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="hitbox" type="Area2D" parent="rotate"]
 
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -225,6 +259,9 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="rotate/hitbox"]
 
@@ -232,6 +269,9 @@ build_mode = 0
 polygon = Vector2Array( 21, -47, 36, -43, 44, -35, 46, 0, 0, 0 )
 shape_range = Vector2( 0, 0 )
 trigger = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="anim" type="AnimationPlayer" parent="." groups=[
 "blood",
@@ -257,6 +297,9 @@ autoplay = ""
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="damagebox" type="Area2D" parent="." groups=[
 "damagebox",
@@ -273,6 +316,9 @@ linear_damp = 0.1
 angular_damp = 1.0
 collision/layers = 2
 collision/mask = 2
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damagebox"]
 
@@ -286,6 +332,7 @@ _update_shape_index = 0
 "satan",
 ]]
 
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 10 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -4 )
@@ -296,6 +343,9 @@ linear_damp = 0.1
 angular_damp = 1.0
 collision/layers = 0
 collision/mask = 0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="itemarea"]
 
@@ -303,6 +353,34 @@ transform/pos = Vector2( 0, -4 )
 shape = SubResource( 10 )
 trigger = false
 _update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Light2D" type="Light2D" parent="."]
+
+enabled = true
+editor_only = false
+texture = ExtResource( 4 )
+offset = Vector2( 0, 0 )
+scale = 2.0
+color = Color( 1, 0.703126, 0, 1 )
+energy = 0.5
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 2
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="finished" from="anim" to="." method="_on_anim_finished"]
 

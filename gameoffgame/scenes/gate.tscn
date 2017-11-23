@@ -11,8 +11,8 @@ extents = Vector2( 5, 32 )
 [sub_resource type="Animation" id=2]
 
 resource/name = "none"
-length = 1.0
-loop = false
+length = 6.0
+loop = true
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -43,6 +43,26 @@ tracks/2/keys = {
 "transitions": FloatArray( 1 ),
 "update": 1,
 "values": [ 524291 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("top_light:modulate")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 3 ),
+"transitions": FloatArray( -4, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.384314, 0.952941, 0.827451, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("top_light:visibility/visible")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -99,6 +119,16 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 0 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("top_light:visibility/visible")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="RectangleShape2D" id=4]
 
@@ -124,10 +154,19 @@ script/script = ExtResource( 1 )
 transform/pos = Vector2( 0, 63 )
 texture = ExtResource( 2 )
 offset = Vector2( -7, -36 )
-hframes = 10
+hframes = 11
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="top_light" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, 63 )
+texture = ExtResource( 2 )
+offset = Vector2( -7, -36 )
+hframes = 11
+frame = 10
+modulate = Color( 0.320178, 0.793911, 0.689363, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 

@@ -256,7 +256,6 @@ func _player_attack( delta ):
 #				_player_pick( itemareas )
 		if not sprite_node.anim_finished():
 			can_attack = false
-		
 		if sprite_node.anim_finished():#can_attack:
 			sprite_node.set_animation( sprite_node.ANIMS.ATTACK )
 			if player_char == game.PLAYER_CHAR.HUMAN_SWORD:
@@ -284,10 +283,11 @@ func _player_attack( delta ):
 									shake_camera += 1
 								
 					if shake_camera > 0:
-						game.camera.get_ref().shake( 0.5, 30, min( 2 * shake_camera, 10 ) )
+						game.camera.get_ref().shake( 0.5, 30, min( 1 * shake_camera, 10 ) )
+
 	elif btn_fire.check() == 2 and _can_hold:
 		_holding_timer += delta
-		if _holding_timer >= 1:
+		if _holding_timer >= 1.5:
 			_can_hold = false
 			_holding_timer = 0
 			# do stuff
@@ -296,6 +296,11 @@ func _player_attack( delta ):
 				# there is stuff to pick
 				#can_attack = false
 				_player_pick( itemareas )
+			else:
+				# transform back to human
+				if game.player_char != game.PLAYER_CHAR.HUMAN_SWORD:
+					get_node( "transformation_timer" ).stop()
+					transform( game.PLAYER_CHAR.HUMAN_SWORD )
 	if not _can_hold:
 		_holding_timer += delta
 		if _holding_timer >= 1:

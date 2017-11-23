@@ -145,7 +145,7 @@ func _attack_fsm( delta ):
 			if game.player.get_ref().is_dead():
 				navcontrol = navcontrol_script.new( 1, navigation )
 		if target_pos != null:
-			#print( "found player... seeking" )
+			print( get_name(), ": found player... seeking" )
 			attack_state = ATTACK_STATES.SEEK
 		else:
 			# navigate towards starting position
@@ -321,7 +321,7 @@ func _running_dust():
 func _change_to_item():
 	#print( "changing to item" )
 	# delete unecessary nodes
-	get_node( "anim" ).queue_free()
+	#get_node( "anim" ).queue_free()
 	get_node( "flocking/CollisionShape2D" ).queue_free()
 	get_node( "flocking" ).queue_free()
 	get_node( "damagebox/CollisionShape2D" ).queue_free()

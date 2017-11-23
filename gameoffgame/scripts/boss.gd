@@ -234,6 +234,7 @@ func _state_dying( delta ):
 	if not _dying_wait:
 		anim_nxt = "dying"
 		_dying_wait = true
+		get_node( "rotate/Particles2D" ).set_emitting( false )
 		emit_signal( "boss_dying" )
 	pass
 

@@ -53,7 +53,24 @@ collision/mask = 5
 collision/margin = 0.001
 script/script = ExtResource( 1 )
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+
+visibility/visible = false
+polygon = Vector2Array( -60, -50, 60, -50, 60, 40, -60, 40 )
+uv = Vector2Array(  )
+color = Color( 0.12549, 0.192157, 0.196078, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
 [node name="rotate" type="Node2D" parent="."]
+
+editor/display_folded = true
 
 [node name="player_human" parent="rotate" instance=ExtResource( 2 )]
 
@@ -68,6 +85,7 @@ __meta__ = {
 
 [node name="rotate_hitbox" type="Node2D" parent="."]
 
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -93,6 +111,7 @@ __meta__ = {
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="rotate_hitbox/sword_hitbox"]
 
+visibility/visible = false
 build_mode = 0
 polygon = Vector2Array( -9, -17, 8, -19, 23, -16, 31, -6, 20, 3, 0, 5, -14, 1, 0, -8 )
 shape_range = Vector2( 0, 1 )
@@ -124,6 +143,7 @@ _update_shape_index = 0
 
 [node name="damagebox" type="Area2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 5 )
@@ -149,6 +169,7 @@ __meta__ = {
 
 [node name="itembox" type="Area2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 6 )
@@ -176,6 +197,7 @@ __meta__ = {
 
 [node name="keybox" type="Area2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 7 )
@@ -247,14 +269,13 @@ autostart = false
 
 [node name="Light2D" type="Light2D" parent="."]
 
-visibility/visible = false
 enabled = true
 editor_only = false
 texture = ExtResource( 3 )
 offset = Vector2( 0, 0 )
 scale = 1.0
 color = Color( 1, 0.868958, 0.558594, 1 )
-energy = 0.3
+energy = 0.5
 mode = 0
 range/height = 0.0
 range/z_min = -1024
