@@ -23,11 +23,7 @@ func _ready():
 	# Initialization here
 	pass
 
-#func _on_switch():
-#	get_node(\"anim\").play(\"show\")
-#	
-#func _off_switch():
-#	get_node(\"anim\").play(\"hide\")
+
 
 func invert_visibility():
 	if current_form == 1:

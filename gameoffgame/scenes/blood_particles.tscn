@@ -12,7 +12,7 @@ func _ready():
 func _show_splatter():
 	# check if there is a floor beneath the point where the splatter should appear
 	var floor_tile = game.get_floor_at( get_pos() + Vector2( 5, 49 ) )
-	print( \"floor_tile: \", floor_tile )
+	#print( \"floor_tile: \", floor_tile )
 	if floor_tile != -1:
 		var scn = preload( \"res://scenes/blood_splatter.tscn\" )
 		var splatter = scn.instance()

@@ -191,9 +191,10 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = "none"
 
-[node name="openarea" type="Area2D" parent="."]
+[node name="openarea" type="Area2D" parent="." groups=[
+"gate",
+]]
 
-visibility/visible = false
 transform/pos = Vector2( -5, 63 )
 input/pickable = true
 shapes/0/shape = SubResource( 4 )
@@ -203,6 +204,8 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision/layers = 4
+collision/mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="openarea"]
 
@@ -213,7 +216,5 @@ _update_shape_index = 0
 __meta__ = {
 "_edit_lock_": true
 }
-
-[connection signal="body_enter" from="openarea" to="." method="_on_openarea_body_enter"]
 
 

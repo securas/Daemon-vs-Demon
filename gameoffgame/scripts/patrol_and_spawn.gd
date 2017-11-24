@@ -6,7 +6,7 @@ func _ready():
 	pass
 
 
-var monster_count = 20
+var monster_count = 10
 var timer = 0
 const SPAWN_INTERVAL = 0.25
 func _fixed_process(delta):

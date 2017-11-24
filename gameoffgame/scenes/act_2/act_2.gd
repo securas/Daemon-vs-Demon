@@ -242,7 +242,7 @@ func _evt_kill_monsters_1( delta, evt ):
 		elif evt.state == 2:
 			_player_text( "I wonder...", 2, 2, 3, evt )
 		elif evt.state == 3:
-			_player_text( "... Maybe I can have this blood.", 2, 2, 4, evt )
+			_player_text( "... Maybe I take their form.", 2, 2, 4, evt )
 		elif evt.state == 4:
 			# end this event
 			evt.active = false

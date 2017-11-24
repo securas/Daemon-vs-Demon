@@ -60,6 +60,7 @@ func _fixed_process( delta ):
 		timer = 0.1
 		gpos = get_global_pos()
 		for d in drops:
+			if not d.active: return
 			if not d.has_parent:
 				parent_node.add_child( d.instance )
 				d.has_parent = true

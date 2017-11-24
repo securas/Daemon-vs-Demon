@@ -165,6 +165,9 @@ func _normal_state( delta ):
 	# player attack
 	_player_attack( delta )
 	
+	# pick up / interact
+	_player_pick( delta )
+	
 	# motion
 	vel = move_and_slide( vel )
 	
@@ -230,11 +233,11 @@ func _player_motion( delta ):
 	#get_node("rotate_hitbox").rotate(vel.angle())
 
 
-var _holding_timer = 0
-var _can_hold = true
+#var _holding_timer = 0
+#var _can_hold = true
 func _player_attack( delta ):
 	if btn_fire.check() == 1:
-		var can_attack = true
+#		var can_attack = true
 #		if _attack_timer <= 0:
 #			# no recent attacks, can pick, if there is something to pick
 #			var itemareas = get_node( "itembox" ).get_overlapping_areas()
@@ -242,8 +245,8 @@ func _player_attack( delta ):
 #				# there is stuff to pick
 #				can_attack = false
 #				_player_pick( itemareas )
-		if not sprite_node.anim_finished():
-			can_attack = false
+#		if not sprite_node.anim_finished():
+#			can_attack = false
 		if sprite_node.anim_finished():#can_attack:
 			sprite_node.set_animation( sprite_node.ANIMS.ATTACK )
 			if player_char == game.PLAYER_CHAR.HUMAN_SWORD:
@@ -272,66 +275,78 @@ func _player_attack( delta ):
 								
 					if shake_camera > 0:
 						game.camera.get_ref().shake( 0.5, 30, min( 1 * shake_camera, 10 ) )
-
-	elif btn_fire.check() == 2 and _can_hold:
-		_holding_timer += delta
-		if _holding_timer >= 1.5:
-			_can_hold = false
-			_holding_timer = 0
-			# do stuff
-			var itemareas = get_node( "itembox" ).get_overlapping_areas()
-			if itemareas.size() > 0:
-				# there is stuff to pick
-				#can_attack = false
-				_player_pick( itemareas )
-			else:
-				# transform back to human
-				if game.player_char != game.PLAYER_CHAR.HUMAN_SWORD:
-					get_node( "transformation_timer" ).stop()
-					transform( game.PLAYER_CHAR.HUMAN_SWORD )
-	if not _can_hold:
-		_holding_timer += delta
-		if _holding_timer >= 1:
-			_holding_timer = 0
-			_can_hold = true
-
-
+#
+#	elif btn_fire.check() == 2 and _can_hold:
+#		_holding_timer += delta
+#		if _holding_timer >= 1.5:
+#			_can_hold = false
+#			_holding_timer = 0
+#			# do stuff
+#			var itemareas = get_node( "itembox" ).get_overlapping_areas()
+#			if itemareas.size() > 0:
+#				# there is stuff to pick
+#				#can_attack = false
+#				_player_pick( itemareas )
+#			else:
+#				# transform back to human
+#				if game.player_char != game.PLAYER_CHAR.HUMAN_SWORD:
+#					get_node( "transformation_timer" ).stop()
+#					transform( game.PLAYER_CHAR.HUMAN_SWORD )
+#	if not _can_hold:
+#		_holding_timer += delta
+#		if _holding_timer >= 1:
+#			_holding_timer = 0
+#			_can_hold = true
 
 
-func _player_pick( itemareas ):
-	vel = Vector2( 0, 0 )
-	sprite_node.set_animation( sprite_node.ANIMS.PICK )
-	# picking only the first item
-	var item = itemareas[0]
-	#print( item.get_groups() )
-	if item.is_in_group( "blood" ):
-		# transform
-		if item.is_in_group( "monster_1" ):
-			transform( game.PLAYER_CHAR.MONSTER_1 )
-			emit_signal( "on_transformation" )
-		elif item.is_in_group( "monster_2" ):
-			transform( game.PLAYER_CHAR.MONSTER_2 )
-			emit_signal( "on_transformation" )
-		elif item.is_in_group( "monster_3" ):
-			transform( game.PLAYER_CHAR.MONSTER_3 )
-			emit_signal( "on_transformation" )
-		elif item.is_in_group( "satan" ):
-			transform( game.PLAYER_CHAR.SATAN )
-			emit_signal( "became_satan" )
-		# emit signal
-		#emit_signal( "on_transformation" )
-		# start transformation timer
-		if not item.is_in_group( "satan" ):
-			get_node( "transformation_timer" ).set_wait_time( TRANSFORMATION_DURATION )
-			get_node( "transformation_timer" ).start()
-		#item.get_parent().queue_free()
-	elif item.is_in_group( "switch" ):
-		# flip switch
-		item.get_parent().flip_switch()
-	elif item.is_in_group( "tinydoor" ):
-		# cross door
-		item.cross_door()
-	
+
+func _player_pick( delta ):
+	if btn_pick.check() == 1:
+		# check item areas
+		var itemareas = get_node( "itembox" ).get_overlapping_areas()
+		if itemareas.empty() > 0:
+			# transform back to human
+			if game.player_char != game.PLAYER_CHAR.HUMAN_SWORD:
+				get_node( "transformation_timer" ).stop()
+				transform( game.PLAYER_CHAR.HUMAN_SWORD )
+		else:
+			# there is stuff to pick
+			vel *= 0
+			sprite_node.set_animation( sprite_node.ANIMS.PICK )
+			# picking only the first item
+			var item = itemareas[0]
+			#print( item.get_groups() )
+			if item.is_in_group( "blood" ):
+				# transform
+				if item.is_in_group( "monster_1" ):
+					transform( game.PLAYER_CHAR.MONSTER_1 )
+					emit_signal( "on_transformation" )
+				elif item.is_in_group( "monster_2" ):
+					transform( game.PLAYER_CHAR.MONSTER_2 )
+					emit_signal( "on_transformation" )
+				elif item.is_in_group( "monster_3" ):
+					transform( game.PLAYER_CHAR.MONSTER_3 )
+					emit_signal( "on_transformation" )
+				elif item.is_in_group( "satan" ):
+					transform( game.PLAYER_CHAR.SATAN )
+					emit_signal( "became_satan" )
+				# emit signal
+				#emit_signal( "on_transformation" )
+				# start transformation timer
+				if not item.is_in_group( "satan" ):
+					get_node( "transformation_timer" ).set_wait_time( TRANSFORMATION_DURATION )
+					get_node( "transformation_timer" ).start()
+				#item.get_parent().queue_free()
+			elif item.is_in_group( "switch" ):
+				# flip switch
+				item.get_parent().flip_switch()
+			elif item.is_in_group( "tinydoor" ):
+				# cross door
+				item.cross_door()
+			elif item.is_in_group( "gate" ):
+				# open gate
+				item.get_parent().open_gate()
+
 
 
 

@@ -9,10 +9,9 @@ func _ready():
 
 
 
-func _on_openarea_body_enter( body ):
+func open_gate():
 	if _is_open: return
 	if game.player == null or game.player.get_ref() == null or game.player.get_ref().is_dead(): return
-	if game.player.get_ref() != body: return
 	if game.has_key:
 		# open gate
 		#print( "opening gate" )

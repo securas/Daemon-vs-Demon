@@ -332,7 +332,7 @@ func _change_to_item():
 	# delete unecessary nodes
 	get_node( "anim_body" ).queue_free()
 	#get_node( "anim_head" ).queue_free()
-	get_node( "body" ).queue_free()
+	#get_node( "body" ).queue_free()
 	get_node( "flocking_area/CollisionShape2D" ).queue_free()
 	get_node( "flocking_area" ).queue_free()
 	get_node( "hitbox/CollisionShape2D" ).queue_free()
