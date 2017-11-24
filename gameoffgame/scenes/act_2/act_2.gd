@@ -329,7 +329,7 @@ func _evt_boss_dying( delta, evt ):
 	elif evt.state == 3:
 		_boss_text( "... to finally be free.", 2, 2, 4, evt )
 	elif evt.state == 4:
-		_player_text( "???", 2, 2, 5, evt )
+		_player_text( "? ? ?", 2, 2, 5, evt )
 		get_node( "walls/boss" ).state_nxt = get_node( "walls/boss" ).STATES.DEAD
 		get_node( "walls/rain" ).stop()
 	elif evt.state == 5:
@@ -353,7 +353,7 @@ func _evt_boss_dead( delta, evt ):
 	elif evt.state == 1:
 		_player_text( "I wonder...", 2, 2, 2, evt )
 	elif evt.state == 2:
-		_player_text( "... should I take his form?", 2, 2, 3, evt )
+		_player_text( "... can I take his form?", 2, 2, 3, evt )
 	elif evt.state == 3:
 		game.player.get_ref().set_cutscene( false )
 		#if game.main != null:
@@ -375,8 +375,10 @@ func _evt_become_satan( delta, evt ):
 		evt.state = -1
 		evt.state_nxt = 1
 	elif evt.state == 1:
-		_player_text( "HA! HA! HA! HA!", 4, 4, 2, evt, -55 )
+		_player_text( "Oh... The power!", 4, 4, 2, evt, -55 )
 	elif evt.state == 2:
+		_player_text( "HA! HA! HA! HA!", 4, 4, 3, evt, -55 )
+	elif evt.state == 3:
 		if game.main != null:
 			game.main.act_nxt = "res://scenes/act_3/act_3.tscn"
 		evt.active = false

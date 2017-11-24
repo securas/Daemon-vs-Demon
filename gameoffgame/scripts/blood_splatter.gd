@@ -5,5 +5,7 @@ extends Sprite
 # var b = "textvar"
 
 func _ready():
-	if game.check_fall_area( self, get_global_pos() ) == 0:
-		get_node( "AnimationPlayer" ).play( "fadeout" )
+	#print( "in the air: ", game.check_fall_area( self, get_global_pos() ) )
+	if game.check_fall_area( self, get_global_pos() ) != 0:
+		queue_free()
+		#get_node( "AnimationPlayer" ).play( "fadeout" )

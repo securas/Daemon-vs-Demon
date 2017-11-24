@@ -106,9 +106,7 @@ func findweak( obj, arr ):
 	return -1
 
 
-func check_fall_area_new( obj, pos ):
-	return 0
-	pass
+
 func check_fall_area( obj, pos ):
 	var space_state = obj.get_world_2d().get_direct_space_state()
 	var results = space_state.intersect_point( pos, 32, [], 524288, 16 )

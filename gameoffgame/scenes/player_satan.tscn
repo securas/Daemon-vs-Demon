@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://scripts/player_satan.gd" type="Script" id=1]
 [ext_resource path="res://assets/boss.png" type="Texture" id=2]
 [ext_resource path="res://assets/player.png" type="Texture" id=3]
+[ext_resource path="res://assets/boss_particles.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 
@@ -172,6 +173,35 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
+
+[node name="Particles2D" type="Particles2D" parent="."]
+
+visibility/behind_parent = true
+transform/pos = Vector2( -1, -30 )
+config/amount = 32
+config/lifetime = 2.0
+config/process_mode = 1
+config/half_extents = Vector2( 4, 0 )
+config/texture = ExtResource( 4 )
+config/h_frames = 6
+params/direction = 180.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 180.0
+params/gravity_strength = 20.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/anim_initial_pos = 1.0
+color/color = Color( 0, 0, 0, 1 )
 
 [connection signal="finished" from="anim_body" to="." method="_on_anim_body_finished"]
 

@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
-[ext_resource path="res://assets/fire_front.png" type="Texture" id=1]
-[ext_resource path="res://assets/player_light_mask.png" type="Texture" id=2]
+[ext_resource path="res://assets/fire_stand.png" type="Texture" id=1]
+[ext_resource path="res://assets/stand_light_mask.png" type="Texture" id=2]
 [ext_resource path="res://assets/small_light_mask.png" type="Texture" id=3]
 
 [sub_resource type="GDScript" id=1]
@@ -26,7 +26,8 @@ func _on_VisibilityNotifier2D_enter_screen():
 func _on_VisibilityNotifier2D_exit_screen():
 	get_node( \"anim\" ).stop()
 	get_node( \"main_light\" ).set_enabled( false )
-	get_node( \"tiny_light\" ).set_enabled( false )"
+	get_node( \"tiny_light\" ).set_enabled( false )
+"
 
 [sub_resource type="Animation" id=2]
 
@@ -64,13 +65,16 @@ tracks/2/keys = {
 "values": [ 0.5, 0.4, 0.5, 0.4, 0.4, 0.5 ]
 }
 
-[node name="small_fire_front" type="Sprite"]
+[sub_resource type="RectangleShape2D" id=3]
 
-visibility/light_mask = 0
+custom_solver_bias = 0.0
+extents = Vector2( 4, 4 )
+
+[node name="fire_stand" type="Sprite"]
+
 texture = ExtResource( 1 )
-offset = Vector2( 0, -23 )
+offset = Vector2( 0, -15 )
 hframes = 6
-frame = 5
 script/script = SubResource( 1 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
@@ -82,17 +86,18 @@ anims/cycle = SubResource( 2 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
-autoplay = "cycle"
+autoplay = ""
 
 [node name="main_light" type="Light2D" parent="."]
 
+transform/pos = Vector2( 0, 8 )
 enabled = true
 editor_only = false
 texture = ExtResource( 2 )
 offset = Vector2( 0, 0 )
-scale = 3.0
-color = Color( 1, 0.84375, 0, 1 )
-energy = 1.0
+scale = 1.0
+color = Color( 1, 0.843137, 0, 1 )
+energy = 0.8
 mode = 0
 range/height = 0.0
 range/z_min = -1024
@@ -111,7 +116,7 @@ __meta__ = {
 
 [node name="tiny_light" type="Light2D" parent="."]
 
-transform/pos = Vector2( -1, -23 )
+transform/pos = Vector2( -1, -26 )
 enabled = true
 editor_only = false
 texture = ExtResource( 3 )
@@ -138,7 +143,8 @@ __meta__ = {
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
 visibility/visible = false
-rect = Rect2( -110, -70, 220, 140 )
+transform/pos = Vector2( 0, 8 )
+rect = Rect2( -140, -90, 280, 180 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 
@@ -155,6 +161,27 @@ texture/scale = Vector2( 1, 1 )
 texture/rotation = 0.0
 invert/enable = false
 invert/border = 100.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+visibility/visible = false
+transform/pos = Vector2( 0, -4 )
+input/pickable = false
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
 
 [connection signal="enter_screen" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_enter_screen"]
 
