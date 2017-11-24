@@ -605,7 +605,7 @@ __meta__ = {
 
 [node name="player" parent="walls" instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 2085, 506 )
+transform/pos = Vector2( 1428, 224 )
 
 [node name="rain" parent="walls" instance=ExtResource( 7 )]
 
@@ -1935,8 +1935,8 @@ __meta__ = {
 }
 
 [node name="falling_area_up" type="Area2D" parent="areas/falling" groups=[
-"up_fall",
 "fall_area",
+"up_fall",
 ]]
 
 editor/display_folded = true
@@ -2953,9 +2953,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[connection signal="switch_flipped" from="walls/switch_left" to="." method="_on_switch_left_switch_flipped"]
-
 [connection signal="switch_flipped" from="walls/switch_left" to="ground/stuff/bridge" method="invert_visibility"]
+
+[connection signal="switch_flipped" from="walls/switch_left" to="." method="_on_switch_left_switch_flipped"]
 
 [connection signal="switch_flipped" from="walls/switch_right" to="ground/stuff/bridge" method="invert_visibility"]
 

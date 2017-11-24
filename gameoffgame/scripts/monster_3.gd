@@ -318,7 +318,10 @@ func _running_dust():
 	#print( get_parent().get_parent().get_parent().get_name() )
 	get_parent().add_child( dust )
 
+var _changed_to_item = false
 func _change_to_item():
+	if _changed_to_item: return
+	_changed_to_item = true
 	#print( "changing to item" )
 	# delete unecessary nodes
 	#get_node( "anim" ).queue_free()
@@ -326,6 +329,8 @@ func _change_to_item():
 	get_node( "flocking" ).queue_free()
 	get_node( "damagebox/CollisionShape2D" ).queue_free()
 	get_node( "damagebox" ).queue_free()
+	get_node( "collision" ).queue_free()
+	
 	# change mask of kinematic body
 	set_layer_mask_bit( 1, false )
 	set_collision_mask_bit( 1, false )

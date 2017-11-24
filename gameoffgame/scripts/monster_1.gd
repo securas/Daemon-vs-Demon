@@ -324,7 +324,10 @@ func _on_killtimer_timeout():
 	set_pos( _initial_position )
 	pass # replace with function body
 
+var _changed_to_item = false
 func _change_to_item():
+	if _changed_to_item: return
+	_changed_to_item = true
 	# delete unecessary nodes
 	get_node( "anim_body" ).queue_free()
 	#get_node( "anim_head" ).queue_free()

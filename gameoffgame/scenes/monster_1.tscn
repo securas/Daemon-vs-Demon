@@ -76,6 +76,16 @@ tracks/1/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Light2D:enabled")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="CircleShape2D" id=5]
 
@@ -245,8 +255,8 @@ trigger = false
 _update_shape_index = 0
 
 [node name="itemarea" type="Area2D" parent="." groups=[
-"blood",
 "monster_1",
+"blood",
 ]]
 
 editor/display_folded = true
@@ -278,7 +288,6 @@ __meta__ = {
 
 [node name="attack_area" type="Area2D" parent="."]
 
-editor/display_folded = true
 visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 9 )

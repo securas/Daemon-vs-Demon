@@ -50,7 +50,7 @@ func _ready():
 		var extents = patrol_area.get_children()[0].get_shape().get_extents()
 		patrol_shape = Rect2( aux - extents, 2 * extents )
 		state_nxt = STATES.WANDER
-	set_fixed_process( true )
+	#set_fixed_process( true )
 
 
 
@@ -293,16 +293,21 @@ func _player_in_patrol_area():
 			return true
 	return false
 
-
+var _changed_to_item = false
 func _change_to_item():
+	if _changed_to_item: return
+	_changed_to_item = true
 	# delete unecessary nodes
-	get_node( "anim" ).queue_free()
+	#get_node( "anim" ).queue_free()
 	get_node( "flocking_area/CollisionShape2D" ).queue_free()
 	get_node( "flocking_area" ).queue_free()
 	get_node( "hitbox/CollisionShape2D" ).queue_free()
 	get_node( "hitbox" ).queue_free()
 	get_node( "damagebox/CollisionShape2D" ).queue_free()
 	get_node( "damagebox" ).queue_free()
+	get_node( "attack_area/CollisionShape2D" ).queue_free()
+	get_node( "attack_area" ).queue_free()
+	get_node( "collision" ).queue_free()
 	# change mask of kinematic body
 	set_layer_mask_bit( 1, false )
 	set_collision_mask_bit( 1, false )
@@ -353,3 +358,18 @@ func is_dead():
 	return false
 
 
+
+
+func _on_VisibilityNotifier2D_enter_screen():
+	if is_dead(): return
+	print( get_name(), ": activating" )
+	get_node( "Light2D" ).set_enabled( true )
+	set_fixed_process( true )
+
+
+
+func _on_VisibilityNotifier2D_exit_screen():
+	if is_dead(): return
+	print( get_name(), ": deactivating" )
+	get_node( "Light2D" ).set_enabled( false )
+	set_fixed_process( false )

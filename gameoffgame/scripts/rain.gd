@@ -25,10 +25,10 @@ class Drop:
 			else:
 				timer = 0.15
 			frame = ( frame + 1 ) % final_frame
-		if frame != instance.get_frame():
-			instance.set_frame( frame )
-			if frame == 0:
-				return true
+			if frame != instance.get_frame():
+				instance.set_frame( frame )
+				if frame == 0:
+					return true
 		return false
 
 var _stop_rain = false

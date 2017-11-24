@@ -41,6 +41,16 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 17 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Light2D:enabled")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=4]
 
@@ -123,7 +133,7 @@ texture = ExtResource( 2 )
 offset = Vector2( -0.947174, -9.4958 )
 vframes = 5
 hframes = 8
-frame = 8
+frame = 17
 __meta__ = {
 "_edit_lock_": true
 }
@@ -223,8 +233,8 @@ __meta__ = {
 }
 
 [node name="itemarea" type="Area2D" parent="." groups=[
-"monster_2",
 "blood",
+"monster_2",
 ]]
 
 visibility/visible = false
@@ -294,7 +304,7 @@ __meta__ = {
 
 [node name="Light2D" type="Light2D" parent="."]
 
-enabled = true
+enabled = false
 editor_only = false
 texture = ExtResource( 3 )
 offset = Vector2( 0, 0 )
@@ -314,6 +324,10 @@ shadow/buffer_size = 2048
 shadow/esm_multiplier = 80.0
 shadow/item_mask = 1
 
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+rect = Rect2( -40, -40, 80, 80 )
+
 [connection signal="area_enter" from="flocking_area" to="." method="_on_flocking_area_area_enter"]
 
 [connection signal="area_exit" from="flocking_area" to="." method="_on_flocking_area_area_exit"]
@@ -325,5 +339,9 @@ shadow/item_mask = 1
 [connection signal="body_enter" from="attack_area" to="." method="_on_attack_area_body_enter"]
 
 [connection signal="timeout" from="killtimer" to="." method="_on_killtimer_timeout"]
+
+[connection signal="enter_screen" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_enter_screen"]
+
+[connection signal="exit_screen" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_exit_screen"]
 
 

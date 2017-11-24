@@ -53,6 +53,16 @@ tracks/1/keys = {
 "method": "_on_finished_dying"
 } ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Light2D:enabled")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=4]
 
@@ -170,11 +180,11 @@ texture = ExtResource( 2 )
 offset = Vector2( 0, -6 )
 vframes = 4
 hframes = 8
-frame = 18
+frame = 15
 
 [node name="anim" type="AnimationPlayer" parent="." groups=[
-"blood",
 "monster_3",
+"blood",
 ]]
 
 playback/process_mode = 1
@@ -240,8 +250,8 @@ trigger = false
 _update_shape_index = 0
 
 [node name="itemarea" type="Area2D" parent="." groups=[
-"blood",
 "monster_3",
+"blood",
 ]]
 
 input/pickable = true
