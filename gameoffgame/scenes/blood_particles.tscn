@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/blood_particles.png" type="Texture" id=1]
 [ext_resource path="res://assets/blood_splatter.png" type="Texture" id=2]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=1]
 
 script/source = "extends Particles2D
 
@@ -23,7 +23,7 @@ func _show_splatter():
 		get_parent().add_child( splatter )
 "
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id=2]
 
 script/source = "extends Sprite
 
@@ -117,7 +117,7 @@ params/hue_variation = 0.0
 params/anim_speed_scale = 0.0
 params/anim_initial_pos = 0.0
 randomness/anim_initial_pos = 1.0
-script/script = SubResource( 2 )
+script/script = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
@@ -126,7 +126,7 @@ transform/pos = Vector2( 5, 49 )
 texture = ExtResource( 2 )
 vframes = 2
 hframes = 2
-script/script = SubResource( 1 )
+script/script = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 

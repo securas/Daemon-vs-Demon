@@ -369,8 +369,8 @@ input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -3 )
 shapes/0/trigger = false
-collision/layers = 0
-collision/mask = 0
+collision/layers = 3
+collision/mask = 3
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
@@ -382,7 +382,6 @@ texture = ExtResource( 1 )
 offset = Vector2( 0, -10 )
 vframes = 3
 hframes = 10
-frame = 3
 __meta__ = {
 "_edit_lock_": true
 }
@@ -401,6 +400,7 @@ autoplay = "none"
 
 [node name="key" type="Sprite" parent="."]
 
+visibility/visible = false
 texture = ExtResource( 1 )
 offset = Vector2( 0, -10 )
 vframes = 3
@@ -427,6 +427,7 @@ autoplay = ""
 "coin",
 ]]
 
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 7 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -6 )
@@ -435,8 +436,8 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision/layers = 8
-collision/mask = 8
+collision/layers = 0
+collision/mask = 0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -511,8 +512,8 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision/layers = 0
-collision/mask = 0
+collision/layers = 2
+collision/mask = 2
 __meta__ = {
 "_edit_lock_": true
 }
@@ -533,7 +534,7 @@ enabled = true
 editor_only = false
 texture = ExtResource( 2 )
 offset = Vector2( 0, 0 )
-scale = 0.5
+scale = 1.0
 color = Color( 0.800781, 1, 0.897278, 1 )
 energy = 0.6
 mode = 0
@@ -548,5 +549,8 @@ shadow/color = Color( 0, 0, 0, 0 )
 shadow/buffer_size = 2048
 shadow/esm_multiplier = 80.0
 shadow/item_mask = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
 

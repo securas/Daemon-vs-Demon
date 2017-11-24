@@ -85,7 +85,6 @@ __meta__ = {
 
 [node name="rotate_hitbox" type="Node2D" parent="."]
 
-editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -144,7 +143,6 @@ _update_shape_index = 0
 [node name="damagebox" type="Area2D" parent="."]
 
 editor/display_folded = true
-visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -3 )
@@ -233,6 +231,7 @@ config/emit_timeout = 3.0
 config/emitting = false
 config/process_mode = 1
 config/half_extents = Vector2( 4, 12 )
+config/local_space = false
 config/explosiveness = 0.5
 params/direction = 0.0
 params/spread = 180.0
@@ -241,7 +240,7 @@ params/spin_velocity = 0.0
 params/orbit_velocity = 0.0
 params/gravity_direction = 0.0
 params/gravity_strength = 0.0
-params/radial_accel = 10.0
+params/radial_accel = 0.0
 params/tangential_accel = 0.0
 params/damping = 0.0
 params/initial_angle = 0.0
@@ -289,6 +288,13 @@ shadow/buffer_size = 2048
 shadow/esm_multiplier = 80.0
 shadow/item_mask = 1
 
+[node name="visibility_to_enemies_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = true
+autostart = true
+
 [connection signal="area_enter" from="rotate_hitbox/sword_hitbox" to="." method="_on_sword_hitbox_area_enter"]
 
 [connection signal="area_exit" from="rotate_hitbox/sword_hitbox" to="." method="_on_sword_hitbox_area_exit"]
@@ -300,5 +306,7 @@ shadow/item_mask = 1
 [connection signal="area_enter" from="keybox" to="." method="_on_keybox_area_enter"]
 
 [connection signal="timeout" from="transformation_timer" to="." method="_on_transformation_timer_timeout"]
+
+[connection signal="timeout" from="visibility_to_enemies_timer" to="." method="_on_visibility_to_enemies_timer_timeout"]
 
 

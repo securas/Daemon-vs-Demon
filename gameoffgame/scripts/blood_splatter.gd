@@ -5,6 +5,5 @@ extends Sprite
 # var b = "textvar"
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+	if game.check_fall_area( self, get_global_pos() ) == 0:
+		get_node( "AnimationPlayer" ).play( "fadeout" )

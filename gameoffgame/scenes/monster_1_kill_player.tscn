@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://assets/monster_1.png" type="Texture" id=1]
+[ext_resource path="res://assets/player_light_mask.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
 
@@ -47,5 +48,27 @@ offset = Vector2( 0, -11 )
 vframes = 5
 hframes = 8
 frame = 24
+
+[node name="Light2D" type="Light2D" parent="Sprite"]
+
+enabled = true
+editor_only = false
+texture = ExtResource( 2 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 1, 0.868958, 0.558594, 1 )
+energy = 0.5
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 2
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
 
 

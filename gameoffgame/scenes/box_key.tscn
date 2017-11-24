@@ -395,7 +395,7 @@ texture = ExtResource( 1 )
 offset = Vector2( 0, -10 )
 vframes = 3
 hframes = 10
-frame = 25
+frame = 10
 __meta__ = {
 "_edit_lock_": true
 }
@@ -483,13 +483,13 @@ __meta__ = {
 
 [node name="Light2D" type="Light2D" parent="."]
 
-enabled = false
+enabled = true
 editor_only = false
 texture = ExtResource( 2 )
 offset = Vector2( 0, 0 )
 scale = 1.0
 color = Color( 0.800781, 1, 0.897278, 1 )
-energy = 0.01
+energy = 1.2
 mode = 0
 range/height = 0.0
 range/z_min = -1024

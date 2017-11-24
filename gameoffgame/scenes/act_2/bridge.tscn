@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://shaders/bridge_appear.tres" type="Shader" id=1]
 [ext_resource path="res://assets/bridge_fog.png" type="Texture" id=2]
@@ -16,6 +16,8 @@ shader_param/fog = ExtResource( 2 )
 script/source = "extends Sprite
 
 var current_form = 0
+var nxt_form = 0
+var cur_bodies = []
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
@@ -30,15 +32,47 @@ func _ready():
 func invert_visibility():
 	if current_form == 1:
 		get_node( \"anim\" ).play( \"hide\" )
-		current_form = 0
+		nxt_form = 0
 	else:
 		get_node( \"anim\" ).play( \"show\" )
-		current_form = 1"
+		nxt_form = 1
+
+func _on_fall_area_body_enter( body ):
+	if current_form == 1:
+		var prv_config = { \\
+			\"body\": weakref( body ), \\
+			\"layer\": body.get_layer_mask(), \\
+			\"collision\": body.get_collision_mask() }
+		cur_bodies.append( prv_config )
+		body.set_layer_mask_bit( 0, false )
+		body.set_collision_mask_bit( 0, false )
+		body.set_layer_mask_bit( 1, false )
+		body.set_collision_mask_bit( 1, false )
+	pass # replace with function body
+
+
+func _on_fall_area_body_exit( body ):
+	if current_form == 1:
+		var ref = null
+		for b in cur_bodies:
+			if b[\"body\"].get_ref() == body:
+				ref = b
+				break
+		if ref != null:
+			body.set_layer_mask( ref[\"layer\"] )
+			body.set_collision_mask( ref[\"collision\"] )
+			cur_bodies.remove( cur_bodies.find( ref ) )
+	pass # replace with function body
+
+
+func _on_anim_finished():
+	current_form = nxt_form
+"
 
 [sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
-extents = Vector2( 47, 18 )
+extents = Vector2( 50, 18 )
 
 [sub_resource type="Animation" id=4]
 
@@ -55,26 +89,6 @@ tracks/0/keys = {
 "transitions": FloatArray( -4, 1 ),
 "update": 0,
 "values": [ 0.0, 2.2 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("fall_area:collision/layers")
-tracks/1/interp = 1
-tracks/1/imported = false
-tracks/1/keys = {
-"times": FloatArray( 2 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ 524288 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("fall_area:collision/mask")
-tracks/2/interp = 1
-tracks/2/imported = false
-tracks/2/keys = {
-"times": FloatArray( 2 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ 524288 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -93,26 +107,11 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 2.2, 0.0 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("fall_area:collision/layers")
-tracks/1/interp = 1
-tracks/1/imported = false
-tracks/1/keys = {
-"times": FloatArray( 2 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("fall_area:collision/mask")
-tracks/2/interp = 1
-tracks/2/imported = false
-tracks/2/keys = {
-"times": FloatArray( 2 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 48, 8 )
 
 [node name="bridge" type="Sprite"]
 
@@ -122,11 +121,9 @@ offset = Vector2( 0, -17 )
 region_rect = Rect2( 200, 64, 96, 40 )
 script/script = SubResource( 2 )
 
-[node name="fall_area" type="Area2D" parent="." groups=[
-"fall_area",
-"down_fall",
-]]
+[node name="fall_area" type="Area2D" parent="."]
 
+visibility/visible = false
 transform/pos = Vector2( -1, -18 )
 input/pickable = true
 shapes/0/shape = SubResource( 3 )
@@ -136,8 +133,11 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-collision/layers = 0
-collision/mask = 0
+collision/layers = 524288
+collision/mask = 524288
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fall_area"]
 
@@ -159,5 +159,51 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = "hide"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+visibility/visible = false
+input/pickable = false
+shapes/0/shape = SubResource( 6 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -40 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 6 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 4 )
+shapes/1/trigger = false
+collision/layers = 524288
+collision/mask = 524288
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+
+transform/pos = Vector2( 0, -40 )
+shape = SubResource( 6 )
+trigger = false
+_update_shape_index = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="StaticBody2D"]
+
+transform/pos = Vector2( 0, 4 )
+shape = SubResource( 6 )
+trigger = false
+_update_shape_index = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="body_enter" from="fall_area" to="." method="_on_fall_area_body_enter"]
+
+[connection signal="body_exit" from="fall_area" to="." method="_on_fall_area_body_exit"]
+
+[connection signal="finished" from="anim" to="." method="_on_anim_finished"]
 
 

@@ -55,9 +55,8 @@ var _is_dead_ = false
 const ATTACK_INTERVAL = 2
 var _attack_timer = 0
 
-#--------------------------
-# falling off cliffs
-#--------------------------
+
+var _is_visible_to_enemies = false
 
 
 #---------------------------------------
@@ -83,6 +82,7 @@ func arrive( b = true ):
 		sprite_node.set_animation( sprite_node.ANIMS.LEAVE )
 
 func is_dead():
+	if not _is_visible_to_enemies: return true
 	return _is_dead_
 
 func die( source ):
@@ -91,23 +91,6 @@ func die( source ):
 	hide()
 	set_fixed_process( false )
 	source.connect( "finished_kill", self, "_on_finished_kill_monster_1" )
-	"""
-	if source extends preload( "res://scripts/monster_1.gd" ):
-		hide()
-		set_fixed_process( false )
-		source.connect( "finished_kill", self, "_on_finished_kill_monster_1" )
-	elif source extends preload( "res://scripts/monster_2.gd" ):
-		hide()
-		set_fixed_process( false )
-		source.connect( "finished_kill", self, "_on_finished_kill_monster_1" )
-	elif source extends preload( "res://scripts/explosion_1.gd" ):
-		hide()
-		set_fixed_process( false )
-		source.connect( "finished_kill", self, "_on_finished_kill_monster_1" )
-	else:
-		#OTHER FORMS OF DEATH!
-		pass
-	"""
 	return true
 
 #---------------------------------------
@@ -479,3 +462,6 @@ func _is_in_line_of_sight( obj ):
 #		return true
 	print( "not in line of sight" )
 	return false
+
+func _on_visibility_to_enemies_timer_timeout():
+	_is_visible_to_enemies = true

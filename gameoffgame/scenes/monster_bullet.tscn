@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://scripts/monster_bullet.gd" type="Script" id=1]
 [ext_resource path="res://assets/monster_bullet.png" type="Texture" id=2]
+[ext_resource path="res://assets/player_light_mask.png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 3 )
@@ -27,7 +28,7 @@ tracks/0/keys = {
 [node name="monster_bullet" type="Area2D"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 3 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 1, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -60,13 +61,35 @@ autoplay = "cycle"
 [node name="collision" type="CollisionShape2D" parent="."]
 
 transform/pos = Vector2( 1, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
 rect = Rect2( -10, -10, 20, 20 )
+
+[node name="Light2D" type="Light2D" parent="."]
+
+enabled = true
+editor_only = false
+texture = ExtResource( 3 )
+offset = Vector2( 0, 0 )
+scale = 1.0
+color = Color( 0.704879, 0.773438, 0.595184, 1 )
+energy = 1.5
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 2
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
 
 [connection signal="body_enter" from="." to="." method="_on_monster_bullet_body_enter"]
 

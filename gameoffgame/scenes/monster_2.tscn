@@ -233,8 +233,8 @@ __meta__ = {
 }
 
 [node name="itemarea" type="Area2D" parent="." groups=[
-"blood",
 "monster_2",
+"blood",
 ]]
 
 visibility/visible = false
@@ -326,6 +326,7 @@ shadow/item_mask = 1
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
+visibility/visible = false
 rect = Rect2( -40, -40, 80, 80 )
 
 [connection signal="area_enter" from="flocking_area" to="." method="_on_flocking_area_area_enter"]

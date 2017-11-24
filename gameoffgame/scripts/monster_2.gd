@@ -63,7 +63,11 @@ func _fixed_process(delta):
 	state_cur = state_nxt
 	
 	if state_cur == STATES.IDLE:
-		anim_nxt = "idle"
+		if vel.length_squared() < 1:
+			vel *= 0.0
+			anim_nxt = "idle"
+		else:
+			anim_nxt = "run"
 		vel *= 0.7
 		steering_force = steering_control.steering_and_arriving( \
 					get_global_pos(), _initial_position, 
@@ -163,7 +167,7 @@ func _fixed_process(delta):
 	
 	
 	# bounded area
-	if patrol_area != null and state_cur != STATES.DEAD and state_cur != STATES.ATTACK:
+	if patrol_area != null and state_cur != STATES.DEAD and state_cur != STATES.ATTACK and state_cur != STATES.GRABBING:
 		bound_force = steering_control.rect_bound( get_global_pos(), \
 				vel, patrol_shape, 5, 50, delta )
 	
@@ -362,7 +366,7 @@ func is_dead():
 
 func _on_VisibilityNotifier2D_enter_screen():
 	if is_dead(): return
-	print( get_name(), ": activating" )
+	#print( get_name(), ": activating" )
 	get_node( "Light2D" ).set_enabled( true )
 	set_fixed_process( true )
 
@@ -370,6 +374,6 @@ func _on_VisibilityNotifier2D_enter_screen():
 
 func _on_VisibilityNotifier2D_exit_screen():
 	if is_dead(): return
-	print( get_name(), ": deactivating" )
+	#print( get_name(), ": deactivating" )
 	get_node( "Light2D" ).set_enabled( false )
 	set_fixed_process( false )

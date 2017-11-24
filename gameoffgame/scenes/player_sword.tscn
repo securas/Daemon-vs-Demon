@@ -5,7 +5,6 @@
 
 [sub_resource type="Animation" id=1]
 
-resource/name = "attack d"
 length = 0.15
 loop = false
 step = 0.05
@@ -32,7 +31,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=2]
 
-resource/name = "attack u"
 length = 0.15
 loop = false
 step = 0.05
@@ -85,7 +83,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=4]
 
-resource/name = "idle u"
 length = 0.8
 loop = true
 step = 0.2
@@ -148,7 +145,6 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=6]
 
-resource/name = "none u"
 length = 1.0
 loop = true
 step = 0.1
@@ -185,7 +181,6 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=7]
 
-resource/name = "pick"
 length = 0.7
 loop = false
 step = 0.1
@@ -238,7 +233,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=9]
 
-resource/name = "run u"
 length = 0.8
 loop = true
 step = 0.2

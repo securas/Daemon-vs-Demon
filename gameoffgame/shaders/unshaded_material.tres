@@ -1,0 +1,6 @@
+[gd_resource type="CanvasItemMaterial" format=1]
+
+[resource]
+
+shader/shading_mode = 1
+

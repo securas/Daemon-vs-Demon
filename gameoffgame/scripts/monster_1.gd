@@ -88,11 +88,12 @@ func _fixed_process(delta):
 			if patrol_area != null: state_nxt = STATES.WANDER
 			else: state_nxt = STATES.IDLE
 		# flocking behavior
+		
 		flocking_force = steering_control.flocking( \
 				self, neighbours, 10000, 1, 1 ) # 10000
 		# dampening
 		vel *= 0.98
-		
+		#print( get_name(), ": ", steering_force, " ; ", flocking_force )
 		
 		
 	elif state_cur == STATES.DEAD:
@@ -132,7 +133,7 @@ func _fixed_process(delta):
 					get_global_pos(), game.player.get_ref().get_global_pos(), 
 					vel, 10, delta )
 		# count grabbing time
-		#print( get_name(), ": grabbing player, ", grab_player_timer )
+		#print( get_name(), ": grabbing player, ", steering_force )
 		grab_player_timer -= delta
 		if grab_player_timer <= 0:
 			state_nxt = STATES.KILL
@@ -160,7 +161,7 @@ func _fixed_process(delta):
 		
 	
 	# bounded area
-	if patrol_area != null and state_cur != STATES.DEAD and state_cur != STATES.ATTACK:
+	if patrol_area != null and state_cur != STATES.DEAD and state_cur != STATES.ATTACK and state_cur != STATES.GRABBING:
 		bound_force = steering_control.rect_bound( get_global_pos(), \
 				vel, patrol_shape, 5, 50, delta )
 	
@@ -248,7 +249,7 @@ func _on_hitbox_area_enter( area ):
 		if obj.is_in_group( "player" ) and ( game.player_char == game.PLAYER_CHAR.HUMAN or \
 				game.player_char == game.PLAYER_CHAR.HUMAN_SWORD or \
 				game.player_char == game.PLAYER_CHAR.HUMAN_GUN ):
-			#print( get_name(), ": grabbing player " )
+			print( get_name(), ": grabbing player " )
 			state_nxt = STATES.GRABBING
 			grab_player_timer = GRAB_PLAYER_TIME
 
@@ -259,7 +260,7 @@ func _on_hitbox_area_exit( area ):
 	if state_cur == STATES.GRABBING:
 		var obj = area.get_parent()
 		if obj.is_in_group( "player" ):
-			#print( get_name(), ": releasing player " )
+			print( get_name(), ": releasing player " )
 			state_nxt = STATES.ATTACK
 			grab_player_timer = GRAB_PLAYER_TIME
 
@@ -354,3 +355,17 @@ func _on_attack_area_body_enter( body ):
 
 
 
+
+func _on_VisibilityNotifier2D_enter_screen():
+	if is_dead(): return
+	#print( get_name(), ": activating" )
+	get_node( "Light2D" ).set_enabled( true )
+	set_fixed_process( true )
+
+
+
+func _on_VisibilityNotifier2D_exit_screen():
+	if is_dead(): return
+	#print( get_name(), ": deactivating" )
+	get_node( "Light2D" ).set_enabled( false )
+	set_fixed_process( false )
