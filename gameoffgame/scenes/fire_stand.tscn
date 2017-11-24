@@ -13,17 +13,20 @@ script/source = "extends Sprite
 # var b = \"textvar\"
 
 func _ready():
-	get_node( \"anim\" ).seek( 0.6 * randf() )
+	pass
 
 
 func _on_VisibilityNotifier2D_enter_screen():
+	print( get_name(), \" enabling\" )
 	get_node( \"anim\" ).play( \"cycle\" )
+	get_node( \"anim\" ).seek( 0.6 * randf() )
 	get_node( \"main_light\" ).set_enabled( true )
 	get_node( \"tiny_light\" ).set_enabled( true )
 	pass # replace with function body
 
 
 func _on_VisibilityNotifier2D_exit_screen():
+	#print( get_name(), \" disabling\" )
 	get_node( \"anim\" ).stop()
 	get_node( \"main_light\" ).set_enabled( false )
 	get_node( \"tiny_light\" ).set_enabled( false )
@@ -91,7 +94,7 @@ autoplay = ""
 [node name="main_light" type="Light2D" parent="."]
 
 transform/pos = Vector2( 0, 8 )
-enabled = true
+enabled = false
 editor_only = false
 texture = ExtResource( 2 )
 offset = Vector2( 0, 0 )

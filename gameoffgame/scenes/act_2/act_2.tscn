@@ -67,11 +67,16 @@ func _ready():
 	set_fixed_process( true )
 
 var timer = 0
+var avg_frame_rate = 0
+var n = 1
 func _fixed_process(delta):
 	timer -= delta
 	if timer <= 0:
 		timer = 1
-		set_text( \"FPS: \" + str( OS.get_frames_per_second() ) )
+		var rate = OS.get_frames_per_second()
+		avg_frame_rate = ( rate + n * avg_frame_rate ) / ( n + 1 )
+		n += 1
+		set_text( \"FPS: \" + str( rate ) + \" (\" + str( round( avg_frame_rate ) ) + \")\" )
 "
 
 [sub_resource type="RectangleShape2D" id=7]
@@ -564,7 +569,7 @@ __meta__ = {
 
 [node name="player" parent="walls" instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 2273, 518 )
+transform/pos = Vector2( 2272, 520 )
 
 [node name="rain" parent="walls" instance=ExtResource( 6 )]
 
@@ -3069,9 +3074,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[connection signal="switch_flipped" from="walls/switch_left" to="." method="_on_switch_left_switch_flipped"]
-
 [connection signal="switch_flipped" from="walls/switch_left" to="ground/stuff/bridge" method="invert_visibility"]
+
+[connection signal="switch_flipped" from="walls/switch_left" to="." method="_on_switch_left_switch_flipped"]
 
 [connection signal="switch_flipped" from="walls/switch_right" to="ground/stuff/bridge" method="invert_visibility"]
 
