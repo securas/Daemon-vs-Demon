@@ -173,7 +173,7 @@ func _fixed_process(delta):
 	
 	# apply all forces
 	var force = steering_force + flocking_force + bound_force
-	force = steering_control.truncate( force, steering_control.max_force )
+	#force = steering_control.truncate( force, steering_control.max_force )
 	vel += force * delta
 	if not _is_falling:
 		vel = steering_control.truncate( vel, steering_control.max_vel )

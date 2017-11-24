@@ -67,20 +67,10 @@ tracks/0/keys = {
 "values": [ 39 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("body:visibility/visible")
+tracks/1/path = NodePath("Light2D:enabled")
 tracks/1/interp = 1
 tracks/1/imported = false
 tracks/1/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Light2D:enabled")
-tracks/2/interp = 1
-tracks/2/imported = false
-tracks/2/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
@@ -128,6 +118,7 @@ patrol_area_path = null
 
 [node name="body" type="Sprite" parent="."]
 
+visibility/visible = false
 texture = ExtResource( 2 )
 offset = Vector2( 0, -11 )
 vframes = 5
@@ -148,7 +139,7 @@ texture = ExtResource( 2 )
 offset = Vector2( 0, -11 )
 vframes = 5
 hframes = 8
-frame = 8
+frame = 39
 __meta__ = {
 "_edit_lock_": true
 }
@@ -253,8 +244,8 @@ trigger = false
 _update_shape_index = 0
 
 [node name="itemarea" type="Area2D" parent="." groups=[
-"blood",
 "monster_1",
+"blood",
 ]]
 
 editor/display_folded = true
@@ -321,7 +312,8 @@ _update_shape_index = 0
 
 [node name="Light2D" type="Light2D" parent="."]
 
-enabled = true
+visibility/visible = false
+enabled = false
 editor_only = false
 texture = ExtResource( 3 )
 offset = Vector2( 0, 0 )

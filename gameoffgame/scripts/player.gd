@@ -96,7 +96,12 @@ func die( source ):
 #---------------------------------------
 # ready
 #---------------------------------------
+var _is_ready = false
 func _ready():
+	if _is_ready:
+		print( "ertererte" )
+		return
+	_is_ready = true
 	# register
 	game.player = weakref( self )
 	
@@ -357,7 +362,7 @@ func _on_sword_hitbox_area_enter( area ):
 	if area.is_in_group( "damagebox" ):
 		var obj = area.get_parent()
 		if game.findweak( obj, sword_neighbours ) == -1:
-			print( "adding ", obj.get_name(), " to sword neighbours" )
+			#print( "adding ", obj.get_name(), " to sword neighbours" )
 			sword_neighbours.append( weakref( area.get_parent() ) )
 
 
@@ -366,7 +371,7 @@ func _on_sword_hitbox_area_exit( area ):
 		var obj = area.get_parent()
 		var pos = game.findweak( obj, sword_neighbours )
 		if pos != -1:
-			print( "removing ", obj.get_name(), " from sword neighbours" )
+			#print( "removing ", obj.get_name(), " from sword neighbours" )
 			sword_neighbours.remove( pos )
 
 
@@ -378,7 +383,7 @@ func _on_finished_kill_monster_1():
 
 func transform( newchar ):
 	if newchar == game.player_char: return
-	print( "transforming" )
+	#print( "transforming" )
 	game.player_char = newchar
 	#effects
 	get_node( "transformation_particles" ).set_emitting( true )
@@ -460,7 +465,7 @@ func _is_in_line_of_sight( obj ):
 #	if not results.empty() and results["collider"] == obj:
 #		# we can see the player, not check
 #		return true
-	print( "not in line of sight" )
+	#print( "not in line of sight" )
 	return false
 
 func _on_visibility_to_enemies_timer_timeout():

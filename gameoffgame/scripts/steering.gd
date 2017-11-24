@@ -15,18 +15,22 @@ func steering( cur_pos, target_pos, cur_vel, delta ):
 	var distance_to_target = target_pos - cur_pos
 	var desired_vel = distance_to_target.normalized() * max_vel
 	steering_force = ( desired_vel - cur_vel ) / delta
-	steering_force = truncate( steering_force, max_force )
+	#steering_force = truncate( steering_force, max_force )
 	return steering_force
 
 func steering_and_arriving( cur_pos, target_pos, cur_vel, mindist, delta ):
 	var distance_to_target = target_pos - cur_pos
-	var desired_vel = distance_to_target.normalized() * max_vel
-	if distance_to_target.length() < mindist:
-		desired_vel *= distance_to_target.length() / mindist
+	var len = distance_to_target.length()
+	if len < 0.01: return Vector2( 0, 0 )
+	#var desired_vel = distance_to_target.normalized() * max_vel
+	var desired_vel = distance_to_target * max_vel / len
+	#if distance_to_target.length() < mindist:
+	if len < mindist:
+		desired_vel *= len / mindist
 		steering_force = ( desired_vel - cur_vel ) / delta
 	else:
 		steering_force = ( desired_vel - cur_vel ) / delta
-		steering_force = truncate( steering_force, max_force )
+		#steering_force = truncate( steering_force, max_force )
 	return steering_force
 
 func fleeing( cur_pos, target_pos, cur_vel, mindist, delta ):
@@ -42,7 +46,7 @@ func wander( cur_vel, cdist, cradius ):
 	var circle_center = cur_vel.normalized() * cdist
 	var wander_vector = Vector2( cradius, 0 ).rotated( randf() * 2 * PI )
 	steering_force = circle_center + wander_vector
-	steering_force = truncate( steering_force, max_force )
+	#steering_force = truncate( steering_force, max_force )
 	return steering_force
 
 func rect_bound( cur_pos, cur_vel, rect_bound, margin, offsetvel, delta ):
@@ -108,8 +112,9 @@ func cohesion( cur_pos, other_pos, scaling, mindist ):
 
 
 func flocking( source, targets, separation_scaling, alignment_scaling, cohesion_scaling ):
+	if targets.size() == 0: return Vector2( 0, 0 )
 	var cur_pos = source.get_global_pos()
-	var cur_vel = source.vel
+	#var cur_vel = source.vel
 	
 	var separation_force = Vector2( 0, 0 )
 	var separation_counter = 0
@@ -122,6 +127,7 @@ func flocking( source, targets, separation_scaling, alignment_scaling, cohesion_
 	
 	#for idx in range( other_pos.size() ):
 	var other_pos = null
+	#var target = null
 	for targetref in targets:
 		var target = targetref.get_ref()
 		if target == null or target.is_dead(): continue
@@ -129,8 +135,10 @@ func flocking( source, targets, separation_scaling, alignment_scaling, cohesion_
 		other_pos = target.get_global_pos()
 		var distance_vec = other_pos - cur_pos
 		var distance = distance_vec.length()
+		#distance = max( 2, distance )
 		if distance < 2: distance = 2
 		separation_force -= distance_vec.normalized() * ( 1 / distance )
+		#separation_force -= distance_vec / ( distance * distance )
 		separation_counter += 1
 		
 		alignment_vel += target.vel
@@ -145,7 +153,7 @@ func flocking( source, targets, separation_scaling, alignment_scaling, cohesion_
 	var alignment_force = Vector2()
 	if alignment_counter > 0:
 		alignment_vel /= alignment_counter
-		alignment_force += ( alignment_vel - cur_vel ) * alignment_scaling
+		alignment_force += ( alignment_vel - source.vel ) * alignment_scaling
 	
 	cohesion_center /= cohesion_counter
 	var cohesion_force = ( cohesion_center - cur_pos ) * cohesion_scaling

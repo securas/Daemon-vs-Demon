@@ -70,8 +70,6 @@ invert/border = 100.0
 
 [node name="rotate" type="Node2D" parent="."]
 
-editor/display_folded = true
-
 [node name="player_human" parent="rotate" instance=ExtResource( 2 )]
 
 [node name="collision" type="CollisionShape2D" parent="."]

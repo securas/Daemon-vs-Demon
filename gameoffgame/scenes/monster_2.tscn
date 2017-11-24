@@ -128,15 +128,11 @@ __meta__ = {
 
 [node name="head" type="Sprite" parent="rotate"]
 
-transform/pos = Vector2( 1, -1 )
+transform/pos = Vector2( -1, -1 )
 texture = ExtResource( 2 )
-offset = Vector2( -0.947174, -9.4958 )
+offset = Vector2( 0.052826, -7.4958 )
 vframes = 5
 hframes = 8
-frame = 17
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="anim" type="AnimationPlayer" parent="."]
 
@@ -233,8 +229,8 @@ __meta__ = {
 }
 
 [node name="itemarea" type="Area2D" parent="." groups=[
-"monster_2",
 "blood",
+"monster_2",
 ]]
 
 visibility/visible = false
@@ -293,7 +289,6 @@ autostart = false
 
 [node name="collision" type="CollisionShape2D" parent="."]
 
-visibility/visible = false
 transform/pos = Vector2( 0, -1 )
 shape = SubResource( 1 )
 trigger = false
@@ -304,6 +299,7 @@ __meta__ = {
 
 [node name="Light2D" type="Light2D" parent="."]
 
+transform/pos = Vector2( -1, -1 )
 enabled = false
 editor_only = false
 texture = ExtResource( 3 )
@@ -323,6 +319,9 @@ shadow/color = Color( 0, 0, 0, 0 )
 shadow/buffer_size = 2048
 shadow/esm_multiplier = 80.0
 shadow/item_mask = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 

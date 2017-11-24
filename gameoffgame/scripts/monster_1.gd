@@ -101,7 +101,7 @@ func _fixed_process(delta):
 		if get_node( "anim_head" ).get_current_animation() != "kill":
 			get_node( "anim_body" ).stop()
 			get_node( "anim_head" ).play( "kill" )
-			print( "player kill animation" )
+			#print( "player kill animation" )
 		# check if falling
 		if not _is_falling:
 			var uplow = game.check_fall_area( self, get_global_pos() )

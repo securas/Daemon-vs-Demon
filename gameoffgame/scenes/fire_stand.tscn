@@ -17,7 +17,7 @@ func _ready():
 
 
 func _on_VisibilityNotifier2D_enter_screen():
-	print( get_name(), \" enabling\" )
+	#print( get_name(), \" enabling\" )
 	get_node( \"anim\" ).play( \"cycle\" )
 	get_node( \"anim\" ).seek( 0.6 * randf() )
 	get_node( \"main_light\" ).set_enabled( true )
@@ -110,7 +110,7 @@ range/layer_max = 0
 range/item_mask = 3
 shadow/enabled = false
 shadow/color = Color( 0, 0, 0, 0 )
-shadow/buffer_size = 2048
+shadow/buffer_size = 256
 shadow/esm_multiplier = 80.0
 shadow/item_mask = 1
 __meta__ = {
@@ -148,22 +148,6 @@ __meta__ = {
 visibility/visible = false
 transform/pos = Vector2( 0, 8 )
 rect = Rect2( -140, -90, 280, 180 )
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-
-visibility/visible = false
-visibility/behind_parent = true
-polygon = Vector2Array( -150, -140, 150, -140, 150, 120, -150, 120 )
-uv = Vector2Array(  )
-color = Color( 0.230469, 0.0108032, 0.0108032, 1 )
-vertex_colors = ColorArray(  )
-offset = Vector2( 0, 0 )
-texture/texture = null
-texture/offset = Vector2( 0, 0 )
-texture/scale = Vector2( 1, 1 )
-texture/rotation = 0.0
-invert/enable = false
-invert/border = 100.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
