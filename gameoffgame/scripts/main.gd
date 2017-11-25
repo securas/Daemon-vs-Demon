@@ -6,9 +6,9 @@ var input_states = preload( "res://scripts/input_states.gd" )
 #var btn_fire = input_states.new( "btn_fire" )
 var btn_quit = input_states.new( "btn_quit" )
 
-
+#"res://scenes/intro/intro.tscn"
 var act_cur = ""
-var act_nxt = "res://scenes/intro/intro.tscn" setget _load_act
+var act_nxt = "res://scenes/intro/start.tscn" setget _load_act
 var load_state = 0
 onready var loadtimer = get_node( "loadtimer" )
 var state = -10
@@ -59,8 +59,7 @@ func _fixed_process( delta ):
 		else:
 			# in this mode, pressing the quit button quits the game
 			if btn_quit.check() == 1:
-				print( "TODO: Back to intro menu" )
-				get_tree().quit()
+				_load_act( "res://scenes/intro/intro.tscn" )
 
 
 func _on_pause_menu_selected_item( item ):
@@ -71,9 +70,8 @@ func _on_pause_menu_selected_item( item ):
 	pause_game( false )
 	if item == 1:
 		#quit
-		print( "TODO: GO BACK TO INTRO MENU" )
-		get_tree().quit()
-		pass
+		get_node( "hud_layer/pause_game/menu" ).cur_pos = 0
+		_load_act( "res://scenes/intro/intro.tscn" )
 
 
 

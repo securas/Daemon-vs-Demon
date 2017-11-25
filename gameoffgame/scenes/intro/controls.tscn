@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scenes/intro/controls.gd" type="Script" id=1]
+[ext_resource path="res://assets/controls.png" type="Texture" id=2]
+
+[node name="controls" type="Node2D"]
+
+script/script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, 8 )
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+

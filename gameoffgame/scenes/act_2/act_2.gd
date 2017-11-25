@@ -51,6 +51,7 @@ onready var events = \
 
 
 func _ready():
+	game.cur_act = game.ACTS.GRAVEYARD
 	scene = game.act_specific[game.ACTS.GRAVEYARD]["scene"]
 	game.camera_target = weakref( get_node( "walls/player" ) )
 	

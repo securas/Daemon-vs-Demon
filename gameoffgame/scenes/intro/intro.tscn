@@ -19,37 +19,42 @@ scale = Vector2( 1, 1 )
 
 [node name="newgame" type="Sprite" parent="menulayer/menu"]
 
-transform/pos = Vector2( 160, 72 )
+transform/pos = Vector2( 8, 80 )
 texture = ExtResource( 3 )
+offset = Vector2( 30, -4 )
 region = true
-region_rect = Rect2( 0, 0, 62, 7 )
+region_rect = Rect2( 1, 0, 60, 7 )
 
 [node name="continue" type="Sprite" parent="menulayer/menu"]
 
-transform/pos = Vector2( 160, 88 )
+transform/pos = Vector2( 8, 96 )
 texture = ExtResource( 3 )
+offset = Vector2( 29, -4 )
 region = true
-region_rect = Rect2( 0, 8, 59, 8 )
+region_rect = Rect2( 1, 8, 58, 8 )
 
 [node name="controls" type="Sprite" parent="menulayer/menu"]
 
-transform/pos = Vector2( 160, 104 )
+transform/pos = Vector2( 8, 112 )
 texture = ExtResource( 3 )
+offset = Vector2( 29, -4 )
 region = true
-region_rect = Rect2( 0, 18, 58, 8 )
+region_rect = Rect2( 1, 18, 58, 8 )
 
 [node name="credits" type="Sprite" parent="menulayer/menu"]
 
-transform/pos = Vector2( 160, 120 )
+transform/pos = Vector2( 8, 128 )
 texture = ExtResource( 3 )
+offset = Vector2( 25, -4 )
 region = true
-region_rect = Rect2( 0, 28, 50, 8 )
+region_rect = Rect2( 1, 28, 50, 8 )
 
 [node name="quit" type="Sprite" parent="menulayer/menu"]
 
-transform/pos = Vector2( 160, 136 )
+transform/pos = Vector2( 8, 144 )
 texture = ExtResource( 3 )
+offset = Vector2( 14, -3 )
 region = true
-region_rect = Rect2( 0, 38, 28, 9 )
+region_rect = Rect2( 1, 38, 27, 9 )
 
 

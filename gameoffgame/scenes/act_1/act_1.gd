@@ -12,6 +12,8 @@ func _ready():
 	# set player properties
 	player.set_cutscene()
 	player.hide()
+	game.continue_game = true
+	game.cur_act = game.ACTS.HELL
 	
 	# start process
 	set_fixed_process( true )
