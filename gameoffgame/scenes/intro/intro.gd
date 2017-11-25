@@ -2,6 +2,7 @@ extends Node2D
 
 func _ready():
 	# set menu active
+	game.camera_target = weakref( get_node( "Position2D" ) )
 	get_node( "menulayer/menu" ).set_active( true )
 	get_node( "menulayer/menu" ).connect( "selected_item", self, "_on_menu_selected_item" )
 	if not game.continue_game: get_node( "menulayer/menu" ).set_unselectable_item( 1 )
@@ -35,3 +36,12 @@ func _on_menu_selected_item( item ):
 	elif item == 4:
 		# quit
 		get_tree().quit()
+
+func _shake_screen():
+	print( "shaking camera" )
+	get_node( "camera" ).shake( 1, 30, 4 )
+
+
+
+func _on_Timer_timeout():
+	get_node( "player_anim_layer/scale/walls/player_anim/AnimationPlayer" ).play( "intro" )

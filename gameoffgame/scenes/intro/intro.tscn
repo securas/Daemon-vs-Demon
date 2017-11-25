@@ -1,12 +1,150 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://scenes/intro/intro.gd" type="Script" id=1]
 [ext_resource path="res://scenes/menu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/text.png" type="Texture" id=3]
+[ext_resource path="res://assets/title_start.png" type="Texture" id=4]
+[ext_resource path="res://scenes/camera.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/tileset.tres" type="TileSet" id=6]
+[ext_resource path="res://assets/intro_animation.png" type="Texture" id=7]
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "cycle"
+length = 1.1
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("title:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+}
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "show"
+length = 3.1
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("menulayer/menu:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 2, 2.5 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("title/Polygon2D:transform/pos")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 1, 1.4 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 308, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 1.4 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_shake_screen"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("title:frame")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 2.8, 2.9, 3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("AnimationPlayer")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 3.1 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [ "cycle" ],
+"method": "play"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("player_anim_layer/scale:visibility/opacity")
+tracks/5/interp = 1
+tracks/5/imported = false
+tracks/5/keys = {
+"times": FloatArray( 0, 2, 2.5 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource/name = "intro"
+length = 30.0
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 5, 6, 7, 8, 9, 10, 10.2, 10.4, 10.6, 10.8, 11, 11.2, 11.4, 11.6, 11.8, 12, 12.2, 12.4, 12.6, 12.8, 13, 13.2, 13.4, 14.4, 14.6, 14.8, 15, 15.2, 15.4, 15.6, 15.8, 16, 16.2, 16.4, 16.6, 16.8, 17, 17.2, 17.4, 17.6, 17.8, 18.6, 19.2, 19.6, 19.8, 20, 20.2, 20.4, 20.6, 20.8, 21, 21.2, 21.4, 21.6, 21.8, 22, 22.2, 22.4, 22.6, 22.8, 23, 23.2, 23.4, 23.6, 23.8, 24, 24.2, 24.4, 24.6, 24.8, 25, 25.2, 25.4, 25.6, 25.8, 26, 26.2, 26.4, 26.6, 26.8, 27, 27.2, 27.4, 27.6, 27.8, 28, 28.2, 28.4, 28.6, 28.8, 29, 29.2 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 22, 0, 22, 0, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 4, 0, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 33, 34, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 52, 53, 54, 55, 52, 53, 54, 55, 52, 53, 54, 55 ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource/name = "start"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
 
 [node name="intro" type="Node2D"]
 
 script/script = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/cycle = SubResource( 2 )
+anims/show = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "show"
 
 [node name="menulayer" type="CanvasLayer" parent="."]
 
@@ -56,5 +194,148 @@ texture = ExtResource( 3 )
 offset = Vector2( 14, -3 )
 region = true
 region_rect = Rect2( 1, 38, 27, 9 )
+
+[node name="title" type="Sprite" parent="."]
+
+texture = ExtResource( 4 )
+centered = false
+vframes = 15
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="title"]
+
+transform/pos = Vector2( 308, 0 )
+polygon = Vector2Array( 0, 0, 0, 64, 320, 64, 320, 0 )
+uv = Vector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+[node name="camera" parent="." instance=ExtResource( 5 )]
+
+[node name="Position2D" type="Position2D" parent="."]
+
+transform/pos = Vector2( 160, 90 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="player_anim_layer" type="CanvasLayer" parent="."]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="scale" type="Node2D" parent="player_anim_layer"]
+
+transform/pos = Vector2( -178, -5 )
+transform/scale = Vector2( 1.5, 1.5 )
+
+[node name="base" type="TileMap" parent="player_anim_layer/scale"]
+
+visibility/light_mask = 3
+mode = 0
+tile_set = ExtResource( 6 )
+cell/size = Vector2( 8, 8 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 3
+collision/mask = 3
+occluder/light_mask = 2
+tile_data = IntArray( 655383, 30, 655384, 30, 655385, 30, 655386, 30, 655387, 30, 655388, 30, 655389, 30, 655390, 30, 655391, 30, 655392, 30, 655393, 30, 655394, 30, 655395, 30, 655396, 30, 655397, 30, 655398, 30, 655399, 30, 655400, 536870942, 655401, 536870942, 720919, 30, 720920, 30, 720921, 30, 720922, 30, 720923, 30, 720924, 30, 720925, 30, 720926, 30, 720927, 30, 720928, 30, 720929, 30, 720930, 30, 720931, 30, 720932, 30, 720933, 30, 720934, 30, 720935, 30, 720936, 536870942, 720937, 536870942, 786454, 536870941, 786455, 30, 786456, 30, 786457, 30, 786458, 30, 786459, 30, 786460, 30, 786461, 30, 786462, 30, 786463, 30, 786464, 30, 786465, 30, 786466, 30, 786467, 30, 786468, 30, 786469, 30, 786470, 30, 786471, 30, 786472, 536870942, 786473, 536870942, 851991, 30, 851992, 30, 851993, 30, 851994, 30, 851995, 30, 851996, 30, 851997, 30, 851998, 30, 851999, 30, 852000, 30, 852001, 30, 852002, 30, 852003, 30, 852004, 30, 852005, 30, 852006, 30, 852007, 30, 852008, 536870942, 852009, 536870942, 917527, 30, 917528, 30, 917529, 30, 917530, 30, 917531, 30, 917532, 30, 917533, 30, 917534, 30, 917535, 30, 917536, 30, 917537, 30, 917538, 30, 917539, 30, 917540, 30, 917541, 30, 917542, 30, 917543, 536870942, 917544, 536870942, 917545, 536870942, 983063, 30, 983064, 30, 983065, 30, 983066, 30, 983067, 30, 983068, 30, 983069, 30, 983070, 30, 983071, 30, 983072, 30, 983073, 30, 983074, 30, 983075, 30, 983076, 30, 983077, 30, 983078, 30, 983079, 536870942, 983080, 536870942, 983081, 536870942, 1048599, 30, 1048600, 30, 1048601, 30, 1048602, 30, 1048603, 30, 1048604, 30, 1048605, 30, 1048606, 30, 1048607, 30, 1048608, 30, 1048609, 30, 1048610, 30, 1048611, 30, 1048612, 30, 1048613, 30, 1048614, 30, 1048615, 536870942, 1048616, 536870942, 1048617, 536870942 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ground" type="TileMap" parent="player_anim_layer/scale"]
+
+visibility/light_mask = 3
+mode = 0
+tile_set = ExtResource( 6 )
+cell/size = Vector2( 8, 8 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 3
+collision/mask = 3
+occluder/light_mask = 2
+tile_data = IntArray( 589850, 536870953, 589854, 536870954, 589858, 536870952, 589862, 536870953, 589866, 536870951, 655384, 4, 720923, 2, 720926, 4, 720934, 1, 786457, 3, 786464, 5, 786467, 0, 917528, 2, 917533, 4, 917537, 2, 983077, 1, 1048598, 536870938 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="walls" type="TileMap" parent="player_anim_layer/scale"]
+
+mode = 0
+tile_set = ExtResource( 6 )
+cell/size = Vector2( 8, 8 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 1
+cell/y_sort = true
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 3
+collision/mask = 3
+occluder/light_mask = 1
+tile_data = IntArray( 720933, 43, 786465, 13 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="player_anim" type="Sprite" parent="player_anim_layer/scale/walls"]
+
+transform/pos = Vector2( 292.667, 99.3333 )
+texture = ExtResource( 7 )
+offset = Vector2( 1, -10 )
+vframes = 7
+hframes = 8
+frame = 23
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="player_anim_layer/scale/walls/player_anim"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/intro = SubResource( 3 )
+anims/start = SubResource( 4 )
+playback/active = true
+playback/speed = 1.3
+blend_times = [  ]
+autoplay = "start"
+
+[node name="Timer" type="Timer" parent="player_anim_layer"]
+
+process_mode = 1
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="player_anim_layer/Timer" to="." method="_on_Timer_timeout"]
 
 
