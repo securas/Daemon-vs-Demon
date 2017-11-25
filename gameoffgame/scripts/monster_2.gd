@@ -334,6 +334,7 @@ func get_hit( source ):
 	if state_cur != STATES.DEAD and state_nxt != STATES.DEAD and \
 			state_cur != STATES.GRABBING and state_nxt != STATES.GRABBING:
 		# monster dies immediately
+		game.score += 50
 		state_nxt = STATES.DEAD
 		return true
 	return false

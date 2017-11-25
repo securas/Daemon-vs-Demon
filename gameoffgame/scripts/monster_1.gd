@@ -280,6 +280,8 @@ func get_hit( source ):
 			state_cur != STATES.GRABBING and state_nxt != STATES.GRABBING:
 		# monster dies immediately
 		state_nxt = STATES.DEAD
+		# increase score
+		game.score += 100
 		return true
 	return false
 

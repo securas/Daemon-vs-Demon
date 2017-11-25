@@ -329,6 +329,7 @@ func _player_pick( delta ):
 					emit_signal( "on_transformation" )
 				elif item.is_in_group( "satan" ):
 					transform( game.PLAYER_CHAR.SATAN )
+					game.score += 1000
 					emit_signal( "became_satan" )
 				# emit signal
 				#emit_signal( "on_transformation" )
@@ -336,14 +337,17 @@ func _player_pick( delta ):
 				if not item.is_in_group( "satan" ):
 					get_node( "transformation_timer" ).set_wait_time( TRANSFORMATION_DURATION )
 					get_node( "transformation_timer" ).start()
+					
 				#item.get_parent().queue_free()
 			elif item.is_in_group( "switch" ):
 				# flip switch
 				item.get_parent().flip_switch()
 			elif item.is_in_group( "tinydoor" ):
+				game.score += 200
 				# cross door
 				item.cross_door()
 			elif item.is_in_group( "gate" ):
+				game.score += 200
 				# open gate
 				item.get_parent().open_gate()
 
@@ -465,6 +469,7 @@ func _on_keybox_area_enter( area ):
 		# play picking animation
 		area.get_parent().get_node( "key/animate_key" ).play( "pick" )
 		game.has_key = true
+		game.score += 200
 	elif area.is_in_group( "coin" ):
 		# play picking animation
 		area.get_parent().get_node( "key/animate_key" ).play( "pick" )

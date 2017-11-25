@@ -1,76 +1,55 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=4 format=1]
 
-[ext_resource path="res://fonts/godot_tinyfont.fnt" type="BitmapFont" id=1]
+[ext_resource path="res://scenes/intro/intro.gd" type="Script" id=1]
+[ext_resource path="res://scenes/menu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/text.png" type="Texture" id=3]
 
 [node name="intro" type="Node2D"]
 
-[node name="GridContainer" type="GridContainer" parent="."]
+script/script = ExtResource( 1 )
 
-focus/ignore_mouse = true
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 147.0
-margin/top = 61.0
-margin/right = 211.0
-margin/bottom = 101.0
-columns = 1
+[node name="menulayer" type="CanvasLayer" parent="."]
 
-[node name="start" type="Label" parent="GridContainer"]
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 32.0
-margin/bottom = 3.0
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "start"
-align = 1
-uppercase = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+[node name="menu" parent="menulayer" instance=ExtResource( 2 )]
 
-[node name="credits" type="Label" parent="GridContainer"]
+[node name="newgame" type="Sprite" parent="menulayer/menu"]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 7.0
-margin/right = 32.0
-margin/bottom = 10.0
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "credits"
-align = 1
-uppercase = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+transform/pos = Vector2( 160, 72 )
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 0, 62, 7 )
 
-[node name="settings" type="Label" parent="GridContainer"]
+[node name="continue" type="Sprite" parent="menulayer/menu"]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 14.0
-margin/right = 32.0
-margin/bottom = 17.0
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "settings"
-align = 1
-uppercase = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+transform/pos = Vector2( 160, 88 )
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 8, 59, 8 )
+
+[node name="controls" type="Sprite" parent="menulayer/menu"]
+
+transform/pos = Vector2( 160, 104 )
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 18, 58, 8 )
+
+[node name="credits" type="Sprite" parent="menulayer/menu"]
+
+transform/pos = Vector2( 160, 120 )
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 28, 50, 8 )
+
+[node name="quit" type="Sprite" parent="menulayer/menu"]
+
+transform/pos = Vector2( 160, 136 )
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 38, 28, 9 )
 
 

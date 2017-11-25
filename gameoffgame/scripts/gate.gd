@@ -13,6 +13,7 @@ func open_gate():
 	if _is_open: return
 	if game.player == null or game.player.get_ref() == null or game.player.get_ref().is_dead(): return
 	if game.has_key:
+		game.has_key = false
 		# open gate
 		#print( "opening gate" )
 		_is_open = true

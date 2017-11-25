@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 5, 32 )
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=2]
 
 resource/name = "hit_1"
 length = 0.3
@@ -66,7 +66,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=4]
 
 resource/name = "hit_3"
 length = 0.3
@@ -293,9 +293,9 @@ __meta__ = {
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/hit_1 = SubResource( 14 )
+anims/hit_1 = SubResource( 2 )
 anims/hit_2 = SubResource( 3 )
-anims/hit_3 = SubResource( 15 )
+anims/hit_3 = SubResource( 4 )
 anims/hit_4 = SubResource( 5 )
 anims/none = SubResource( 6 )
 playback/active = true

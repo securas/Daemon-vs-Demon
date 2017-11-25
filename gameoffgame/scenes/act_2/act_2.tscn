@@ -393,6 +393,7 @@ scroll/ignore_camera_zoom = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
+visibility/visible = false
 transform/pos = Vector2( 1212, 96 )
 motion/scale = Vector2( 0, 0 )
 motion/offset = Vector2( 0, 0 )
@@ -405,6 +406,7 @@ centered = false
 
 [node name="ParallaxLayer 2" type="ParallaxLayer" parent="ParallaxBackground"]
 
+visibility/visible = false
 transform/pos = Vector2( 1213, 96 )
 motion/scale = Vector2( 0.05, 0.01 )
 motion/offset = Vector2( 0, 0 )
@@ -530,7 +532,7 @@ __meta__ = {
 
 [node name="player" parent="walls" instance=ExtResource( 7 )]
 
-transform/pos = Vector2( 3307, 310 )
+transform/pos = Vector2( 1599, 271 )
 
 [node name="rain" parent="walls" instance=ExtResource( 8 )]
 
@@ -1688,6 +1690,7 @@ scale = Vector2( 1, 1 )
 
 [node name="fps" type="Label" parent="infolayer"]
 
+visibility/visible = false
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -1946,8 +1949,8 @@ __meta__ = {
 }
 
 [node name="falling_area_up" type="Area2D" parent="areas/falling" groups=[
-"up_fall",
 "fall_area",
+"up_fall",
 ]]
 
 editor/display_folded = true
@@ -2081,8 +2084,8 @@ __meta__ = {
 }
 
 [node name="falling_area_down" type="Area2D" parent="areas/falling" groups=[
-"down_fall",
 "fall_area",
+"down_fall",
 ]]
 
 editor/display_folded = true

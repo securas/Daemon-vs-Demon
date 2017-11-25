@@ -1,0 +1,25 @@
+[gd_scene format=1]
+
+[node name="pause_game_screen" type="Node2D"]
+
+process/pause_mode = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+
+visibility/opacity = 0.3
+polygon = Vector2Array( -10, -10, 330, -10, 330, 190, -10, 190 )
+uv = Vector2Array(  )
+color = Color( 0, 0, 0, 1 )
+vertex_colors = ColorArray(  )
+offset = Vector2( 0, 0 )
+texture/texture = null
+texture/offset = Vector2( 0, 0 )
+texture/scale = Vector2( 1, 1 )
+texture/rotation = 0.0
+invert/enable = false
+invert/border = 100.0
+
+

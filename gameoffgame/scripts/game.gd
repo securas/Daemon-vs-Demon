@@ -5,8 +5,8 @@ const GRAVITY = 1000
 const TERMINAL_VEL = 400
 
 
-var score = 0
-var has_key = false
+var score = 0 setget _update_score
+var has_key = false setget _update_key
 var boss_fight = false
 
 #---------------------------
@@ -48,7 +48,7 @@ var main = null
 #---------------------------
 # pause control
 #---------------------------
-var pause_timer
+#var pause_timer = 0
 
 
 #---------------------------
@@ -65,7 +65,7 @@ func _ready():
 	main = _root.get_child( _root.get_child_count() - 1 )
 	if main.get_name() != "main":
 		main = null
-	set_fixed_process( true )
+	#set_fixed_process( true )
 
 
 func reset_settings():
@@ -76,27 +76,31 @@ func reset_settings():
 
 
 
-func _fixed_process( delta ):
-	# hit Esc to quit
-	if Input.is_key_pressed( KEY_ESCAPE ):
-		get_tree().quit()
-	
-	if get_tree().is_paused():
-		if pause_timer > 0:
-			pause_timer -= delta
-			if pause_timer < 0:
-				get_tree().set_pause( false )
-		elif pause_timer == -1:
-			if Input.is_action_pressed( "btn_fire" ):
-				get_tree().set_pause( false )
+#func _fixed_process( delta ):
+#	# hit Esc to quit
+#	if Input.is_key_pressed( KEY_ESCAPE ):
+#		get_tree().quit()
 
 
-func pause_game( t ):
-	if t > 0:
-		pause_timer = t
-	else:
-		pause_timer = -1
-	get_tree().set_pause( true )
+
+func _update_score( v ):
+	score = v
+	if main != null:
+		main.score_nxt = score
+
+func _update_key( v ):
+	has_key = v
+	if main != null:
+		main.set_key( v )
+
+
+
+
+
+
+
+
+
 
 func findweak( obj, arr ):
 	for idx in range( arr.size() ):
