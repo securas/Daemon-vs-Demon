@@ -7,7 +7,7 @@ signal finished_kill
 
 const BULLET_COUNT = 3
 const ATTACK_TIME = 4
-const MAX_HITS = 1
+const MAX_HITS = 5
 var hits = 0
 
 

@@ -577,6 +577,8 @@ func _on_respawn_body_enter( body, area ):
 	#print( body.get_name(), "entered ", area.get_name() )
 	if game.player != null and body == game.player.get_ref():
 		game.player_spawnpos = area.get_global_pos()
+		if game.main != null:
+			game.main.progress_update()
 		if scene > 1:
 			game.player.get_ref().transform( game.PLAYER_CHAR.HUMAN_SWORD )
 			#game.player_char = game.PLAYER_CHAR.HUMAN_SWORD

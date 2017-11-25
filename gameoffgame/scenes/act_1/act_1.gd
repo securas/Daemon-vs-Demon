@@ -373,7 +373,7 @@ func scene_2_end():
 
 
 
-func _player_text( msg, ttext, ttimer, nxt, voffset = -40 ):
+func _player_text( msg, ttext, ttimer, nxt, voffset = -47 ):
 	var t = text_scn.instance()
 	t.set_text( msg )
 	t.connect( "finished", self, "_on_text_finished" )
@@ -386,7 +386,7 @@ func _player_text( msg, ttext, ttimer, nxt, voffset = -40 ):
 	timer = ttimer
 	state = -1
 	state_nxt = nxt
-func _demon_text( msg, ttext, ttimer, nxt, voffset = -30 ):
+func _demon_text( msg, ttext, ttimer, nxt, voffset = -47 ):
 	var t = text_scn.instance()
 	t.set_text( msg )
 	t.add_color_override("font_color", Color(1,0,0))

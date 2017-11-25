@@ -115,6 +115,16 @@ func findweak( obj, arr ):
 
 
 func check_fall_area( obj, pos ):
+	if floor_tilemap == null or floor_tilemap.get_ref() == null:
+		return _checkfalling_area( obj, pos )
+	# first check tilemap
+	var tilepos = floor_tilemap.get_ref().world_to_map( pos )
+	if floor_tilemap.get_ref().get_cell( tilepos.x, tilepos.y ) == -1:
+		return _checkfalling_area( obj, pos )
+	return 0
+	
+	
+func _checkfalling_area( obj, pos ):
 	var space_state = obj.get_world_2d().get_direct_space_state()
 	var results = space_state.intersect_point( pos, 32, [], 524288, 16 )
 	if not results.empty():

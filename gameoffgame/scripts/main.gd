@@ -161,4 +161,7 @@ func set_key( v ):
 		get_node( "hud_layer/hud/key/key_animator" ).play( "fadeout" )
 
 
-
+func progress_update():
+	get_node( "hud_layer/hud/progress_indicator/AnimationPlayer" ).play( "show" )
+func _hide_progress_update():
+	get_node( "hud_layer/hud/progress_indicator/AnimationPlayer" ).play( "hide" )

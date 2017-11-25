@@ -52,7 +52,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/imported = false
 tracks/1/keys = {
-"times": FloatArray( 2 ),
+"times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "values": [ {
 "args": [ "switch_flipped" ],
@@ -80,7 +80,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/imported = false
 tracks/1/keys = {
-"times": FloatArray( 2 ),
+"times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "values": [ {
 "args": [ "switch_flipped" ],
@@ -148,6 +148,7 @@ autoplay = "none"
 
 [node name="collision" type="CollisionShape2D" parent="."]
 
+visibility/visible = false
 transform/pos = Vector2( -1, -3 )
 shape = SubResource( 1 )
 trigger = false
@@ -160,6 +161,7 @@ __meta__ = {
 "switch",
 ]]
 
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -1, -2 )

@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=1]
+[gd_scene load_steps=18 format=1]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://fonts/godot_tinyfont.fnt" type="BitmapFont" id=2]
 [ext_resource path="res://assets/box_key.png" type="Texture" id=3]
-[ext_resource path="res://scenes/menu.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/text.png" type="Texture" id=5]
+[ext_resource path="res://assets/pixel.png" type="Texture" id=4]
+[ext_resource path="res://scenes/menu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/text.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
 
@@ -116,7 +117,92 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=5]
 
-resource/name = "fadein"
+resource/name = "hide"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visibility/visible")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visibility/opacity")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 0.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+
+resource/name = "show"
+length = 1.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:transform/scale")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 7 ), Vector2( 65, 7 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 1 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.476563, 0.00930786, 0.00930786, 1 ), Color( 0.0117647, 0.47451, 0.00930786, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visibility/visible")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:visibility/opacity")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0, 0.2 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("../../..")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 1.5 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_hide_progress_update"
+} ]
+}
+
+[sub_resource type="Animation" id=7]
+
 length = 1.0
 loop = false
 step = 0.1
@@ -141,9 +227,8 @@ tracks/1/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=8]
 
-resource/name = "fadeout"
 length = 1.0
 loop = false
 step = 0.1
@@ -168,9 +253,8 @@ tracks/1/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 
-resource/name = "cycle"
 length = 2.0
 loop = true
 step = 0.1
@@ -185,7 +269,7 @@ tracks/0/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=10]
 
 length = 0.3
 loop = false
@@ -211,7 +295,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=11]
 
 length = 0.4
 loop = false
@@ -356,9 +440,58 @@ autoplay = "fadeout"
 
 [node name="progress_indicator" type="Node2D" parent="hud_layer/hud"]
 
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="hud_layer/hud/progress_indicator"]
+
+transform/pos = Vector2( 254, 173 )
+transform/scale = Vector2( 65, 7 )
+texture = ExtResource( 4 )
+centered = false
+modulate = Color( 0.0117647, 0.47451, 0.00930786, 1 )
+
+[node name="Label" type="Label" parent="hud_layer/hud/progress_indicator"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 208.0
+margin/top = 168.0
+margin/right = 319.0
+margin/bottom = 182.0
+custom_fonts/font = ExtResource( 2 )
+text = "progress updated"
+align = 2
+valign = 1
+uppercase = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="hud_layer/hud/progress_indicator"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/hide = SubResource( 5 )
+anims/show = SubResource( 6 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "hide"
+
 [node name="pause_game" type="Node2D" parent="hud_layer"]
 
 process/pause_mode = 2
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="pause_poly" type="Polygon2D" parent="hud_layer/pause_game"]
 
@@ -383,8 +516,8 @@ __meta__ = {
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/fadein = SubResource( 5 )
-anims/fadeout = SubResource( 6 )
+anims/fadein = SubResource( 7 )
+anims/fadeout = SubResource( 8 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -408,36 +541,40 @@ uppercase = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="hud_layer/pause_game/Label"]
 
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/cycle = SubResource( 7 )
+anims/cycle = SubResource( 9 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = "cycle"
 
-[node name="menu" parent="hud_layer/pause_game" instance=ExtResource( 4 )]
+[node name="menu" parent="hud_layer/pause_game" instance=ExtResource( 5 )]
 
 [node name="continue" type="Sprite" parent="hud_layer/pause_game/menu"]
 
 transform/pos = Vector2( 160, 80 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 region = true
 region_rect = Rect2( 1, 8, 58, 8 )
 
 [node name="quit" type="Sprite" parent="hud_layer/pause_game/menu"]
 
 transform/pos = Vector2( 160, 100 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 region = true
 region_rect = Rect2( 1, 38, 27, 9 )
 
 [node name="fading" type="Node2D" parent="hud_layer"]
 
+editor/display_folded = true
 z/z = 10
 __meta__ = {
 "_edit_lock_": true
@@ -466,8 +603,8 @@ __meta__ = {
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/fadein = SubResource( 8 )
-anims/fadeout = SubResource( 9 )
+anims/fadein = SubResource( 10 )
+anims/fadeout = SubResource( 11 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]

@@ -274,8 +274,8 @@ __meta__ = {
 }
 
 [node name="anim" type="AnimationPlayer" parent="." groups=[
-"monster_3",
 "blood",
+"monster_3",
 ]]
 
 playback/process_mode = 1
@@ -328,8 +328,8 @@ trigger = false
 _update_shape_index = 0
 
 [node name="itemarea" type="Area2D" parent="." groups=[
-"satan",
 "blood",
+"satan",
 ]]
 
 visibility/visible = false
