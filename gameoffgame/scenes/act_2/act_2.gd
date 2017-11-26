@@ -19,7 +19,8 @@ class EvtState:
 enum PERSISTENT { \
 		KILLED_MONSTERS_1, \
 		FIRST_TRANSFORMATION, \
-		WARNED_GATE }
+		WARNED_GATE, \
+		WARNED_SMALL_DOOR }
 # enumerate events
 enum EVENTS { \
 		STARTUP, \
@@ -28,6 +29,7 @@ enum EVENTS { \
 		FIRST_TRANSFORMATION, \
 		GATE_OPEN, \
 		WARN_BOSS_GATE, \
+		WARN_SMALL_DOOR, \
 		MEET_BOSS, \
 		BOSS_DYING, \
 		BOSS_DEAD, \
@@ -40,6 +42,7 @@ onready var events = \
 		EVENTS.FIRST_TRANSFORMATION : EvtState.new( self, "_evt_first_transform" ), \
 		EVENTS.GATE_OPEN : EvtState.new( self, "_evt_gate_open" ), \
 		EVENTS.WARN_BOSS_GATE : EvtState.new( self, "_evt_warn_boss_gate" ), \
+		EVENTS.WARN_SMALL_DOOR : EvtState.new( self, "_evt_warn_small_door" ), \
 		EVENTS.MEET_BOSS: EvtState.new( self, "_evt_meet_boss" ), \
 		EVENTS.BOSS_DYING : EvtState.new( self, "_evt_boss_dying" ), \
 		EVENTS.BOSS_DEAD : EvtState.new( self, "_evt_boss_dead" ), \
@@ -59,11 +62,12 @@ func _ready():
 	_reset_settings()
 	
 	# initial respawn point
-	if game.player != null and game.player.get_ref() != null:
-		game.player_spawnpos = game.player.get_ref().get_global_pos()
+	#if game.player != null and game.player.get_ref() != null:
+	#	game.player_spawnpos = game.player.get_ref().get_global_pos()
 	
 	# register floor tilemap
 	game.floor_tilemap = weakref( get_node( "base_ground" ) )
+	game.ground_tilemap = weakref( get_node( "ground" ) )
 	
 	# initial monster positions
 #	var monsters = get_tree().get_nodes_in_group( "monster" )
@@ -109,6 +113,8 @@ func _reset_settings():
 	player.connect( "became_satan", self, "_on_player_satan" )
 	player.set_cutscene()
 	player.hide()
+	if game.player_spawnpos != Vector2( 0, 0 ):
+		player.set_global_pos( game.player_spawnpos )
 	game.camera_target = weakref( player )
 	game.camera.get_ref().align()
 	game.camera.get_ref().reset_smoothing()
@@ -452,7 +458,20 @@ func _evt_warn_boss_gate( delta, evt ):
 
 
 
-
+func _evt_warn_small_door( delta, evt ):
+	if evt.state == -1:
+		# waiting state
+		evt.timer -= delta
+		if evt.timer <= 0:
+			evt.state = evt.state_nxt
+	elif evt.state == 0:
+		_player_text( "If only I was small enough...", 2, 2, 1, evt )
+	elif evt.state == 1:
+		_player_text( "... to go through that opening", 2, 2, 2, evt )
+	elif evt.state == 2:
+		# set persistent notice
+		game.act_specific[game.ACTS.GRAVEYARD]["persistent"].append( PERSISTENT.WARNED_SMALL_DOOR )
+		evt.active = false
 
 
 
@@ -495,7 +514,7 @@ func _on_transformation():
 func _on_player_dead():
 	if scene == 1:
 		#print( "player dead... ending act 2, scene 1" )
-		get_node( "endtimer" ).set_wait_time( 2 )
+		get_node( "endtimer" ).set_wait_time( 0.1 ) #2
 		get_node( "endtimer" ).start()
 	else:
 		# respawn player at the last respawn point
@@ -546,7 +565,7 @@ func _demon_text( msg, ttext, ttimer, nxt, evt ):
 func _boss_text( msg, ttext, ttimer, nxt, evt ):
 	_create_text( weakref( get_node( "walls/boss" ) ), \
 			Color( 1, 1, 0 ), \
-			msg, ttext, ttimer, nxt, evt, Vector2( 0, -35 ) )
+			msg, ttext, ttimer, nxt, evt, Vector2( 0, -50 ) )
 
 
 
@@ -579,8 +598,9 @@ func _on_text_interrupted(evt):
 # function called to update respawn area
 #-----------------------------------------------------
 func _on_respawn_body_enter( body, area ):
-	#print( body.get_name(), "entered ", area.get_name() )
+	print( body.get_name(), "entered ", area.get_name() )
 	if game.player != null and body == game.player.get_ref():
+		print( "updating progress" )
 		game.player_spawnpos = area.get_global_pos()
 		if game.main != null:
 			game.main.progress_update()
@@ -630,3 +650,10 @@ func _on_boss_gate_warning_body_enter( body ):
 	pass # replace with function body
 
 
+
+
+func _on_small_door_warning_body_enter( body ):
+	if game.player != null and game.player.get_ref() != null and game.player.get_ref() == body:
+		if game.act_specific[game.ACTS.GRAVEYARD]["persistent"].find( PERSISTENT.WARNED_SMALL_DOOR ) == -1:
+			events[EVENTS.WARN_SMALL_DOOR].active = true
+	pass # replace with function body

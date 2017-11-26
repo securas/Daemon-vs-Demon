@@ -1,9 +1,54 @@
 extends Node2D
 
+
+
+#-------------------------------
+# Load music
+#-------------------------------
+var music = { \
+	"res://scenes/intro/intro.tscn" : { \
+		"music": { \
+			"file" : "res://sound/incompetech.com_Oppressive Gloom.ogg", \
+			"res" : null, \
+			"start_delay" : 2, \
+			"restart" : false, \
+			"smooth" : [ 0, 0 ] },
+		"bg": { \
+			"file" : "", \
+			"res" : null, \
+			"start_delay" : 0, \
+			"restart" : false, \
+			"smooth" : [ 0, 0 ] } }, \
+	"res://scenes/act_1/act_1.tscn" : { \
+		"music": { \
+			"file" : "res://sound/incompetech.com_Oppressive Gloom.ogg", \
+			"res" : null, \
+			"start_delay" : 2, \
+			"restart" : false, \
+			"smooth" : [ 0, 0 ] },
+		"bg": { \
+			"file" : "", \
+			"res" : null, \
+			"start_delay" : 0, \
+			"restart" : false, \
+			"smooth" : [ 0, 0 ] } }, \
+	"res://scenes/act_2/act_2.tscn" : { \
+		"music": { \
+			"file" : "res://sound/incompetech.com_Shadowlands 4 - Breath.ogg", \
+			"res" : null, \
+			"start_delay" : 0, \
+			"restart" : false, \
+			"smooth" : [ 0, 0 ] },
+		"bg": { \
+			"file" : "res://sound/freesound.org__arctura__ambient-rain-light-loop.ogg", \
+			"res" : null, \
+			"start_delay" : 0, \
+			"restart" : false, \
+			"smooth" : [ 0, 0 ] } } }
+
+
+
 var input_states = preload( "res://scripts/input_states.gd" )
-#var btn_up = input_states.new( "btn_up" )
-#var btn_down = input_states.new( "btn_down" )
-#var btn_fire = input_states.new( "btn_fire" )
 var btn_quit = input_states.new( "btn_quit" )
 
 #"res://scenes/intro/intro.tscn"
@@ -15,6 +60,16 @@ var state = -10
 var state_nxt = -10
 var timer = 0
 func _ready():
+#	# load all the music files
+#	for sc in music:
+#		for s in music[sc]:
+#			if not music[sc]["music"]["file"].empty():
+#				print( "Loading: ", music[sc]["music"]["file"] )
+#				music[sc]["music"]["res"] = load( music[sc]["music"]["file"] )
+#			if not music[sc]["bg"]["file"].empty():
+#				print( "Loading: ", music[sc]["bg"]["file"] )
+#				music[sc]["bg"]["res"] = load( music[sc]["bg"]["file"] )
+
 	# connect pause menu
 	get_node( "hud_layer/pause_game/menu" ).connect( "selected_item", self, "_on_pause_menu_selected_item" )
 	set_fixed_process( true )
@@ -56,10 +111,10 @@ func _fixed_process( delta ):
 					_is_paused = false
 					get_node( "hud_layer/pause_game/pause_animator" ).play( "fadeout" )
 					pause_game( false )
-		else:
-			# in this mode, pressing the quit button quits the game
-			if btn_quit.check() == 1:
-				_load_act( "res://scenes/intro/intro.tscn" )
+#		else:
+#			# in this mode, pressing the quit button quits the game
+#			if btn_quit.check() == 1:
+#				_load_act( "res://scenes/intro/intro.tscn" )
 
 
 func _on_pause_menu_selected_item( item ):
@@ -127,12 +182,15 @@ func _load_act_fsm( act_cur ):
 		pause_game()
 		# fade in
 		fadein()
+		# play stuff
+#		play_act( act_nxt )
 		load_state = 4
 		loadtimer.set_wait_time( 0.25 )
 		loadtimer.start()
 	elif load_state == 4:
 		# unpause game
 		pause_game( false )
+		
 		_allowinput = true
 		load_state = 0
 
@@ -165,3 +223,63 @@ func progress_update():
 	get_node( "hud_layer/hud/progress_indicator/AnimationPlayer" ).play( "show" )
 func _hide_progress_update():
 	get_node( "hud_layer/hud/progress_indicator/AnimationPlayer" ).play( "hide" )
+
+
+
+
+
+func play_sfx( name ):
+	get_node( "SamplePlayer" ).play( name )
+
+
+
+
+
+func play_act( act ):
+	if not music.has( act ): return
+	if music[act]["music"]["res"] != null:
+		if get_node( "music" ).get_stream() != music[act]["music"]["res"]:
+			get_node( "music" ).set_stream( music[act]["music"]["res"] )
+			if music[act]["music"]["start_delay"] > 0:
+				get_node( "music_timer" ).set_wait_time( music[act]["music"]["start_delay"] )
+				get_node( "music_timer" ).start()
+			else:
+				get_node( "music" ).play()
+				#_start_music( music[act]["smooth"][0] )
+		elif music[act]["music"]["restart"]:
+			#_stop_music( music[act]["smooth"][1] )
+			get_node( "music" ).stop()
+			if music[act]["music"]["start_delay"] > 0:
+				get_node( "music_timer" ).set_wait_time( music[act]["music"]["start_delay"] )
+				get_node( "music_timer" ).start()
+			else:
+				get_node( "music" ).play()
+	else:
+		get_node( "music" ).stop()
+		
+	if music[act]["bg"]["res"] != null:
+		if get_node( "background" ).get_stream() != music[act]["bg"]["res"]:
+			get_node( "background" ).set_stream( music[act]["bg"]["res"] )
+			if music[act]["bg"]["start_delay"] > 0:
+				get_node( "background_timer" ).set_wait_time( music[act]["bg"]["start_delay"] )
+				get_node( "background_timer" ).start()
+			else:
+				get_node( "background" ).play()
+		elif music[act]["bg"]["restart"]:
+			get_node( "background" ).stop()
+			if music[act]["bg"]["start_delay"] > 0:
+				get_node( "background_timer" ).set_wait_time( music[act]["bg"]["start_delay"] )
+				get_node( "background_timer" ).start()
+			else:
+				get_node( "background" ).play()
+		else:
+			get_node( "music" ).stop()
+
+
+func _on_music_timer_timeout():
+	get_node( "music" ).play()
+
+
+func _on_background_timer_timeout():
+	return
+	get_node( "background" ).play()

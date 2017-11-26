@@ -58,17 +58,19 @@ var main = null
 # control floor
 #---------------------------
 var floor_tilemap = null
+var ground_tilemap = null
 
 
 
 func _ready():
+	
 	set_pause_mode( Node.PAUSE_MODE_PROCESS )
 	# main scene
 	var _root = get_tree().get_root()
 	main = _root.get_child( _root.get_child_count() - 1 )
 	if main.get_name() != "main":
 		main = null
-	#set_fixed_process( true )
+#	set_fixed_process( true )
 
 
 func reset_settings():
@@ -80,6 +82,8 @@ func reset_settings():
 
 
 #func _fixed_process( delta ):
+#	print( "spos: ", player_spawnpos )
+#	
 #	# hit Esc to quit
 #	if Input.is_key_pressed( KEY_ESCAPE ):
 #		get_tree().quit()
@@ -134,6 +138,27 @@ func _checkfalling_area( obj, pos ):
 					return 1
 				return -1
 	return 0
+
+func step_on_ground():
+	if main == null: return
+	if player!= null and player.get_ref() != null:
+		var floor_type = _check_type_of_ground( player.get_ref().get_global_pos() )
+		if floor_type == 1:
+			pass
+			main.play_sfx( "freesound.org_swuing__footstep-grass" )
+		elif floor_type == 2:
+			main.play_sfx( "freesound.org_swuing__footstep-grass" )
+			pass
+
+func _check_type_of_ground( pos ):
+	if ground_tilemap == null or ground_tilemap.get_ref() == null:
+		return 0
+	var tilepos = ground_tilemap.get_ref().world_to_map( pos )
+	var cur_cell = ground_tilemap.get_ref().get_cell( tilepos.x, tilepos.y )
+	# check for hard ground tiles
+	if cur_cell >= 6 and cur_cell <= 11:
+		return 1 # hard ground
+	return 2 # soft ground
 
 
 func get_floor_at( gpos ):

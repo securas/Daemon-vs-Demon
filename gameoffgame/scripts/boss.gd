@@ -209,7 +209,7 @@ func _state_attack_bullet( delta ):
 	if target_pos == null:
 		state_nxt = STATES.IDLE
 	else:
-		print( "firing: ", bullet_count )
+		#print( "firing: ", bullet_count )
 		anim_nxt = "fire"
 		bullet_count -= 1
 		
@@ -247,7 +247,7 @@ func _state_dead( delta ):
 	anim_nxt = "dead"
 	if not _dead_wait:
 		_dead_wait = true
-		print( "boss dead" )
+		#print( "boss dead" )
 		emit_signal( "boss_dead" )
 		_change_to_item()
 	pass
@@ -278,18 +278,19 @@ func _get_player():
 
 
 
-var _predict_player = true
+var _predict_player = false
 func _on_fire_bullet():
 	if _get_player() != null:
 		var bullet = preload( "res://scenes/monster_bullet.tscn" ).instance()
 		
 		var playerpos = game.player.get_ref().get_global_pos()
-		var shootingpos = get_global_pos()
+		var shootingpos = get_global_pos() + Vector2( 15 * dir_cur, -15 )
 		if _predict_player:
 				var dir0 = playerpos - shootingpos
-				var timetotarget = dir0.length() / bullet.VEL + 0.5 # includes animation time
+				var timetotarget = dir0.length() / bullet.VEL + 0.0 # includes animation time
+				#if game.player.get_ref().vel.length() > 0:
 				var newplayerpos = playerpos + game.player.get_ref().vel * timetotarget
-				if ( playerpos - newplayerpos ).length() < 10:
+				if ( playerpos - newplayerpos ).length() < 70:
 					playerpos = newplayerpos
 		var shooting_dir = ( playerpos - shootingpos ).normalized()
 		
@@ -332,7 +333,7 @@ func _hit_player():
 			_player_hit = true
 			break
 	if _player_hit:
-		print( "SLASHING PLAYER" )
+		#print( "SLASHING PLAYER" )
 		game.player.get_ref().die( self )
 		var death = preload( "res://scenes/explosion_kill_player.tscn" ).instance()
 		death.get_node( "Sprite" ).set_global_pos( get_global_pos() )

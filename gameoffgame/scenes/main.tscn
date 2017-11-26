@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=1]
+[gd_scene load_steps=19 format=1]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://fonts/godot_tinyfont.fnt" type="BitmapFont" id=2]
@@ -321,6 +321,9 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="SampleLibrary" id=12]
+
+
 [node name="main" type="Node2D"]
 
 process/pause_mode = 2
@@ -338,6 +341,7 @@ __meta__ = {
 
 [node name="hud_layer" type="CanvasLayer" parent="."]
 
+editor/display_folded = true
 layer = 2
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -617,6 +621,63 @@ wait_time = 1.0
 one_shot = true
 autostart = false
 
+[node name="music" type="StreamPlayer" parent="."]
+
+stream/stream = null
+stream/play = false
+stream/loop = true
+stream/volume_db = 0.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+[node name="background" type="StreamPlayer" parent="."]
+
+stream/stream = null
+stream/play = false
+stream/loop = true
+stream/volume_db = 0.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+[node name="music_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="background_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="SamplePlayer" type="SamplePlayer" parent="."]
+
+config/polyphony = 10
+config/samples = SubResource( 12 )
+default/volume_db = 0.0
+default/pitch_scale = 1.0
+default/pan = 0.0
+default/depth = 0.0
+default/height = 0.0
+default/filter/type = 0
+default/filter/cutoff = 5000.0
+default/filter/resonance = 1.0
+default/filter/gain = 1.0
+default/reverb_room = 2
+default/reverb_send = 0.0
+default/chorus_send = 0.0
+
 [connection signal="timeout" from="loadtimer" to="." method="_on_loadtimer_timeout"]
+
+[connection signal="timeout" from="music_timer" to="." method="_on_music_timer_timeout"]
+
+[connection signal="timeout" from="background_timer" to="." method="_on_background_timer_timeout"]
 
 

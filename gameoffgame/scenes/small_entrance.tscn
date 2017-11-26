@@ -12,7 +12,7 @@ extents = Vector2( 3, 25 )
 script/source = "extends Area2D
 
 var ppos = 2
-
+var _first_entrance = true
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
@@ -20,6 +20,9 @@ func _ready():
 
 func cross_door():
 	if game.player != null and game.player.get_ref() != null and game.player_char == game.PLAYER_CHAR.MONSTER_2:
+		if _first_entrance:
+			_first_entrance = false
+			game.score += 200
 		if ppos == 2:
 			ppos = 1
 			game.player.get_ref().set_global_pos( get_node( \"pos_1\" ).get_global_pos() )

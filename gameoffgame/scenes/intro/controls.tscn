@@ -19,4 +19,13 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
 

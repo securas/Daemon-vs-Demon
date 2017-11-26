@@ -26,7 +26,7 @@ func _fixed_process(delta):
 
 func _on_patrol_and_spawn_body_enter( body ):
 	if player_entered: return
-	if game.player != null and body == game.player.get_ref():
+	if game.player != null and body == game.player.get_ref() and game.player_char == game.PLAYER_CHAR.HUMAN_SWORD:
 		#print( "starting spawn" )
 		player_entered = true
 		set_fixed_process( true )

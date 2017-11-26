@@ -120,4 +120,13 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = "show"
 
+[node name="inputtimer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="inputtimer" to="." method="_on_inputtimer_timeout"]
+
 

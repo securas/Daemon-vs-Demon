@@ -29,6 +29,8 @@ class Drop:
 		#frame = ( frame + 1 ) % final_frame
 		instance.set_frame( frame )
 		return ( frame == 0 )
+	func clear():
+		instance.queue_free()
 
 
 var _stop_rain = false
@@ -59,18 +61,25 @@ func _fixed_process( delta ):
 	if timer <= 0:
 		timer = 0.1
 		gpos = get_global_pos()
+		var active_drops = false
 		for d in drops:
-			if not d.active: return
+			if not d.active: continue
 			if not d.has_parent:
 				parent_node.add_child( d.instance )
 				d.has_parent = true
 				_set_random_pos( d )
 			if not _stop_rain:
-				if d.update(): _set_random_pos( d )
-			else:
 				if d.update():
+					_set_random_pos( d )
+			else:
+				#print( "stopping ", d, " :", d.frame )
+				if d.update():
+					#print( "stopped ", d )
 					d.active = false
 					d.instance.queue_free()
+			active_drops = true
+		if not active_drops: set_fixed_process( false )
+	
 	
 	
 #	for d in drops:

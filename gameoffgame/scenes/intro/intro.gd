@@ -3,7 +3,7 @@ extends Node2D
 func _ready():
 	# set menu active
 	game.camera_target = weakref( get_node( "Position2D" ) )
-	get_node( "menulayer/menu" ).set_active( true )
+	
 	get_node( "menulayer/menu" ).connect( "selected_item", self, "_on_menu_selected_item" )
 	if not game.continue_game: get_node( "menulayer/menu" ).set_unselectable_item( 1 )
 	SoundManager.StopStream()
@@ -48,3 +48,7 @@ func _shake_screen():
 
 func _on_Timer_timeout():
 	get_node( "player_anim_layer/scale/walls/player_anim/AnimationPlayer" ).play( "intro" )
+
+
+func _on_inputtimer_timeout():
+	get_node( "menulayer/menu" ).set_active( true )

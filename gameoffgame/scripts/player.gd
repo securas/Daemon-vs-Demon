@@ -316,8 +316,15 @@ func _player_pick( delta ):
 			# there is stuff to pick
 			vel *= 0
 			sprite_node.set_animation( sprite_node.ANIMS.PICK )
-			# picking only the first item
+			
+			# must implement priorities... switch, doors or gates have priority!
 			var item = itemareas[0]
+			for area in itemareas:
+				if area.is_in_group( "switch" ) or area.is_in_group( "tinydoor" ) or area.is_in_group( "gate" ):
+					item = area
+					break
+			# picking only the first item
+			#var item = itemareas[0]
 			#print( item.get_groups() )
 			if item.is_in_group( "blood" ):
 				# transform
@@ -346,11 +353,9 @@ func _player_pick( delta ):
 				# flip switch
 				item.get_parent().flip_switch()
 			elif item.is_in_group( "tinydoor" ):
-				game.score += 200
 				# cross door
 				item.cross_door()
 			elif item.is_in_group( "gate" ):
-				game.score += 200
 				# open gate
 				item.get_parent().open_gate()
 

@@ -228,7 +228,7 @@ func _attack_fsm( delta ):
 	else:
 		if attack_state != ATTACK_STATES.SHOOT:
 			anim_nxt = "run"
-			shooting_dir = game.player.get_ref().get_global_pos() - get_global_pos()
+			shooting_dir = game.player.get_ref().get_global_pos() - ( get_global_pos() + Vector2( 15 * dir_cur, 0 ) )
 	
 	# motion
 	vel = move_and_slide( vel )

@@ -168,7 +168,8 @@ func _running_dust():
 		player = null
 
 
-
+func _step_on_ground():
+	pass
 
 
 
