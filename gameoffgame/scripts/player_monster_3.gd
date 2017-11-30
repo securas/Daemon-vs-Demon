@@ -12,6 +12,9 @@ var running_body = false
 var running_fx = false
 var cur_looking_dir = 1
 
+func play_event(event):
+	SoundManager.Play(event)
+
 var _is_ready = false
 func _ready():
 	if not _is_ready:
@@ -143,6 +146,7 @@ func _on_fire_bullet():
 	var bullet = preload( "res://scenes/monster_bullet.tscn" ).instance()
 	bullet.set_pos( game.player.get_ref().get_pos() + 15 * shooting_dir )
 	bullet.dir = shooting_dir.normalized()
+	SoundManager.Play("en_orb_atk")
 	# change bullet masks to kill monsters
 	bullet.set_layer_mask_bit( 1, true )
 	bullet.set_collision_mask_bit( 1, true )

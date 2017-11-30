@@ -14,6 +14,9 @@ func _ready():
 	player.hide()
 	game.continue_game = true
 	game.cur_act = game.ACTS.HELL
+	SoundManager.StopStream()
+	SoundManager.Play("mus_intro")
+	SoundManager.Play("amb_hell_noise")
 	
 	# start process
 	set_fixed_process( true )

@@ -1,0 +1,76 @@
+[gd_resource type="SampleLibrary" load_steps=11 format=1]
+
+[ext_resource path="res://assets/Sound/Sfx/p_beheading.smp" type="Sample" id=1]
+[ext_resource path="res://assets/Sound/Sfx/p_sword_hit1.smp" type="Sample" id=2]
+[ext_resource path="res://assets/Sound/Sfx/p_sword_hit2.smp" type="Sample" id=3]
+[ext_resource path="res://assets/Sound/Sfx/p_sword_hit3.smp" type="Sample" id=4]
+[ext_resource path="res://assets/Sound/Sfx/p_sword_sweep1.smp" type="Sample" id=5]
+[ext_resource path="res://assets/Sound/Sfx/p_sword_sweep2.smp" type="Sample" id=6]
+[ext_resource path="res://assets/Sound/Sfx/p_sword_sweep3.smp" type="Sample" id=7]
+[ext_resource path="res://assets/Sound/Sfx/p_sword_sweep4.smp" type="Sample" id=8]
+[ext_resource path="res://assets/Sound/Sfx/p_teleport_in.smp" type="Sample" id=9]
+[ext_resource path="res://assets/Sound/Sfx/p_teleport_out.smp" type="Sample" id=10]
+
+[resource]
+
+samples/p_beheading.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 1 )
+}
+samples/p_sword_hit1.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 2 )
+}
+samples/p_sword_hit2.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 3 )
+}
+samples/p_sword_hit3.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 4 )
+}
+samples/p_sword_sweep1.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 5 )
+}
+samples/p_sword_sweep2.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 6 )
+}
+samples/p_sword_sweep3.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 7 )
+}
+samples/p_sword_sweep4.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 8 )
+}
+samples/p_teleport_in.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 9 )
+}
+samples/p_teleport_out.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 10 )
+}
+

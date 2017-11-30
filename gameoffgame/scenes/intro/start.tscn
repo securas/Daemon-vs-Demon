@@ -1,15 +1,16 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://scenes/intro/start.gd" type="Script" id=1]
 [ext_resource path="res://assets/godot_logo.png" type="Texture" id=2]
 [ext_resource path="res://assets/github_logo.png" type="Texture" id=3]
+[ext_resource path="res://scenes/intro/start_audio_playback.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=1]
 
 resource/name = "cycle"
 length = 9.1
 loop = true
-step = 0.1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -19,6 +20,69 @@ tracks/0/keys = {
 "transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 4, 5.4, 6.4 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [ "mus_gameoff" ],
+"method": "play_event"
+}, {
+"args": [ "electric_buzz" ],
+"method": "play_event"
+}, {
+"args": [ "electric_buzz" ],
+"method": "play_event"
+}, {
+"args": [ "electric_click" ],
+"method": "play_event"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 8.2, 8.25, 8.3, 8.35, 8.4, 8.45, 8.5, 8.55, 8.6, 8.65, 8.7 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ 0.1 ],
+"method": "update_volume"
+}, {
+"args": [ 0.2 ],
+"method": "update_volume"
+}, {
+"args": [ 0.3 ],
+"method": "update_volume"
+}, {
+"args": [ 0.2 ],
+"method": "update_volume"
+}, {
+"args": [ 0.5 ],
+"method": "update_volume"
+}, {
+"args": [ 0.2 ],
+"method": "update_volume"
+}, {
+"args": [ 0.2 ],
+"method": "update_volume"
+}, {
+"args": [ 0.2 ],
+"method": "update_volume"
+}, {
+"args": [ 0.9 ],
+"method": "update_volume"
+}, {
+"args": [ 0.95 ],
+"method": "update_volume"
+}, {
+"args": [ 6.0 ],
+"method": "update_volume"
+} ]
 }
 
 [node name="start" type="Node2D"]
@@ -45,7 +109,7 @@ transform/scale = Vector2( 0.638968, 0.668805 )
 texture = ExtResource( 3 )
 vframes = 12
 hframes = 8
-frame = 88
+frame = 87
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite 2"]
 
@@ -57,6 +121,7 @@ playback/active = true
 playback/speed = 3.0
 blend_times = [  ]
 autoplay = "cycle"
+script/script = ExtResource( 4 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 

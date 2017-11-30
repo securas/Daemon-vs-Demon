@@ -1,0 +1,34 @@
+[gd_resource type="SampleLibrary" load_steps=5 format=1]
+
+[ext_resource path="res://assets/Sound/Sfx/env_electric_buzz.smp" type="Sample" id=1]
+[ext_resource path="res://assets/Sound/Sfx/env_electric_click.smp" type="Sample" id=2]
+[ext_resource path="res://assets/Sound/Sfx/env_hit_rock_wall1.smp" type="Sample" id=3]
+[ext_resource path="res://assets/Sound/Sfx/env_hit_rock_wall2.smp" type="Sample" id=4]
+
+[resource]
+
+samples/env_electric_buzz.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 1 )
+}
+samples/env_electric_click.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 2 )
+}
+samples/env_hit_rock_wall1.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 3 )
+}
+samples/env_hit_rock_wall2.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 4 )
+}
+

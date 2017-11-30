@@ -8,6 +8,8 @@ func _ready():
 	pass
 
 
+func play_event(event):
+	SoundManager.Play(event)
 
 
 func _on_hit_area_enter( area ):

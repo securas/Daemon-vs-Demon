@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=6]
 [ext_resource path="res://assets/intro_animation.png" type="Texture" id=7]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 
 resource/name = "cycle"
 length = 1.1
@@ -24,10 +24,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [ "en_gore_drip" ],
+"method": "play_event"
+} ]
+}
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=2]
 
-resource/name = "show"
 length = 3.1
 loop = false
 step = 0.1
@@ -95,6 +106,24 @@ tracks/5/keys = {
 "update": 0,
 "values": [ 0.0, 0.0, 1.0 ]
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/imported = false
+tracks/6/keys = {
+"times": FloatArray( 1, 1.2, 2.8 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"values": [ {
+"args": [ "inter_wall_slide" ],
+"method": "play_event"
+}, {
+"args": [ "inter_wall_before_slide" ],
+"method": "play_event"
+}, {
+"args": [ "en_gore" ],
+"method": "play_event"
+} ]
+}
 
 [sub_resource type="Animation" id=3]
 
@@ -139,8 +168,8 @@ script/script = ExtResource( 1 )
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/cycle = SubResource( 2 )
-anims/show = SubResource( 1 )
+anims/cycle = SubResource( 1 )
+anims/show = SubResource( 2 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -154,6 +183,8 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 
 [node name="menu" parent="menulayer" instance=ExtResource( 2 )]
+
+visibility/opacity = 0.0
 
 [node name="newgame" type="Sprite" parent="menulayer/menu"]
 
@@ -206,7 +237,7 @@ __meta__ = {
 
 [node name="Polygon2D" type="Polygon2D" parent="title"]
 
-transform/pos = Vector2( 308, 0 )
+transform/pos = Vector2( 154, 0 )
 polygon = Vector2Array( 0, 0, 0, 64, 320, 64, 320, 0 )
 uv = Vector2Array(  )
 color = Color( 0, 0, 0, 1 )
@@ -237,6 +268,7 @@ scale = Vector2( 1, 1 )
 
 [node name="scale" type="Node2D" parent="player_anim_layer"]
 
+visibility/opacity = 0.0
 transform/pos = Vector2( -178, -5 )
 transform/scale = Vector2( 1.5, 1.5 )
 

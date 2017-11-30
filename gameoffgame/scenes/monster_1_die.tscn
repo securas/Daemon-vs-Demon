@@ -12,6 +12,7 @@ script/source = "extends Sprite
 
 func _ready():
 	get_node( \"AnimationPlayer\" ).connect(\"finished\", self, \"_on_finished\" )
+	SoundManager.Play(\"en_gore\")
 
 func _on_finished():
 	

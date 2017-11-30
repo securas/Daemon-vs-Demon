@@ -6,8 +6,11 @@ func _ready():
 	get_node( "menulayer/menu" ).set_active( true )
 	get_node( "menulayer/menu" ).connect( "selected_item", self, "_on_menu_selected_item" )
 	if not game.continue_game: get_node( "menulayer/menu" ).set_unselectable_item( 1 )
+	SoundManager.StopStream()
+	#SoundManager.Play("mus_ambience")
 
-
+func play_event(event):
+	SoundManager.Play(event)
 
 func _on_menu_selected_item( item ):
 	if item == 0:

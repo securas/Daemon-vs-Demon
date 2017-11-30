@@ -29,6 +29,7 @@ func set_unselectable_item( no ):
 
 func _fixed_process(delta):
 	if btn_fire.check() == 1:
+		SoundManager.Play("inter_confirm")
 		emit_signal( "selected_item", cur_pos )
 	if btn_down.check() == 1:
 		if unselectable_items.find( nxt_pos + 1 ) != -1:

@@ -33,6 +33,9 @@ onready var rotate = get_node( "rotate" )
 var dir_cur = 1
 var dir_nxt = -1
 
+func play_event(event):
+	SoundManager.Play(event)
+
 func is_dead():
 	if state_cur == STATES.DEAD or state_cur == STATES.DYING:
 		return true
@@ -61,6 +64,7 @@ func set_external_force( force, duration ):
 		blood.set_pos( get_pos() )
 		blood.set_rot( external_impulse.angle() )
 		get_parent().add_child( blood )
+		play_event("en_gore")
 
 func reset_position():
 	set_pos( _initial_pos )

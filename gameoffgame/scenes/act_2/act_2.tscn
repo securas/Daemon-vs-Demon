@@ -1994,8 +1994,8 @@ __meta__ = {
 }
 
 [node name="falling_area_up" type="Area2D" parent="areas/falling" groups=[
-"fall_area",
 "up_fall",
+"fall_area",
 ]]
 
 input/pickable = true
@@ -3008,9 +3008,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[connection signal="switch_flipped" from="walls/switch_left" to="ground/stuff/bridge" method="invert_visibility"]
-
 [connection signal="switch_flipped" from="walls/switch_left" to="." method="_on_switch_left_switch_flipped"]
+
+[connection signal="switch_flipped" from="walls/switch_left" to="ground/stuff/bridge" method="invert_visibility"]
 
 [connection signal="switch_flipped" from="walls/switch_right" to="ground/stuff/bridge" method="invert_visibility"]
 

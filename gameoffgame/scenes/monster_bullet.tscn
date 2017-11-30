@@ -43,6 +43,7 @@ texture = ExtResource( 2 )
 offset = Vector2( 0, -8 )
 vframes = 5
 hframes = 4
+frame = 1
 __meta__ = {
 "_edit_lock_": true
 }

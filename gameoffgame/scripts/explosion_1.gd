@@ -6,6 +6,9 @@ var _is_player = false
 func _ready():
 	set_fixed_process( true )
 
+func play_event(event):
+	SoundManager.Play(event)
+
 var frame_count = 0
 func _fixed_process(delta):
 	if state == 0:

@@ -1,0 +1,69 @@
+[gd_resource type="SampleLibrary" load_steps=10 format=1]
+
+[ext_resource path="res://assets/Sound/Sfx/en_gore1.smp" type="Sample" id=1]
+[ext_resource path="res://assets/Sound/Sfx/en_gore2.smp" type="Sample" id=2]
+[ext_resource path="res://assets/Sound/Sfx/en_gore3.smp" type="Sample" id=3]
+[ext_resource path="res://assets/Sound/Sfx/en_gore_drip1.smp" type="Sample" id=4]
+[ext_resource path="res://assets/Sound/Sfx/en_gore_drip2.smp" type="Sample" id=5]
+[ext_resource path="res://assets/Sound/Sfx/en_gore_drip3.smp" type="Sample" id=6]
+[ext_resource path="res://assets/Sound/Sfx/en_orb_atk.smp" type="Sample" id=7]
+[ext_resource path="res://assets/Sound/Sfx/en_orb_atk_grow.smp" type="Sample" id=8]
+[ext_resource path="res://assets/Sound/Sfx/en_orb_explode.smp" type="Sample" id=9]
+
+[resource]
+
+samples/en_gore1.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 1 )
+}
+samples/en_gore2.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 2 )
+}
+samples/en_gore3.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 3 )
+}
+samples/en_gore_drip1.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 4 )
+}
+samples/en_gore_drip2.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 5 )
+}
+samples/en_gore_drip3.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 6 )
+}
+samples/en_orb_atk.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 7 )
+}
+samples/en_orb_atk_grow.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 8 )
+}
+samples/en_orb_explode.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 9 )
+}
+

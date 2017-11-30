@@ -64,6 +64,15 @@ tracks/4/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/imported = false
+tracks/5/keys = {
+"times": FloatArray(  ),
+"transitions": FloatArray(  ),
+"values": [  ]
+}
 
 [sub_resource type="Animation" id=3]
 
@@ -129,6 +138,21 @@ tracks/4/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/5/type = "method"
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/imported = false
+tracks/5/keys = {
+"times": FloatArray( 0, 2.75 ),
+"transitions": FloatArray( 1, 1 ),
+"values": [ {
+"args": [ "inter_wall_before_slide" ],
+"method": "play_event"
+}, {
+"args": [ "inter_wall_slide" ],
+"method": "play_event"
+} ]
+}
 
 [sub_resource type="RectangleShape2D" id=4]
 
@@ -141,8 +165,8 @@ input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 5, 31 )
 shapes/0/trigger = false
-collision/layers = 524291
-collision/mask = 524291
+collision/layers = 0
+collision/mask = 0
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
@@ -155,12 +179,14 @@ transform/pos = Vector2( 0, 63 )
 texture = ExtResource( 2 )
 offset = Vector2( -7, -36 )
 hframes = 11
+frame = 9
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="top_light" type="Sprite" parent="."]
 
+visibility/visible = false
 transform/pos = Vector2( 0, 63 )
 texture = ExtResource( 2 )
 offset = Vector2( -7, -36 )

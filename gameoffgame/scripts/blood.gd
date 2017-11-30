@@ -64,6 +64,7 @@ func _fixed_process(delta):
 				drops[idx].state = 1
 	if _update_draw:
 		update()
+		SoundManager.Play("en_gore")
 		
 	t -= delta
 	if t <= 0:

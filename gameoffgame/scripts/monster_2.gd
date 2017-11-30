@@ -334,6 +334,8 @@ func get_hit( source ):
 	if state_cur != STATES.DEAD and state_nxt != STATES.DEAD and \
 			state_cur != STATES.GRABBING and state_nxt != STATES.GRABBING:
 		# monster dies immediately
+		SoundManager.Play("p_sword_hit")
+		SoundManager.Play("en_gore")
 		game.score += 50
 		state_nxt = STATES.DEAD
 		return true
@@ -353,6 +355,7 @@ func set_external_force( force, duration ):
 		blood.set_pos( get_pos() )
 		blood.set_rot( external_impulse.angle() )
 		get_parent().add_child( blood )
+		SoundManager.Play("en_gore")
 
 #---------------------------------------
 # function called to let know if its dead

@@ -28,6 +28,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 42, 43, 44 ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [ "p_sword_sweep" ],
+"method": "play_event"
+} ]
+}
 
 [sub_resource type="Animation" id=2]
 
@@ -53,6 +65,18 @@ tracks/1/keys = {
 "transitions": FloatArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 50, 51, 52 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [ "p_sword_sweep" ],
+"method": "play_event"
+} ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -392,6 +416,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "teleport_in"
+} ]
+}
 
 [sub_resource type="Animation" id=14]
 
@@ -438,6 +474,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 24, 5 ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/imported = false
+tracks/4/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "teleport_out"
+} ]
+}
 
 [node name="player_sword" type="Sprite"]
 
@@ -453,11 +501,12 @@ __meta__ = {
 
 [node name="body" type="Sprite" parent="."]
 
+visibility/visible = false
 texture = ExtResource( 1 )
 offset = Vector2( 0, -6 )
 vframes = 12
 hframes = 8
-frame = 40
+frame = 52
 __meta__ = {
 "_edit_lock_": true
 }
@@ -471,7 +520,7 @@ __meta__ = {
 
 [node name="head" type="Sprite" parent="body/rotate_head"]
 
-transform/pos = Vector2( 0, 6 )
+transform/pos = Vector2( 1, 6 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, -6 )
 vframes = 12
@@ -483,12 +532,11 @@ __meta__ = {
 
 [node name="fx" type="Sprite" parent="."]
 
-visibility/visible = false
 texture = ExtResource( 1 )
 offset = Vector2( 0, -12 )
 vframes = 12
 hframes = 8
-frame = 85
+frame = 78
 
 [node name="anim_body" type="AnimationPlayer" parent="."]
 

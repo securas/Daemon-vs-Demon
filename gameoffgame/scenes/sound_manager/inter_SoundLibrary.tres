@@ -1,0 +1,62 @@
+[gd_resource type="SampleLibrary" load_steps=9 format=1]
+
+[ext_resource path="res://assets/Sound/Sfx/inter_coin.smp" type="Sample" id=1]
+[ext_resource path="res://assets/Sound/Sfx/inter_confirm.smp" type="Sample" id=2]
+[ext_resource path="res://assets/Sound/Sfx/inter_lever.smp" type="Sample" id=3]
+[ext_resource path="res://assets/Sound/Sfx/inter_rockbox_hit1.smp" type="Sample" id=4]
+[ext_resource path="res://assets/Sound/Sfx/inter_rockbox_hit2.smp" type="Sample" id=5]
+[ext_resource path="res://assets/Sound/Sfx/inter_swordHit.smp" type="Sample" id=6]
+[ext_resource path="res://assets/Sound/Sfx/inter_wall_before_slide1.smp" type="Sample" id=7]
+[ext_resource path="res://assets/Sound/Sfx/inter_wall_before_slide2.smp" type="Sample" id=8]
+
+[resource]
+
+samples/inter_coin.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 1 )
+}
+samples/inter_confirm.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 2 )
+}
+samples/inter_lever.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 3 )
+}
+samples/inter_rockbox_hit1.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 4 )
+}
+samples/inter_rockbox_hit2.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 5 )
+}
+samples/inter_swordHit.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 6 )
+}
+samples/inter_wall_before_slide1.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 7 )
+}
+samples/inter_wall_before_slide2.smp = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 8 )
+}
+

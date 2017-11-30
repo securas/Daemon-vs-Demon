@@ -12,8 +12,12 @@ var running_body = false
 var running_fx = false
 var cur_pos = " d"
 
-
 var _is_ready = false
+
+func play_event(event):
+	SoundManager.Play(event)
+
+
 func _ready():
 	#if not _is_ready:
 	#	_is_ready = true

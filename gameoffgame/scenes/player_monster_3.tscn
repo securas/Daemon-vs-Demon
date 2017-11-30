@@ -25,9 +25,12 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/imported = false
 tracks/1/keys = {
-"times": FloatArray( 0.5 ),
-"transitions": FloatArray( 1 ),
+"times": FloatArray( 0.35, 0.5 ),
+"transitions": FloatArray( 1, 1 ),
 "values": [ {
+"args": [ "en_orb_atk_grow" ],
+"method": "play_event"
+}, {
 "args": [  ],
 "method": "_on_fire_bullet"
 } ]
@@ -188,7 +191,7 @@ texture = ExtResource( 2 )
 offset = Vector2( 0, -6 )
 vframes = 4
 hframes = 8
-frame = 18
+frame = 16
 __meta__ = {
 "_edit_lock_": true
 }

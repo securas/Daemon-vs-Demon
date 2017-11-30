@@ -78,8 +78,10 @@ func look_behind( b = true ):
 func arrive( b = true ):
 	if b:
 		sprite_node.set_animation( sprite_node.ANIMS.ARRIVE )
+		SoundManager.Play("p_teleport_in")
 	else:
 		sprite_node.set_animation( sprite_node.ANIMS.LEAVE )
+		SoundManager.Play("p_teleport_out")
 
 func is_dead():
 	if not _is_visible_to_enemies: return true
@@ -271,6 +273,7 @@ func _player_attack( delta ):
 								var animnode = n.get_ref().get_node( "box/animate_box" )
 								if animnode.get_current_animation() != "explode":
 									animnode.play( "explode" )
+									SoundManager.Play("inter_rockbox_hit")
 									shake_camera += 1
 								
 					if shake_camera > 0:

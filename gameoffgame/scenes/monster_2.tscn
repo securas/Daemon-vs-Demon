@@ -133,6 +133,7 @@ texture = ExtResource( 2 )
 offset = Vector2( 0.052826, -7.4958 )
 vframes = 5
 hframes = 8
+frame = 17
 
 [node name="anim" type="AnimationPlayer" parent="."]
 

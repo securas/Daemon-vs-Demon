@@ -206,6 +206,7 @@ __meta__ = {
 
 [node name="hell_sign" type="Sprite" parent="YSort"]
 
+editor/display_folded = true
 transform/pos = Vector2( 123, 87 )
 texture = ExtResource( 7 )
 region = true

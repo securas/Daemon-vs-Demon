@@ -94,6 +94,18 @@ tracks/1/keys = {
 "method": "_on_finished_firing"
 } ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0.5 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [ "en_orb_atk" ],
+"method": "play_event"
+} ]
+}
 
 [sub_resource type="Animation" id=5]
 
@@ -180,11 +192,11 @@ texture = ExtResource( 2 )
 offset = Vector2( 0, -6 )
 vframes = 4
 hframes = 8
-frame = 15
+frame = 18
 
 [node name="anim" type="AnimationPlayer" parent="." groups=[
-"monster_3",
 "blood",
+"monster_3",
 ]]
 
 playback/process_mode = 1
@@ -250,8 +262,8 @@ trigger = false
 _update_shape_index = 0
 
 [node name="itemarea" type="Area2D" parent="." groups=[
-"monster_3",
 "blood",
+"monster_3",
 ]]
 
 input/pickable = true

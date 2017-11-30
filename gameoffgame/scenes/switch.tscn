@@ -25,9 +25,11 @@ func _ready():
 func flip_switch():
 	if cur_pos == -1:
 		get_node( \"anim\" ).play( \"flip_right\" )
+		SoundManager.Play(\"inter_lever\")
 		cur_pos = 1
 	else:
 		get_node( \"anim\" ).play( \"flip_left\" )
+		SoundManager.Play(\"inter_lever\")
 		cur_pos = -1
 "
 

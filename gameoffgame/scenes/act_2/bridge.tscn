@@ -8,7 +8,7 @@
 
 shader/shader = ExtResource( 1 )
 shader/shading_mode = 0
-shader_param/threshold = 0.0
+shader_param/threshold = 2.08572
 shader_param/fog = ExtResource( 2 )
 
 [sub_resource type="GDScript" id=2]
@@ -23,6 +23,8 @@ func _ready():
 	# Initialization here
 	pass
 
+func play_event(event):
+	SoundManager.Play(event)
 
 
 func invert_visibility():
@@ -78,7 +80,7 @@ func _on_anim_finished():
 		get_node( \"StaticBody2D\" ).set_collision_mask_bit( 19, false )
 		"
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 
 resource/name = "hide"
 length = 2.0
@@ -94,8 +96,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0.0, 2.2 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [ "env_bridge_disappear" ],
+"method": "play_event"
+} ]
+}
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 
 resource/name = "show"
 length = 2.0
@@ -111,18 +125,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 2.2, 0.0 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [ "env_bridge_appear" ],
+"method": "play_event"
+} ]
+}
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 24 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 48, 8 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 48, 8 )
@@ -140,8 +166,8 @@ script/script = SubResource( 2 )
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/hide = SubResource( 4 )
-anims/show = SubResource( 5 )
+anims/hide = SubResource( 3 )
+anims/show = SubResource( 4 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -151,10 +177,10 @@ autoplay = "hide"
 
 visibility/visible = false
 input/pickable = false
-shapes/0/shape = SubResource( 7 )
+shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, -40, -20 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 7 )
+shapes/1/shape = SubResource( 5 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 40, -16 )
 shapes/1/trigger = false
 collision/layers = 524291
@@ -170,14 +196,14 @@ __meta__ = {
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 
 transform/pos = Vector2( -40, -20 )
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 
 transform/pos = Vector2( 40, -16 )
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 1
 
@@ -185,10 +211,10 @@ _update_shape_index = 1
 
 visibility/visible = false
 input/pickable = false
-shapes/0/shape = SubResource( 8 )
+shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -40 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 9 )
+shapes/1/shape = SubResource( 7 )
 shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 4 )
 shapes/1/trigger = false
 collision/layers = 524291
@@ -204,7 +230,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D1"]
 
 transform/pos = Vector2( 0, -40 )
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 trigger = false
 _update_shape_index = 0
 __meta__ = {
@@ -214,7 +240,7 @@ __meta__ = {
 [node name="CollisionShape2D1" type="CollisionShape2D" parent="StaticBody2D1"]
 
 transform/pos = Vector2( 0, 4 )
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 trigger = false
 _update_shape_index = 1
 __meta__ = {

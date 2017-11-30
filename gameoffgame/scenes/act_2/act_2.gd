@@ -89,6 +89,11 @@ func _ready():
 	
 	# process
 	set_fixed_process( true )
+	
+	#Audio
+	SoundManager.StopStream()
+	SoundManager.Play("mus_gameplay")
+	SoundManager.Play("amb_Rain")
 
 
 func _reset_settings():

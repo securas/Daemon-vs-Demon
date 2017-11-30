@@ -25,6 +25,9 @@ onready var rotate = get_node( "rotate" )
 var dir_nxt = 1
 var dir_cur = 1
 
+func play_event(event):
+	SoundManager.Play(event)
+
 #---------------------------------------
 # function to check if dead
 #---------------------------------------
@@ -39,6 +42,8 @@ func get_hit( source ):
 	if state_cur != STATES.DEAD and state_nxt != STATES.DEAD:
 		# monster dies immediately
 		state_nxt = STATES.DEAD
+		SoundManager.Play("p_sword_hit")
+		SoundManager.Play("en_gore")
 		game.score += 200
 		return true
 	return false
@@ -55,6 +60,7 @@ func set_external_force( force, duration ):
 		blood.set_pos( get_pos() )
 		blood.set_rot( external_impulse.angle() )
 		get_parent().add_child( blood )
+		SoundManager.Play("en_gore")
 
 
 
@@ -165,6 +171,7 @@ func _attack_fsm( delta ):
 		if _get_player():
 			if _player_in_shooting_range():
 				attack_state = ATTACK_STATES.SHOOT
+				SoundManager.Play("en_orb_atk_grow")
 				#print( "shooting" )
 			else:
 				if target_pos != null:

@@ -76,6 +76,21 @@ tracks/1/keys = {
 "method": "_on_fire_bullet"
 } ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0, 0.8 ),
+"transitions": FloatArray( 1, 1 ),
+"values": [ {
+"args": [ "en_orb_atk_grow" ],
+"method": "play_event"
+}, {
+"args": [ "en_orb_atk" ],
+"method": "play_event"
+} ]
+}
 
 [sub_resource type="Animation" id=6]
 
@@ -164,6 +179,18 @@ tracks/2/keys = {
 "method": "_camera_shake"
 } ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/imported = false
+tracks/3/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [ "b_sword_sweep" ],
+"method": "play_event"
+} ]
+}
 
 [sub_resource type="RectangleShape2D" id=9]
 
@@ -244,6 +271,7 @@ texture = ExtResource( 3 )
 offset = Vector2( 5, -26 )
 vframes = 5
 hframes = 10
+frame = 42
 __meta__ = {
 "_edit_lock_": true
 }
@@ -328,8 +356,8 @@ trigger = false
 _update_shape_index = 0
 
 [node name="itemarea" type="Area2D" parent="." groups=[
-"blood",
 "satan",
+"blood",
 ]]
 
 visibility/visible = false
