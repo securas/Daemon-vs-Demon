@@ -248,6 +248,7 @@ func Play(event):
 		sound_player.play(event +".smp")
 func StopStream():
 	stream_player.stop()
+	ambience_player.stop()
 func UpdateStream(pitch,volume):
 	if pitch != 1:
 		pass
