@@ -501,12 +501,11 @@ __meta__ = {
 
 [node name="body" type="Sprite" parent="."]
 
-visibility/visible = false
 texture = ExtResource( 1 )
 offset = Vector2( 0, -6 )
 vframes = 12
 hframes = 8
-frame = 52
+frame = 40
 __meta__ = {
 "_edit_lock_": true
 }
@@ -520,7 +519,7 @@ __meta__ = {
 
 [node name="head" type="Sprite" parent="body/rotate_head"]
 
-transform/pos = Vector2( 1, 6 )
+transform/pos = Vector2( 0, 6 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, -6 )
 vframes = 12
