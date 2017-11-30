@@ -277,7 +277,7 @@ func _player_attack( delta ):
 									shake_camera += 1
 								
 					if shake_camera > 0:
-						game.camera.get_ref().shake( 0.5, 30, min( 1 * shake_camera, 10 ) )
+						game.camera.get_ref().shake( 0.5, 30, min( 1.5 * shake_camera, 10 ) )
 #
 #	elif btn_fire.check() == 2 and _can_hold:
 #		_holding_timer += delta
