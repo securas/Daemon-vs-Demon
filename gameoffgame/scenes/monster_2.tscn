@@ -93,7 +93,7 @@ extents = Vector2( 3, 6 )
 [sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
-extents = Vector2( 4, 6 )
+extents = Vector2( 3, 5 )
 
 [sub_resource type="RectangleShape2D" id=8]
 
@@ -133,7 +133,9 @@ texture = ExtResource( 2 )
 offset = Vector2( 0.052826, -7.4958 )
 vframes = 5
 hframes = 8
-frame = 17
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="anim" type="AnimationPlayer" parent="."]
 
@@ -204,10 +206,9 @@ __meta__ = {
 "damagebox",
 ]]
 
-visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 7 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -7 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -6 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -221,7 +222,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damagebox"]
 
-transform/pos = Vector2( 0, -7 )
+transform/pos = Vector2( 0, -6 )
 shape = SubResource( 7 )
 trigger = false
 _update_shape_index = 0
@@ -230,8 +231,8 @@ __meta__ = {
 }
 
 [node name="itemarea" type="Area2D" parent="." groups=[
-"blood",
 "monster_2",
+"blood",
 ]]
 
 visibility/visible = false

@@ -8,6 +8,7 @@ func _ready():
 	if not game.continue_game: get_node( "menulayer/menu" ).set_unselectable_item( 1 )
 	SoundManager.StopStream()
 	#SoundManager.Play("mus_ambience")
+	#get_node( "player_anim_layer/scale/walls/player_anim/AnimationPlayer" ).seek( 10 )
 
 func play_event(event):
 	SoundManager.Play(event)
@@ -48,6 +49,7 @@ func _shake_screen():
 
 func _on_Timer_timeout():
 	get_node( "player_anim_layer/scale/walls/player_anim/AnimationPlayer" ).play( "intro" )
+	get_node( "player_anim_layer/scale/walls/player_anim/AnimationPlayer" ).seek(3)
 
 
 func _on_inputtimer_timeout():

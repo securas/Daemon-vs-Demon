@@ -80,7 +80,7 @@ extents = Vector2( 5, 8 )
 [sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
-extents = Vector2( 7, 6 )
+extents = Vector2( 6, 5 )
 
 [sub_resource type="RectangleShape2D" id=8]
 
@@ -128,7 +128,7 @@ texture = ExtResource( 2 )
 offset = Vector2( 0, -11 )
 vframes = 5
 hframes = 8
-frame = 39
+frame = 8
 __meta__ = {
 "_edit_lock_": true
 }
@@ -186,6 +186,7 @@ __meta__ = {
 
 [node name="hitbox" type="Area2D" parent="."]
 
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -6 )
@@ -209,8 +210,6 @@ __meta__ = {
 "damagebox",
 ]]
 
-editor/display_folded = true
-visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 7 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -20 )

@@ -228,17 +228,17 @@ region_rect = Rect2( 1, 38, 27, 9 )
 
 [node name="title" type="Sprite" parent="."]
 
-editor/display_folded = true
 texture = ExtResource( 4 )
 centered = false
 vframes = 15
+frame = 3
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Polygon2D" type="Polygon2D" parent="title"]
 
-transform/pos = Vector2( 154, 0 )
+transform/pos = Vector2( 308, 0 )
 polygon = Vector2Array( 0, 0, 0, 64, 320, 64, 320, 0 )
 uv = Vector2Array(  )
 color = Color( 0, 0, 0, 1 )
@@ -262,7 +262,6 @@ __meta__ = {
 
 [node name="player_anim_layer" type="CanvasLayer" parent="."]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -270,7 +269,6 @@ scale = Vector2( 1, 1 )
 
 [node name="scale" type="Node2D" parent="player_anim_layer"]
 
-visibility/opacity = 0.0
 transform/pos = Vector2( -178, -5 )
 transform/scale = Vector2( 1.5, 1.5 )
 
@@ -346,7 +344,6 @@ texture = ExtResource( 7 )
 offset = Vector2( 1, -10 )
 vframes = 7
 hframes = 8
-frame = 23
 __meta__ = {
 "_edit_lock_": true
 }

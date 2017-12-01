@@ -188,7 +188,7 @@ func _scene_1( delta ):
 		_player_text( "Sounds good! What do I need to do?", 2, 3, 30 )
 	elif state == 30:
 		#print( state )
-		_demon_text( "Well, slaughter as many demons as you can.", 3, 3, 31 )
+		_demon_text( "Slaughter as many demons as you can.", 3, 3, 31 )
 	elif state == 31:
 		#print( state )
 		_demon_text( "That should bring them back home.", 3, 4, 39 )
@@ -298,7 +298,7 @@ func _scene_2( delta ):
 	elif state == 5:
 		_player_text( "I didn't stand a chance", 3, 3, 6 )
 	elif state == 6:
-		_demon_text( "Hum... You might need something to fight with.", 3, 3, 7 )
+		_demon_text( "Hum... You might need a weapon to fight.", 3, 3, 7 )
 	elif state == 7:
 		_demon_text( "Here... Take this!", 2, 2, 8 )
 	elif state == 8:
@@ -317,7 +317,7 @@ func _scene_2( delta ):
 	elif state == 12:
 		_demon_text( "Also, I forgot to mention...", 2, 2, 13 )
 	elif state == 13:
-		_demon_text( "You might need to transform into other demon forms.", 2, 2, 14 )
+		_demon_text( "You may also transform into other demon forms.", 2, 2, 14 )
 	elif state == 14:
 		_player_text( "How do I do that?", 2, 2, 19 )
 	elif state == 15:

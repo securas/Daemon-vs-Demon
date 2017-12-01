@@ -254,7 +254,7 @@ func _evt_kill_monsters_1( delta, evt ):
 		elif evt.state == 2:
 			_player_text( "I wonder...", 2, 2, 3, evt )
 		elif evt.state == 3:
-			_player_text( "... Maybe I take their form.", 2, 2, 4, evt )
+			_player_text( "... I can try to take their form.", 2, 2, 4, evt )
 		elif evt.state == 4:
 			# end this event
 			evt.active = false
@@ -275,9 +275,9 @@ func _evt_first_transform( delta, evt ):
 		evt.state = -1
 		evt.state_nxt = 1
 	elif evt.state == 1:
-		_player_text( "Hum...", 2, 2, 2, evt )
+		_player_text( "It worked!", 2, 2, 2, evt )
 	elif evt.state == 2:
-		_player_text( "... was not expecting this.", 2, 2, 3, evt )
+		_player_text( "Game Jam Theme Right here!", 2, 2, 3, evt )
 	elif evt.state == 3:
 		# finish this event
 		evt.active = false
