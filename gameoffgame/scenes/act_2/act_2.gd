@@ -62,8 +62,8 @@ func _ready():
 	_reset_settings()
 	
 	# initial respawn point
-	#if game.player != null and game.player.get_ref() != null:
-	#	game.player_spawnpos = game.player.get_ref().get_global_pos()
+	if game.player != null and game.player.get_ref() != null:
+		game.player_spawnpos = game.player.get_ref().get_global_pos()
 	
 	# register floor tilemap
 	game.floor_tilemap = weakref( get_node( "base_ground" ) )
