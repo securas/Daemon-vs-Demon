@@ -331,7 +331,7 @@ func _scene_2( delta ):
 	elif state == 19:
 		_demon_text( "Just take some blood from their bodies.", 3, 3, 20 )
 	elif state == 20:
-		_player_text( "That's discusting!", 1, 1, 21 )
+		_player_text( "That's disgusting!", 1, 1, 21 )
 	elif state == 21:
 		# demon faces
 		get_node( "YSort/blood_pool/demon/anim_body" ).play( "game" )
