@@ -21,4 +21,3 @@ All the original sound effects and all music tracks except for the gameoff annou
 
 
 - itch.io page: https://securas.itch.io/daemon-vs-demon
-- Game Off rating page: https://itch.io/jam/game-off-2017/rate/197731
