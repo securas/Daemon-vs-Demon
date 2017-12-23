@@ -6,6 +6,7 @@ Now he has to slay rogue demons to be able to remain in the world of the living.
 ![Game title GIF](https://img.itch.zone/aW1hZ2UvMTk3NzMxLzkyODI5My5naWY=/315x250%23c/8Zpi6U.gif)
 
 This is a demo made for the GitHub Game Off Jam 2017.
+Trailer: https://youtu.be/WEesa6f0uZI
 
 This demo was created using Godot Engine and the authors would like to thank the support
 of the [Godot Engine Facebook community](https://www.facebook.com/groups/godotengine/).
