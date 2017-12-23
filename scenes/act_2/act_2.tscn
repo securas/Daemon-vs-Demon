@@ -1,31 +1,29 @@
-[gd_scene load_steps=96 format=1]
+[gd_scene load_steps=94 format=1]
 
 [ext_resource path="res://scenes/act_2/act_2.gd" type="Script" id=1]
-[ext_resource path="res://assets/background/test_1.png" type="Texture" id=2]
-[ext_resource path="res://assets/background/test_2.png" type="Texture" id=3]
-[ext_resource path="res://assets/tileset.tres" type="TileSet" id=4]
-[ext_resource path="res://scenes/act_2/grave.png" type="Texture" id=5]
-[ext_resource path="res://scenes/act_2/bridge.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/tileset.png" type="Texture" id=7]
-[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/rain.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/box_key.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/gate.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/switch.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/small_entrance.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/boss.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/boss_gate.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/monster_1.tscn" type="PackedScene" id=16]
-[ext_resource path="res://scenes/monster_3.tscn" type="PackedScene" id=17]
-[ext_resource path="res://scenes/box_coin.tscn" type="PackedScene" id=18]
-[ext_resource path="res://scenes/monster_2.tscn" type="PackedScene" id=19]
-[ext_resource path="res://scenes/blood_splatter.tscn" type="PackedScene" id=20]
-[ext_resource path="res://scenes/small_fire_front.tscn" type="PackedScene" id=21]
-[ext_resource path="res://scenes/small_fire_side.tscn" type="PackedScene" id=22]
-[ext_resource path="res://scenes/fire_stand.tscn" type="PackedScene" id=23]
-[ext_resource path="res://scenes/camera.tscn" type="PackedScene" id=24]
-[ext_resource path="res://scripts/patrol_and_spawn.gd" type="Script" id=25]
-[ext_resource path="res://scenes/boss_arena.gd" type="Script" id=26]
+[ext_resource path="res://assets/tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://scenes/act_2/grave.png" type="Texture" id=3]
+[ext_resource path="res://scenes/act_2/bridge.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/tileset.png" type="Texture" id=5]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/rain.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/box_key.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/gate.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/switch.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/small_entrance.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/boss.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/boss_gate.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/monster_1.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/monster_3.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/box_coin.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/monster_2.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/blood_splatter.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scenes/small_fire_front.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/small_fire_side.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scenes/fire_stand.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/camera.tscn" type="PackedScene" id=22]
+[ext_resource path="res://scripts/patrol_and_spawn.gd" type="Script" id=23]
+[ext_resource path="res://scenes/boss_arena.gd" type="Script" id=24]
 
 [sub_resource type="NavigationPolygon" id=1]
 
@@ -384,50 +382,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-layer = -1
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-scroll/offset = Vector2( 0, 0 )
-scroll/base_offset = Vector2( 0, 0 )
-scroll/base_scale = Vector2( 1, 1 )
-scroll/limit_begin = Vector2( 0, 0 )
-scroll/limit_end = Vector2( 0, 0 )
-scroll/ignore_camera_zoom = false
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-
-visibility/visible = false
-transform/pos = Vector2( 1212, 96 )
-motion/scale = Vector2( 0, 0 )
-motion/offset = Vector2( 0, 0 )
-motion/mirroring = Vector2( 0, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-
-texture = ExtResource( 2 )
-centered = false
-
-[node name="ParallaxLayer 2" type="ParallaxLayer" parent="ParallaxBackground"]
-
-visibility/visible = false
-transform/pos = Vector2( 1213, 96 )
-motion/scale = Vector2( 0.05, 0.01 )
-motion/offset = Vector2( 0, 0 )
-motion/mirroring = Vector2( 0, 0 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer 2"]
-
-texture = ExtResource( 3 )
-centered = false
-
 [node name="base_ground" type="TileMap" parent="."]
 
 visibility/light_mask = 3
 mode = 0
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 2 )
 cell/size = Vector2( 8, 8 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -449,7 +408,7 @@ __meta__ = {
 
 visibility/light_mask = 3
 mode = 0
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 2 )
 cell/size = Vector2( 8, 8 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -477,7 +436,7 @@ __meta__ = {
 [node name="grave" type="Sprite" parent="ground/stuff"]
 
 transform/pos = Vector2( 146, 94 )
-texture = ExtResource( 5 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -485,40 +444,40 @@ __meta__ = {
 [node name="grave1" type="Sprite" parent="ground/stuff"]
 
 transform/pos = Vector2( 1789, 40 )
-texture = ExtResource( 5 )
+texture = ExtResource( 3 )
 
 [node name="grave7" type="Sprite" parent="ground/stuff"]
 
 transform/pos = Vector2( 1826, 19 )
 transform/rot = 90.0
-texture = ExtResource( 5 )
+texture = ExtResource( 3 )
 flip_h = true
 
 [node name="grave5" type="Sprite" parent="ground/stuff"]
 
 transform/pos = Vector2( 1789, 62 )
-texture = ExtResource( 5 )
+texture = ExtResource( 3 )
 
 [node name="grave6" type="Sprite" parent="ground/stuff"]
 
 transform/pos = Vector2( 1862, 40 )
-texture = ExtResource( 5 )
+texture = ExtResource( 3 )
 flip_h = true
 
 [node name="grave2" type="Sprite" parent="ground/stuff"]
 
 transform/pos = Vector2( 1862, 62 )
-texture = ExtResource( 5 )
+texture = ExtResource( 3 )
 flip_h = true
 
-[node name="bridge" parent="ground/stuff" instance=ExtResource( 6 )]
+[node name="bridge" parent="ground/stuff" instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 2184, 530 )
 
 [node name="edge_1" type="Sprite" parent="ground/stuff"]
 
 transform/pos = Vector2( 2140, 515 )
-texture = ExtResource( 7 )
+texture = ExtResource( 5 )
 offset = Vector2( 0, -16 )
 region = true
 region_rect = Rect2( 176, 64, 8, 40 )
@@ -529,7 +488,7 @@ __meta__ = {
 [node name="edge_2" type="Sprite" parent="ground/stuff"]
 
 transform/pos = Vector2( 2140, 548 )
-texture = ExtResource( 7 )
+texture = ExtResource( 5 )
 offset = Vector2( 0, -16 )
 region = true
 region_rect = Rect2( 176, 64, 8, 40 )
@@ -540,7 +499,7 @@ __meta__ = {
 [node name="edge_3" type="Sprite" parent="ground/stuff"]
 
 transform/pos = Vector2( 2229, 547 )
-texture = ExtResource( 7 )
+texture = ExtResource( 5 )
 offset = Vector2( 0, -16 )
 flip_h = true
 region = true
@@ -552,7 +511,7 @@ __meta__ = {
 [node name="edge_4" type="Sprite" parent="ground/stuff"]
 
 transform/pos = Vector2( 2228, 524 )
-texture = ExtResource( 7 )
+texture = ExtResource( 5 )
 offset = Vector2( 0, -16 )
 flip_h = true
 region = true
@@ -564,7 +523,7 @@ __meta__ = {
 [node name="walls" type="TileMap" parent="."]
 
 mode = 0
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 2 )
 cell/size = Vector2( 8, 8 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -582,33 +541,33 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="player" parent="walls" instance=ExtResource( 8 )]
+[node name="player" parent="walls" instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 168, 94 )
 
-[node name="rain" parent="walls" instance=ExtResource( 9 )]
+[node name="rain" parent="walls" instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 164, 124 )
 RainParent = NodePath("..")
 GroundNode = NodePath("../../base_ground")
 
-[node name="box_key" parent="walls" instance=ExtResource( 10 )]
+[node name="box_key" parent="walls" instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 1631, 550 )
 
-[node name="gate" parent="walls" instance=ExtResource( 11 )]
+[node name="gate" parent="walls" instance=ExtResource( 9 )]
 
 transform/pos = Vector2( 2036, 485 )
 
-[node name="switch_left" parent="walls" instance=ExtResource( 12 )]
+[node name="switch_left" parent="walls" instance=ExtResource( 10 )]
 
 transform/pos = Vector2( 2133, 493 )
 
-[node name="switch_right" parent="walls" instance=ExtResource( 12 )]
+[node name="switch_right" parent="walls" instance=ExtResource( 10 )]
 
 transform/pos = Vector2( 2238, 493 )
 
-[node name="small_entrance_1" parent="walls" instance=ExtResource( 13 )]
+[node name="small_entrance_1" parent="walls" instance=ExtResource( 11 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 3060, 260 )
@@ -624,852 +583,852 @@ __meta__ = {
 
 transform/pos = Vector2( 0, 4 )
 
-[node name="boss" parent="walls" instance=ExtResource( 14 )]
+[node name="boss" parent="walls" instance=ExtResource( 12 )]
 
 transform/pos = Vector2( 4472, 104 )
 navigation_nodepath = NodePath("")
 
-[node name="boss_gate" parent="walls" instance=ExtResource( 15 )]
+[node name="boss_gate" parent="walls" instance=ExtResource( 13 )]
 
 transform/pos = Vector2( 3924, 261 )
 
 [node name="talking_monster" parent="walls" groups=[
 "m1",
-] instance=ExtResource( 16 )]
+] instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 550, 155 )
 
 [node name="talking_monster1" parent="walls" groups=[
 "m1",
-] instance=ExtResource( 16 )]
+] instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 565, 52 )
 
 [node name="talking_monster2" parent="walls" groups=[
 "m1",
-] instance=ExtResource( 16 )]
+] instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 601, 109 )
 
 [node name="talking_monster3" parent="walls" groups=[
 "m1",
-] instance=ExtResource( 16 )]
+] instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 635, 58 )
 
 [node name="talking_monster4" parent="walls" groups=[
 "m1",
-] instance=ExtResource( 16 )]
+] instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 658, 153 )
 
 [node name="talking_monster5" parent="walls" groups=[
 "m1",
-] instance=ExtResource( 16 )]
+] instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 665, 96 )
 
-[node name="monster_3" parent="walls" instance=ExtResource( 17 )]
+[node name="monster_3" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 3512, 24 )
 navigation_nodepath = NodePath("../../nav_maze_1")
 
-[node name="monster_31" parent="walls" instance=ExtResource( 17 )]
+[node name="monster_31" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 3544, 40 )
 navigation_nodepath = NodePath("../../nav_maze_1")
 
-[node name="monster_41" parent="walls" instance=ExtResource( 17 )]
+[node name="monster_41" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 3456, 416 )
 navigation_nodepath = NodePath("../../navigation")
 
-[node name="monster_42" parent="walls" instance=ExtResource( 17 )]
+[node name="monster_42" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 3488, 432 )
 navigation_nodepath = NodePath("../../navigation")
 
-[node name="monster_43" parent="walls" instance=ExtResource( 17 )]
+[node name="monster_43" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 3744, 536 )
 navigation_nodepath = NodePath("../../nav_maze_2")
 
-[node name="monster_44" parent="walls" instance=ExtResource( 17 )]
+[node name="monster_44" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 3784, 568 )
 navigation_nodepath = NodePath("../../nav_maze_2")
 
 [node name="dead_monster_45" parent="walls" groups=[
 "dead_monster",
-] instance=ExtResource( 17 )]
+] instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 3784, 296 )
 
-[node name="monster_1_1" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_1_1" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 280, 326 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_1")
 
-[node name="monster_4" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_4" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 287, 312 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_1")
 
-[node name="monster_5" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_5" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 307, 323 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_1")
 
-[node name="monster_6" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_6" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 305, 290 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_1")
 
-[node name="monster_7" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_7" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 323, 306 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_1")
 
-[node name="monster_8" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_8" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 337, 285 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_1")
 
-[node name="monster_9" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_9" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 328, 312 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_1")
 
-[node name="monster_10" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_10" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 712, 240 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_2")
 
-[node name="monster_11" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_11" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 680, 248 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_2")
 
-[node name="monster_12" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_12" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 776, 248 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_2")
 
-[node name="monster_13" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_13" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 776, 296 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_2")
 
-[node name="monster_14" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_14" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 744, 304 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_2")
 
-[node name="monster_15" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_15" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 704, 272 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_2")
 
-[node name="monster_16" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_16" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 816, 96 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_3")
 
-[node name="monster_17" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_17" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 840, 112 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_3")
 
-[node name="monster_18" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_18" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 864, 80 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_3")
 
-[node name="monster_19" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_19" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 832, 72 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_3")
 
-[node name="monster_20" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_20" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 800, 128 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_3")
 
-[node name="box_coin" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 64, 272 )
 
-[node name="box_coin1" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin1" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 48, 288 )
 
-[node name="box_coin2" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin2" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 64, 304 )
 
-[node name="box_coin3" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin3" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 80, 288 )
 
-[node name="box_coin4" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin4" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 552, 288 )
 
-[node name="box_coin5" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin5" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 688, 352 )
 
-[node name="box_coin6" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin6" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 704, 312 )
 
-[node name="box_coin7" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin7" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 872, 40 )
 
-[node name="box_coin8" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin8" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 840, 40 )
 
-[node name="box_coin9" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin9" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 856, 64 )
 
-[node name="box_coin10" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin10" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 840, 88 )
 
-[node name="box_coin11" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin11" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 872, 88 )
 
-[node name="monster_2" parent="walls" instance=ExtResource( 19 )]
+[node name="monster_2" parent="walls" instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 1592, 233 )
 
-[node name="monster_21" parent="walls" instance=ExtResource( 19 )]
+[node name="monster_21" parent="walls" instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 1792, 168 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_4")
 
-[node name="monster_22" parent="walls" instance=ExtResource( 19 )]
+[node name="monster_22" parent="walls" instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 1824, 144 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_4")
 
-[node name="monster_23" parent="walls" instance=ExtResource( 19 )]
+[node name="monster_23" parent="walls" instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 1872, 168 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_4")
 
-[node name="monster_24" parent="walls" instance=ExtResource( 19 )]
+[node name="monster_24" parent="walls" instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 1840, 200 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_4")
 
-[node name="monster_25" parent="walls" instance=ExtResource( 19 )]
+[node name="monster_25" parent="walls" instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 1800, 232 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_4")
 
 [node name="tiny_1" parent="walls" groups=[
 "gate_monster",
-] instance=ExtResource( 19 )]
+] instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 1675, 407 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
 
 [node name="tiny_9" parent="walls" groups=[
 "gate_monster",
-] instance=ExtResource( 19 )]
+] instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 1744, 432 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
 
 [node name="tiny_10" parent="walls" groups=[
 "gate_monster",
-] instance=ExtResource( 19 )]
+] instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 1696, 424 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
 
 [node name="tiny_11" parent="walls" groups=[
 "gate_monster",
-] instance=ExtResource( 19 )]
+] instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 1648, 456 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
 
 [node name="tiny_15" parent="walls" groups=[
 "gate_monster",
-] instance=ExtResource( 19 )]
+] instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 1768, 440 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
 
 [node name="tiny_16" parent="walls" groups=[
 "gate_monster",
-] instance=ExtResource( 19 )]
+] instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 1776, 464 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
 
 [node name="tiny_17" parent="walls" groups=[
 "gate_monster",
-] instance=ExtResource( 19 )]
+] instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 1752, 496 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
 
 [node name="tiny_18" parent="walls" groups=[
 "gate_monster",
-] instance=ExtResource( 19 )]
+] instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 1736, 520 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
 
 [node name="tiny_19" parent="walls" groups=[
 "gate_monster",
-] instance=ExtResource( 19 )]
+] instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 1760, 536 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
 
 [node name="tiny_20" parent="walls" groups=[
 "gate_monster",
-] instance=ExtResource( 19 )]
+] instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 1784, 496 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_5")
 
-[node name="box_coin 2" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin 2" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 1720, 56 )
 
-[node name="box_coin12" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin12" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 1744, 56 )
 
-[node name="box_coin13" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin13" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 1744, 80 )
 
-[node name="box_coin14" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin14" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 1720, 80 )
 
-[node name="box_coin15" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin15" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 1904, 56 )
 
-[node name="box_coin16" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin16" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 1928, 56 )
 
-[node name="box_coin17" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin17" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 1928, 80 )
 
-[node name="box_coin18" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin18" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 1904, 80 )
 
-[node name="box_coin21" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin21" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 2008, 176 )
 
-[node name="box_coin22" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin22" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 2008, 200 )
 
-[node name="box_coin23" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin23" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 2008, 224 )
 
-[node name="box_coin24" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin24" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 2008, 248 )
 
-[node name="box_coin25" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin25" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 2008, 272 )
 
-[node name="box_coin26" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin26" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 1808, 176 )
 
-[node name="box_coin27" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin27" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 1832, 176 )
 
-[node name="box_coin28" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin28" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 1856, 176 )
 
-[node name="box_coin29" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin29" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 1856, 200 )
 
-[node name="box_coin30" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin30" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 1856, 224 )
 
-[node name="box_coin31" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin31" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 1856, 248 )
 
-[node name="box_coin32" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin32" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 1832, 248 )
 
-[node name="box_coin33" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin33" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 1832, 224 )
 
-[node name="box_coin34" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin34" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 1832, 200 )
 
-[node name="box_coin35" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin35" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 1808, 200 )
 
-[node name="box_coin36" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin36" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 1808, 224 )
 
-[node name="box_coin37" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin37" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 1808, 248 )
 
-[node name="box_coin19" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin19" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 1808, 40 )
 
-[node name="monster_1" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_1" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 1734, 44 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_6")
 
-[node name="monster_26" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_26" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 1764, 60 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_6")
 
-[node name="monster_27" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_27" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 1799, 43 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_6")
 
-[node name="monster_28" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_28" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 1838, 59 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_6")
 
-[node name="monster_29" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_29" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 1886, 39 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_6")
 
-[node name="monster_30" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_30" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 1932, 57 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_6")
 
 [node name="dead_monster" parent="walls" groups=[
 "dead_monster",
-] instance=ExtResource( 16 )]
+] instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 1595, 549 )
 
-[node name="blood_splatter" parent="walls" instance=ExtResource( 20 )]
+[node name="blood_splatter" parent="walls" instance=ExtResource( 18 )]
 
 transform/pos = Vector2( 1606, 524 )
 frame = 1
 
 [node name="dead_monster1" parent="walls" groups=[
 "dead_monster",
-] instance=ExtResource( 16 )]
+] instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 1594, 578 )
 
-[node name="blood_splatter 2" parent="walls" instance=ExtResource( 20 )]
+[node name="blood_splatter 2" parent="walls" instance=ExtResource( 18 )]
 
 transform/pos = Vector2( 1645, 567 )
 frame = 2
 
 [node name="dead_monster2" parent="walls" groups=[
 "dead_monster",
-] instance=ExtResource( 16 )]
+] instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 1666, 578 )
 
 [node name="dead_monster3" parent="walls" groups=[
 "dead_monster",
-] instance=ExtResource( 16 )]
+] instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 1667, 539 )
 
-[node name="monster_3 2" parent="walls" instance=ExtResource( 17 )]
+[node name="monster_3 2" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 2560, 344 )
 navigation_nodepath = NodePath("../../nav_bridge")
 
-[node name="monster_33" parent="walls" instance=ExtResource( 17 )]
+[node name="monster_33" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 2568, 360 )
 navigation_nodepath = NodePath("../../nav_bridge")
 
-[node name="box_coin 3" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin 3" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3096, 304 )
 
-[node name="box_coin20" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin20" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3096, 328 )
 
-[node name="box_coin38" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin38" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3096, 352 )
 
-[node name="box_coin39" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin39" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3096, 376 )
 
-[node name="box_coin40" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin40" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3096, 400 )
 
-[node name="monster_1 2" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_1 2" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 2674, 311 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_7")
 
-[node name="monster_110" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_110" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 2737, 322 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_7")
 
-[node name="monster_111" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_111" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 2797, 310 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_7")
 
-[node name="monster_112" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_112" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 2842, 347 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_7")
 
-[node name="monster_113" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_113" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 2789, 372 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_7")
 
-[node name="monster_114" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_114" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 2703, 367 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_7")
 
-[node name="monster_115" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_115" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 2742, 397 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_7")
 
-[node name="box_coin 4" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin 4" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 2904, 568 )
 
-[node name="box_coin41" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin41" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 2840, 592 )
 
-[node name="box_coin42" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin42" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3024, 520 )
 
-[node name="box_coin43" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin43" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3040, 544 )
 
-[node name="box_coin44" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin44" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3056, 520 )
 
-[node name="box_coin45" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin45" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3056, 568 )
 
-[node name="box_coin46" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin46" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3024, 568 )
 
-[node name="box_coin47" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin47" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 2720, 528 )
 
-[node name="box_coin48" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin48" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 2752, 528 )
 
-[node name="box_coin49" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin49" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 2736, 552 )
 
-[node name="box_coin50" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin50" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 2720, 576 )
 
-[node name="box_coin51" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin51" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 2752, 576 )
 
-[node name="box_coin52" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin52" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 2816, 592 )
 
-[node name="box_coin53" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin53" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 2792, 592 )
 
-[node name="box_coin54" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin54" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 2800, 624 )
 
-[node name="box_coin55" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin55" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 2824, 624 )
 
-[node name="box_coin56" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin56" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3008, 624 )
 
-[node name="box_coin57" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin57" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3032, 624 )
 
-[node name="box_coin58" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin58" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 2912, 520 )
 
-[node name="monster_3 3" parent="walls" instance=ExtResource( 17 )]
+[node name="monster_3 3" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 2664, 576 )
 navigation_nodepath = NodePath("../../nav_walls")
 
-[node name="monster_34" parent="walls" instance=ExtResource( 17 )]
+[node name="monster_34" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 2651, 549 )
 navigation_nodepath = NodePath("../../nav_walls")
 
-[node name="monster_35" parent="walls" instance=ExtResource( 17 )]
+[node name="monster_35" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 2648, 615 )
 navigation_nodepath = NodePath("../../nav_walls")
 
-[node name="monster_36" parent="walls" instance=ExtResource( 17 )]
+[node name="monster_36" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 3067, 550 )
 navigation_nodepath = NodePath("../../nav_walls")
 
-[node name="monster_37" parent="walls" instance=ExtResource( 17 )]
+[node name="monster_37" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 3087, 577 )
 navigation_nodepath = NodePath("../../nav_walls")
 
-[node name="monster_38" parent="walls" instance=ExtResource( 17 )]
+[node name="monster_38" parent="walls" instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 3059, 606 )
 navigation_nodepath = NodePath("../../nav_walls")
 
-[node name="monster_116" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_116" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 2775, 505 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_8")
 
-[node name="monster_117" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_117" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 3053, 495 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_8")
 
-[node name="monster_118" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_118" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 3058, 588 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_8")
 
-[node name="monster_119" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_119" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 2722, 606 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_8")
 
-[node name="monster_120" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_120" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 2824, 566 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_8")
 
-[node name="monster_121" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_121" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 2938, 558 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_8")
 
-[node name="monster_2 2" parent="walls" instance=ExtResource( 19 )]
+[node name="monster_2 2" parent="walls" instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 2693, 135 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
 
-[node name="monster_210" parent="walls" instance=ExtResource( 19 )]
+[node name="monster_210" parent="walls" instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 2712, 120 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
 
-[node name="monster_211" parent="walls" instance=ExtResource( 19 )]
+[node name="monster_211" parent="walls" instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 2723, 157 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
 
-[node name="monster_212" parent="walls" instance=ExtResource( 19 )]
+[node name="monster_212" parent="walls" instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 2761, 129 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
 
-[node name="monster_213" parent="walls" instance=ExtResource( 19 )]
+[node name="monster_213" parent="walls" instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 2784, 161 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
 
-[node name="monster_214" parent="walls" instance=ExtResource( 19 )]
+[node name="monster_214" parent="walls" instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 2810, 123 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
 
-[node name="monster_215" parent="walls" instance=ExtResource( 19 )]
+[node name="monster_215" parent="walls" instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 2854, 152 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
 
-[node name="monster_216" parent="walls" instance=ExtResource( 19 )]
+[node name="monster_216" parent="walls" instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 2888, 115 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
 
-[node name="monster_217" parent="walls" instance=ExtResource( 19 )]
+[node name="monster_217" parent="walls" instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 2919, 141 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
 
-[node name="monster_218" parent="walls" instance=ExtResource( 19 )]
+[node name="monster_218" parent="walls" instance=ExtResource( 17 )]
 
 transform/pos = Vector2( 2970, 119 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
 
-[node name="box_coin59" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin59" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 2648, 32 )
 
-[node name="box_coin60" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin60" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 2680, 32 )
 
-[node name="box_coin61" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin61" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 2680, 64 )
 
-[node name="box_coin62" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin62" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 2648, 64 )
 
-[node name="box_coin63" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin63" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3200, 488 )
 
-[node name="box_coin64" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin64" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3224, 488 )
 
-[node name="box_coin65" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin65" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3248, 488 )
 
-[node name="box_coin66" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin66" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3248, 512 )
 
-[node name="box_coin67" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin67" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3224, 512 )
 
-[node name="box_coin68" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin68" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3200, 512 )
 
-[node name="box_coin69" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin69" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3200, 464 )
 
-[node name="box_coin70" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin70" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3224, 464 )
 
-[node name="box_coin71" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin71" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3248, 464 )
 
-[node name="box_coin72" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin72" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3248, 464 )
 
-[node name="box_coin73" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin73" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3464, 48 )
 
-[node name="box_coin74" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin74" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3464, 24 )
 
-[node name="box_coin75" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin75" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3488, 24 )
 
-[node name="box_coin76" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin76" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3488, 48 )
 
-[node name="box_coin77" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin77" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3512, 48 )
 
-[node name="box_coin78" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin78" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3512, 48 )
 
-[node name="box_coin79" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin79" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3560, 616 )
 
-[node name="box_coin80" parent="walls" instance=ExtResource( 18 )]
+[node name="box_coin80" parent="walls" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 3592, 616 )
 
-[node name="monster_1 3" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_1 3" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 2688, 152 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
 
-[node name="monster_2 3" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_2 3" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 2760, 72 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
 
-[node name="monster_3 4" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_3 4" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 2928, 56 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
 
-[node name="monster_4 2" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_4 2" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 3072, 120 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
 
-[node name="monster_5 2" parent="walls" instance=ExtResource( 16 )]
+[node name="monster_5 2" parent="walls" instance=ExtResource( 14 )]
 
 transform/pos = Vector2( 3168, 64 )
 patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
@@ -1478,155 +1437,155 @@ patrol_area_path = NodePath("../../areas/patrol_areas/patrol_9")
 
 transform/pos = Vector2( 1631, 312 )
 
-[node name="small_fire_front" parent="walls" instance=ExtResource( 21 )]
+[node name="small_fire_front" parent="walls" instance=ExtResource( 19 )]
 
 transform/pos = Vector2( 2688, 264 )
 
-[node name="small_fire_front1" parent="walls" instance=ExtResource( 21 )]
+[node name="small_fire_front1" parent="walls" instance=ExtResource( 19 )]
 
 transform/pos = Vector2( 2888, 264 )
 
-[node name="small_fire_front2" parent="walls" instance=ExtResource( 21 )]
+[node name="small_fire_front2" parent="walls" instance=ExtResource( 19 )]
 
 transform/pos = Vector2( 3056, 264 )
 
-[node name="small_fire_side_1" parent="walls" instance=ExtResource( 22 )]
+[node name="small_fire_side_1" parent="walls" instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 3120, 352 )
 
-[node name="small_fire_side_2" parent="walls" instance=ExtResource( 22 )]
+[node name="small_fire_side_2" parent="walls" instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 3120, 448 )
 
-[node name="small_fire_side_3" parent="walls" instance=ExtResource( 22 )]
+[node name="small_fire_side_3" parent="walls" instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 3120, 552 )
 
-[node name="small_fire_side_4" parent="walls" instance=ExtResource( 22 )]
+[node name="small_fire_side_4" parent="walls" instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 2032, 120 )
 
-[node name="small_fire_side_5" parent="walls" instance=ExtResource( 22 )]
+[node name="small_fire_side_5" parent="walls" instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 2032, 224 )
 
-[node name="small_fire_side_6" parent="walls" instance=ExtResource( 22 )]
+[node name="small_fire_side_6" parent="walls" instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 2032, 328 )
 
-[node name="small_fire_side_7" parent="walls" instance=ExtResource( 22 )]
+[node name="small_fire_side_7" parent="walls" instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 2032, 424 )
 
-[node name="small_fire_side_8" parent="walls" instance=ExtResource( 22 )]
+[node name="small_fire_side_8" parent="walls" instance=ExtResource( 20 )]
 
 transform/pos = Vector2( 2032, 600 )
 
-[node name="fire_stand" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 600, 98 )
 
-[node name="fire_stand3" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand3" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 856, 330 )
 
-[node name="fire_stand4" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand4" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 1288, 211 )
 
-[node name="fire_stand1" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand1" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 376, 187 )
 
-[node name="fire_stand2" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand2" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 120, 299 )
 
-[node name="fire_stand5" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand5" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 1585, 218 )
 
-[node name="fire_stand6" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand6" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 1792, 443 )
 
-[node name="fire_stand7" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand7" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 1592, 522 )
 
-[node name="fire_stand8" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand8" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 2248, 530 )
 
-[node name="fire_stand9" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand9" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 2408, 338 )
 
-[node name="fire_stand10" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand10" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 2887, 594 )
 
-[node name="fire_stand11" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand11" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 2672, 603 )
 
-[node name="fire_stand12" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand12" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 3264, 546 )
 
-[node name="fire_stand13" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand13" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 2824, 106 )
 
-[node name="fire_stand14" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand14" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 3416, 155 )
 
-[node name="fire_stand15" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand15" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 3675, 268 )
 
-[node name="fire_stand17" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand17" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 3408, 418 )
 
-[node name="fire_stand18" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand18" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 3409, 546 )
 
-[node name="fire_stand19" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand19" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 3809, 546 )
 
-[node name="fire_stand20" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand20" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 3784, 275 )
 
-[node name="fire_stand16" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand16" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 3752, 18 )
 
-[node name="fire_stand21" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand21" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 4040, 258 )
 
-[node name="fire_stand22" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand22" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 4280, 290 )
 
-[node name="fire_stand23" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand23" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 4205, 45 )
 
-[node name="fire_stand24" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand24" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 4205, 177 )
 
-[node name="fire_stand25" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand25" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 4496, 177 )
 
-[node name="fire_stand26" parent="walls" instance=ExtResource( 23 )]
+[node name="fire_stand26" parent="walls" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 4496, 45 )
 
@@ -1733,7 +1692,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="camera" parent="." instance=ExtResource( 24 )]
+[node name="camera" parent="." instance=ExtResource( 22 )]
 
 limit/bottom = 650
 
@@ -2544,7 +2503,7 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-script/script = ExtResource( 25 )
+script/script = ExtResource( 23 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -2652,7 +2611,7 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-script/script = ExtResource( 26 )
+script/script = ExtResource( 24 )
 __meta__ = {
 "_edit_lock_": true
 }
