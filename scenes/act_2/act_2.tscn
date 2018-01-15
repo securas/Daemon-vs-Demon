@@ -522,6 +522,7 @@ __meta__ = {
 
 [node name="walls" type="TileMap" parent="."]
 
+editor/display_folded = true
 mode = 0
 tile_set = ExtResource( 2 )
 cell/size = Vector2( 8, 8 )

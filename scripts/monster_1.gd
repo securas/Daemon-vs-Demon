@@ -276,8 +276,9 @@ func _on_killplayertimer_timeout():
 # function called when the monster is hit by the hittin source
 #---------------------------------------
 func get_hit( source ):
-	if state_cur != STATES.DEAD and state_nxt != STATES.DEAD and \
-			state_cur != STATES.GRABBING and state_nxt != STATES.GRABBING:
+	#if state_cur != STATES.DEAD and state_nxt != STATES.DEAD and \
+	#		state_cur != STATES.GRABBING and state_nxt != STATES.GRABBING:
+	if state_cur != STATES.DEAD and state_nxt != STATES.DEAD:
 		# monster dies immediately
 		state_nxt = STATES.DEAD
 		SoundManager.Play("p_sword_hit")

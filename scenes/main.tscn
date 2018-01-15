@@ -341,7 +341,6 @@ __meta__ = {
 
 [node name="hud_layer" type="CanvasLayer" parent="."]
 
-editor/display_folded = true
 layer = 2
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -356,6 +355,7 @@ __meta__ = {
 
 [node name="score" type="Node2D" parent="hud_layer/hud"]
 
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -414,6 +414,7 @@ autoplay = "fadeout"
 
 [node name="key" type="Node2D" parent="hud_layer/hud"]
 
+editor/display_folded = true
 transform/pos = Vector2( 313, 5 )
 __meta__ = {
 "_edit_lock_": true
@@ -444,6 +445,7 @@ autoplay = "fadeout"
 
 [node name="progress_indicator" type="Node2D" parent="hud_layer/hud"]
 
+editor/display_folded = true
 __meta__ = {
 "_edit_lock_": true
 }

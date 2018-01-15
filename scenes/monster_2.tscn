@@ -231,8 +231,8 @@ __meta__ = {
 }
 
 [node name="itemarea" type="Area2D" parent="." groups=[
-"monster_2",
 "blood",
+"monster_2",
 ]]
 
 visibility/visible = false

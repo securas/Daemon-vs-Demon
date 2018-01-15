@@ -12,12 +12,12 @@ extents = Vector2( 3, 1 )
 [sub_resource type="ConvexPolygonShape2D" id=2]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 0, 5, -14, 1, 0, -8, 20, 3 )
+points = Vector2Array( 20, 3, 0, 5, -14, 1, -5.29426, -8.06528, 8, -19, 23, -16, 31, -6 )
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
 
 custom_solver_bias = 0.0
-points = Vector2Array( 20, 3, 0, -8, -9, -17, 8, -19, 23, -16, 31, -6 )
+points = Vector2Array( -5.29426, -8.06528, -9, -17, 8, -19 )
 
 [sub_resource type="RectangleShape2D" id=4]
 
@@ -108,9 +108,8 @@ __meta__ = {
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="rotate_hitbox/sword_hitbox"]
 
-visibility/visible = false
 build_mode = 0
-polygon = Vector2Array( -9, -17, 8, -19, 23, -16, 31, -6, 20, 3, 0, 5, -14, 1, 0, -8 )
+polygon = Vector2Array( -9, -17, 8, -19, 23, -16, 31, -6, 20, 3, 0, 5, -14, 1, -5.29426, -8.06528 )
 shape_range = Vector2( 0, 1 )
 trigger = false
 __meta__ = {

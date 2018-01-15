@@ -252,6 +252,10 @@ func _player_attack( delta ):
 		if sprite_node.anim_finished():#can_attack:
 			sprite_node.set_animation( sprite_node.ANIMS.ATTACK )
 			if player_char == game.PLAYER_CHAR.HUMAN_SWORD:
+				#print( "Sword Neighbours" )
+				#print( sword_neighbours )
+				#print( "Overlapping areas" )
+				#print( get_node( "rotate_hitbox/sword_hitbox" ).get_overlapping_areas() )
 				if sword_neighbours.size() > 0:
 					#_attack_timer = ATTACK_INTERVAL
 					# kill neighbours
@@ -267,6 +271,8 @@ func _player_attack( delta ):
 											0.2 )
 									# hit monster
 									n.get_ref().get_hit( self )
+								else:
+									print( "neighb. dead or not in line of sight" )
 							else:
 								# this is a box, break it
 								#print( "found a box" )
@@ -275,7 +281,8 @@ func _player_attack( delta ):
 									animnode.play( "explode" )
 									SoundManager.Play("inter_rockbox_hit")
 									shake_camera += 1
-								
+						else:
+							print( "rejected sword neighbour" )
 					if shake_camera > 0:
 						game.camera.get_ref().shake( 0.5, 30, min( 1.5 * shake_camera, 10 ) )
 #
@@ -309,9 +316,10 @@ func _player_pick( delta ):
 		var itemareas = get_node( "itembox" ).get_overlapping_areas()
 		if itemareas.empty() > 0:
 			# transform back to human
-			if game.player_char != game.PLAYER_CHAR.HUMAN_SWORD:
-				get_node( "transformation_timer" ).stop()
-				transform( game.PLAYER_CHAR.HUMAN_SWORD )
+			if game.player_char != game.PLAYER_CHAR.HUMAN:
+				if game.player_char != game.PLAYER_CHAR.HUMAN_SWORD:
+					get_node( "transformation_timer" ).stop()
+					transform( game.PLAYER_CHAR.HUMAN_SWORD )
 		else:
 			# there is stuff to pick
 			vel *= 0

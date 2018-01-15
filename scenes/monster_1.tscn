@@ -80,7 +80,7 @@ extents = Vector2( 5, 8 )
 [sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
-extents = Vector2( 6, 5 )
+extents = Vector2( 6, 8 )
 
 [sub_resource type="RectangleShape2D" id=8]
 
@@ -212,7 +212,7 @@ __meta__ = {
 
 input/pickable = true
 shapes/0/shape = SubResource( 7 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -20 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, -16 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -226,7 +226,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damagebox"]
 
-transform/pos = Vector2( 0, -20 )
+transform/pos = Vector2( 0, -16 )
 shape = SubResource( 7 )
 trigger = false
 _update_shape_index = 0

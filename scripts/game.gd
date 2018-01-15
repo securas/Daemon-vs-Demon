@@ -33,6 +33,7 @@ const CHAR_SCENES = { \
 enum WEAPONS { NONE, SWORD, GUN }
 var player = null
 var player_spawnpos = Vector2()
+var player_startpos = null
 var player_char = PLAYER_CHAR.HUMAN#_SWORD
 var continue_game = false
 

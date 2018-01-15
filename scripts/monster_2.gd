@@ -331,8 +331,9 @@ func _running_dust():
 # function called when the monster is hit by the hittin source
 #---------------------------------------
 func get_hit( source ):
-	if state_cur != STATES.DEAD and state_nxt != STATES.DEAD and \
-			state_cur != STATES.GRABBING and state_nxt != STATES.GRABBING:
+	#if state_cur != STATES.DEAD and state_nxt != STATES.DEAD and \
+	#		state_cur != STATES.GRABBING and state_nxt != STATES.GRABBING:
+	if state_cur != STATES.DEAD and state_nxt != STATES.DEAD:
 		# monster dies immediately
 		SoundManager.Play("p_sword_hit")
 		SoundManager.Play("en_gore")

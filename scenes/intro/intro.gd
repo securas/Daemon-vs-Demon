@@ -23,6 +23,8 @@ func _on_menu_selected_item( item ):
 				game.ACTS.HELL : { "scene": 1, "persistent": [] }, \
 				game.ACTS.GRAVEYARD : { "scene": 1, "persistent": [] } }
 		game.player_char = game.PLAYER_CHAR.HUMAN
+		if game.player_startpos != null:
+			game.player_spawnpos = game.player_startpos
 		# start new game
 		game.main.act_nxt = "res://scenes/act_1/act_1.tscn"
 	elif item == 1:
